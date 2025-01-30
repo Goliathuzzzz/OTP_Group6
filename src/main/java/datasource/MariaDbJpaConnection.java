@@ -1,4 +1,4 @@
-package datasource;
+/* package datasource;
 
 import jakarta.persistence.*;
 
@@ -8,6 +8,7 @@ import jakarta.persistence.*;
  * to a MariaDB database using JPA (Java Persistence API). It provides an
  * EntityManager instance for interacting with the database.
  */
+/*
 public class MariaDbJpaConnection {
 
     private static EntityManagerFactory emf = null;
@@ -19,7 +20,7 @@ public class MariaDbJpaConnection {
      *
      * @return The singleton EntityManager instance.
      */
-
+/*
     public static EntityManager getInstance() {
 
         if (em==null) {
@@ -31,3 +32,4 @@ public class MariaDbJpaConnection {
         return em;
     }
 }
+*/
