@@ -25,7 +25,7 @@ public class MariaDbJpaConnection {
 
         if (em==null) {
             if (emf==null) {
-                emf = Persistence.createEntityManagerFactory("PizzasaurusMariaDbUnit");
+                emf = Persistence.createEntityManagerFactory("tatskatytotMariaDbUnit");
             }
             em = emf.createEntityManager();
         }
