@@ -24,7 +24,7 @@ public class MariaDbJpaConnection {
 
         if (em==null) {
             if (emf==null) {
-                emf = Persistence.createEntityManagerFactory("TatskaTytotMariaDbUnit");
+                emf = Persistence.createEntityManagerFactory("tatskatytotMariaDbUnit");
             }
             em = emf.createEntityManager();
         }
