@@ -30,14 +30,6 @@ public class User extends Participant{
         this.role = role;
     }
 
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
     public String getUserName() {
         return userName;
     }
