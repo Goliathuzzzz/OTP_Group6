@@ -1,13 +1,30 @@
 package model;
 
+import jakarta.persistence.*;
+
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "sessions")
 public class Session {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int sessionId;
+
+    @Column(name = "session_code", nullable = false, unique = true)
     private int sessionCode;
+
+    @Column(nullable = false)
     private String status;
+
+    @Column(name = "session_date", nullable = false)
     private LocalDateTime sessionDate;
+
+    @Column(nullable = false)
     private String type;
+
+    @Column
     private String description;
 
     public Session() {}
