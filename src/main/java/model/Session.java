@@ -27,8 +27,6 @@ public class Session {
     @Column
     private String description;
 
-    public Session() {}
-
     public Session(int sessionId, int sessionCode, String status, LocalDateTime sessionDate, String type, String description) {
         this.sessionId = sessionId;
         this.sessionCode = sessionCode;
@@ -37,6 +35,8 @@ public class Session {
         this.type = type;
         this.description = description;
     }
+
+    public Session() {}
 
     public int getSessionId() {
         return sessionId;
