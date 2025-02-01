@@ -6,14 +6,16 @@ import javafx.scene.Parent;
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
 
-public class Hello extends Application {
+public class Login extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/hello_view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/login.fxml"));
         Parent root = fxmlLoader.load();
-
-        stage.setScene(new Scene(root));
+        stage.setResizable(false);
+        Scene scene = new Scene(root);
+        scene.getRoot().setStyle("-fx-font-family: 'HoeflerText'");
+        stage.setScene(scene);
         stage.show();
     }
 
