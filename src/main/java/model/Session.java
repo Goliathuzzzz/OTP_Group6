@@ -111,4 +111,15 @@ public class Session {
     public ArrayList<Participant> getParticipants() {
         return participants;
     }
+
+    public Participant getParticipantBySessionNumber(int sessionNumber) {
+        Participant participant = null;
+        for (Participant p : participants) {
+            if (p.getSessionNumber() == sessionNumber) {
+                participant = p;
+                break;
+            }
+        }
+        return participant;
+    }
 }

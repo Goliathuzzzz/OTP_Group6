@@ -2,7 +2,9 @@ package model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -20,11 +22,14 @@ public abstract class Participant {
     @ManyToOne
     @JoinColumn
     protected Session activeSession;
+    @ElementCollection
+    protected List<Integer> interests;
 
     public Participant() {}
 
     public Participant(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+        interests = new ArrayList<>();
     }
 
     public int getId() {
