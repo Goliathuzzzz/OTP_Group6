@@ -15,6 +15,11 @@ public abstract class Participant {
     @Column(nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     protected Date joinDate;
+    @Column // This is the number assigned to each participant at live sessions
+    protected int sessionNumber;
+    @ManyToOne
+    @JoinColumn
+    protected Session activeSession;
 
     public Participant() {}
 
@@ -36,5 +41,21 @@ public abstract class Participant {
 
     public Date getJoinDate() {
         return joinDate;
+    }
+
+    public void setSessionNumber(int sessionNumber) {
+        this.sessionNumber = sessionNumber;
+    }
+
+    public int getSessionNumber() {
+        return sessionNumber;
+    }
+
+    public void setActiveSession(Session activeSession) {
+        this.activeSession = activeSession;
+    }
+
+    public Session getActiveSession() {
+        return activeSession;
     }
 }

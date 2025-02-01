@@ -3,6 +3,7 @@ package model;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 @Entity
 @Table(name = "sessions")
@@ -27,6 +28,10 @@ public class Session {
     @Column
     private String description;
 
+    @OneToMany
+    @Column
+    private ArrayList<Participant> participants;
+
     public Session(int sessionId, int sessionCode, String status, LocalDateTime sessionDate, String type, String description) {
         this.sessionId = sessionId;
         this.sessionCode = sessionCode;
@@ -34,6 +39,7 @@ public class Session {
         this.sessionDate = sessionDate;
         this.type = type;
         this.description = description;
+        participants = new ArrayList<>();
     }
 
     public Session() {}
@@ -92,5 +98,17 @@ public class Session {
 
     public boolean isActive() {
         return "Ongoing".equalsIgnoreCase(status);
+    }
+
+    public void addParticipant(Participant participant) {
+        participants.add(participant);
+    }
+
+    public void removeParticipant(Participant participant) {
+        participants.remove(participant);
+    }
+
+    public ArrayList<Participant> getParticipants() {
+        return participants;
     }
 }
