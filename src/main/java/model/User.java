@@ -8,11 +8,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "users")
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int userId;
-
+public class User extends Participant{
     @Column(nullable = false)
     private String userName;
 
@@ -32,14 +28,6 @@ public class User {
         this.password = password;
         this.email = email;
         this.role = role;
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
     }
 
     public String getUserName() {
