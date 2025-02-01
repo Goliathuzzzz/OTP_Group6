@@ -9,32 +9,13 @@ import jakarta.persistence.InheritanceType;
 
 @Entity
 @Table(name = "guests")
-public class Guest {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int guestId;
-    private String guestPhone;
+public class Guest extends Participant{
 
-    public Guest() {}
-
-    public Guest(int guestId, String guestPhone) {
-        this.guestId = guestId;
-        this.guestPhone = guestPhone;
+    public Guest(String guestPhone) {
+        super(guestPhone);
     }
 
-    public int getGuestId() {
-        return guestId;
-    }
+    public Guest() {
 
-    public void setGuestId(int guestId) {
-        this.guestId = guestId;
-    }
-
-    public String getGuestPhone() {
-        return guestPhone;
-    }
-
-    public void setGuestPhone(String guestPhone) {
-        this.guestPhone = guestPhone;
     }
 }
