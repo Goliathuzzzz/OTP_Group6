@@ -10,7 +10,7 @@ import java.util.Optional;
 
 public class UserDao implements IDao<User> {
 
-    @Override
+
     public void persist(User object) {
         EntityManager em = MariaDbJpaConnection.getInstance();
         try {
@@ -23,7 +23,7 @@ public class UserDao implements IDao<User> {
         }
     }
 
-    @Override
+
     public User find(int id) {
         EntityManager em = MariaDbJpaConnection.getInstance();
         return em.find(User.class, id);
@@ -36,13 +36,13 @@ public class UserDao implements IDao<User> {
         return query.getResultStream().findFirst();
     }
 
-    @Override
+
     public List<User> findAll() {
         EntityManager em = MariaDbJpaConnection.getInstance();
         return em.createQuery("SELECT u FROM User u", User.class).getResultList();
     }
 
-    @Override
+
     public void update(User object) {
         EntityManager em = MariaDbJpaConnection.getInstance();
         try {
@@ -55,7 +55,7 @@ public class UserDao implements IDao<User> {
         }
     }
 
-    @Override
+
     public void delete(User object) {
         EntityManager em = MariaDbJpaConnection.getInstance();
         try {
