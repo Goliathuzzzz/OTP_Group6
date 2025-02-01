@@ -1,16 +1,18 @@
 package model;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.*;
+
+import java.util.Date;
 
 @MappedSuperclass
 public abstract class Participant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private String phoneNumber;
+    protected int id;
+    protected String phoneNumber;
+    @Column(nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    protected Date joinDate;
 
     public Participant() {}
 
@@ -28,5 +30,9 @@ public abstract class Participant {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public Date getJoinDate() {
+        return joinDate;
     }
 }

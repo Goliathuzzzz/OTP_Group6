@@ -8,4 +8,5 @@ public interface IDao<Object> {
     List<Object> findAll();
     void update(Object object);
     void delete(Object object);
+    void deleteAll();
 }
