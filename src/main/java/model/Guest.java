@@ -3,11 +3,15 @@ package model;
 import jakarta.persistence.*;
 import jakarta.persistence.InheritanceType;
 
+/**
+ * Where to add Column? Or relation?
+ */
+
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Table(name = "guests")
 public class Guest {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int guestId;
     private String guestPhone;
 

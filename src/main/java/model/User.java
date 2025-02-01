@@ -1,29 +1,38 @@
 package model;
 
 import jakarta.persistence.*;
-import jakarta.persistence.InheritanceType;
 
 /**
  * Where to add Column? Or relation?
  */
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Table(name = "users")
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int userId;
+
+    @Column(nullable = false)
     private String userName;
+
+    @Column(nullable = false)
     private String password;
+
+    @Column(nullable = false)
     private String email;
+
+    @Column(nullable = false)
+    private String role;
 
     public User() {}
 
-    public User(int userId, String userName, String password, String email) {
+    public User(int userId, String userName, String password, String email, String role) {
         this.userId = userId;
         this.userName = userName;
         this.password = password;
         this.email = email;
+        this.role = role;
     }
 
     public int getUserId() {
@@ -56,5 +65,13 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }
