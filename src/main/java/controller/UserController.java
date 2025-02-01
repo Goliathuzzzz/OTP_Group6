@@ -4,6 +4,7 @@ import model.User;
 import service.UserService;
 import java.util.List;
 
+// GUI KUTSUU CONTROLLERIA!
 public class UserController {
 
     private final UserService userService;
@@ -12,8 +13,8 @@ public class UserController {
         this.userService = new UserService();
     }
 
-    public void registerUser(String userName, String password, String email, String role) {
-        userService.registerUser(userName, password, email, role);
+    public void registerUser(String userName, String password, String email, String role, String phoneNumber) {
+        userService.registerUser(userName, password, email, role, phoneNumber);
         System.out.println("User registered successfully.");
     }
 
