@@ -1,7 +1,8 @@
 package model;
 
 import jakarta.persistence.*;
-import jakarta.persistence.InheritanceType;
+
+import java.util.Set;
 
 /**
  * Where to add Column? Or relation?
@@ -9,13 +10,34 @@ import jakarta.persistence.InheritanceType;
 
 @Entity
 @Table(name = "guests")
+@PrimaryKeyJoinColumn(name = "id")
 public class Guest extends Participant{
 
-    public Guest(String guestPhone) {
-        super(guestPhone);
+    @OneToMany(mappedBy = "participant1", cascade = CascadeType.ALL)
+    private Set<Match> matchesAsFirst;
+
+    @OneToMany(mappedBy = "participant2", cascade = CascadeType.ALL)
+    private Set<Match> matchesAsSecond;
+
+    public Guest() {}
+
+    public Guest(String phoneNumber, String guestName) {
+        super(phoneNumber);
     }
 
-    public Guest() {
+    public Set<Match> getMatchesAsFirst() {
+        return matchesAsFirst;
+    }
 
+    public void setMatchesAsFirst(Set<Match> matchesAsFirst) {
+        this.matchesAsFirst = matchesAsFirst;
+    }
+
+    public Set<Match> getMatchesAsSecond() {
+        return matchesAsSecond;
+    }
+
+    public void setMatchesAsSecond(Set<Match> matchesAsSecond) {
+        this.matchesAsSecond = matchesAsSecond;
     }
 }
