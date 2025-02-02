@@ -12,7 +12,7 @@
 }
 
 .bg {
-    -fx-background-image: url("background.png");
+    -fx-background-image: url("../images/background.png");
     -fx-background-size: cover;
     -fx-pref-width: 393px;
     -fx-pref-height: 556px;

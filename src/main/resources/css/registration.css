@@ -1,0 +1,58 @@
+/* if scenebuilder breaks, comment out font-face */
+@font-face {
+    font-family: 'HoeflerText';
+    src: url('/hoefler.ttf');
+}
+
+.root {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 30px;
+}
+
+.bg {
+    -fx-background-image: url("../images/background.png");
+    -fx-background-size: cover;
+    -fx-background-position: center;
+}
+
+.white-bg {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 30px;
+}
+
+.input-box {
+    -fx-background-color: #ECCEDA;
+    -fx-background-radius: 5px;
+    -fx-font-size: 16px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 4, 0, 0, 4);
+}
+
+.submit-button {
+    -fx-font-size: 24px;
+    -fx-font-family: "Hoefler Text";
+    -fx-background-color: #D90014;
+    -fx-text-fill: #FFFFFF;
+    -fx-background-radius: 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 4, 0, 0, 4);
+}
+
+.text-header {
+    -fx-font-family: "Hoefler Text";
+    -fx-font-size: 40px;
+    -fx-font-style: italic;
+    -fx-text-fill: #000000;
+}
+
+.text-label {
+    -fx-font-family: "Hoefler Text";
+    -fx-font-size: 22px;
+    -fx-font-style: italic;
+    -fx-text-fill: #000000;
+}
+
+.text-button {
+    -fx-font-family: "Hoefler Text";
+    -fx-font-size: 28px;
+    -fx-font-style: italic;
+    -fx-text-fill: #FFFFFF;
+}

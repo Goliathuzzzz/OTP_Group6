@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane prefHeight="852" prefWidth="393" stylesheets="@css/registration.css" xmlns="http://javafx.com/javafx/22"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegistrationController">
+    <ImageView fitHeight="556" fitWidth="393">
+        <Image url="@images/background.png"/>
+    </ImageView>
+    <Pane layoutY="80.0" prefHeight="772" prefWidth="393" styleClass="white-bg">
+        <ImageView fx:id="backIcon" fitHeight="21.0" fitWidth="16" layoutX="40.0" layoutY="31.0">
+            <Image url="@images/Icon.png"/>
+        </ImageView>
+        <Label layoutX="40" layoutY="96" styleClass="text-header" text="luo käyttäjä"/>
+        <Label layoutX="40" layoutY="192" styleClass="text-label" text="sähköposti"/>
+        <TextField fx:id="emailField" layoutX="39" layoutY="226" prefHeight="46" prefWidth="315"
+                   styleClass="input-box"/>
+        <Label layoutX="40" layoutY="296" styleClass="text-label" text="puhelinnumero"/>
+        <TextField fx:id="phoneField" layoutX="39" layoutY="330" prefHeight="46" prefWidth="315"
+                   styleClass="input-box"/>
+        <Label layoutX="40" layoutY="400" styleClass="text-label" text="salasana"/>
+        <PasswordField fx:id="passwordField" layoutX="39" layoutY="434" prefHeight="46" prefWidth="315"
+                       styleClass="input-box"/>
+        <Label layoutX="40" layoutY="504" styleClass="text-label" text="salasana uudelleen"/>
+        <PasswordField fx:id="confirmPasswordField" layoutX="39" layoutY="538" prefHeight="46" prefWidth="315"
+                       styleClass="input-box"/>
+        <Button fx:id="signupButton" layoutX="40" layoutY="640" onAction="#handleSignUp" prefHeight="46" prefWidth="313"
+                styleClass="submit-button" text="luo käyttäjä"/>
+    </Pane>
+</AnchorPane>

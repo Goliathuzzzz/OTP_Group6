@@ -6,11 +6,11 @@ import javafx.scene.Parent;
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
 
-public class Login extends Application {
+public class GUI extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/login.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/registration.fxml"));
         Parent root = fxmlLoader.load();
         stage.setResizable(false);
         Scene scene = new Scene(root);

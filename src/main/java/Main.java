@@ -1,7 +1,7 @@
-import view.Login;
+import view.GUI;
 
 public class Main {
     public static void main(String[] args) {
-        Login.launch(Login.class);
+        GUI.launch(GUI.class);
     }
 }
