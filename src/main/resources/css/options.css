@@ -1,0 +1,119 @@
+/* if scenebuilder breaks, comment out font-face */
+@font-face {
+    font-family: 'HoeflerText';
+    src: url('/hoefler.ttf');
+}
+
+.root {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 30px;
+    -fx-pref-width: 393px;
+    -fx-pref-height: 852px;
+}
+
+#tausta {
+    -fx-background-image: url("../images/background.png");
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-pref-width: 393px;
+    -fx-pref-height: 556px;
+}
+
+#rectangle13 {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 30px;
+    -fx-pref-width: 393px;
+    -fx-pref-height: 569px;
+}
+
+#speedDating {
+    -fx-font-family: "Hoefler Text";
+    -fx-font-style: italic;
+    -fx-font-size: 40px;
+    -fx-text-fill: #D90014;
+}
+
+#punainenLogo {
+    -fx-background-image: url("../images/punainenlogo.png");
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    -fx-pref-width: 214px;
+    -fx-pref-height: 210px;
+}
+
+#group32 {
+    -fx-pref-width: 315px;
+    -fx-pref-height: 283px;
+}
+
+#guest {
+    -fx-pref-width: 315px;
+    -fx-pref-height: 63px;
+}
+
+#guestButton {
+    -fx-font-size: 22px;
+    -fx-font-family: "Hoefler Text";
+    -fx-background-color: #ECCEDA;
+    -fx-background-radius: 20px;
+    -fx-alignment: center-left;
+    -fx-effect: dropshadow(gaussian, rgba(170, 4, 13, 0.35), 4, 0, 0, 4);
+}
+
+#newUser {
+    -fx-pref-width: 315px;
+    -fx-pref-height: 63px;
+}
+
+#newUserButton {
+    -fx-font-size: 22px;
+    -fx-font-family: "Hoefler Text";
+    -fx-background-color: #ECCEDA;
+    -fx-background-radius: 20px;
+    -fx-alignment: center-left;
+    -fx-effect: dropshadow(gaussian, rgba(170, 4, 13, 0.35), 4, 0, 0, 4);
+}
+
+#luoKayttaja {
+    -fx-font-family: "Hoefler Text";
+    -fx-font-style: italic;
+    -fx-font-size: 22px;
+}
+
+#login {
+    -fx-pref-width: 315px;
+    -fx-pref-height: 63px;
+}
+
+#loginButton {
+    -fx-font-size: 22px;
+    -fx-font-family: "Hoefler Text";
+    -fx-background-color: #ECCEDA;
+    -fx-background-radius: 20px;
+    -fx-alignment: center-left;
+    -fx-effect: dropshadow(gaussian, rgba(170, 4, 13, 0.35), 4, 0, 0, 4);
+}
+
+#tai {
+    -fx-font-family: "Hoefler Text";
+    -fx-font-style: italic;
+    -fx-font-size: 22px;
+    -fx-text-fill: #7E7E7E;
+}
+
+.line {
+    -fx-stroke: #7E7E7E;
+    -fx-stroke-width: 1px;
+}
+
+.line1 {
+    -fx-pref-width: 104px;
+    -fx-stroke: #7E7E7E;
+    -fx-stroke-width: 1px;
+}
+
+.line2 {
+    -fx-pref-width: 104px;
+    -fx-stroke: #7E7E7E;
+    -fx-stroke-width: 1px;
+}

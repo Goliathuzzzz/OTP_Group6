@@ -6,6 +6,6 @@ public class WelcomeController {
 
     @FXML
     public void initialize() {
-        System.out.println("tervetuloanäyttö ladattu!");
+        System.out.println("tervetuloa!");
     }
 }
