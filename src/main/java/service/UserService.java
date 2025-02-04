@@ -12,8 +12,8 @@ public class UserService { //"good practice", handles the business logic
         this.userDao = new UserDao();
     }
 
-    public void registerUser(String userName, String password, String email, String role) {
-        User user = new User(userName, password, email, role);
+    public void registerUser(String userName, String password, String email, String role, String phoneNumber) {
+        User user = new User(userName, password, email, role, phoneNumber);
         userDao.persist(user);
     }
 

@@ -10,7 +10,6 @@ import java.util.Optional;
 
 public class UserDao implements IDao<User> {
 
-
     public void persist(User object) {
         EntityManager em = MariaDbJpaConnection.getInstance();
         try {
@@ -66,5 +65,13 @@ public class UserDao implements IDao<User> {
             em.getTransaction().rollback();
             throw new RuntimeException("Error deleting user", e);
         }
+    }
+
+    public void deleteAll() {
+        List<User> usersToDelete = findAll();
+        for (User user: usersToDelete) {
+            delete(user);
+        }
+        System.out.println("Deleted all users");
     }
 }

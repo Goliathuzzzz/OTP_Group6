@@ -18,11 +18,12 @@ public class Guest extends Participant{
     @OneToMany(mappedBy = "participant2", cascade = CascadeType.ALL)
     private Set<Match> matchesAsSecond;
 
-    public Guest() {}
-
-    public Guest(String phoneNumber, String guestName) {
+    public Guest(String phoneNumber) {
         super(phoneNumber);
     }
+
+    public Guest() {}
+
 
     public Set<Match> getMatchesAsFirst() {
         return matchesAsFirst;

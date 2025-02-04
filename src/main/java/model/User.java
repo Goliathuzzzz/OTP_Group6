@@ -33,7 +33,8 @@ public class User extends Participant{
 
     public User() {}
 
-    public User(String userName, String password, String email, String role) {
+    public User(String userName, String password, String email, String role, String phoneNumber) {
+        super(phoneNumber);
         this.userName = userName;
         this.password = password;
         this.email = email;

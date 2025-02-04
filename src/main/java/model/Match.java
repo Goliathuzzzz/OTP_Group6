@@ -23,13 +23,13 @@ public class Match {
     @JoinColumn(name = "participant2_id", nullable = false)
     private Participant participant2;
 
-    public Match() {}
-
     public Match(Session session, Participant participant1, Participant participant2) {
         this.session = session;
         this.participant1 = participant1;
         this.participant2 = participant2;
     }
+
+    public Match() {}
 
     public Long getMatchId() {
         return matchId;
