@@ -7,34 +7,16 @@ import javafx.scene.layout.Pane;
 import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
 
-public class ProfileController {
+public class ProfileController extends BaseController {
 
     @FXML
-    private Pane bottomNavPane;
+    private Pane bottomNavPane, profileImagePane;
 
     @FXML
-    private ImageView homeIcon;
+    private ImageView homeIcon, profileIcon, backIcon, editButton;
 
     @FXML
-    private ImageView profileIcon;
-
-    @FXML
-    private ImageView backIcon;
-
-    @FXML
-    private ImageView editButton;
-
-    @FXML
-    private Pane profileImagePane;
-
-    @FXML
-    private Label nameLabel;
-
-    @FXML
-    private Label emailLabel;
-
-    @FXML
-    private Label phoneLabel;
+    private Label nameLabel, emailLabel, phoneLabel;
 
     @FXML
     private void initialize() {
@@ -42,31 +24,23 @@ public class ProfileController {
 
     @FXML
     private void handleHomeClick(MouseEvent event) {
-        showAlert( "kotiin","siirrytään etusivulle");
+        showAlert( Alert.AlertType.INFORMATION, "kotiin","siirrytään etusivulle");
         System.out.println("Home button clicked");
     }
 
     @FXML
     private void handleProfileClick(MouseEvent event) {
-        showAlert( "profiiliin","siirrytään profiiliin");
+        handleBarClick("profile");
     }
 
     @FXML
     private void handleBackClick(MouseEvent event) {
-        showAlert("takaisin", "siirrytään kirjautumiseen");
+        handleBarClick("back");
     }
 
     @FXML
     private void handleEditClick(MouseEvent event) {
-        showAlert("muokkaus", "siirrytään muokkaukseen");
-    }
-
-    private void showAlert(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
+        showAlert(Alert.AlertType.INFORMATION, "muokkaus", "siirrytään muokkaukseen");
     }
 }
 

@@ -8,22 +8,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
-public class RegistrationController {
+public class RegistrationController extends BaseController {
 
     @FXML
-    private TextField emailField;
+    private TextField emailField, phoneField;
 
     @FXML
-    private TextField phoneField;
-
-    @FXML
-    private PasswordField passwordField;
-
-    @FXML
-    private PasswordField confirmPasswordField;
-
-    @FXML
-    private Button signupButton;
+    private PasswordField passwordField, confirmPasswordField;
 
     @FXML
     private ImageView backIcon;
@@ -55,7 +46,8 @@ public class RegistrationController {
             return;
         }
 
-        showAlert(Alert.AlertType.INFORMATION, "onnistunut", "tili luotu onnistuneesti!");
+        //showAlert(Alert.AlertType.INFORMATION, "onnistunut", "tili luotu onnistuneesti!");
+        switchScene("/profile.fxml");
     }
 
     @FXML
@@ -70,13 +62,5 @@ public class RegistrationController {
 
     private boolean isValidPhone(String phone) {
         return phone.matches("^[0-9]{10,15}$");
-    }
-
-    private void showAlert(Alert.AlertType alertType, String title, String message) {
-        Alert alert = new Alert(alertType);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
     }
 }

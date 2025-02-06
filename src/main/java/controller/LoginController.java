@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-public class LoginController {
+public class LoginController extends BaseController {
 
     @FXML
     private TextField emailField;
@@ -16,13 +16,7 @@ public class LoginController {
     private PasswordField passwordField;
 
     @FXML
-    private Button loginButton;
-
-    @FXML
-    private Label forgotPassword;
-
-    @FXML
-    private Label newAccount;
+    private Button loginButton, forgotPassword, newAccount;
 
     @FXML
     private void handleLogin() {
@@ -54,14 +48,6 @@ public class LoginController {
     private boolean authenticateUser(String email, String password) {
         // lisää oikea käyttäjätunnistus
         return email.equals("ade@gmail.com") && password.equals("uwu");
-    }
-
-    private void showAlert(Alert.AlertType alertType, String title, String message) {
-        Alert alert = new Alert(alertType);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
     }
 }
 
