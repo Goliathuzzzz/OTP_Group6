@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="852" prefWidth="393" stylesheets="@css/welcome.css" xmlns="http://javafx.com/javafx/22"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.WelcomeController">
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.WelcomeController" onMouseClicked="#handleClick">
 
     <Pane fx:id="paperGradient" layoutY="-2" prefHeight="854" prefWidth="392" styleClass="paper-gradient"/>
     <Pane fx:id="paperTexture" prefHeight="852.0" prefWidth="393.0" styleClass="paper-texture"/>
