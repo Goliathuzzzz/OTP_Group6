@@ -1,0 +1,48 @@
+/* if scenebuilder breaks, comment out font-face */
+@font-face {
+    font-family: 'HoeflerText';
+    src: url('/hoefler.ttf');
+}
+
+.profile {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 30;
+}
+
+.tausta {
+    -fx-background-image: url("../images/background.png");
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+}
+
+.rectangle15 {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 30;
+}
+
+.frame4 {
+    -fx-background-image: url("../images/profile_image.png");
+    -fx-background-size: cover;
+    -fx-background-radius: 100;
+}
+
+.heta {
+    -fx-font-family: "Hoefler Text";
+    -fx-font-style: italic;
+    -fx-font-weight: normal;
+    -fx-font-size: 22px;
+}
+
+.vector {
+    -fx-border-color: #000000;
+    -fx-border-width: 2;
+}
+
+.bottom-nav {
+    -fx-background-color: #ECCEDA;
+}
+
+.icon {
+    -fx-border-color: #FFFFFF;
+    -fx-border-width: 4;
+}
