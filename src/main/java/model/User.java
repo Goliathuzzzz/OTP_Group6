@@ -4,10 +4,6 @@ import jakarta.persistence.*;
 
 import java.util.Set;
 
-/**
- * Where to add Column? Or relation?
- */
-
 @Entity
 @Table(name = "users")
 @PrimaryKeyJoinColumn(name = "id")
@@ -24,12 +20,6 @@ public class User extends Participant{
 
     @Column(nullable = false)
     private String role;
-
-    @OneToMany(mappedBy = "participant1", cascade = CascadeType.ALL)
-    private Set<Match> matchesAsFirst;
-
-    @OneToMany(mappedBy = "participant2", cascade = CascadeType.ALL) //ensure if a participant is deleted, all their matches are also deleted
-    private Set<Match> matchesAsSecond;
 
     public User() {}
 
@@ -71,21 +61,5 @@ public class User extends Participant{
 
     public void setRole(String role) {
         this.role = role;
-    }
-
-    public Set<Match> getMatchesAsFirst() {
-        return matchesAsFirst;
-    }
-
-    public void setMatchesAsFirst(Set<Match> matchesAsFirst) {
-        this.matchesAsFirst = matchesAsFirst;
-    }
-
-    public Set<Match> getMatchesAsSecond() {
-        return matchesAsSecond;
-    }
-
-    public void setMatchesAsSecond(Set<Match> matchesAsSecond) {
-        this.matchesAsSecond = matchesAsSecond;
     }
 }

@@ -24,21 +24,4 @@ public class Guest extends Participant{
     }
 
     public Guest() {}
-
-
-    public Set<Match> getMatchesAsFirst() {
-        return matchesAsFirst;
-    }
-
-    public void setMatchesAsFirst(Set<Match> matchesAsFirst) {
-        this.matchesAsFirst = matchesAsFirst;
-    }
-
-    public Set<Match> getMatchesAsSecond() {
-        return matchesAsSecond;
-    }
-
-    public void setMatchesAsSecond(Set<Match> matchesAsSecond) {
-        this.matchesAsSecond = matchesAsSecond;
-    }
 }

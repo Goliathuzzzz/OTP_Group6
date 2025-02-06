@@ -13,8 +13,8 @@ public class UserController {
         this.userService = new UserService();
     }
 
-    public void registerUser(String userName, String password, String email, String role, String phoneNumber) {
-        userService.registerUser(userName, password, email, role, phoneNumber);
+    public void registerUser(User user) {
+        userService.registerUser(user);
         System.out.println("User registered successfully.");
     }
 
