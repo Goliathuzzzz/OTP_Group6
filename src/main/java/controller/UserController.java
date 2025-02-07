@@ -43,4 +43,9 @@ public class UserController {
         userService.deleteUser(user);
         System.out.println("User deleted successfully.");
     }
+
+    public void deleteAll() {
+        userService.deleteAllUsers();
+        System.out.println("All users deleted successfully");
+    }
 }

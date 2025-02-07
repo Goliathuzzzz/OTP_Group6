@@ -43,4 +43,9 @@ public class GuestController {
         guestService.deleteGuest(guest);
         System.out.println("Guest deleted successfully!");
     }
+
+    public void deleteAll() {
+        guestService.deleteAllGuests();
+        System.out.println("All guests deleted successfully");
+    }
 }
