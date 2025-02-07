@@ -2,6 +2,7 @@ package model;
 
 import jakarta.persistence.*;
 
+// Matchiin tallennetaan sessionin sijasta nyt yhteensopivuus-prosentti
 @Entity
 @Table(name = "matches")
 public class Match {
@@ -12,10 +13,6 @@ public class Match {
     private Long matchId;
 
     @ManyToOne
-    @JoinColumn(name = "session_id", nullable = false)
-    private Session session;
-
-    @ManyToOne
     @JoinColumn(name = "participant1_id", nullable = false)
     private Participant participant1;
 
@@ -23,24 +20,19 @@ public class Match {
     @JoinColumn(name = "participant2_id", nullable = false)
     private Participant participant2;
 
-    public Match(Session session, Participant participant1, Participant participant2) {
-        this.session = session;
+    @Column(name = "compatibility", nullable = false)
+    private double compatibility;
+
+    public Match(Participant participant1, Participant participant2, double compatibility) {
         this.participant1 = participant1;
         this.participant2 = participant2;
+        this.compatibility = compatibility;
     }
 
     public Match() {}
 
     public Long getMatchId() {
         return matchId;
-    }
-
-    public Session getSession() {
-        return session;
-    }
-
-    public void setSession(Session session) {
-        this.session = session;
     }
 
     public Participant getParticipant1() {
@@ -57,5 +49,13 @@ public class Match {
 
     public void setParticipant2(Participant participant2) {
         this.participant2 = participant2;
+    }
+
+    public double getCompatibility() {
+        return compatibility;
+    }
+
+    public void setCompatibility(double compatibility) {
+        this.compatibility = compatibility;
     }
 }
