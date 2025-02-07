@@ -20,9 +20,6 @@ public abstract class Participant {
     @Column(nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     protected Date joinDate;
-    @ManyToOne
-    @JoinColumn
-    protected Session activeSession;
     @ElementCollection
     protected List<Animal> animalInterests;
     @ElementCollection
@@ -69,14 +66,6 @@ public abstract class Participant {
         this.joinDate = joinDate;
     }
 
-    public void setActiveSession(Session activeSession) {
-        this.activeSession = activeSession;
-    }
-
-    public Session getActiveSession() {
-        return activeSession;
-    }
-
     public Set<Match> getMatchesAsFirst() {
         return matchesAsFirst;
     }
@@ -91,26 +80,6 @@ public abstract class Participant {
 
     public void setMatchesAsSecond(Set<Match> matchesAsSecond) {
         this.matchesAsSecond = matchesAsSecond;
-    }
-
-    public void setFoodInterests(List<Food> foodInterests) {
-        this.foodInterests = foodInterests;
-    }
-
-    public void setHobbiesInterests(List<Hobby> hobbiesInterests) {
-        this.hobbyInterests = hobbiesInterests;
-    }
-
-    public void setAnimalInterests(List<Animal> animalInterests) {
-        this.animalInterests = animalInterests;
-    }
-
-    public void setScienceInterests(List<Science> scienceInterests) {
-        this.scienceInterests = scienceInterests;
-    }
-
-    public void setSportsInterests(List<Sports> sportsInterests) {
-        this.sportsInterests = sportsInterests;
     }
 
     public List<Animal> getAnimalInterests() {
