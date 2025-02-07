@@ -1,5 +1,7 @@
 package util;
 
+import controller.GuestController;
+import controller.UserController;
 import model.User;
 import model.categories.*;
 import service.GuestService;
@@ -10,10 +12,10 @@ import java.util.Date;
 
 public class Seeder {
     public static void main(String[] args) {
-        UserService userService = new UserService();
-        GuestService guestService = new GuestService();
-        userService.deleteAllUsers();
-        guestService.deleteAllGuests();
+        UserController userController = new UserController();
+        GuestController guestController = new GuestController();
+        userController.deleteAll();
+        guestController.deleteAll();
 
         User user1 = new User("Alice", "password1", "alice@example.com", "dummy", "1234567890");
         user1.setJoinDate(new Date());
@@ -62,10 +64,10 @@ public class Seeder {
         user4.addScienceInterest(Science.CHEMISTRY);
         user4.addSportsInterest(Sports.TENNIS);
 
-        userService.registerUser(user1);
-        userService.registerUser(user2);
-        userService.registerUser(user3);
-        userService.registerUser(user4);
+        userController.registerUser(user1);
+        userController.registerUser(user2);
+        userController.registerUser(user3);
+        userController.registerUser(user4);
     }
 
 }
