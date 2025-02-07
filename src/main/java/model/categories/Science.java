@@ -1,6 +1,6 @@
 package model.categories;
 
-public enum Science {
+public enum Science implements Category{
     BIOLOGY,
     MATHEMATICS,
     PHYSICS,

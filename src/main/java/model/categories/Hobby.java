@@ -1,6 +1,6 @@
 package model.categories;
 
-public enum Hobby {
+public enum Hobby implements Category{
     SHOWS,
     VIDEO_GAMES,
     STARGAZING,

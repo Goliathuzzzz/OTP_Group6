@@ -1,6 +1,6 @@
 package model.categories;
 
-public enum Animal {
+public enum Animal implements Category {
     CAT,
     DOG,
     MOUSE,

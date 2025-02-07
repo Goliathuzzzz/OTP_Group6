@@ -1,6 +1,6 @@
 package model.categories;
 
-public enum Sports {
+public enum Sports implements Category{
     RUNNING,
     CYCLING,
     SWIMMING,
