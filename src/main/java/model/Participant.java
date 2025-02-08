@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "participants")
 public abstract class Participant {
     @Id
@@ -37,13 +37,14 @@ public abstract class Participant {
 
     public Participant() {}
 
-    public Participant(String phoneNumber) {
+    public Participant(String phoneNumber, Date joinDate) {
         this.phoneNumber = phoneNumber;
         foodInterests = new ArrayList<>();
         hobbyInterests = new ArrayList<>();
         scienceInterests = new ArrayList<>();
         sportsInterests = new ArrayList<>();
         animalInterests = new ArrayList<>();
+        this.joinDate = joinDate;
     }
 
     public int getId() {
