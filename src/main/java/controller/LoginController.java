@@ -33,7 +33,7 @@ public class LoginController extends BaseController {
 
         if (authenticateUser(email, password)) {
             //showAlert(Alert.AlertType.INFORMATION, "onnistunut", "kirjautuminen onnistui!");
-            switchScene("/profile.fxml");
+            switchScene("profile");
         } else {
             showAlert(Alert.AlertType.ERROR, "virhe", "väärä sähköposti tai salasana.");
         }

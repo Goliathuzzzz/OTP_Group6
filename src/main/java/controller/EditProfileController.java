@@ -7,63 +7,37 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.image.ImageView;
 
-public class EditProfileController {
+public class EditProfileController extends BaseController {
 
     @FXML
-    private ImageView profileImage;
+    private ImageView profileImage, homeIcon, profileIcon, backIcon;
 
     @FXML
-    private Label nameLabel;
+    private Label nameLabel, emailLabel, phoneLabel;
 
     @FXML
-    private TextField nameField;
-
-    @FXML
-    private Label emailLabel;
-
-    @FXML
-    private TextField emailField;
-
-    @FXML
-    private Label phoneLabel;
-
-    @FXML
-    private TextField phoneField;
-
-    @FXML
-    private ImageView homeIcon;
-
-    @FXML
-    private ImageView profileIcon;
-
-    @FXML
-    private ImageView backIcon;
+    private TextField nameField, emailField, phoneField;
 
     @FXML
     private void handlePreviousClick(MouseEvent event) {
-        showAlert("profiiliin", "siirrytään profiiliin");
+        //showAlert(Alert.AlertType.INFORMATION, "profiiliin", "siirrytään profiiliin");
+        switchScene("profile");
     }
 
     @FXML
     private void handleHomeClick(MouseEvent event) {
-        showAlert("kotiin", "siirrytään etusivulle");
+        showAlert(Alert.AlertType.INFORMATION, "kotiin", "siirrytään etusivulle");
     }
 
     @FXML
     private void handleProfileClick(MouseEvent event) {
-        showAlert("profiiliin", "siirrytään profiiliin");
+        //showAlert(Alert.AlertType.INFORMATION, "profiiliin", "siirrytään profiiliin");
+        switchScene("profile");
     }
 
     @FXML
     private void handleBackClick(MouseEvent event) {
-        showAlert("takaisin", "siirrytään kirjautumiseen");
-    }
-
-    private void showAlert(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
+        //showAlert(Alert.AlertType.INFORMATION,"takaisin", "siirrytään kirjautumiseen");
+        switchScene("options");
     }
 }
