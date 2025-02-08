@@ -9,6 +9,8 @@ import javafx.scene.input.MouseEvent;
 
 public class GuestViewController extends BaseController {
 
+    GuestController gController = new GuestController();
+
     @FXML
     private TextField phoneField;
 
@@ -24,7 +26,7 @@ public class GuestViewController extends BaseController {
         if (phoneNumber.isEmpty()) {
             showAlert( Alert.AlertType.INFORMATION, "syötä","syötä puhelinnumero.");
         } else {
-            //showAlert( Alert.AlertType.INFORMATION, "jatketaan","jatketaan vierailijana puhelinnumerolla: " + phoneNumber);
+            gController.registerGuest(phoneNumber);
             switchScene("begin_session");
         }
     }

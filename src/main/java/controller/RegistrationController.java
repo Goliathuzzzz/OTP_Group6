@@ -7,8 +7,11 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import model.User;
 
 public class RegistrationController extends BaseController {
+
+    UserController uController = new UserController();
 
     @FXML
     private TextField emailField, phoneField;
