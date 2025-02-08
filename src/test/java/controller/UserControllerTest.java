@@ -1,0 +1,80 @@
+package controller;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.Persistence;
+import model.User;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class UserControllerTest {
+
+    private static UserController userController;
+
+    @BeforeAll
+    static void init() {
+        EntityManager em = Persistence.createEntityManagerFactory("test-persistence-unit-tt").createEntityManager();
+        userController = new UserController();
+        userController.setEm(em);
+    }
+
+    @BeforeEach
+    void setUp() {
+        userController.deleteAll();
+    }
+
+    @Test
+    void registerUser() {
+        User testUser = new User("Test", "testpassword", "test@email.com", "test-subject", "123456789", new Date());
+        userController.registerUser(testUser);
+        assertEquals(testUser, userController.displayUser(testUser.getId()), "Users should match");
+    }
+
+    @Test
+    void displayAllUsers() {
+        List<User> users = new ArrayList<>();
+        User testUser = new User("Test2", "testpassword", "test@email.com", "test-subject", "123456789", new Date());
+        userController.registerUser(testUser);
+        users.add(testUser);
+        User testUser2 = new User("Test2", "testpassword", "test@email.com", "test-subject", "123456789", new Date());
+        userController.registerUser(testUser2);
+        users.add(testUser2);
+        assertEquals(users, userController.displayAllUsers(), "Lists should match");
+    }
+
+    @Test
+    void updateUser() {
+        User testUser = new User("Test2", "testpassword", "test@email.com", "test-subject", "123456789", new Date());
+        userController.registerUser(testUser);
+        testUser.setEmail("changed@email.com");
+        testUser.setRole("Hello-world");
+        userController.updateUser(testUser);
+        assertEquals(testUser, userController.displayUser(testUser.getId()));
+    }
+
+    @Test
+    void deleteUser() {
+        User testUser = new User("Test", "testpassword", "test@email.com", "test-subject", "123456789", new Date());
+        userController.registerUser(testUser);
+        assertEquals(testUser, userController.displayUser(testUser.getId()), "Should be 1 user");
+        userController.deleteUser(testUser);
+        assertNull(userController.displayUser(testUser.getId()));
+    }
+
+    @Test
+    void deleteAll() {
+        User testUser = new User("Test2", "testpassword", "test@email.com", "test-subject", "123456789", new Date());
+        userController.registerUser(testUser);
+        User testUser2 = new User("Test2", "testpassword", "test@email.com", "test-subject", "123456789", new Date());
+        userController.registerUser(testUser2);
+        assertEquals(2, userController.displayAllUsers().size(), "Should have 2 users");
+        userController.deleteAll();
+        assertEquals(0, userController.displayAllUsers().size());
+    }
+}

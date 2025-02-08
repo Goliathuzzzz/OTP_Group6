@@ -1,5 +1,6 @@
 package controller;
 
+import jakarta.persistence.EntityManager;
 import model.User;
 import service.UserService;
 import java.util.List;
@@ -18,20 +19,22 @@ public class UserController {
         System.out.println("User registered successfully.");
     }
 
-    public void displayUser(int id) {
+    public User displayUser(int id) {
         User user = userService.findUserById(id);
         if (user != null) {
             System.out.println("User found: " + user.getUserName() + " (" + user.getEmail() + ")");
         } else {
             System.out.println("User not found.");
         }
+        return user;
     }
 
-    public void displayAllUsers() {
+    public List<User> displayAllUsers() {
         List<User> users = userService.getAllUsers();
         for (User user : users) {
             System.out.println(user.getUserName() + " - " + user.getEmail());
         }
+        return users;
     }
 
     public void updateUser(User user) {
@@ -47,5 +50,9 @@ public class UserController {
     public void deleteAll() {
         userService.deleteAllUsers();
         System.out.println("All users deleted successfully");
+    }
+    // For setting up test db
+    public void setEm(EntityManager em) {
+        userService.setUserDaoEm(em);
     }
 }

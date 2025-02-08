@@ -1,6 +1,7 @@
 package service;
 
 import dao.UserDao;
+import jakarta.persistence.EntityManager;
 import model.User;
 import java.util.List;
 
@@ -33,4 +34,9 @@ public class UserService { //"good practice", handles the business logic
     }
 
     public void deleteAllUsers() {userDao.deleteAll();}
+
+    // For setting up test db
+    public void setUserDaoEm(EntityManager em) {
+        userDao.setEm(em);
+    }
 }
