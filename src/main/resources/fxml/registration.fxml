@@ -15,7 +15,7 @@
         <Image url="@/images/background.png"/>
     </ImageView>
     <Pane layoutY="80.0" prefHeight="772" prefWidth="393" styleClass="white-bg">
-        <ImageView fx:id="backIcon" fitHeight="21.0" fitWidth="16" layoutX="40.0" layoutY="25.0" onMouseClicked="#handleBack">
+        <ImageView fx:id="backIcon" fitHeight="21.0" fitWidth="16" layoutX="40.0" layoutY="25.0" onMouseClicked="#handleBack" styleClass="back-icon">
             <Image url="@/images/Icon.png"/>
         </ImageView>
         <Label layoutX="40" layoutY="96" styleClass="text-header" text="luo käyttäjä"/>
