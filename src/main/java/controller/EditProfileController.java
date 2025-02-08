@@ -1,13 +1,34 @@
 package controller;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.image.ImageView;
 
-public class ProfileController {
+public class EditProfileController {
+
+    @FXML
+    private ImageView profileImage;
+
+    @FXML
+    private Label nameLabel;
+
+    @FXML
+    private TextField nameField;
+
+    @FXML
+    private Label emailLabel;
+
+    @FXML
+    private TextField emailField;
+
+    @FXML
+    private Label phoneLabel;
+
+    @FXML
+    private TextField phoneField;
 
     @FXML
     private ImageView homeIcon;
@@ -19,42 +40,23 @@ public class ProfileController {
     private ImageView backIcon;
 
     @FXML
-    private ImageView editButton;
-
-    @FXML
-    private Pane profileImagePane;
-
-    @FXML
-    private Label nameLabel;
-
-    @FXML
-    private Label emailLabel;
-
-    @FXML
-    private Label phoneLabel;
-
-    @FXML
-    private void initialize() {
+    private void handlePreviousClick(MouseEvent event) {
+        showAlert("profiiliin", "siirrytään profiiliin");
     }
 
     @FXML
     private void handleHomeClick(MouseEvent event) {
-        showAlert( "kotiin","siirrytään etusivulle");
+        showAlert("kotiin", "siirrytään etusivulle");
     }
 
     @FXML
     private void handleProfileClick(MouseEvent event) {
-        showAlert( "profiiliin","siirrytään profiiliin");
+        showAlert("profiiliin", "siirrytään profiiliin");
     }
 
     @FXML
     private void handleBackClick(MouseEvent event) {
         showAlert("takaisin", "siirrytään kirjautumiseen");
-    }
-
-    @FXML
-    private void handleEditClick(MouseEvent event) {
-        showAlert("muokkaus", "siirrytään muokkaukseen");
     }
 
     private void showAlert(String title, String message) {
@@ -65,4 +67,3 @@ public class ProfileController {
         alert.showAndWait();
     }
 }
-

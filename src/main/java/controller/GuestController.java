@@ -1,40 +1,31 @@
 package controller;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
-public class ProfileController {
+public class GuestController {
 
     @FXML
-    private ImageView homeIcon;
+    private TextField phoneField;
 
     @FXML
-    private ImageView profileIcon;
+    private Button continueButton;
 
     @FXML
-    private ImageView backIcon;
+    private ImageView backIcon1, homeIcon, profileIcon, backIcon;
 
     @FXML
-    private ImageView editButton;
-
-    @FXML
-    private Pane profileImagePane;
-
-    @FXML
-    private Label nameLabel;
-
-    @FXML
-    private Label emailLabel;
-
-    @FXML
-    private Label phoneLabel;
-
-    @FXML
-    private void initialize() {
+    private void handleContinueClick() {
+        String phoneNumber = phoneField.getText();
+        if (phoneNumber.isEmpty()) {
+            showAlert( "syötä","syötä puhelinnumero.");
+        } else {
+            showAlert( "jatketaan","jatketaan vierailijana puhelinnumerolla: " + phoneNumber);
+        }
     }
 
     @FXML
@@ -52,11 +43,6 @@ public class ProfileController {
         showAlert("takaisin", "siirrytään kirjautumiseen");
     }
 
-    @FXML
-    private void handleEditClick(MouseEvent event) {
-        showAlert("muokkaus", "siirrytään muokkaukseen");
-    }
-
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
@@ -65,4 +51,3 @@ public class ProfileController {
         alert.showAndWait();
     }
 }
-
