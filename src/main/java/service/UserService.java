@@ -3,6 +3,7 @@ package service;
 import dao.UserDao;
 import model.User;
 import java.util.List;
+import java.util.Optional;
 
 public class UserService { //"good practice", handles the business logic
 
@@ -33,4 +34,10 @@ public class UserService { //"good practice", handles the business logic
     }
 
     public void deleteAllUsers() {userDao.deleteAll();}
+
+    public boolean existsByEmail(String email) { return userDao.existsByEmail(email); }
+
+    public Optional<User> findByEmailAndPassword(String email, String password) {
+        return userDao.findByEmailAndPassword(email, password);
+    }
 }

@@ -48,4 +48,12 @@ public class UserController {
         userService.deleteAllUsers();
         System.out.println("All users deleted successfully");
     }
+
+    public boolean existsByEmail(String email) {
+        return userService.existsByEmail(email);
+    }
+
+    public boolean login(String email, String password) {
+        return userService.findByEmailAndPassword(email, password).isPresent();
+    }
 }
