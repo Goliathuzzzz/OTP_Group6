@@ -52,8 +52,7 @@ public class RegistrationController extends BaseController {
 
     @FXML
     private void handleBack() {
-        Stage stage = (Stage) backIcon.getScene().getWindow();
-        stage.close();
+        switchScene("options");
     }
 
     private boolean isValidEmail(String email) {
