@@ -8,6 +8,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+// Common methods for all controllers which interact with the GUI
+
 public abstract class BaseController {
     protected Stage stage;
 
