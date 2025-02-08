@@ -13,10 +13,13 @@ public class LoginController extends BaseController {
     private TextField emailField;
 
     @FXML
+    private Label newAccount, forgotPassword;
+
+    @FXML
     private PasswordField passwordField;
 
     @FXML
-    private Button loginButton, forgotPassword, newAccount;
+    private Button loginButton;
 
     @FXML
     private void handleLogin() {
@@ -29,7 +32,8 @@ public class LoginController extends BaseController {
         }
 
         if (authenticateUser(email, password)) {
-            showAlert(Alert.AlertType.INFORMATION, "onnistunut", "kirjautuminen onnistui!");
+            //showAlert(Alert.AlertType.INFORMATION, "onnistunut", "kirjautuminen onnistui!");
+            switchScene("/profile.fxml");
         } else {
             showAlert(Alert.AlertType.ERROR, "virhe", "väärä sähköposti tai salasana.");
         }
