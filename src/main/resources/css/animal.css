@@ -1,0 +1,85 @@
+@font-face {
+    font-family: 'HoeflerText';
+    src: url('/hoefler.ttf');
+}
+
+/* entire screen */
+.edit-profile {
+    -fx-pref-width: 393px;
+    -fx-pref-height: 852px;
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 30px;
+}
+
+.tausta {
+    -fx-pref-width: 393px;
+    -fx-pref-height: 556px;
+    -fx-background-image: url("../images/background.png");
+    -fx-background-size: cover;
+}
+
+/* main white rect */
+.rectangle15 {
+    -fx-pref-width: 393px;
+    -fx-pref-height: 650px;
+    -fx-translate-y: 80px;
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 40px;
+    -fx-border-radius: 40px;
+}
+
+/* optn btn container */
+.option-btn {
+    -fx-pref-width: 315px;
+    -fx-pref-height: 71px;
+    -fx-background-color: transparent; /* Background handled by option-bg */
+}
+
+/* bg for otpion buttons */
+.option-bg {
+    -fx-fill: #ECCEDA;
+    -fx-arc-height: 28px;
+    -fx-arc-width: 28px;
+}
+
+/* radio buttons */
+.radio {
+    -fx-pref-width: 28px;
+    -fx-pref-height: 28px;
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #4D4D4D;
+    -fx-border-width: 2px;
+    -fx-background-radius: 50%;
+    -fx-border-radius: 50%; /* ensures the border is also round */
+    -fx-alignment: center;
+}
+
+
+/* optns text */
+.option-text {
+    -fx-font-family: "Hoefler Text";
+    -fx-font-style: italic;
+    -fx-font-size: 22px;
+    -fx-text-fill: black;
+}
+
+/* jatka btn */
+.rectangle14 {
+    -fx-pref-width: 313px;
+    -fx-pref-height: 46px;
+    -fx-background-color: #D90014;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 4, 0, 0, 4);
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 28px;
+    -fx-font-style: italic;
+    -fx-font-family: "Hoefler Text";
+    -fx-visibility: visible;
+}
+
+.bottom-nav {
+    -fx-pref-width: 393px;
+    -fx-pref-height: 87px;
+    -fx-background-color: #ECCEDA;
+}
