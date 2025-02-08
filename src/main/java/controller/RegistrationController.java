@@ -47,7 +47,7 @@ public class RegistrationController extends BaseController {
         }
 
         //showAlert(Alert.AlertType.INFORMATION, "onnistunut", "tili luotu onnistuneesti!");
-        switchScene("profile");
+        switchScene("begin_session");
     }
 
     @FXML
