@@ -9,7 +9,7 @@
           <factory-entry name="TatskatytotMariaDbUnit" value="c4e99880-8b61-49cd-88f3-503c47d39489" />
         </datasource-mapping>
         <naming-strategy-map />
-        <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/main/resources/META-INF/persistence.xml" />
+        <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/test/resources/META-INF/persistence.xml" />
       </configuration>
     </facet>
   </component>
