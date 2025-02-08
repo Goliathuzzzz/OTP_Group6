@@ -2,7 +2,7 @@ package model;
 
 import jakarta.persistence.*;
 
-import java.util.Set;
+import java.util.Date;
 
 @Entity
 @Table(name = "users")
@@ -23,8 +23,8 @@ public class User extends Participant{
 
     public User() {}
 
-    public User(String userName, String password, String email, String role, String phoneNumber) {
-        super(phoneNumber);
+    public User(String userName, String password, String email, String role, String phoneNumber, Date joinDate) {
+        super(phoneNumber, joinDate);
         this.userName = userName;
         this.password = password;
         this.email = email;

@@ -13,8 +13,7 @@ public class GuestService {
         this.guestDao = new GuestDao();
     }
 
-    public void registerGuest(String phoneNumber) {
-        Guest guest = new Guest(phoneNumber);
+    public void registerGuest(Guest guest) {
         guestDao.persist(guest);
     }
 

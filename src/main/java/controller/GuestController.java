@@ -12,8 +12,8 @@ public class GuestController {
         this.guestService = new GuestService();
     }
 
-    public void registerGuest(String phoneNumber) {
-        guestService.registerGuest(phoneNumber);
+    public void registerGuest(Guest guest) {
+        guestService.registerGuest(guest);
         System.out.println("Guest registered successfully");
     }
 

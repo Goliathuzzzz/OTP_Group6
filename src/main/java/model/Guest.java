@@ -2,6 +2,7 @@ package model;
 
 import jakarta.persistence.*;
 
+import java.util.Date;
 import java.util.Set;
 
 /**
@@ -19,8 +20,8 @@ public class Guest extends Participant{
     @OneToMany(mappedBy = "participant2", cascade = CascadeType.ALL)
     private Set<Match> matchesAsSecond;
 
-    public Guest(String phoneNumber) {
-        super(phoneNumber);
+    public Guest(String phoneNumber, Date joinDate) {
+        super(phoneNumber, joinDate);
     }
 
     public Guest() {}
