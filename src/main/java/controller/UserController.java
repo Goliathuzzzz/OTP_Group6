@@ -55,4 +55,12 @@ public class UserController {
     public void setEm(EntityManager em) {
         userService.setUserDaoEm(em);
     }
+
+    public boolean existsByEmail(String email) {
+        return userService.existsByEmail(email);
+    }
+
+    public boolean login(String email, String password) {
+        return userService.findByEmailAndPassword(email, password).isPresent();
+    }
 }

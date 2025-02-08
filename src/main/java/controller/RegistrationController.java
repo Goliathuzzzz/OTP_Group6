@@ -7,8 +7,13 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import model.User;
+
+import java.util.Date;
 
 public class RegistrationController extends BaseController {
+
+    UserController uController = new UserController();
 
     @FXML
     private TextField emailField, phoneField;
@@ -47,6 +52,11 @@ public class RegistrationController extends BaseController {
         }
 
         //showAlert(Alert.AlertType.INFORMATION, "onnistunut", "tili luotu onnistuneesti!");
+        uController.registerUser(new User("korvaa tää oikeel usernamel", password, email, "ei oo admin tää kaveri", phone, new Date()));
+        if (uController.existsByEmail(email)) {
+            showAlert(Alert.AlertType.ERROR, "virhe", "sähköpostiosoite on jo käytössä!");
+            return;
+        }
         switchScene("begin_session");
     }
 

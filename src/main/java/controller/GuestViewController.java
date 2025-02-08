@@ -6,8 +6,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import model.Guest;
+
+import java.util.Date;
 
 public class GuestViewController extends BaseController {
+
+    GuestController gController = new GuestController();
 
     @FXML
     private TextField phoneField;
@@ -24,7 +29,7 @@ public class GuestViewController extends BaseController {
         if (phoneNumber.isEmpty()) {
             showAlert( Alert.AlertType.INFORMATION, "syötä","syötä puhelinnumero.");
         } else {
-            //showAlert( Alert.AlertType.INFORMATION, "jatketaan","jatketaan vierailijana puhelinnumerolla: " + phoneNumber);
+            gController.registerGuest(new Guest(phoneNumber, new Date()));
             switchScene("begin_session");
         }
     }

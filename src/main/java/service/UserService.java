@@ -39,4 +39,10 @@ public class UserService { //"good practice", handles the business logic
     public void setUserDaoEm(EntityManager em) {
         userDao.setEm(em);
     }
+
+    public boolean existsByEmail(String email) { return userDao.existsByEmail(email); }
+
+    public Optional<User> findByEmailAndPassword(String email, String password) {
+        return userDao.findByEmailAndPassword(email, password);
+    }
 }
