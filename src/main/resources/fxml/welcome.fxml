@@ -6,18 +6,18 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="852" prefWidth="393" stylesheets="@css/welcome.css" xmlns="http://javafx.com/javafx/22"
+<AnchorPane prefHeight="852" prefWidth="393" stylesheets="@../css/welcome.css" xmlns="http://javafx.com/javafx/22"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.WelcomeController" onMouseClicked="#handleClick">
 
     <Pane fx:id="paperGradient" layoutY="-2" prefHeight="854" prefWidth="392" styleClass="paper-gradient"/>
     <Pane fx:id="paperTexture" prefHeight="852.0" prefWidth="393.0" styleClass="paper-texture"/>
     <Pane layoutX="10" layoutY="141" prefHeight="465" prefWidth="372" styleClass="inner-items">
         <ImageView fitHeight="465" fitWidth="372" opacity="0.6">
-            <Image url="@images/sydamet.png"/>
+            <Image url="@../images/sydamet.png"/>
         </ImageView>
     </Pane>
     <ImageView fitHeight="285" fitWidth="291" layoutX="44.0" layoutY="231.0">
-        <Image url="@images/punainenlogo.png"/>
+        <Image url="@../images/punainenlogo.png"/>
     </ImageView>
     <Text styleClass="speed-dating" layoutX="98.0" layoutY="542.0"
           style="-fx-font-family: 'Hoefler Text'; -fx-font-style: italic;                  -fx-font-size: 40px; -fx-fill: #D90014;"

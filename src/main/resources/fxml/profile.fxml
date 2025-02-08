@@ -6,28 +6,28 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane prefHeight="852" prefWidth="393" styleClass="profile" stylesheets="@css/profile.css"
+<AnchorPane prefHeight="852" prefWidth="393" styleClass="profile" stylesheets="@../css/profile.css"
             xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/22"
             fx:controller="controller.ProfileController">
     <Pane prefHeight="556" prefWidth="393" styleClass="tausta" />
     <Pane layoutY="196" prefHeight="656" prefWidth="393" styleClass="rectangle15">
-        <Pane fx:id="bottomNavPane" layoutY="569.0" prefHeight="87" prefWidth="393" styleClass="bottom-nav">
+        <Pane layoutY="569.0" prefHeight="87" prefWidth="393" styleClass="bottom-nav">
             <ImageView fx:id="homeIcon" fitHeight="45.0" fitWidth="42.0" layoutX="65.0" layoutY="23.0"
                        pickOnBounds="true" preserveRatio="true" onMouseClicked="#handleHomeClick">
-                <Image url="@images/home_icon.png"/>
+                <Image url="@../images/home_icon.png"/>
             </ImageView>
             <ImageView fx:id="profileIcon" fitHeight="45.0" fitWidth="42.0" layoutX="182.0" layoutY="23.0"
                        pickOnBounds="true" preserveRatio="true" onMouseClicked="#handleProfileClick">
-                <Image url="@images/profile_icon.png"/>
+                <Image url="@../images/profile_icon.png"/>
             </ImageView>
             <ImageView fx:id="backIcon" fitHeight="45.0" fitWidth="42.0" layoutX="294.0" layoutY="23.0"
                        pickOnBounds="true" preserveRatio="true" onMouseClicked="#handleBackClick">
-                <Image url="@images/back_icon.png"/>
+                <Image url="@../images/back_icon.png"/>
             </ImageView>
         </Pane>
         <ImageView fx:id="editButton" fitHeight="28.0" fitWidth="26.0" layoutX="342.0" layoutY="25.0"
                    pickOnBounds="true" preserveRatio="true" onMouseClicked="#handleEditClick">
-            <Image url="@images/edit_button.png"/>
+            <Image url="@../images/edit_button.png"/>
         </ImageView>
     </Pane>
     <Pane fx:id="profileImagePane" layoutX="97" layoutY="252" prefHeight="200" prefWidth="200" styleClass="frame4" />

@@ -12,7 +12,7 @@ public class GUI extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/welcome.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/welcome.fxml"));
         Parent root = fxmlLoader.load();
         WelcomeController controller = fxmlLoader.getController();
         controller.setStage(stage);
