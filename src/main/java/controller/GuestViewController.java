@@ -25,13 +25,14 @@ public class GuestViewController extends BaseController {
             showAlert( Alert.AlertType.INFORMATION, "syötä","syötä puhelinnumero.");
         } else {
             //showAlert( Alert.AlertType.INFORMATION, "jatketaan","jatketaan vierailijana puhelinnumerolla: " + phoneNumber);
-            switchScene("profile");
+            switchScene("begin_session");
         }
     }
 
     @FXML
     private void handleHomeClick(MouseEvent event) {
-        showAlert( Alert.AlertType.INFORMATION, "kotiin","siirrytään etusivulle");
+        //showAlert( Alert.AlertType.INFORMATION, "kotiin","siirrytään etusivulle");
+        switchScene("begin_session");
     }
 
     @FXML

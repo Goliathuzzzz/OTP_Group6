@@ -26,7 +26,8 @@ public class EditProfileController extends BaseController {
 
     @FXML
     private void handleHomeClick(MouseEvent event) {
-        showAlert(Alert.AlertType.INFORMATION, "kotiin", "siirrytään etusivulle");
+        //showAlert(Alert.AlertType.INFORMATION, "kotiin", "siirrytään etusivulle");
+        switchScene("begin_session");
     }
 
     @FXML
