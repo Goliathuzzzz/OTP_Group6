@@ -1,0 +1,124 @@
+package model;
+
+import jakarta.persistence.*;
+import model.categories.*;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Set;
+
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Table(name = "participants")
+public abstract class Participant {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    protected int id;
+    @Column(nullable = false)
+    protected String phoneNumber;
+    @Column(nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    protected Date joinDate;
+    @ElementCollection
+    protected List<Animal> animalInterests;
+    @ElementCollection
+    protected List<Food> foodInterests;
+    @ElementCollection
+    protected List<Hobby> hobbyInterests;
+    @ElementCollection
+    protected List<Science> scienceInterests;
+    @ElementCollection
+    protected List<Sports> sportsInterests;
+    @OneToMany(mappedBy = "participant1", cascade = CascadeType.ALL)
+    private Set<Match> matchesAsFirst;
+    @OneToMany(mappedBy = "participant2", cascade = CascadeType.ALL) //ensure if a participant is deleted, all their matches are also deleted
+    private Set<Match> matchesAsSecond;
+
+    public Participant() {}
+
+    public Participant(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+        foodInterests = new ArrayList<>();
+        hobbyInterests = new ArrayList<>();
+        scienceInterests = new ArrayList<>();
+        sportsInterests = new ArrayList<>();
+        animalInterests = new ArrayList<>();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public Date getJoinDate() {
+        return joinDate;
+    }
+
+    public void setJoinDate(Date joinDate) {
+        this.joinDate = joinDate;
+    }
+
+    public Set<Match> getMatchesAsFirst() {
+        return matchesAsFirst;
+    }
+
+    public void setMatchesAsFirst(Set<Match> matchesAsFirst) {
+        this.matchesAsFirst = matchesAsFirst;
+    }
+
+    public Set<Match> getMatchesAsSecond() {
+        return matchesAsSecond;
+    }
+
+    public void setMatchesAsSecond(Set<Match> matchesAsSecond) {
+        this.matchesAsSecond = matchesAsSecond;
+    }
+
+    public List<Animal> getAnimalInterests() {
+        return animalInterests;
+    }
+
+    public List<Food> getFoodInterests() {
+        return foodInterests;
+    }
+
+    public List<Hobby> getHobbiesInterests() {
+        return hobbyInterests;
+    }
+
+    public List<Science> getScienceInterests() {
+        return scienceInterests;
+    }
+
+    public List<Sports> getSportsInterests() {
+        return sportsInterests;
+    }
+
+    public void addAnimalInterest(Animal animal) {
+        animalInterests.add(animal);
+    }
+
+    public void addFoodInterest(Food food) {
+        foodInterests.add(food);
+    }
+
+    public void addScienceInterest(Science science) {
+        scienceInterests.add(science);
+    }
+
+    public void addHobbiesInterest(Hobby hobby) {
+        hobbyInterests.add(hobby);
+    }
+
+    public void addSportsInterest(Sports sport) {
+        sportsInterests.add(sport);
+    }
+}

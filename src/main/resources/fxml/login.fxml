@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Line?>
 
-<AnchorPane prefHeight="852" prefWidth="393" stylesheets="@../css/login.css" xmlns="http://javafx.com/javafx/22"
+<AnchorPane prefHeight="852" prefWidth="393" stylesheets="@/css/login.css" xmlns="http://javafx.com/javafx/22"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
     <ImageView fitHeight="556" fitWidth="393">
         <Image url="@../images/background.png"/>

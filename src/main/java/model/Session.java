@@ -1,79 +1,82 @@
 package model;
 
-import java.time.LocalDateTime;
+import model.categories.*;
 
+import java.util.ArrayList;
+import java.util.EnumSet;
+import java.util.List;
+
+// Tarvitseeko edes laittaa tietokantaan?
+// On nyt se tapahtuma jossa valitaan kiinnostuksenkohteet näytöltä
 public class Session {
-    private int sessionId;
-    private int sessionCode;
-    private String status;
-    private LocalDateTime sessionDate;
-    private String type;
-    private String description;
+    // Jotta kategoriat saadaan viewhun
+    private final static List<Animal> animals = List.copyOf(EnumSet.allOf(Animal.class));
+    private final static List<Food> foods = List.copyOf(EnumSet.allOf(Food.class));
+    private final static List<Hobby> hobbies = List.copyOf(EnumSet.allOf(Hobby.class));
+    private final static List<Science> sciences = List.copyOf(EnumSet.allOf(Science.class));
+    private final static List<Sports> sports = List.copyOf(EnumSet.allOf(Sports.class));
 
-    public Session() {}
+    private final Participant participant;
+    private final List<Category> participantInterests;
 
-    public Session(int sessionId, int sessionCode, String status, LocalDateTime sessionDate, String type, String description) {
-        this.sessionId = sessionId;
-        this.sessionCode = sessionCode;
-        this.status = status;
-        this.sessionDate = sessionDate;
-        this.type = type;
-        this.description = description;
+    public Session(Participant participant) {
+        this.participant = participant;
+        participantInterests = new ArrayList<>();
+    }
+    // Nämä valintabokseja varten
+    public void addParticipantInterest(Category interest) {
+        participantInterests.add(interest);
     }
 
-    public int getSessionId() {
-        return sessionId;
+    public void removeParticipantInterest(Category interest) {
+        participantInterests.remove(interest);
     }
 
-    public void setSessionId(int sessionId) {
-        this.sessionId = sessionId;
+    public static List<Animal> getAnimals() {
+        return animals;
     }
 
-    public int getSessionCode() {
-        return sessionCode;
+    public static List<Food> getFoods() {
+        return foods;
     }
 
-    public void setSessionCode(int sessionCode) {
-        this.sessionCode = sessionCode;
+    public static List<Hobby> getHobbies() {
+        return hobbies;
     }
 
-    public String getStatus() {
-        return status;
+    public static List<Science> getSciences() {
+        return sciences;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public static List<Sports> getSports() {
+        return sports;
+    }
+    // Käyttäjän interestien tallentaminen tietokantaan
+    public void addParticipantAnimalInterest(Animal a) {
+        participant.addAnimalInterest(a);
     }
 
-    public LocalDateTime getSessionDate() {
-        return sessionDate;
+    public void addParticipantFoodInterest(Food f) {
+        participant.addFoodInterest(f);
     }
 
-    public void setSessionDate(LocalDateTime sessionDate) {
-        this.sessionDate = sessionDate;
+    public void addParticipantHobbyInterest(Hobby h) {
+        participant.addHobbiesInterest(h);
     }
 
-    public String getType() {
-        return type;
+    public void addParticipantSportsInterest(Sports s) {
+        participant.addSportsInterest(s);
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void addParticipantScienceInterest(Science s) {
+        participant.addScienceInterest(s);
+    }
+    // Matcheria varten
+    public List<Category> getParticipantInterests() {
+        return participantInterests;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public boolean isUpcoming() {
-        return sessionDate.isAfter(LocalDateTime.now()) && "N".equalsIgnoreCase(status);
-    }
-
-    public boolean isActive() {
-        return "Ongoing".equalsIgnoreCase(status);
+    public Participant getParticipant() {
+        return participant;
     }
 }
