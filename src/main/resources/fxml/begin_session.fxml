@@ -6,23 +6,30 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane prefHeight="852.0" prefWidth="393.0" styleClass="edit-profile" stylesheets="@/css/begin_session.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BeginSessionController">
+<AnchorPane prefHeight="852.0" prefWidth="393.0" styleClass="edit-profile" stylesheets="@/css/begin_session.css"
+            xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.BeginSessionController">
     <Pane layoutY="765.0" prefHeight="87.0" prefWidth="393.0" styleClass="bottom-nav">
-        <ImageView fx:id="homeIcon" fitHeight="45.0" fitWidth="42.0" layoutX="65.0" layoutY="23.0" onMouseClicked="#handleHomeClick" preserveRatio="true">
-            <Image url="@/images/home_icon.png" />
+        <ImageView fx:id="homeIcon" fitHeight="45.0" fitWidth="42.0" layoutX="65.0" layoutY="23.0"
+                   onMouseClicked="#handleHomeClick" preserveRatio="true">
+            <Image url="@/images/home_icon.png"/>
         </ImageView>
-        <ImageView fx:id="profileIcon" fitHeight="45.0" fitWidth="42.0" layoutX="182.0" layoutY="23.0" onMouseClicked="#handleProfileClick" preserveRatio="true">
-            <Image url="@/images/profile_icon.png" />
+        <ImageView fx:id="profileIcon" fitHeight="45.0" fitWidth="42.0" layoutX="182.0" layoutY="23.0"
+                   onMouseClicked="#handleProfileClick" preserveRatio="true">
+            <Image url="@/images/profile_icon.png"/>
         </ImageView>
-        <ImageView fx:id="backIcon" fitHeight="45.0" fitWidth="42.0" layoutX="294.0" layoutY="23.0" onMouseClicked="#handleBackClick" preserveRatio="true">
-            <Image url="@/images/back_icon.png" />
+        <ImageView fx:id="backIcon" fitHeight="45.0" fitWidth="42.0" layoutX="294.0" layoutY="23.0"
+                   onMouseClicked="#handleBackClick" preserveRatio="true">
+            <Image url="@/images/back_icon.png"/>
         </ImageView>
     </Pane>
-    <ImageView fitHeight="278.0" fitWidth="352.0" layoutX="22.0" layoutY="255.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@/images/big_heart.png" />
+    <ImageView fitHeight="278.0" fitWidth="352.0" layoutX="22.0" layoutY="255.0" pickOnBounds="true"
+               preserveRatio="true">
+        <Image url="@/images/big_heart.png"/>
     </ImageView>
     <Label layoutY="-1.0" styleClass="begin" text="aloita sessio" onMouseClicked="#handleBeginSessionClick"/>
-    <ImageView fitHeight="31.0" fitWidth="28.0" layoutX="263.0" layoutY="511.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@/images/hearts.png" />
+    <ImageView fitHeight="31.0" fitWidth="28.0" layoutX="263.0" layoutY="511.0" pickOnBounds="true"
+               preserveRatio="true">
+        <Image url="@/images/hearts.png"/>
     </ImageView>
 </AnchorPane>
