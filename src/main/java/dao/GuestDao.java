@@ -9,9 +9,9 @@ import java.util.Date;
 import java.util.List;
 
 public class GuestDao implements IDao<Guest> {
+    private EntityManager em = MariaDbJpaConnection.getInstance();
 
     public void persist(Guest object) {
-        EntityManager em = MariaDbJpaConnection.getInstance();
         try {
             em.getTransaction().begin();
             em.persist(object);
@@ -24,19 +24,16 @@ public class GuestDao implements IDao<Guest> {
 
 
     public Guest find(int id) {
-        EntityManager em = MariaDbJpaConnection.getInstance();
         return em.find(Guest.class, id);
     }
 
 
     public List<Guest> findAll() {
-        EntityManager em = MariaDbJpaConnection.getInstance();
         return em.createQuery("SELECT u FROM Guest u", Guest.class).getResultList();
     }
 
 
     public void update(Guest object) {
-        EntityManager em = MariaDbJpaConnection.getInstance();
         em.getTransaction().begin();
         em.merge(object);
         em.getTransaction().commit();
@@ -44,7 +41,6 @@ public class GuestDao implements IDao<Guest> {
 
 
     public void delete(Guest object) {
-        EntityManager em = MariaDbJpaConnection.getInstance();
         try {
             em.getTransaction().begin();
             em.remove(object);
@@ -56,7 +52,6 @@ public class GuestDao implements IDao<Guest> {
     }
 
     public List<Guest> findExpiredGuests(Date currentDate) {
-        EntityManager em = MariaDbJpaConnection.getInstance();
         TypedQuery<Guest> query = em.createQuery("SELECT g FROM Guest g WHERE g.deleteDate <= :currentDate", Guest.class);
         query.setParameter("currentDate", currentDate);
         return query.getResultList();
@@ -68,5 +63,10 @@ public class GuestDao implements IDao<Guest> {
             delete(guest);
         }
         System.out.println("All guests deleted");
+    }
+
+    // For tests
+    public void setEm(EntityManager em) {
+        this.em = em;
     }
 }
