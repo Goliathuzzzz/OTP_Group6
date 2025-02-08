@@ -9,14 +9,14 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Line?>
 
-<AnchorPane prefHeight="852" prefWidth="393" stylesheets="@css/options.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OptionsController">
+<AnchorPane prefHeight="852" prefWidth="393" stylesheets="@../css/options.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OptionsController">
     <ImageView fitHeight="556" fitWidth="393">
-        <Image url="@images/background.png" />
+        <Image url="@../images/background.png" />
     </ImageView>
     <Pane fx:id="rectangle13" layoutY="283" prefHeight="569" prefWidth="393" />
     <Label fx:id="speedDating" layoutX="105" layoutY="219" text="speed dating" />
     <ImageView fitHeight="210" fitWidth="214" layoutX="90" layoutY="18">
-        <Image url="@images/punainenlogo.png" />
+        <Image url="@../images/punainenlogo.png" />
     </ImageView>
     <Pane layoutX="39" layoutY="339" prefHeight="283" prefWidth="315">
         <Line endX="116.5" layoutX="198.0" layoutY="100.0" stroke="#7e7e7e" />
@@ -39,12 +39,12 @@
     </Button>
     <Label fx:id="tai" layoutX="184" layoutY="426" text="tai" />
     <ImageView fitHeight="50.0" fitWidth="45.0" layoutX="289.0" layoutY="348.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@images/stars.png" />
+        <Image url="@../images/stars.png" />
     </ImageView>
     <ImageView fitHeight="37.0" fitWidth="45.0" layoutX="290.0" layoutY="486.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@images/heart.png" />
+        <Image url="@../images/heart.png" />
     </ImageView>
     <ImageView fitHeight="18.0" fitWidth="45.0" layoutX="289.0" layoutY="582.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@images/glasses.png" />
+        <Image url="@../images/glasses.png" />
     </ImageView>
 </AnchorPane>

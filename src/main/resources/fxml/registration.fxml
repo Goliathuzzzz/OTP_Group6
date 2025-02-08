@@ -9,14 +9,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane prefHeight="852" prefWidth="393" stylesheets="@css/registration.css" xmlns="http://javafx.com/javafx/22"
+<AnchorPane prefHeight="852" prefWidth="393" stylesheets="@../css/registration.css" xmlns="http://javafx.com/javafx/22"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegistrationController">
     <ImageView fitHeight="556" fitWidth="393">
-        <Image url="@images/background.png"/>
+        <Image url="@../images/background.png"/>
     </ImageView>
     <Pane layoutY="80.0" prefHeight="772" prefWidth="393" styleClass="white-bg">
-        <ImageView fx:id="backIcon" fitHeight="21.0" fitWidth="16" layoutX="40.0" layoutY="31.0">
-            <Image url="@images/Icon.png"/>
+        <ImageView fx:id="backIcon" fitHeight="21.0" fitWidth="16" layoutX="40.0" layoutY="25.0">
+            <Image url="@../images/Icon.png"/>
         </ImageView>
         <Label layoutX="40" layoutY="96" styleClass="text-header" text="luo käyttäjä"/>
         <Label layoutX="40" layoutY="192" styleClass="text-label" text="sähköposti"/>

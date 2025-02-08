@@ -1,0 +1,77 @@
+/* if scenebuilder breaks, comment out font-face */
+@font-face {
+    font-family: 'HoeflerText';
+    src: url('/hoefler.ttf');
+}
+
+.edit-profile {
+    -fx-background-color: #FFFFFF;
+    -fx-border-radius: 30px;
+}
+
+.tausta {
+    -fx-background-image: url("/images/background.png");
+    -fx-background-size: cover;
+}
+
+.rectangle15 {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 30px;
+}
+
+.bottom-nav {
+    -fx-background-color: #ECCEDA;
+}
+
+
+.icon {
+    -fx-border-width: 4px;
+    -fx-border-color: #FFFFFF;
+}
+
+.group18, .group21, .group46 {
+    -fx-padding: 10px;
+}
+
+.input-field {
+    -fx-background-color: #ECCEDA;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.25), 4, 0, 0, 4);
+    -fx-border-radius: 5px;
+    -fx-font-size: 16px;
+}
+
+.puhelinnumero, .vierailija, .jatka {
+    -fx-font-family: 'Hoefler Text';
+    -fx-font-style: italic;
+    -fx-font-weight: 400;
+}
+
+.puhelinnumero {
+    -fx-font-size: 22px;
+}
+
+.vierailija {
+    -fx-font-size: 40px;
+}
+
+.jatka {
+    -fx-font-size: 28px;
+    -fx-text-fill: #FFFFFF;
+}
+
+.rectangle14 {
+    -fx-pref-width: 316px;
+    -fx-pref-height: 46px;
+    -fx-background-color: #D90014;
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 4, 0, 0, 4);
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 24px;
+    -fx-font-style: italic;
+    -fx-font-family: "Hoefler Text";
+}
+
+.path98, .path22 {
+    -fx-background-color: #D90014;
+}

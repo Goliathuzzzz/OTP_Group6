@@ -1,0 +1,53 @@
+/* if scenebuilder breaks, comment out font-face */
+@font-face {
+    font-family: 'HoeflerText';
+    src: url('/hoefler.ttf');
+}
+
+.edit-profile {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 30;
+}
+
+.tausta {
+    -fx-background-image: url("../images/background.png");
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+}
+
+.rectangle15 {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 30;
+}
+
+.input-field {
+    -fx-background-color: #ECCEDA;
+    -fx-background-radius: 5;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 4, 0, 0, 4);
+    /* -fx-font-family: "Hoefler Text";
+    -fx-font-style: italic; */
+    -fx-font-size: 16px;
+}
+
+.field-label {
+    -fx-font-family: "Hoefler Text";
+    -fx-font-style: italic;
+    -fx-font-size: 22px;
+}
+
+.frame2 {
+    -fx-background-image: url("/images/profile_image.png");
+    -fx-background-size: cover;
+    -fx-background-radius: 60;
+}
+
+.frame2-icon {
+    -fx-border-color: #000000;
+    -fx-border-width: 4;
+    -fx-background-color: transparent;
+    -fx-rotate: -90;
+}
+
+.bottom-nav {
+    -fx-background-color: #ECCEDA;
+}
