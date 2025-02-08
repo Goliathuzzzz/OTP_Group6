@@ -1,9 +1,7 @@
-import view.Hello;
+import view.GUI;
 
 public class Main {
-
     public static void main(String[] args) {
-        Hello.launch(Hello.class);
+        GUI.launch(GUI.class);
     }
-
 }

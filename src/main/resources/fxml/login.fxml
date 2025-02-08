@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+
+<AnchorPane prefHeight="852" prefWidth="393" stylesheets="@/css/login.css" xmlns="http://javafx.com/javafx/22"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+    <ImageView fitHeight="556" fitWidth="393">
+        <Image url="@../images/background.png"/>
+    </ImageView>
+    <Pane layoutY="196" prefHeight="656" prefWidth="393" styleClass="white-bg">
+        <Label fx:id="forgotPassword" layoutX="174.0" layoutY="314.0" onMouseClicked="#handleForgotPassword"
+               styleClass="forgot-password" text="unohditko salasanan?"/>
+    </Pane>
+    <Label layoutX="41" layoutY="232" styleClass="label-title" text="kirjaudu sisään"/>
+    <Label layoutX="41" layoutY="315" styleClass="label-email" text="sähköposti"/>
+    <TextField fx:id="emailField" layoutX="39" layoutY="349" prefHeight="46" prefWidth="314" styleClass="text-field"/>
+    <Label layoutX="39" layoutY="419" styleClass="label-password" text="salasana"/>
+    <PasswordField fx:id="passwordField" layoutX="39" layoutY="453" prefHeight="46" prefWidth="314"
+                   styleClass="text-field"/>
+    <Button fx:id="loginButton" layoutX="39" layoutY="569.0" minHeight="-Infinity" onAction="#handleLogin"
+            prefHeight="0.0" prefWidth="316" styleClass="login-button" text="kirjaudu sisään"/>
+    <Line endX="145" endY="662" startX="41" startY="662" styleClass="line"/>
+    <Label layoutX="183.0" layoutY="646.0" text="tai" textFill="#7e7e7e"/>
+    <Line endX="353" endY="662" startX="249" startY="662" styleClass="line"/>
+    <Label fx:id="newAccount" layoutX="148" layoutY="697" onMouseClicked="#handleNewAccount" styleClass="new-account"
+           text="luo uusi tili"/>
+</AnchorPane>

@@ -1,0 +1,64 @@
+/* if scenebuilder breaks, comment out font-face */
+@font-face {
+    font-family: 'HoeflerText';
+    src: url('/hoefler.ttf');
+}
+
+.welcome {
+    -fx-pref-width: 393px;
+    -fx-pref-height: 852px;
+    -fx-position: relative;
+}
+
+.paper-gradient {
+    -fx-pref-width: 393px;
+    -fx-pref-height: 856px;
+    -fx-background-color: linear-gradient(to bottom, #F6BAD2 0%, #EC679D 95.61%);
+    -fx-position: absolute;
+}
+
+.paper-texture {
+    -fx-pref-width: 393px;
+    -fx-pref-height: 854px;
+    -fx-background-image: url("../images/cardboard.png");
+    -fx-background-blend-mode: normal;
+    -fx-position: absolute;
+}
+
+.inner-items {
+    -fx-pref-width: 372px;
+    -fx-pref-height: 465px;
+    -fx-position: absolute;
+    -fx-layout-x: 10px;
+    -fx-layout-y: 141px;
+}
+
+.sydamet {
+    -fx-pref-width: 372px;
+    -fx-pref-height: 465px;
+    -fx-background-image: url("../images/sydamet.png");
+    -fx-opacity: 0.6;
+    -fx-position: absolute;
+    -fx-layout-x: 10px;
+    -fx-layout-y: 141px;
+}
+
+.punainen-logo {
+    -fx-pref-width: 291px;
+    -fx-pref-height: 285px;
+    -fx-background-image: url("../images/punainenlogo.png");
+    -fx-position: absolute;
+    -fx-layout-x: 44px;
+    -fx-layout-y: 231px;
+}
+
+.speed-dating {
+    -fx-pref-width: 184px;
+    -fx-pref-height: 40px;
+    -fx-font-family: "Hoefler Text";
+    -fx-font-style: italic;
+    -fx-font-size: 40px;
+    -fx-text-fill: #D90014;
+    -fx-layout-x: 98px;
+    -fx-layout-y: 516px;
+}

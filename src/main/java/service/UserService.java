@@ -12,8 +12,7 @@ public class UserService { //"good practice", handles the business logic
         this.userDao = new UserDao();
     }
 
-    public void registerUser(String userName, String password, String email, String role, String phoneNumber) {
-        User user = new User(userName, password, email, role, phoneNumber);
+    public void registerUser(User user) {
         userDao.persist(user);
     }
 
@@ -32,4 +31,6 @@ public class UserService { //"good practice", handles the business logic
     public void deleteUser(User user) {
         userDao.delete(user);
     }
+
+    public void deleteAllUsers() {userDao.deleteAll();}
 }

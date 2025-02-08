@@ -1,12 +1,17 @@
 package model;
 
 import jakarta.persistence.*;
+
 import java.util.Set;
+
+/**
+ * Where to add Column? Or relation?
+ */
 
 @Entity
 @Table(name = "users")
 @PrimaryKeyJoinColumn(name = "id")
-public class User extends Participant {
+public class User extends Participant{
 
     @Column(nullable = false)
     private String userName;
@@ -19,9 +24,6 @@ public class User extends Participant {
 
     @Column(nullable = false)
     private String role;
-
-//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private Set<Match> matches;
 
     public User() {}
 
@@ -64,12 +66,4 @@ public class User extends Participant {
     public void setRole(String role) {
         this.role = role;
     }
-
-//    public Set<Match> getMatches() {
-//        return matches;
-//    }
-//
-//    public void setMatches(Set<Match> matches) {
-//        this.matches = matches;
-//    }
 }

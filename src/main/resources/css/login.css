@@ -1,0 +1,122 @@
+/* if scenebuilder breaks, comment out font-face */
+@font-face {
+    font-family: 'HoeflerText';
+    src: url('/hoefler.ttf');
+}
+
+.root {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 30px;
+    -fx-pref-width: 393px;
+    -fx-pref-height: 852px;
+}
+
+.bg {
+    -fx-background-image: url("../images/background.png");
+    -fx-background-size: cover;
+    -fx-pref-width: 393px;
+    -fx-pref-height: 556px;
+}
+
+.white-bg {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 30px;
+    -fx-pref-width: 393px;
+    -fx-pref-height: 656px;
+    -fx-layout-y: 196px;
+}
+
+.inner-info {
+    -fx-pref-width: 316px;
+    -fx-pref-height: 487px;
+    -fx-layout-x: 39px;
+    -fx-layout-y: 232px;
+}
+
+.text-field {
+    -fx-pref-width: 314px;
+    -fx-pref-height: 46px;
+    -fx-background-color: #ECCEDA;
+    -fx-border-radius: 5px;
+    -fx-font-size: 16px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 4, 0, 0, 4);
+}
+
+.email-field {
+    -fx-layout-x: 39px;
+    -fx-layout-y: 349px;
+    -fx-font-size: 16px;
+}
+
+.password-field {
+    -fx-layout-x: 39px;
+    -fx-layout-y: 453px;
+}
+
+.label {
+    -fx-font-family: "Hoefler Text";
+    -fx-font-style: italic;
+    -fx-font-size: 22px;
+}
+
+.label-title {
+    -fx-font-size: 40px;
+    -fx-layout-x: 41px;
+    -fx-layout-y: 232px;
+}
+
+.label-email {
+    -fx-layout-x: 41px;
+    -fx-layout-y: 315px;
+}
+
+.label-password {
+    -fx-layout-x: 39px;
+    -fx-layout-y: 419px;
+}
+
+.rectangle14 {
+    -fx-pref-width: 316px;
+    -fx-pref-height: 46px;
+    -fx-background-color: #D90014;
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 4, 0, 0, 4);
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 24px;
+    -fx-font-style: italic;
+    -fx-font-family: "Hoefler Text";
+}
+
+.forgot-password {
+    -fx-layout-x: 175px;
+    -fx-layout-y: 511px;
+    -fx-text-fill: #7E7E7E;
+    -fx-font-size: 22px;
+}
+
+.new-account {
+    -fx-layout-x: 148px;
+    -fx-layout-y: 697px;
+}
+
+.line {
+    -fx-stroke: #7E7E7E;
+    -fx-stroke-width: 1px;
+}
+
+.line1 {
+    -fx-layout-x: 249px;
+    -fx-layout-y: 662px;
+    -fx-pref-width: 104px;
+}
+
+.line2 {
+    -fx-layout-x: 41px;
+    -fx-layout-y: 662px;
+    -fx-pref-width: 104px;
+}
+
+.if {
+    -fx-text-fill: #7E7E7E;
+}

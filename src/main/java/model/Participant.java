@@ -1,13 +1,16 @@
 package model;
 
 import jakarta.persistence.*;
+import model.categories.*;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Table(name = "participants")
 public abstract class Participant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,19 +20,30 @@ public abstract class Participant {
     @Column(nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     protected Date joinDate;
-    @Column // This is the number assigned to each participant at live sessions
-    protected int sessionNumber;
-    @ManyToOne
-    @JoinColumn
-    protected Session activeSession;
     @ElementCollection
-    protected List<Integer> interests;
+    protected List<Animal> animalInterests;
+    @ElementCollection
+    protected List<Food> foodInterests;
+    @ElementCollection
+    protected List<Hobby> hobbyInterests;
+    @ElementCollection
+    protected List<Science> scienceInterests;
+    @ElementCollection
+    protected List<Sports> sportsInterests;
+    @OneToMany(mappedBy = "participant1", cascade = CascadeType.ALL)
+    private Set<Match> matchesAsFirst;
+    @OneToMany(mappedBy = "participant2", cascade = CascadeType.ALL) //ensure if a participant is deleted, all their matches are also deleted
+    private Set<Match> matchesAsSecond;
 
     public Participant() {}
 
     public Participant(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-        interests = new ArrayList<>();
+        foodInterests = new ArrayList<>();
+        hobbyInterests = new ArrayList<>();
+        scienceInterests = new ArrayList<>();
+        sportsInterests = new ArrayList<>();
+        animalInterests = new ArrayList<>();
     }
 
     public int getId() {
@@ -48,19 +62,63 @@ public abstract class Participant {
         return joinDate;
     }
 
-    public void setSessionNumber(int sessionNumber) {
-        this.sessionNumber = sessionNumber;
+    public void setJoinDate(Date joinDate) {
+        this.joinDate = joinDate;
     }
 
-    public int getSessionNumber() {
-        return sessionNumber;
+    public Set<Match> getMatchesAsFirst() {
+        return matchesAsFirst;
     }
 
-    public void setActiveSession(Session activeSession) {
-        this.activeSession = activeSession;
+    public void setMatchesAsFirst(Set<Match> matchesAsFirst) {
+        this.matchesAsFirst = matchesAsFirst;
     }
 
-    public Session getActiveSession() {
-        return activeSession;
+    public Set<Match> getMatchesAsSecond() {
+        return matchesAsSecond;
+    }
+
+    public void setMatchesAsSecond(Set<Match> matchesAsSecond) {
+        this.matchesAsSecond = matchesAsSecond;
+    }
+
+    public List<Animal> getAnimalInterests() {
+        return animalInterests;
+    }
+
+    public List<Food> getFoodInterests() {
+        return foodInterests;
+    }
+
+    public List<Hobby> getHobbiesInterests() {
+        return hobbyInterests;
+    }
+
+    public List<Science> getScienceInterests() {
+        return scienceInterests;
+    }
+
+    public List<Sports> getSportsInterests() {
+        return sportsInterests;
+    }
+
+    public void addAnimalInterest(Animal animal) {
+        animalInterests.add(animal);
+    }
+
+    public void addFoodInterest(Food food) {
+        foodInterests.add(food);
+    }
+
+    public void addScienceInterest(Science science) {
+        scienceInterests.add(science);
+    }
+
+    public void addHobbiesInterest(Hobby hobby) {
+        hobbyInterests.add(hobby);
+    }
+
+    public void addSportsInterest(Sports sport) {
+        sportsInterests.add(sport);
     }
 }

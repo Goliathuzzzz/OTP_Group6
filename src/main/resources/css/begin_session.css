@@ -1,0 +1,32 @@
+/* if scenebuilder breaks, comment out font-face */
+@font-face {
+    font-family: 'HoeflerText';
+    src: url('/hoefler.ttf');
+}
+
+.bottom-nav {
+    -fx-background-color: #ECCEDA;
+}
+
+
+.icon {
+    -fx-border-width: 4px;
+    -fx-border-color: #FFFFFF;
+}
+
+.begin {
+    -fx-position: absolute;
+    -fx-pref-width: 175px;
+    -fx-pref-height: 40px;
+    -fx-translate-x: 109px;
+    -fx-translate-y: 370px;
+
+    -fx-font-family: "Hoefler Text";
+    -fx-font-style: italic;
+    -fx-font-weight: normal;
+    -fx-font-size: 40px;
+    -fx-line-height: 40px;
+
+    -fx-text-fill: #FFFFFF;
+}
+
