@@ -11,7 +11,7 @@ public class GUI extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/guest.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/begin_session.fxml"));
         Parent root = fxmlLoader.load();
         stage.setResizable(false);
         Scene scene = new Scene(root);
