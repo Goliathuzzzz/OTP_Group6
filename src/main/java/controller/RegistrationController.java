@@ -47,13 +47,12 @@ public class RegistrationController extends BaseController {
         }
 
         //showAlert(Alert.AlertType.INFORMATION, "onnistunut", "tili luotu onnistuneesti!");
-        switchScene("/profile.fxml");
+        switchScene("profile");
     }
 
     @FXML
     private void handleBack() {
-        Stage stage = (Stage) backIcon.getScene().getWindow();
-        stage.close();
+        switchScene("options");
     }
 
     private boolean isValidEmail(String email) {

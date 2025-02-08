@@ -7,7 +7,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
-public class GuestViewController {
+public class GuestViewController extends BaseController {
 
     @FXML
     private TextField phoneField;
@@ -22,32 +22,25 @@ public class GuestViewController {
     private void handleContinueClick() {
         String phoneNumber = phoneField.getText();
         if (phoneNumber.isEmpty()) {
-            showAlert( "syötä","syötä puhelinnumero.");
+            showAlert( Alert.AlertType.INFORMATION, "syötä","syötä puhelinnumero.");
         } else {
-            showAlert( "jatketaan","jatketaan vierailijana puhelinnumerolla: " + phoneNumber);
+            //showAlert( Alert.AlertType.INFORMATION, "jatketaan","jatketaan vierailijana puhelinnumerolla: " + phoneNumber);
+            switchScene("profile");
         }
     }
 
     @FXML
     private void handleHomeClick(MouseEvent event) {
-        showAlert( "kotiin","siirrytään etusivulle");
+        showAlert( Alert.AlertType.INFORMATION, "kotiin","siirrytään etusivulle");
     }
 
     @FXML
     private void handleProfileClick(MouseEvent event) {
-        showAlert( "profiiliin","siirrytään profiiliin");
+        switchScene("profile");
     }
 
     @FXML
     private void handleBackClick(MouseEvent event) {
-        showAlert("takaisin", "siirrytään kirjautumiseen");
-    }
-
-    private void showAlert(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
+        switchScene("options");
     }
 }

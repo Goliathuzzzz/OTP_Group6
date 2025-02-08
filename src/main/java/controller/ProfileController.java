@@ -30,17 +30,18 @@ public class ProfileController extends BaseController {
 
     @FXML
     private void handleProfileClick(MouseEvent event) {
-        handleBarClick("profile");
+        switchScene("profile");
     }
 
     @FXML
     private void handleBackClick(MouseEvent event) {
-        handleBarClick("back");
+        switchScene("options");
     }
 
     @FXML
     private void handleEditClick(MouseEvent event) {
-        showAlert(Alert.AlertType.INFORMATION, "muokkaus", "siirrytään muokkaukseen");
+        //showAlert(Alert.AlertType.INFORMATION, "muokkaus", "siirrytään muokkaukseen");
+        switchScene("edit_profile");
     }
 }
 

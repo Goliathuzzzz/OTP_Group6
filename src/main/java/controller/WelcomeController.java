@@ -11,6 +11,6 @@ public class WelcomeController extends BaseController {
 
     @FXML
     private void handleClick() {
-        switchScene("/options.fxml");
+        switchScene("options");
     }
 }
