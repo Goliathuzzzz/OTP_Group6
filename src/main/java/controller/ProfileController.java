@@ -1,13 +1,18 @@
 package controller;
 
+import context.GUIContext;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
+import model.User;
 
 public class ProfileController extends BaseController {
+
+    private final GUIContext guiContext = GUIContext.getInstance();
+    private User user = guiContext.getUser();
 
     @FXML
     private Pane bottomNavPane, profileImagePane;
@@ -20,6 +25,11 @@ public class ProfileController extends BaseController {
 
     @FXML
     private void initialize() {
+        if (user != null) {
+            nameLabel.setText(user.getUserName());
+            emailLabel.setText(user.getEmail());
+            phoneLabel.setText(user.getPhoneNumber());
+        }
     }
 
     @FXML
