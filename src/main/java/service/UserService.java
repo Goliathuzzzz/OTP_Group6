@@ -4,6 +4,7 @@ import dao.UserDao;
 import jakarta.persistence.EntityManager;
 import model.User;
 import java.util.List;
+import java.util.Optional;
 
 public class UserService { //"good practice", handles the business logic
 
