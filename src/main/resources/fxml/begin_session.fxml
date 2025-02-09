@@ -24,12 +24,12 @@
         </ImageView>
     </Pane>
     <ImageView fitHeight="278.0" fitWidth="352.0" layoutX="22.0" layoutY="255.0" pickOnBounds="true"
-               preserveRatio="true">
+               preserveRatio="true" onMouseClicked="#handleBeginSessionClick">
         <Image url="@/images/big_heart.png"/>
     </ImageView>
     <Label layoutY="-1.0" styleClass="begin" text="aloita sessio" onMouseClicked="#handleBeginSessionClick"/>
     <ImageView fitHeight="31.0" fitWidth="28.0" layoutX="263.0" layoutY="511.0" pickOnBounds="true"
-               preserveRatio="true">
+               preserveRatio="true" onMouseClicked="#handleBeginSessionClick">
         <Image url="@/images/hearts.png"/>
     </ImageView>
 </AnchorPane>
