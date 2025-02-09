@@ -1,8 +1,9 @@
 package model;
 
+import controller.UserController;
 import model.categories.Category;
-import service.UserService;
-
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -10,13 +11,13 @@ import java.util.Map;
 
 public class Matcher {
     private final Session session;
-    private final UserService userService;
+    private final UserController userController;
     // Double arvo on yhteensopivuus-prosentti. Periaatteessa voi olla useampi paras match, niin tallennetaan hashmappiin
-    private final HashMap<Double, User> topMatches;
+    private final HashMap<User, Double> topMatches;
 
     public Matcher(Session session) {
         this.session = session;
-        userService = new UserService();
+        userController = new UserController();
         topMatches = new HashMap<>();
     }
 
@@ -26,7 +27,7 @@ public class Matcher {
         double currentHighestCompatibility = 0;
         double maxPotential;
         double increment;
-        List<User> potentialMatches = userService.getAllUsers();
+        List<User> potentialMatches = userController.displayAllUsers();
         List<Category> pMatchInterests;
         Participant toMatch = session.getParticipant();
         for (User u: potentialMatches) {
@@ -45,16 +46,22 @@ public class Matcher {
                     break;
                 }
             }
+            compatibility = roundToTwoDecimalPlaces(compatibility);
             if (compatibility > currentHighestCompatibility) {
                 topMatches.clear();
-                topMatches.put(compatibility, u);
+                topMatches.put(u, compatibility);
                 currentHighestCompatibility = compatibility;
             } else if (compatibility == currentHighestCompatibility) {
-                topMatches.put(compatibility, u);
+                topMatches.put(u, compatibility);
             }
         }
-        for (Map.Entry<Double, User> entry: topMatches.entrySet()) {
-            new Match(toMatch, entry.getValue(), entry.getKey());
+        if (currentHighestCompatibility == 0) {
+            topMatches.clear();
+        }
+        else {
+            for (Map.Entry<User, Double> entry: topMatches.entrySet()) {
+                new Match(toMatch, entry.getKey(), entry.getValue());
+            }
         }
     }
 
@@ -72,7 +79,18 @@ public class Matcher {
         return interests;
     }
 
-    public HashMap<Double, User> getTopMatches() {
+    public HashMap<User, Double> getTopMatches() {
         return topMatches;
+    }
+
+    // For testing
+    public UserController getUserController() {
+        return userController;
+    }
+
+    private double roundToTwoDecimalPlaces(double value) {
+        BigDecimal bd = new BigDecimal(Double.toString(value));
+        bd = bd.setScale(2, RoundingMode.HALF_UP);
+        return bd.doubleValue();
     }
 }
