@@ -30,14 +30,14 @@ class UserControllerTest {
     }
 
     @Test
-    void registerUser() {
+    void testRegisterUser() {
         User testUser = new User("Test", "testpassword", "test@email.com", "test-subject", "123456789", new Date());
         userController.registerUser(testUser);
         assertEquals(testUser, userController.displayUser(testUser.getId()), "Users should match");
     }
 
     @Test
-    void displayAllUsers() {
+    void testDisplayAllUsers() {
         List<User> users = new ArrayList<>();
         User testUser = new User("Test2", "testpassword", "test@email.com", "test-subject", "123456789", new Date());
         userController.registerUser(testUser);
@@ -49,7 +49,7 @@ class UserControllerTest {
     }
 
     @Test
-    void updateUser() {
+    void testUpdateUser() {
         User testUser = new User("Test2", "testpassword", "test@email.com", "test-subject", "123456789", new Date());
         userController.registerUser(testUser);
         testUser.setEmail("changed@email.com");
@@ -59,7 +59,7 @@ class UserControllerTest {
     }
 
     @Test
-    void deleteUser() {
+    void testDeleteUser() {
         User testUser = new User("Test", "testpassword", "test@email.com", "test-subject", "123456789", new Date());
         userController.registerUser(testUser);
         assertEquals(testUser, userController.displayUser(testUser.getId()), "Should be 1 user");
@@ -68,7 +68,7 @@ class UserControllerTest {
     }
 
     @Test
-    void deleteAll() {
+    void testDeleteAll() {
         User testUser = new User("Test2", "testpassword", "test@email.com", "test-subject", "123456789", new Date());
         userController.registerUser(testUser);
         User testUser2 = new User("Test2", "testpassword", "test@email.com", "test-subject", "123456789", new Date());
@@ -76,5 +76,15 @@ class UserControllerTest {
         assertEquals(2, userController.displayAllUsers().size(), "Should have 2 users");
         userController.deleteAll();
         assertEquals(0, userController.displayAllUsers().size());
+    }
+
+    @Test
+    void testLogin() {
+        User testUser = new User("Test2", "testpassword", "test@email.com", "test-subject", "123456789", new Date());
+        userController.registerUser(testUser);
+        User loggedInUser = userController.login("test@email.com", "testpassword");
+        assertEquals(testUser, loggedInUser);
+        User fakeUser = userController.login("fake@email.com", "fakepassword");
+        assertNull(fakeUser);
     }
 }
