@@ -34,14 +34,12 @@ public class UserDao implements IDao<User> {
     }
 
     public boolean existsByEmail(String email) {
-        EntityManager em = MariaDbJpaConnection.getInstance();
         TypedQuery<User> query = em.createQuery("SELECT u FROM User u WHERE u.email = :email", User.class);
         query.setParameter("email", email);
         return !query.getResultList().isEmpty();
     }
 
     public Optional<User> findByEmailAndPassword(String email, String password) {
-        EntityManager em = MariaDbJpaConnection.getInstance();
         TypedQuery<User> query = em.createQuery("SELECT u FROM User u WHERE u.email = :email AND u.password = :password", User.class);
         query.setParameter("email", email);
         query.setParameter("password", password);
