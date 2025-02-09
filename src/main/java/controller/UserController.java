@@ -4,6 +4,7 @@ import jakarta.persistence.EntityManager;
 import model.User;
 import service.UserService;
 import java.util.List;
+import java.util.Optional;
 
 // GUI KUTSUU CONTROLLERIA!
 public class UserController {
@@ -60,7 +61,8 @@ public class UserController {
         return userService.existsByEmail(email);
     }
 
-    public boolean login(String email, String password) {
-        return userService.findByEmailAndPassword(email, password).isPresent();
+    public User login(String email, String password) {
+        Optional<User> potentialUser = userService.findByEmailAndPassword(email, password);
+        return potentialUser.orElse(null);
     }
 }

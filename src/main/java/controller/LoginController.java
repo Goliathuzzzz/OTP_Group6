@@ -32,7 +32,7 @@ public class LoginController extends BaseController {
             showAlert(Alert.AlertType.ERROR, "virhe", "täytä kaikki kentät!");
             return;
         }
-        if (uController.login(email, password)) {
+        if (uController.login(email, password) != null) {
             switchScene("begin_session");
         } else {
             showAlert(Alert.AlertType.ERROR, "virhe", "sähköpostiosoite tai salasana on väärä!");
