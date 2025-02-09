@@ -87,4 +87,12 @@ class UserControllerTest {
         User fakeUser = userController.login("fake@email.com", "fakepassword");
         assertNull(fakeUser);
     }
+
+    @Test
+    void testExistsByEmail() {
+        assertFalse(userController.existsByEmail("some@email.com"));
+        User newUser = new User("Test2", "testpassword", "test@email.com", "test-subject", "123456789", new Date());
+        userController.registerUser(newUser);
+        assertTrue(userController.existsByEmail("test@email.com"));
+    }
 }
