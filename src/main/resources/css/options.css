@@ -52,6 +52,7 @@
 }
 
 #guestButton {
+    -fx-cursor: hand;
     -fx-font-size: 22px;
     -fx-font-family: "Hoefler Text";
     -fx-background-color: #ECCEDA;
@@ -66,6 +67,7 @@
 }
 
 #newUserButton {
+    -fx-cursor: hand;
     -fx-font-size: 22px;
     -fx-font-family: "Hoefler Text";
     -fx-background-color: #ECCEDA;
@@ -86,6 +88,7 @@
 }
 
 #loginButton {
+    -fx-cursor: hand;
     -fx-font-size: 22px;
     -fx-font-family: "Hoefler Text";
     -fx-background-color: #ECCEDA;
