@@ -29,33 +29,44 @@ public class SessionController extends BaseController {
     @FXML
     private Label titleLabel, subtitleLabel;
 
-    // Event handler for "Valmis" button
     @FXML
-    private void handleValmis(ActionEvent event) {
-        System.out.println("Valmis button clicked!");
-        // Implement logic when the "Valmis" button is pressed (e.g., save selections, move to another scene)
+    private void handleReady(ActionEvent event) {
+        System.out.println("valmis painettu.");
     }
 
-    // Navigation Handlers
     @FXML
     private void handleHomeClick(MouseEvent event) {
-        navigateTo(event, "/fxml/home.fxml");
+        //showAlert(Alert.AlertType.INFORMATION, "kotiin", "siirrytään etusivulle");
+        switchScene("begin_session");
     }
 
     @FXML
     private void handleProfileClick(MouseEvent event) {
-        navigateTo(event, "/fxml/profile.fxml");
+        //showAlert(Alert.AlertType.INFORMATION, "profiiliin", "siirrytään profiiliin");
+        switchScene("profile");
     }
 
     @FXML
     private void handleBackClick(MouseEvent event) {
-
+        //showAlert(Alert.AlertType.INFORMATION,"takaisin", "siirrytään kirjautumiseen");
+        switchScene("options");
     }
 
     @FXML
-    public void handleInterestClick(Pane interestPane) {
-        interestsContainer.getChildren().forEach(node -> node.getStyleClass().remove("selected"));
-        interestPane.getStyleClass().add("selected");
+    public void initialize() {
+        for (Node interest : interestsContainer.getChildren()) {
+            interest.setOnMouseClicked(this::handleInterestSelection);
+        }
+    }
+
+    private void handleInterestSelection(MouseEvent event) {
+        Pane selectedInterest = (Pane) event.getSource();
+
+        if (selectedInterest.getStyleClass().contains("selected")) {
+            selectedInterest.getStyleClass().remove("selected");
+        } else {
+            selectedInterest.getStyleClass().add("selected");
+        }
     }
 
     // Utility function to change scenes
