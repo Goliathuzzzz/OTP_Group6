@@ -78,8 +78,58 @@
     -fx-visibility: visible;
 }
 
+.rectangle14:hover {
+    -fx-opacity: 1;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 6, 0, 0, 3);
+}
+
 .bottom-nav {
     -fx-pref-width: 393px;
     -fx-pref-height: 87px;
     -fx-background-color: #ECCEDA;
+}
+
+.bottom-nav ImageView:hover {
+    -fx-opacity: 1;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 6, 0, 0, 3);
+}
+
+/* Removes the background and border of the ScrollPane */
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 0;
+}
+
+/* Removes the ScrollPane viewport background */
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+/* Custom scrollbar styles */
+.scroll-pane .scroll-bar {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .increment-button,
+.scroll-pane .decrement-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-pane .thumb {
+    -fx-background-color: rgba(0, 0, 0, 0.2); /* Light gray scroll thumb */
+    -fx-background-radius: 5px;
+}
+
+.scroll-pane .thumb:hover {
+    -fx-background-color: rgba(0, 0, 0, 0.4); /* Darker on hover */
+}
+
+.scroll-pane .track {
+    -fx-background-color: transparent;
 }
