@@ -1,15 +1,18 @@
 package controller;
 
+import context.GUIContext;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import model.User;
 
 public class LoginController extends BaseController {
 
     UserController uController = new UserController();
+    GUIContext guiContext = GUIContext.getInstance();
 
     @FXML
     private TextField emailField;
@@ -32,7 +35,9 @@ public class LoginController extends BaseController {
             showAlert(Alert.AlertType.ERROR, "virhe", "täytä kaikki kentät!");
             return;
         }
-        if (uController.login(email, password) != null) {
+        User user = uController.login(email, password);
+        if (user != null) {
+            guiContext.setUser(user);
             switchScene("begin_session");
         } else {
             showAlert(Alert.AlertType.ERROR, "virhe", "sähköpostiosoite tai salasana on väärä!");

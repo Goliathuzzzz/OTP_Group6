@@ -31,7 +31,7 @@
         </ImageView>
     </Pane>
     <Pane fx:id="profileImagePane" layoutX="97" layoutY="252" prefHeight="200" prefWidth="200" styleClass="frame4" />
-    <Label fx:id="nameLabel" layoutX="41" layoutY="508" prefHeight="22" prefWidth="36" styleClass="heta" text="heta" />
+    <Label fx:id="nameLabel" layoutX="41" layoutY="508" prefHeight="22" prefWidth="188" styleClass="heta" text="heta" />
     <Label fx:id="emailLabel" layoutX="39" layoutY="554" prefHeight="22" prefWidth="188" styleClass="heta" text="hetahar@metropolia.fi" />
-    <Label fx:id="phoneLabel" layoutX="39" layoutY="600" prefHeight="22" prefWidth="99" styleClass="heta" text="0401234567" />
+    <Label fx:id="phoneLabel" layoutX="39" layoutY="600" prefHeight="22" prefWidth="188" styleClass="heta" text="0401234567" />
 </AnchorPane>
