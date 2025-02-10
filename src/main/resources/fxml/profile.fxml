@@ -26,7 +26,7 @@
             </ImageView>
         </Pane>
         <ImageView fx:id="editButton" fitHeight="28.0" fitWidth="26.0" layoutX="342.0" layoutY="25.0"
-                   pickOnBounds="true" preserveRatio="true" onMouseClicked="#handleEditClick">
+                   pickOnBounds="true" preserveRatio="true" onMouseClicked="#handleEditClick" styleClass="edit-button">
             <Image url="@/images/edit_button.png"/>
         </ImageView>
     </Pane>

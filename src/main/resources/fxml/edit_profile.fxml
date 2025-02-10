@@ -28,7 +28,7 @@
                    text="puhelinnumero"/>
             <TextField fx:id="phoneField" layoutY="242.0" prefHeight="46.0" prefWidth="315.0" styleClass="input-field"/>
         </Pane>
-        <ImageView fx:id="backIcon1" fitHeight="21.0" fitWidth="16" layoutX="40.0" layoutY="25.0" onMouseClicked="#handlePreviousClick">
+        <ImageView fx:id="backIcon1" styleClass="back-icon" fitHeight="21.0" fitWidth="16" layoutX="40.0" layoutY="25.0" onMouseClicked="#handlePreviousClick">
             <Image url="@/images/Icon.png"/>
         </ImageView>
     </Pane>
@@ -42,7 +42,7 @@
             <Image url="@/images/profile_icon.png"/>
         </ImageView>
         <ImageView fx:id="backIcon" fitHeight="45.0" fitWidth="42.0" layoutX="294.0" layoutY="23.0" preserveRatio="true"
-                   rotate="-180.0" onMouseClicked="#handleBackClick">
+                   onMouseClicked="#handleBackClick">
             <Image url="@/images/back_icon.png"/>
         </ImageView>
     </Pane>

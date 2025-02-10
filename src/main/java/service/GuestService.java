@@ -1,6 +1,7 @@
 package service;
 
 import dao.GuestDao;
+import jakarta.persistence.EntityManager;
 import model.Guest;
 
 import java.util.List;
@@ -13,8 +14,7 @@ public class GuestService {
         this.guestDao = new GuestDao();
     }
 
-    public void registerGuest(String phoneNumber) {
-        Guest guest = new Guest(phoneNumber);
+    public void registerGuest(Guest guest) {
         guestDao.persist(guest);
     }
 
@@ -36,5 +36,10 @@ public class GuestService {
 
     public void deleteAllGuests() {
         guestDao.deleteAll();
+    }
+
+    // For tests
+    public void setEm(EntityManager em) {
+        guestDao.setEm(em);
     }
 }

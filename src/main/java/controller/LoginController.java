@@ -9,6 +9,8 @@ import javafx.scene.control.TextField;
 
 public class LoginController extends BaseController {
 
+    UserController uController = new UserController();
+
     @FXML
     private TextField emailField;
 
@@ -30,12 +32,10 @@ public class LoginController extends BaseController {
             showAlert(Alert.AlertType.ERROR, "virhe", "täytä kaikki kentät!");
             return;
         }
-
-        if (authenticateUser(email, password)) {
-            //showAlert(Alert.AlertType.INFORMATION, "onnistunut", "kirjautuminen onnistui!");
+        if (uController.login(email, password) != null) {
             switchScene("begin_session");
         } else {
-            showAlert(Alert.AlertType.ERROR, "virhe", "väärä sähköposti tai salasana.");
+            showAlert(Alert.AlertType.ERROR, "virhe", "sähköpostiosoite tai salasana on väärä!");
         }
     }
 

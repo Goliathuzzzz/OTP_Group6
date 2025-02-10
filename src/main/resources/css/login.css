@@ -75,20 +75,8 @@
     -fx-layout-y: 419px;
 }
 
-.rectangle14 {
-    -fx-pref-width: 316px;
-    -fx-pref-height: 46px;
-    -fx-background-color: #D90014;
-    -fx-border-radius: 30px;
-    -fx-background-radius: 30px;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 4, 0, 0, 4);
-    -fx-text-fill: #FFFFFF;
-    -fx-font-size: 24px;
-    -fx-font-style: italic;
-    -fx-font-family: "Hoefler Text";
-}
-
 .forgot-password {
+    -fx-cursor: hand;
     -fx-layout-x: 175px;
     -fx-layout-y: 511px;
     -fx-text-fill: #7E7E7E;
@@ -96,6 +84,7 @@
 }
 
 .new-account {
+    -fx-cursor: hand;
     -fx-layout-x: 148px;
     -fx-layout-y: 697px;
 }
@@ -119,4 +108,25 @@
 
 .if {
     -fx-text-fill: #7E7E7E;
+}
+
+.login-button {
+    -fx-cursor: hand;
+    -fx-pref-width: 316px;
+    -fx-pref-height: 46px;
+    -fx-background-color: #D90014;
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 4, 0, 0, 4);
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 24px;
+    -fx-font-style: italic;
+    -fx-font-family: "Hoefler Text";
+}
+
+.login-button:hover {
+    -fx-opacity: 1;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 6, 0, 0, 3);
 }

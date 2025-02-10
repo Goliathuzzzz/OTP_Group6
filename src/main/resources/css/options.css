@@ -52,6 +52,7 @@
 }
 
 #guestButton {
+    -fx-cursor: hand;
     -fx-font-size: 22px;
     -fx-font-family: "Hoefler Text";
     -fx-background-color: #ECCEDA;
@@ -66,6 +67,7 @@
 }
 
 #newUserButton {
+    -fx-cursor: hand;
     -fx-font-size: 22px;
     -fx-font-family: "Hoefler Text";
     -fx-background-color: #ECCEDA;
@@ -86,6 +88,7 @@
 }
 
 #loginButton {
+    -fx-cursor: hand;
     -fx-font-size: 22px;
     -fx-font-family: "Hoefler Text";
     -fx-background-color: #ECCEDA;
@@ -116,4 +119,13 @@
     -fx-pref-width: 104px;
     -fx-stroke: #7E7E7E;
     -fx-stroke-width: 1px;
+}
+
+#guestButton:hover,
+#newUserButton:hover,
+#loginButton:hover {
+    -fx-opacity: 1;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 6, 0, 0, 3);
 }

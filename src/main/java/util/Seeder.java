@@ -2,6 +2,7 @@ package util;
 
 import controller.GuestController;
 import controller.UserController;
+import model.Guest;
 import model.User;
 import model.categories.*;
 import service.GuestService;
@@ -17,8 +18,7 @@ public class Seeder {
         userController.deleteAll();
         guestController.deleteAll();
 
-        User user1 = new User("Alice", "password1", "alice@example.com", "dummy", "1234567890");
-        user1.setJoinDate(new Date());
+        User user1 = new User("Alice", "password1", "alice@example.com", "dummy", "1234567890",new Date());
         user1.addAnimalInterest(Animal.HORSE);
         user1.addAnimalInterest(Animal.DOG);
         user1.addAnimalInterest(Animal.CAT);
@@ -33,8 +33,7 @@ public class Seeder {
         user1.addScienceInterest(Science.BIOLOGY);
 
 
-        User user2 = new User("Bob", "password2", "bob@example.com", "dummy", "0987654321");
-        user2.setJoinDate(new Date());
+        User user2 = new User("Bob", "password2", "bob@example.com", "dummy", "0987654321",new Date());
         user2.addAnimalInterest(Animal.MOUSE);
         user2.addFoodInterest(Food.ANYTHING_GOES);
         user2.addHobbiesInterest(Hobby.INVESTING);
@@ -44,8 +43,7 @@ public class Seeder {
         user2.addSportsInterest(Sports.MARTIAL_ARTS);
 
 
-        User user3 = new User("Charlie", "password3", "charlie@example.com", "dummy", "1122334455");
-        user3.setJoinDate(new Date());
+        User user3 = new User("Charlie", "password3", "charlie@example.com", "dummy", "1122334455", new Date());
         user3.addAnimalInterest(Animal.DOG);
         user3.addFoodInterest(Food.VEGAN);
         user3.addHobbiesInterest(Hobby.STARGAZING);
@@ -55,14 +53,16 @@ public class Seeder {
         user3.addSportsInterest(Sports.CYCLING);
         user3.addSportsInterest(Sports.RUNNING);
 
-        User user4 = new User("Agatha", "password4", "agatha@example.com", "dummy", "23232323211");
-        user4.setJoinDate(new Date());
+        User user4 = new User("Agatha", "password4", "agatha@example.com", "dummy", "23232323211", new Date());
         user4.addAnimalInterest(Animal.CAT);
         user4.addFoodInterest(Food.ANYTHING_GOES);
         user4.addHobbiesInterest(Hobby.ACTING);
         user4.addHobbiesInterest(Hobby.MEDITATION);
         user4.addScienceInterest(Science.CHEMISTRY);
         user4.addSportsInterest(Sports.TENNIS);
+
+        Guest guest1 = new Guest("1231321312312", new Date());
+        guestController.registerGuest(guest1);
 
         userController.registerUser(user1);
         userController.registerUser(user2);

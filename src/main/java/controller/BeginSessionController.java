@@ -11,7 +11,8 @@ public class BeginSessionController extends BaseController {
 
     @FXML
     private void handleBeginSessionClick(MouseEvent event) {
-        showAlert(Alert.AlertType.INFORMATION, "aloitetaan", "siirrytään valintoihin");
+        // showAlert(Alert.AlertType.INFORMATION, "aloitetaan", "siirrytään valintoihin");
+        switchScene("session");
     }
 
     @FXML

@@ -1,0 +1,154 @@
+/* if scenebuilder breaks, comment out font-face */
+@font-face {
+    font-family: 'HoeflerText';
+    src: url('/hoefler.ttf');
+}
+
+.profile {
+    -fx-background-color: #FFFFFF;
+}
+
+.tausta {
+    -fx-background-size: cover;
+    -fx-background-image: url("../images/background.png");
+}
+
+.rectangle15 {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 30;
+}
+
+.frame4 {
+    -fx-background-color: #FFFFFF;
+    -fx-border-radius: 100px;
+    -fx-border-color: #CCCCCC;
+    -fx-border-width: 2px;
+}
+
+.bottom-nav {
+    -fx-background-color: #ECCEDA;
+    -fx-border-radius: 0px 0px 30px 30px;
+}
+
+.bottom-nav ImageView {
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 4, 0, 0, 2);
+    -fx-opacity: 0.9;
+}
+
+.bottom-nav ImageView:hover {
+    -fx-opacity: 1;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 6, 0, 0, 3);
+}
+
+.bottom-nav .selected {
+    -fx-opacity: 1;
+    -fx-scale-x: 1.2;
+    -fx-scale-y: 1.2;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 6, 0, 0, 3);
+}
+
+.rectangle14 {
+    -fx-pref-width: 316px;
+    -fx-pref-height: 46px;
+    -fx-background-color: #D90014;
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 4, 0, 0, 4);
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 24px;
+    -fx-font-style: italic;
+    -fx-font-family: "Hoefler Text";
+}
+
+.rectangle14:hover {
+    -fx-opacity: 1;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 6, 0, 0, 3);
+}
+
+.content-pane {
+    -fx-pref-width: 306px;
+    -fx-pref-height: 277px;
+}
+
+.title-label {
+    -fx-font-family: "Hoefler Text";
+    -fx-font-style: italic;
+    -fx-font-weight: 400;
+    -fx-font-size: 40px;
+    -fx-line-height: 40px;
+    -fx-text-fill: #000000;
+}
+
+.subtitle-label {
+    -fx-font-family: "Hoefler Text";
+    -fx-font-style: italic;
+    -fx-font-weight: 400;
+    -fx-font-size: 22px;
+    -fx-line-height: 22px;
+    -fx-text-fill: #7E7E7E;
+}
+
+.interest-group {
+    -fx-pref-width: 306px;
+    -fx-pref-height: 36px;
+    -fx-padding: 5px;
+    -fx-background-radius: 15px;
+    -fx-border-radius: 15px;
+    -fx-border-color: #7E7E7E;
+}
+
+.rectangle-20, .rectangle-22 {
+    -fx-background-color: #ECCEDA;
+}
+
+.rectangle-21, .rectangle-23, .rectangle-24 {
+    -fx-background-color: #FFFFFF;
+}
+
+.interest-label {
+    -fx-font-family: "Hoefler Text";
+    -fx-font-style: italic;
+    -fx-font-size: 22px;
+    -fx-text-fill: #000000;
+}
+
+.selected {
+    -fx-background-color: #ECCEDA;
+}
+
+.interest-group:hover {
+    -fx-background-color: #ECCEDA;
+}
+
+.interest-group ImageView {
+    -fx-border-color: #000000;
+    -fx-border-width: 2px;
+}
+
+.choose {
+    -fx-font-family: "Hoefler Text";
+    -fx-font-style: italic;
+    -fx-font-size: 22px;
+    -fx-text-fill: #7E7E7E;
+}
+
+.tell {
+    -fx-font-family: "Hoefler Text";
+    -fx-font-style: italic;
+    -fx-font-size: 40px;
+}
+
+.interest-group:hover,
+.interest-group:pressed,
+.interest-group.selected {
+    -fx-cursor: hand;
+    -fx-background-color: #ECCEDA;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 6, 0, 0, 3);
+}

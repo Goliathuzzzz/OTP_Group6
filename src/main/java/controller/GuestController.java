@@ -1,4 +1,5 @@
 package controller;
+import jakarta.persistence.EntityManager;
 import model.Guest;
 import service.GuestService;
 import java.util.List;
@@ -12,12 +13,12 @@ public class GuestController {
         this.guestService = new GuestService();
     }
 
-    public void registerGuest(String phoneNumber) {
-        guestService.registerGuest(phoneNumber);
+    public void registerGuest(Guest guest) {
+        guestService.registerGuest(guest);
         System.out.println("Guest registered successfully");
     }
 
-    public void displayGuest(int id) {
+    public Guest displayGuest(int id) {
         Guest guest = guestService.findGuestById(id);
         if (guest != null) {
             System.out.println("Guest" + guest.getId() + "found! PhoneNumber: " + guest.getPhoneNumber());
@@ -25,13 +26,15 @@ public class GuestController {
         else {
             System.out.println("Guest not found");
         }
+        return guest;
     }
 
-    public void displayAllGuests() {
+    public List<Guest> displayAllGuests() {
         List<Guest> guests = guestService.getAllGuests();
         for (Guest guest : guests) {
             System.out.println(guest.getId() + " - " + guest.getPhoneNumber());
         }
+        return guests;
     }
 
     public void updateGuest(Guest guest) {
@@ -47,5 +50,10 @@ public class GuestController {
     public void deleteAll() {
         guestService.deleteAllGuests();
         System.out.println("All guests deleted successfully");
+    }
+
+    // For tests
+    public void setEm(EntityManager em) {
+        guestService.setEm(em);
     }
 }
