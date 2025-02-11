@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="852" prefWidth="393" styleClass="profile" stylesheets="@/css/session.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SessionController">
+<AnchorPane prefHeight="852" prefWidth="393" styleClass="profile" stylesheets="@/css/session.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SessionController2">
     <Pane prefHeight="556" prefWidth="393" styleClass="tausta" />
     <Pane layoutY="95.0" prefHeight="757.0" prefWidth="393" styleClass="rectangle15">
         <Button fx:id="continueButton" layoutX="39.0" layoutY="570.0" prefHeight="50.0" prefWidth="315.0" styleClass="rectangle14" text="valmis" />

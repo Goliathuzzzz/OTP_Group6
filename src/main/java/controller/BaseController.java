@@ -17,6 +17,10 @@ public abstract class BaseController {
     }
 
     protected void switchScene(String destination) {
+        switchScene(destination, null); //call overloaded method with no data for most cases
+    }
+
+    protected void switchScene(String destination, Object data) {
         String path = "/fxml/" + destination + ".fxml";
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(path));
@@ -25,6 +29,19 @@ public abstract class BaseController {
             BaseController controller = fxmlLoader.getController();
             controller.setStage(stage);
 
+            //pass the data only if applicable (InterestSelectionController)
+            if (data != null && controller instanceof InterestSelectionController interestController) {
+                if (data instanceof String category) {
+                    interestController.setCategory(category);
+                    switch (category) {
+                        case "animals" -> interestController.loadInterests("animals");
+                        case "food" -> interestController.loadInterests("food");
+                        case "hobbies" -> interestController.loadInterests("hobbies");
+                        case "science" -> interestController.loadInterests("science");
+                        case "sports" -> interestController.loadInterests("sports");
+                    }
+                }
+            }
             stage.setScene(new Scene(root));
             stage.show();
         } catch (IOException e) {

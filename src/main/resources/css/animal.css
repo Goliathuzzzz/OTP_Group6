@@ -1,0 +1,136 @@
+@font-face {
+    font-family: 'HoeflerText';
+    src: url('/hoefler.ttf');
+}
+
+/* entire screen */
+.edit-profile {
+    -fx-pref-width: 393px;
+    -fx-pref-height: 852px;
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 30px;
+}
+
+.tausta {
+    -fx-pref-width: 393px;
+    -fx-pref-height: 556px;
+    -fx-background-image: url("../images/background.png");
+    -fx-background-size: cover;
+}
+
+/* main white rect */
+.rectangle15 {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 30;
+}
+
+/* optn btn container */
+.option-btn {
+    -fx-pref-width: 315px;
+    -fx-pref-height: 71px;
+    -fx-background-color: transparent; /* Background handled by option-bg */
+}
+
+/* bg for otpion buttons */
+.option-bg {
+    -fx-fill: #ECCEDA;
+    -fx-arc-height: 28px;
+    -fx-arc-width: 28px;
+}
+
+/* radio buttons */
+.radio {
+    -fx-pref-width: 28px;
+    -fx-pref-height: 28px;
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #4D4D4D;
+    -fx-border-width: 2px;
+    -fx-background-radius: 50%;
+    -fx-border-radius: 50%; /* ensures the border is also round */
+    -fx-alignment: center;
+}
+
+
+/* optns text */
+.option-text {
+    -fx-font-family: "Hoefler Text";
+    -fx-font-style: italic;
+    -fx-font-size: 22px;
+    -fx-text-fill: black;
+}
+
+/* jatka btn */
+.rectangle14 {
+    -fx-pref-width: 316px;
+    -fx-pref-height: 46px;
+    -fx-background-color: #D90014;
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 4, 0, 0, 4);
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 24px;
+    -fx-font-style: italic;
+    -fx-font-family: "Hoefler Text";
+}
+
+.rectangle14:hover {
+    -fx-opacity: 1;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 6, 0, 0, 3);
+}
+
+.bottom-nav {
+    -fx-pref-width: 393px;
+    -fx-pref-height: 87px;
+    -fx-background-color: #ECCEDA;
+}
+
+.bottom-nav ImageView {
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 4, 0, 0, 2);
+    -fx-opacity: 0.9;
+}
+
+.bottom-nav ImageView:hover {
+    -fx-opacity: 1;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 6, 0, 0, 3);
+}
+
+/* Removes the background and border of the ScrollPane */
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 0;
+}
+
+/* Removes the ScrollPane viewport background */
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+/* Custom scrollbar styles */
+.scroll-pane .scroll-bar {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .increment-button,
+.scroll-pane .decrement-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-pane .thumb {
+    -fx-background-color: rgba(0, 0, 0, 0.2); /* Light gray scroll thumb */
+    -fx-background-radius: 5px;
+}
+
+.scroll-pane .thumb:hover {
+    -fx-background-color: rgba(0, 0, 0, 0.4); /* Darker on hover */
+}
+
+.scroll-pane .track {
+    -fx-background-color: transparent;
+}

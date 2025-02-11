@@ -1,5 +1,6 @@
 package view;
 
+import controller.BaseController;
 import controller.WelcomeController;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -14,8 +15,12 @@ public class GUI extends Application {
     public void start(Stage stage) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/welcome.fxml"));
         Parent root = fxmlLoader.load();
-        WelcomeController controller = fxmlLoader.getController();
-        controller.setStage(stage);
+
+        Object controller = fxmlLoader.getController();
+        if (controller instanceof BaseController baseController) {
+            baseController.setStage(stage);
+        }
+
 
         //stage.setResizable(false);
         Scene scene = new Scene(root);

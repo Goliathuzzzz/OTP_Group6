@@ -4,6 +4,10 @@ import jakarta.persistence.*;
 
 import java.util.Date;
 
+/**
+ * Where to add Column? Or relation?
+ */
+
 @Entity
 @Table(name = "users")
 @PrimaryKeyJoinColumn(name = "id")
