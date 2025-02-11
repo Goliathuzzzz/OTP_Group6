@@ -15,10 +15,10 @@
             fx:controller="controller.AnimalSelectionController">
 
     <!-- bg image -->
-    <Pane prefHeight="556" prefWidth="393" layoutX="0" layoutY="0" styleClass="tausta"/>
+    <Pane prefHeight="556" prefWidth="393" styleClass="tausta"/>
 
     <!-- white panel -->
-    <Pane layoutX="0" layoutY="0" prefHeight="772" prefWidth="393" styleClass="rectangle15"/>
+    <Pane prefHeight="772" prefWidth="393" styleClass="rectangle15"/>
 
     <!-- go back icon -->
     <ImageView fx:id="goBack" fitHeight="21.0" fitWidth="16" layoutX="40.0" layoutY="120" onMouseClicked="#handleBack">
@@ -28,26 +28,26 @@
     <!-- animal selections -->
     <Pane layoutX="38" layoutY="190" prefHeight="335" prefWidth="315">
 
-        <Pane layoutY="0" prefHeight="71" prefWidth="315" styleClass="option-btn">
-            <Rectangle layoutX="0" layoutY="0" arcHeight="28" arcWidth="28" height="71" width="315" styleClass="option-bg"/>
+        <Pane prefHeight="71" prefWidth="315" styleClass="option-btn">
+            <Rectangle arcHeight="28" arcWidth="28" height="71" width="315" styleClass="option-bg"/>
             <RadioButton fx:id="koiratRadio" layoutX="24" layoutY="21" styleClass="radio"/>
             <Label layoutX="80" layoutY="20" text="koirat" styleClass="option-text"/>
         </Pane>
 
         <Pane layoutY="88" prefHeight="71" prefWidth="315" styleClass="option-btn">
-            <Rectangle layoutX="0" layoutY="0" arcHeight="28" arcWidth="28" height="71" width="315" styleClass="option-bg"/>
+            <Rectangle arcHeight="28" arcWidth="28" height="71" width="315" styleClass="option-bg"/>
             <RadioButton fx:id="kissatRadio" layoutX="24" layoutY="21" styleClass="radio"/>
             <Label layoutX="80" layoutY="20" text="kissat" styleClass="option-text"/>
         </Pane>
 
         <Pane layoutY="176" prefHeight="71" prefWidth="315" styleClass="option-btn">
-            <Rectangle layoutX="0" layoutY="0" arcHeight="28" arcWidth="28" height="71" width="315" styleClass="option-bg"/>
+            <Rectangle arcHeight="28" arcWidth="28" height="71" width="315" styleClass="option-bg"/>
             <RadioButton fx:id="hiiretRadio" layoutX="24" layoutY="21" styleClass="radio"/>
             <Label layoutX="80" layoutY="20" text="hiiret" styleClass="option-text"/>
         </Pane>
 
         <Pane layoutY="264" prefHeight="71" prefWidth="315" styleClass="option-btn">
-            <Rectangle layoutX="0" layoutY="0" arcHeight="28" arcWidth="28" height="71" width="315" styleClass="option-bg"/>
+            <Rectangle arcHeight="28" arcWidth="28" height="71" width="315" styleClass="option-bg"/>
             <RadioButton fx:id="hevosetRadio" layoutX="24" layoutY="21" styleClass="radio"/>
             <Label layoutX="80" layoutY="20" text="hevoset" styleClass="option-text"/>
         </Pane>

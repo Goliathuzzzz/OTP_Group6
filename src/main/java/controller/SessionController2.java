@@ -1,7 +1,6 @@
 package controller;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Label;
@@ -10,10 +9,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.Node;
 import javafx.event.ActionEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
-import javafx.scene.Scene;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 
 import java.io.IOException;
 import java.util.Map;
@@ -66,8 +61,10 @@ public class SessionController2 extends BaseController {
         for (Node interest : interestsContainer.getChildren()) {
             interest.setOnMouseClicked(this::handleInterestSelection);
         }
+        System.out.println("DEBUG: stage is " + (stage == null ? "NULL" : "SET"));
     }
 
+    @FXML
     private void handleInterestSelection(MouseEvent event) {
         Pane selectedInterest = (Pane) event.getSource();
         if (selectedInterest.getStyleClass().contains("selected")) {
@@ -84,28 +81,8 @@ public class SessionController2 extends BaseController {
             }
         }
     }
-
-
     private void navigateToInterests(MouseEvent event, String category) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/interest_selection.fxml"));
-            Parent root = loader.load();
-
-            InterestSelectionController interestController = loader.getController();
-            switch (category) {
-                case "animals" -> interestController.loadAnimalInterests();
-                case "food" -> interestController.loadFoodInterests();
-                case "hobbies" -> interestController.loadHobbyInterests();
-                case "science" -> interestController.loadScienceInterests();
-                case "sports" -> interestController.loadSportInterests();
-            }
-
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-            showAlert(Alert.AlertType.ERROR, "Error", "Failed to load interests_selection.fxml");
-        }
+        switchScene("interest_selection", category); //passing category only for interest selection
+        System.out.println("Navigated to category: " + category);
     }
 }

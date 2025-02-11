@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -16,28 +14,28 @@
             fx:controller="controller.InterestSelectionController">
 
     <!-- bg image -->
-    <Pane prefHeight="556" prefWidth="393" layoutX="0" layoutY="0" styleClass="tausta"/>
+    <Pane prefHeight="556" prefWidth="393" styleClass="tausta"/>
 
     <!-- white panel -->
-    <Pane layoutX="0" layoutY="0" prefHeight="772" prefWidth="393" styleClass="rectangle15"/>
+    <Pane layoutY="95.0" prefHeight="757.0" prefWidth="393" styleClass="rectangle15"/>
 
     <!-- go back icon -->
     <ImageView fx:id="goBack" fitHeight="21.0" fitWidth="16" layoutX="40.0" layoutY="120" onMouseClicked="#handleBack">
         <Image url="@/images/Icon.png"/>
     </ImageView>
 
-    <!-- Dynamic selection container -->
+    <!-- dynamic selection container -->
     <ScrollPane fx:id="scrollContainer" layoutX="38" layoutY="190" prefWidth="315" prefHeight="430"
                 fitToWidth="true" fitToHeight="false" styleClass="scroll-pane">
         <VBox fx:id="optionsContainer" spacing="10" prefWidth="300"/>
     </ScrollPane>
 
 
-    <!-- Continue button -->
-    <Button fx:id="continueButton" layoutX="40" layoutY="686" prefHeight="46" prefWidth="313"
+    <!-- jatka button -->
+    <Button fx:id="continueButton" layoutX="39.0" layoutY="665" prefHeight="50.0" prefWidth="315.0"
             styleClass="rectangle14" text="jatka" onMouseClicked="#handleContinue"/>
 
-    <!-- Bottom nav -->
+    <!-- btm nav -->
     <Pane layoutY="765" prefHeight="87" prefWidth="393" styleClass="bottom-nav">
         <ImageView fx:id="homeIcon" fitHeight="45" fitWidth="42" layoutX="65" layoutY="23"
                    onMouseClicked="#handleHomeClick" preserveRatio="true">

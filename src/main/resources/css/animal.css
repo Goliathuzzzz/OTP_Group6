@@ -20,12 +20,8 @@
 
 /* main white rect */
 .rectangle15 {
-    -fx-pref-width: 393px;
-    -fx-pref-height: 650px;
-    -fx-translate-y: 80px;
     -fx-background-color: #FFFFFF;
-    -fx-background-radius: 40px;
-    -fx-border-radius: 40px;
+    -fx-background-radius: 30;
 }
 
 /* optn btn container */
@@ -65,17 +61,16 @@
 
 /* jatka btn */
 .rectangle14 {
-    -fx-pref-width: 313px;
+    -fx-pref-width: 316px;
     -fx-pref-height: 46px;
     -fx-background-color: #D90014;
-    -fx-border-radius: 20px;
-    -fx-background-radius: 20px;
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 4, 0, 0, 4);
     -fx-text-fill: #FFFFFF;
-    -fx-font-size: 28px;
+    -fx-font-size: 24px;
     -fx-font-style: italic;
     -fx-font-family: "Hoefler Text";
-    -fx-visibility: visible;
 }
 
 .rectangle14:hover {
@@ -89,6 +84,12 @@
     -fx-pref-width: 393px;
     -fx-pref-height: 87px;
     -fx-background-color: #ECCEDA;
+}
+
+.bottom-nav ImageView {
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 4, 0, 0, 2);
+    -fx-opacity: 0.9;
 }
 
 .bottom-nav ImageView:hover {
