@@ -58,11 +58,6 @@ public class Matcher {
         if (currentHighestCompatibility == 0) {
             topMatches.clear();
         }
-        else {
-            for (Map.Entry<User, Double> entry: topMatches.entrySet()) {
-                new Match(toMatch, entry.getKey(), entry.getValue());
-            }
-        }
     }
 
     public Session getSession() {
