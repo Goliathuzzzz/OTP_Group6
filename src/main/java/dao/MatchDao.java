@@ -3,6 +3,7 @@ package dao;
 import datasource.MariaDbJpaConnection;
 import jakarta.persistence.EntityManager;
 import model.Match;
+import model.Participant;
 
 import java.util.List;
 
@@ -29,6 +30,11 @@ public class MatchDao implements IDao<Match> {
         return em.createQuery("SELECT u FROM Match u", Match.class).getResultList();
     }
 
+    public List<Match> findByParticipant(Participant participant) {
+        return em.createQuery("SELECT m FROM Match m WHERE m.participant1 = :participant OR m.participant2 = :participant", Match.class)
+                .setParameter("participant", participant)
+                .getResultList();
+    }
 
     public void update(Match object) {
         try {

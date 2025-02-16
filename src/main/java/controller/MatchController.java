@@ -38,6 +38,14 @@ public class MatchController {
         return matches;
     }
 
+    public List<Match> displayAllByParticipant(Participant participant) {
+        List<Match> matches = matchService.findByParticipant(participant);
+        for (Match m: matches) {
+            System.out.println(m.getParticipant1() + " + " + m.getParticipant2());
+        }
+        return matches;
+    }
+
     public void updateMatch(Match match) {
         matchService.updateMatch(match);
         System.out.println("Match updated successfully");

@@ -3,6 +3,7 @@ package service;
 import dao.MatchDao;
 import jakarta.persistence.EntityManager;
 import model.Match;
+import model.Participant;
 
 import java.util.List;
 
@@ -23,6 +24,10 @@ public class MatchService {
 
     public List<Match> findAllMatches() {
         return dao.findAll();
+    }
+
+    public List<Match> findByParticipant(Participant participant) {
+        return dao.findByParticipant(participant);
     }
 
     public void updateMatch(Match match) {
