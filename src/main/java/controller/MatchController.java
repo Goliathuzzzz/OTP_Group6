@@ -15,8 +15,8 @@ public class MatchController {
         matchService = new MatchService();
     }
 
-    public void matchParticipants(Match match) {
-        matchService.addMatch(match);
+    public void matchParticipants(Participant participant1, Participant participant2, double compatibility) {
+        matchService.addMatch(new Match(participant1, participant2, compatibility));
         System.out.println("Participants matched successfully");
     }
 
