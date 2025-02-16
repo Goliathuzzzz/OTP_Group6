@@ -1,5 +1,6 @@
 package controller;
 
+import context.GUIContext;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
@@ -9,11 +10,20 @@ import javafx.scene.layout.VBox;
 import javafx.scene.Node;
 import javafx.event.ActionEvent;
 import javafx.scene.input.MouseEvent;
+import model.*;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class SessionController2 extends BaseController {
+
+    private GUIContext context = GUIContext.getInstance();
+    private Session session;
+    private Participant participant;
+    private MatchController matchController;
+    private Matcher matcher;
 
     @FXML
     private Button valmisButton;
@@ -37,6 +47,7 @@ public class SessionController2 extends BaseController {
 
     @FXML
     private void handleReady(ActionEvent event) {
+        matchParticipant();
         System.out.println("valmis painettu.");
     }
 
@@ -62,6 +73,10 @@ public class SessionController2 extends BaseController {
             interest.setOnMouseClicked(this::handleInterestSelection);
         }
         System.out.println("DEBUG: stage is " + (stage == null ? "NULL" : "SET"));
+        session = context.getSession();
+        participant = session.getParticipant();
+        matchController = new MatchController();
+        matcher = new Matcher(session);
     }
 
     @FXML
@@ -84,5 +99,13 @@ public class SessionController2 extends BaseController {
     private void navigateToInterests(MouseEvent event, String category) {
         switchScene("interest_selection", category); //passing category only for interest selection
         System.out.println("Navigated to category: " + category);
+    }
+
+    private void matchParticipant() {
+        matcher.matchParticipant();
+        HashMap<User, Double> matches = matcher.getTopMatches();
+        for (Map.Entry<User, Double> entry: matches.entrySet()) {
+            matchController.matchParticipants(participant, entry.getKey(), entry.getValue());
+        }
     }
 }
