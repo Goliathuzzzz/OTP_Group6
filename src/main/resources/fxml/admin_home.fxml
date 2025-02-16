@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.text.Font?>
+<AnchorPane prefHeight="852" prefWidth="393" styleClass="profile" stylesheets="@/css/admin_home.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminController">
+    <Pane prefHeight="556" prefWidth="393" styleClass="tausta" />
+    <Pane layoutY="95.0" prefHeight="757.0" prefWidth="393" styleClass="rectangle15">
+        <Pane layoutY="670.0" prefHeight="87" prefWidth="393" styleClass="bottom-nav">
+            <ImageView fx:id="homeIcon" fitHeight="45.0" fitWidth="42.0" layoutX="65.0" layoutY="23.0" onMouseClicked="#handleHomeClick" pickOnBounds="true" preserveRatio="true">
+                <Image url="@/images/home_icon.png" />
+            </ImageView>
+            <ImageView fx:id="profileIcon" fitHeight="45.0" fitWidth="42.0" layoutX="182.0" layoutY="23.0" onMouseClicked="#handleProfileClick" pickOnBounds="true" preserveRatio="true">
+                <Image url="@/images/profile_icon.png" />
+            </ImageView>
+            <ImageView fx:id="backIcon" fitHeight="45.0" fitWidth="42.0" layoutX="294.0" layoutY="23.0" onMouseClicked="#handleBackClick" pickOnBounds="true" preserveRatio="true">
+                <Image url="@/images/back_icon.png" />
+            </ImageView>
+        </Pane>
+        <Label layoutX="38.0" layoutY="40.0" styleClass="tell" text="parit" />
+        <ImageView fitHeight="31.0" fitWidth="28.0" layoutX="129.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/hearts.png" />
+        </ImageView>
+        <ScrollPane fitToWidth="true" layoutX="39" layoutY="211" prefHeight="400" prefWidth="315">
+            <VBox fx:id="pairsContainer" spacing="10">
+            <padding>
+               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </padding></VBox>
+        </ScrollPane>
+        <Label layoutX="38.0" layoutY="106.0" prefHeight="32.0" prefWidth="323.0" styleClass="hallinnoi" text="hallinnoi pareja ja historiaa ">
+            <font>
+                <Font size="22.0" />
+            </font>
+        </Label>
+    </Pane>
+</AnchorPane>
