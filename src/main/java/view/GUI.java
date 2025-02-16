@@ -21,8 +21,8 @@ public class GUI extends Application {
             baseController.setStage(stage);
         }
 
-
-        //stage.setResizable(false);
+        stage.setTitle("~ tatskatytöt speed dating ~"); // placeholder title
+        stage.setResizable(false);
         Scene scene = new Scene(root);
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/images/cherries.png")));
         scene.getRoot().setStyle("-fx-font-family: 'HoeflerText'");
