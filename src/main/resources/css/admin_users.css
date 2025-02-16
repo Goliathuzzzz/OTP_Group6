@@ -1,0 +1,172 @@
+/* if scenebuilder breaks, comment out font-face */
+@font-face {
+    font-family: 'HoeflerText';
+    src: url('/hoefler.ttf');
+}
+
+.profile {
+    -fx-background-color: #FFFFFF;
+}
+
+.tausta {
+    -fx-background-size: cover;
+    -fx-background-image: url("../images/background.png");
+}
+
+.rectangle15 {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 30;
+}
+
+.frame4 {
+    -fx-background-color: #FFFFFF;
+    -fx-border-radius: 100px;
+    -fx-border-color: #CCCCCC;
+    -fx-border-width: 2px;
+}
+
+.bottom-nav {
+    -fx-background-color: #ECCEDA;
+    -fx-border-radius: 0px 0px 30px 30px;
+}
+
+.bottom-nav ImageView {
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 4, 0, 0, 2);
+    -fx-opacity: 0.9;
+}
+
+.bottom-nav ImageView:hover {
+    -fx-opacity: 1;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 6, 0, 0, 3);
+}
+
+.bottom-nav .selected {
+    -fx-opacity: 1;
+    -fx-scale-x: 1.2;
+    -fx-scale-y: 1.2;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 6, 0, 0, 3);
+}
+
+.rectangle14:hover {
+    -fx-opacity: 1;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 6, 0, 0, 3);
+}
+
+.group-65, .group-66, .group-67 {
+    -fx-pref-width: 315px;
+    -fx-pref-height: 71px;
+    -fx-background-color: #ECCEDA;
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+}
+
+.text-style {
+    -fx-font-family: "Hoefler Text";
+    -fx-font-style: italic;
+    -fx-font-size: 22px;
+}
+
+.line-10, .line-11, .line-12 {
+    -fx-pref-width: 71px;
+    -fx-border-width: 1px;
+    -fx-border-color: black;
+    -fx-rotate: 90deg;
+    -fx-stroke: #000000;
+    -fx-stroke-width: 2;
+}
+
+.tell {
+    -fx-font-size: 40px;
+    -fx-font-family: "Hoefler Text";
+}
+
+.text-style:hover {
+    -fx-text-fill: #FF0000;
+    -fx-font-size: 24px;
+}
+
+.line-heart {
+    -fx-background-image: url("../images/black_line.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: contain;
+    -fx-background-position: center;
+}
+
+.line-heart:hover {
+    -fx-background-image: url("../images/hearts.png");
+    -fx-background-size: 40px 40px;
+    -fx-background-position: center;
+}
+
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 0;
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .scroll-bar {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .increment-button,
+.scroll-pane .decrement-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-pane .thumb {
+    -fx-background-color: rgba(0, 0, 0, 0.2);
+    -fx-background-radius: 5px;
+}
+
+.scroll-pane .thumb:hover {
+    -fx-background-color: rgba(0, 0, 0, 0.4);
+}
+
+.scroll-pane .track {
+    -fx-background-color: transparent;
+}
+
+.group-67:hover {
+    -fx-opacity: 1;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 6, 0, 0, 3);
+}
+
+.hallinnoi {
+    -fx-font-family: "Hoefler Text";
+    -fx-font-style: italic;
+    -fx-font-size: 22px;
+    -fx-text-fill: #7E7E7E;
+}
+
+.user-item {
+    -fx-font-family: "Hoefler Text";
+    -fx-font-style: italic;
+    -fx-font-size: 22px;
+    -fx-text-fill: #7E7E7E;
+}
+
+.delete-icon:hover {
+    -fx-cursor: hand;
+    -fx-opacity: 1;
+    -fx-scale-x: 1.2;
+    -fx-scale-y: 1.2;
+}
+
+.user-name:hover {
+    -fx-text-fill: #FF0000;
+}
+
+.delete-icon:hover ~ .user-name,
+.delete-icon:hover + Label {
+    -fx-text-fill: #FF0000;
+}
