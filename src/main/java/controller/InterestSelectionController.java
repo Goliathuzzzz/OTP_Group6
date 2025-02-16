@@ -1,5 +1,6 @@
 package controller;
 
+import context.GUIContext;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
@@ -7,6 +8,11 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.image.ImageView;
+import model.Participant;
+import model.Session;
+import model.categories.Animal;
+import model.categories.Category;
+import org.checkerframework.checker.units.qual.C;
 
 import java.util.*;
 
@@ -25,17 +31,28 @@ public class InterestSelectionController extends BaseController {
     private VBox optionsContainer; //holds dynamically generated options
 
     private String currentCategory;
-    private final Set<String> selectedInterests = new HashSet<>();
     private final List<RadioButton> allRadioButtons = new ArrayList<>();
+    private final GUIContext context = GUIContext.getInstance();
+    private Participant getParticipant() {
+        if (context.isUser()) {
+            return context.getUser();
+        }
+        return context.getGuest();
+    }
+    private Session session;
+    @FXML
+    private void initialize() {
+        session = new Session(getParticipant());
+    }
 
     private static final List<String> CATEGORY_ORDER = List.of("animals", "food", "hobbies", "sports", "science");
 
-    private static final Map<String, List<String>> INTERESTS_MAP = Map.of(
-            "animals", List.of("koirat", "kissat", "hiiret", "hevoset"),
-            "food", List.of("vegaaniruoka", "kasvisruoka", "sekaruokavalio"),
-            "hobbies", List.of("tv-sarjat", "videopelit", "tähtien katselu", "aktivismi", "talous", "meditaatio", "teatteri", "esiintyminen"),
-            "sports", List.of("lenkkeily", "pyöräily", "uinti", "pallopelit", "kuntosali", "kamppailulajit"),
-            "science", List.of("biologia", "matematiikka", "fysiikka", "kemia", "avaruus", "ohjelmointi")
+    private static final Map<String, List<? extends Category>> INTERESTS_MAP = Map.of(
+            "animals",Session.getAnimals(),
+            "food", Session.getFoods(),
+            "hobbies", Session.getHobbies(),
+            "sports", Session.getSports(),
+            "science", Session.getSciences()
     );
 
     @FXML
@@ -74,16 +91,16 @@ public class InterestSelectionController extends BaseController {
         }
     }
 
-    public void setInterests(List<String> interests) {
+    public void setInterests(List<? extends Category> interests) {
         optionsContainer.getChildren().clear();
         allRadioButtons.clear();
 
-        for (String interest : interests) {
+        for (Category interest : interests) {
             optionsContainer.getChildren().add(createOptionPane(interest));
         }
     }
 
-    private Pane createOptionPane(String text) {
+    private Pane createOptionPane(Category interest) {
         Pane optionPane = new Pane();
         optionPane.setPrefSize(315, 71);
         optionPane.getStyleClass().add("option-btn");
@@ -98,18 +115,18 @@ public class InterestSelectionController extends BaseController {
         radioButton.setLayoutY(21);
         radioButton.getStyleClass().add("radio");
 
-        Label label = new Label(text);
+        Label label = new Label(interest.toString());
         label.setLayoutX(80);
         label.setLayoutY(20);
         label.getStyleClass().add("option-text");
 
         radioButton.setOnAction(event -> {
             if (radioButton.isSelected()) {
-                selectedInterests.add(text);
+                session.addParticipantInterest(interest);
             } else {
-                selectedInterests.remove(text);
+                session.removeParticipantInterest(interest);
             }
-            System.out.println("Current Selection: " + selectedInterests);
+            System.out.println("Current Selection: " + session.getParticipantInterests());
         });
 
         allRadioButtons.add(radioButton);
@@ -122,12 +139,12 @@ public class InterestSelectionController extends BaseController {
         System.out.println("Current category set to: " + category);
     }
 
-    public Set<String> getSelectedInterests() {
-        return selectedInterests;
+    public List<Category> getSelectedInterests() {
+        return session.getParticipantInterests();
     }
 
     public void loadInterests(String category) {
-        List<String> interests = INTERESTS_MAP.getOrDefault(category, List.of());
+        List<? extends Category> interests = INTERESTS_MAP.getOrDefault(category, List.of());
         setInterests(interests);
         setCategory(category);
     }
