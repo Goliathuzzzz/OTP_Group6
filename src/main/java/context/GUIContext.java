@@ -3,10 +3,9 @@ package context;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
-import model.Guest;
-import model.Matcher;
-import model.Session;
-import model.User;
+import model.*;
+
+import java.util.List;
 
 public class GUIContext {
     private static GUIContext instance;
@@ -15,6 +14,8 @@ public class GUIContext {
     private Guest guest;
     private Session session;
     private Matcher matcher;
+    private List<Match> matches;
+
     @FXML
     private final StringProperty nameProperty, emailProperty, phoneProperty;
 
@@ -118,5 +119,13 @@ public class GUIContext {
 
     public void setGuest(Guest guest) {
         this.guest = guest;
+    }
+
+    public List<Match> getMatches() {
+        return matches;
+    }
+
+    public void setMatches(List<Match> matches) {
+        this.matches = matches;
     }
 }

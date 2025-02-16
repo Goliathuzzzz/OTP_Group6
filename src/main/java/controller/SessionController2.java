@@ -13,13 +13,14 @@ import javafx.scene.input.MouseEvent;
 import model.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class SessionController2 extends BaseController {
 
-    private GUIContext context = GUIContext.getInstance();
+    private final GUIContext context = GUIContext.getInstance();
     private Session session;
     private Participant participant;
     private MatchController matchController;
@@ -103,9 +104,12 @@ public class SessionController2 extends BaseController {
 
     private void matchParticipant() {
         matcher.matchParticipant();
-        HashMap<User, Double> matches = matcher.getTopMatches();
-        for (Map.Entry<User, Double> entry: matches.entrySet()) {
+        List<Match> matches = new ArrayList<>();
+        HashMap<User, Double> topMatches = matcher.getTopMatches();
+        for (Map.Entry<User, Double> entry: topMatches.entrySet()) {
             matchController.matchParticipants(participant, entry.getKey(), entry.getValue());
+            matches.add(new Match(participant, entry.getKey(), entry.getValue()));
         }
+        context.setMatches(matches);
     }
 }
