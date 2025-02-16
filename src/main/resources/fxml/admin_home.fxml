@@ -34,7 +34,7 @@
                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
             </padding></VBox>
         </ScrollPane>
-        <Label layoutX="38.0" layoutY="106.0" prefHeight="32.0" prefWidth="323.0" styleClass="hallinnoi" text="hallinnoi pareja ja historiaa ">
+        <Label layoutX="38.0" layoutY="106.0" prefHeight="32.0" prefWidth="323.0" styleClass="hallinnoi" text="hallinnoi parihistoriaa">
             <font>
                 <Font size="22.0" />
             </font>
