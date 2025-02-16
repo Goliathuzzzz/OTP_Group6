@@ -20,7 +20,7 @@
     <Pane layoutY="95.0" prefHeight="757.0" prefWidth="393" styleClass="rectangle15"/>
 
     <!-- go back icon -->
-    <ImageView fx:id="goBack" fitHeight="21.0" fitWidth="16" layoutX="40.0" layoutY="120" onMouseClicked="#handleBack">
+    <ImageView fx:id="goBack" fitHeight="21.0" fitWidth="16" layoutX="40.0" layoutY="120" onMouseClicked="#handleBack" styleClass="back-icon">
         <Image url="@/images/Icon.png"/>
     </ImageView>
 
