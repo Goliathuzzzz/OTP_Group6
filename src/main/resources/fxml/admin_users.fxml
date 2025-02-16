@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="852" prefWidth="393" styleClass="profile" stylesheets="@/css/admin_users.css"
+            xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.AdminUsersController">
+    <Pane prefHeight="556" prefWidth="393" styleClass="tausta"/>
+    <Pane layoutY="95.0" prefHeight="757.0" prefWidth="393" styleClass="rectangle15">
+        <Pane layoutY="670.0" prefHeight="87" prefWidth="393" styleClass="bottom-nav">
+            <ImageView fx:id="homeIcon" fitHeight="45.0" fitWidth="42.0" layoutX="65.0" layoutY="23.0"
+                       onMouseClicked="#handleHomeClick" pickOnBounds="true" preserveRatio="true">
+                <Image url="@/images/home_icon.png"/>
+            </ImageView>
+            <ImageView fx:id="profileIcon" fitHeight="45.0" fitWidth="42.0" layoutX="182.0" layoutY="23.0"
+                       onMouseClicked="#handleProfileClick" pickOnBounds="true" preserveRatio="true">
+                <Image url="@/images/profile_icon.png"/>
+            </ImageView>
+            <ImageView fx:id="backIcon" fitHeight="45.0" fitWidth="42.0" layoutX="294.0" layoutY="23.0"
+                       onMouseClicked="#handleBackClick" pickOnBounds="true" preserveRatio="true">
+                <Image url="@/images/back_icon.png"/>
+            </ImageView>
+        </Pane>
+        <Label layoutX="38.0" layoutY="40.0" styleClass="tell" text="käyttäjät"/>
+        <Label layoutX="38.0" layoutY="106.0" prefHeight="32.0" prefWidth="323.0" styleClass="hallinnoi"
+               text="hallinnoi käyttäjiä">
+            <font>
+                <Font size="22.0"/>
+            </font>
+        </Label>
+        <ScrollPane fx:id="usersScrollPane" layoutX="38" layoutY="150" prefWidth="323" prefHeight="500"
+                    fitToWidth="true" styleClass="scroll-pane">
+            <GridPane fx:id="usersGrid" hgap="10" vgap="10">
+                <padding>
+                    <Insets top="10" right="10" bottom="10" left="10"/>
+                </padding>
+            </GridPane>
+        </ScrollPane>
+    </Pane>
+</AnchorPane>
