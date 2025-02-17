@@ -36,6 +36,10 @@ public class AdminUsersController extends BaseController implements Initializabl
         switchScene("options");
     }
 
+    public void handlePreviousClick(MouseEvent mouseEvent) {
+        switchScene("admin_profile");
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // dummy data for users
