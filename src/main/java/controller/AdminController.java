@@ -37,6 +37,10 @@ public class AdminController extends BaseController implements Initializable {
         switchScene("options");
     }
 
+    public void handlePreviousClick(MouseEvent mouseEvent) {
+        switchScene("admin_profile");
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // fetch pairs from database (currently dummy data)
