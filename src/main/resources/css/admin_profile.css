@@ -1,0 +1,107 @@
+/* if scenebuilder breaks, comment out font-face */
+@font-face {
+    font-family: 'HoeflerText';
+    src: url('/hoefler.ttf');
+}
+
+.profile {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 30;
+}
+
+.tausta {
+    -fx-background-image: url("../images/background.png");
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+}
+
+.rectangle15 {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 30;
+}
+
+.frame4 {
+    -fx-background-image: url("../images/profile_image.png");
+    -fx-background-size: cover;
+    -fx-background-radius: 100;
+}
+
+.info-text {
+    -fx-font-family: "Hoefler Text";
+    -fx-font-style: italic;
+    -fx-font-weight: normal;
+    -fx-font-size: 22px;
+}
+
+.admin-text {
+    -fx-font-family: "Hoefler Text";
+    -fx-font-style: italic;
+    -fx-font-weight: bold;
+    -fx-font-size: 22px;
+}
+
+.vector {
+    -fx-border-color: #000000;
+    -fx-border-width: 2;
+}
+
+.bottom-nav {
+    -fx-background-color: #ECCEDA;
+    -fx-border-radius: 0px 0px 30px 30px;
+}
+
+.bottom-nav ImageView {
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 4, 0, 0, 2);
+    -fx-opacity: 0.9;
+}
+
+.bottom-nav ImageView:hover {
+    -fx-opacity: 1;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 6, 0, 0, 3);
+}
+
+.bottom-nav .selected {
+    -fx-opacity: 1;
+    -fx-scale-x: 1.2;
+    -fx-scale-y: 1.2;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 6, 0, 0, 3);
+}
+
+.icon {
+    -fx-border-color: #FFFFFF;
+    -fx-border-width: 4;
+}
+
+.edit-button:hover {
+    -fx-cursor: hand;
+    -fx-opacity: 1;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 6, 0, 0, 3);
+}
+
+.admin-button {
+    -fx-position: absolute;
+    -fx-pref-width: 150px;
+    -fx-pref-height: 71px;
+    -fx-background-color: #ECCEDA;
+    -fx-background-radius: 28px;
+    -fx-font-size: 22px;
+    -fx-text-fill: black;
+    -fx-border-radius: 28px;
+    -fx-border-color: transparent;
+    -fx-font-family: "Hoefler Text";
+    -fx-font-style: italic;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 4, 0, 0, 4);
+}
+
+.admin-button:hover {
+    -fx-cursor: hand;
+    -fx-opacity: 1;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 6, 0, 0, 3);
+}
