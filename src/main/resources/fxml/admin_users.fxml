@@ -29,18 +29,22 @@
                 <Image url="@/images/back_icon.png"/>
             </ImageView>
         </Pane>
-        <Label layoutX="38.0" layoutY="40.0" styleClass="tell" text="käyttäjät"/>
-        <Label layoutX="38.0" layoutY="106.0" prefHeight="32.0" prefWidth="323.0" styleClass="hallinnoi"
+        <ImageView fx:id="backIcon1" fitHeight="21.0" fitWidth="16" layoutX="40.0" layoutY="25.0"
+                   onMouseClicked="#handlePreviousClick" styleClass="back-icon">
+            <Image url="@/images/Icon.png"/>
+        </ImageView>
+        <Label layoutX="38.0" layoutY="74.0" styleClass="tell" text="käyttäjät"/>
+        <Label layoutX="38.0" layoutY="140.0" prefHeight="32.0" prefWidth="323.0" styleClass="hallinnoi"
                text="hallinnoi käyttäjiä">
             <font>
                 <Font size="22.0"/>
             </font>
         </Label>
-        <ScrollPane fx:id="usersScrollPane" layoutX="38" layoutY="150" prefWidth="323" prefHeight="500"
-                    fitToWidth="true" styleClass="scroll-pane">
+        <ScrollPane fx:id="usersScrollPane" fitToWidth="true" layoutX="38" layoutY="211.0" prefHeight="400.0"
+                    prefWidth="323" styleClass="scroll-pane">
             <GridPane fx:id="usersGrid" hgap="10" vgap="10">
                 <padding>
-                    <Insets top="10" right="10" bottom="10" left="10"/>
+                    <Insets bottom="10" left="10" right="10" top="10"/>
                 </padding>
             </GridPane>
         </ScrollPane>
