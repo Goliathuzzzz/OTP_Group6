@@ -1,5 +1,6 @@
 package controller;
 
+import context.GUIContext;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -29,7 +30,9 @@ public class GuestViewController extends BaseController {
         if (phoneNumber.isEmpty()) {
             showAlert( Alert.AlertType.INFORMATION, "syötä","syötä puhelinnumero.");
         } else {
-            gController.registerGuest(new Guest(phoneNumber, new Date()));
+            Guest guest = new Guest(phoneNumber, new Date());
+            gController.registerGuest(guest);
+            GUIContext.getInstance().setGuest(guest);
             switchScene("begin_session");
         }
     }
