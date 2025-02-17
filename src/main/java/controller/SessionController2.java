@@ -1,6 +1,7 @@
 package controller;
 
 import context.GUIContext;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
@@ -12,7 +13,6 @@ import javafx.event.ActionEvent;
 import javafx.scene.input.MouseEvent;
 import model.*;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -73,11 +73,18 @@ public class SessionController2 extends BaseController {
         for (Node interest : interestsContainer.getChildren()) {
             interest.setOnMouseClicked(this::handleInterestSelection);
         }
-        System.out.println("DEBUG: stage is " + (stage == null ? "NULL" : "SET"));
-        session = context.getSession();
-        participant = session.getParticipant();
-        matchController = new MatchController();
-        matcher = new Matcher(session);
+        // needs to wait for stage to be set
+        Platform.runLater(() -> {
+            System.out.println("DEBUG: stage is " + (stage == null ? "NULL" : "SET"));
+            session = context.getSession();
+            if (session == null) {
+                System.err.println("ERROR: session is null in SessionController2");
+                return;
+            }
+            participant = session.getParticipant();
+            matchController = new MatchController();
+            matcher = new Matcher(session);
+        });
     }
 
     @FXML
