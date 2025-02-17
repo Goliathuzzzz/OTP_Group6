@@ -10,13 +10,6 @@ public class BeginSessionController extends BaseController {
     private ImageView homeIcon, profileIcon, backIcon;
 
     @FXML
-    private void initialize() {
-        //System.out.println("BeginSessionController initialized.");
-        System.out.println("DEBUG: stage is " + (stage == null ? "NULL" : "SET"));
-
-    }
-
-    @FXML
     private void handleBeginSessionClick(MouseEvent event) {
         // showAlert(Alert.AlertType.INFORMATION, "aloitetaan", "siirrytään valintoihin");
         switchScene("session");
