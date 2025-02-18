@@ -1,10 +1,10 @@
 package model.categories;
 
 public enum Sports implements Category{
-    RUNNING,
-    CYCLING,
-    SWIMMING,
+    LENKKEILY,
+    PYÖRÄILY,
+    UIMINEN,
     TENNIS,
-    GYM,
-    MARTIAL_ARTS
+    SALI,
+    KAMPPAILULAJIT
 }
