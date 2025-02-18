@@ -61,6 +61,8 @@ public class Seeder {
         user4.addScienceInterest(Science.CHEMISTRY);
         user4.addSportsInterest(Sports.TENNIS);
 
+        User admin = new User("admin", "admin", "admin@admin.com", "admin", "1234567890", new Date());
+
         Guest guest1 = new Guest("1231321312312", new Date());
         guestController.registerGuest(guest1);
 
@@ -68,6 +70,7 @@ public class Seeder {
         userController.registerUser(user2);
         userController.registerUser(user3);
         userController.registerUser(user4);
+        userController.registerUser(admin);
     }
 
 }
