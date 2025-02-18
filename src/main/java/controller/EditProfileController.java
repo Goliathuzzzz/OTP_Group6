@@ -5,9 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.image.ImageView;
-import model.User;
+import javafx.scene.input.MouseEvent;
 
 public class EditProfileController extends BaseController {
 
@@ -29,14 +28,19 @@ public class EditProfileController extends BaseController {
             nameField.setText(guiContext.getUserName());
             emailField.setText(guiContext.getUserEmail());
             phoneField.setText(guiContext.getUserPhoneNumber());
+        } else {
+            showAlert(Alert.AlertType.ERROR, "virhe", "käyttäjätietoja ei löydy");
+            System.err.println("ERROR: No logged in user data found");
         }
     }
 
     private void saveChanges() {
-        guiContext.setUserName(nameField.getText());
-        guiContext.setUserEmail(emailField.getText());
-        guiContext.setUserPhoneNumber(phoneField.getText());
-        userController.updateUser(guiContext.getUser());
+        if (guiContext.isUser()) {
+            guiContext.setUserName(nameField.getText());
+            guiContext.setUserEmail(emailField.getText());
+            guiContext.setUserPhoneNumber(phoneField.getText());
+            userController.updateUser(guiContext.getUser());
+        }
     }
 
     @FXML
