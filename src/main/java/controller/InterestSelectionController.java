@@ -114,7 +114,8 @@ public class InterestSelectionController extends BaseController {
         radioButton.setLayoutY(21);
         radioButton.getStyleClass().add("radio");
 
-        Label label = new Label(interest.toString());
+        String labelName = interest.toString().replaceAll("_", " ");
+        Label label = new Label(labelName.toLowerCase());
         label.setLayoutX(80);
         label.setLayoutY(20);
         label.getStyleClass().add("option-text");
