@@ -13,6 +13,7 @@ public class GUIContext {
     private boolean isUser = false;
     private Guest guest;
     private boolean isGuest = false;
+    private boolean isAdmin = false;
     private Session session;
     private Matcher matcher;
     private List<Match> matches;
@@ -37,6 +38,9 @@ public class GUIContext {
     public void setUser(User user) {
         this.user = user;
         isUser = true;
+        if (user.getRole().equals("admin")) {
+            isAdmin = true;
+        }
     }
 
     public User getUser() {
@@ -118,6 +122,10 @@ public class GUIContext {
     public void setGuestPhoneNumber(String pn) {
         guest.setPhoneNumber(pn);
         setPhoneProperty(pn);
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
     }
 
     public String getGuestPhoneNumber() {
