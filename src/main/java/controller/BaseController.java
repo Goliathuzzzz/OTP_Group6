@@ -22,12 +22,21 @@ public abstract class BaseController {
     }
 
     protected void switchScene(String destination, Object data) {
-        if (destination.equals("profile") && !GUIContext.getInstance().isUser() && !GUIContext.getInstance().isGuest()) {
-            System.err.println("ERROR: Cannot access profile without user or guest data");
-            showAlert(Alert.AlertType.ERROR, "virhe", "käyttäjätietoja ei löydy");
-            return;
+        GUIContext context = GUIContext.getInstance();
+
+        if (destination.equals("profile")) {
+            if (!context.isUser() && !context.isGuest()) {
+                System.err.println("ERROR: Cannot access profile without user or guest data");
+                showAlert(Alert.AlertType.ERROR, "virhe", "käyttäjätietoja ei löydy");
+                return;
+            }
+            if (context.isAdmin()) {
+                destination = "admin_profile"; // redirect to admin profile
+            }
         }
+
         String path = "/fxml/" + destination + ".fxml";
+
         try {
             System.out.println("DEBUG: Loading FXML from " + path);
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(path));
