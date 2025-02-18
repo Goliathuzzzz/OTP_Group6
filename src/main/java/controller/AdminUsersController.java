@@ -40,7 +40,7 @@ public class AdminUsersController extends BaseController implements Initializabl
     }
 
     public void handlePreviousClick(MouseEvent mouseEvent) {
-        switchScene("admin_profile");
+        switchScene("profile");
     }
 
     @Override
