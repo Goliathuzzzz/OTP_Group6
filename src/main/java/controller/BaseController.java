@@ -1,5 +1,6 @@
 package controller;
 
+import context.GUIContext;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -21,6 +22,11 @@ public abstract class BaseController {
     }
 
     protected void switchScene(String destination, Object data) {
+        if (destination.equals("profile") && !GUIContext.getInstance().isUser() && !GUIContext.getInstance().isGuest()) {
+            System.err.println("ERROR: Cannot access profile without user or guest data");
+            showAlert(Alert.AlertType.ERROR, "virhe", "käyttäjätietoja ei löydy");
+            return;
+        }
         String path = "/fxml/" + destination + ".fxml";
         try {
             System.out.println("DEBUG: Loading FXML from " + path);
