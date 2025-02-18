@@ -32,6 +32,15 @@ public class ProfileController extends BaseController {
             nameLabel.textProperty().bind(guiContext.getUserNameProperty());
             emailLabel.textProperty().bind(guiContext.getEmailProperty());
             phoneLabel.textProperty().bind(guiContext.getPhoneProperty());
+        } else if (guiContext.isGuest()) {
+            guiContext.setPhoneProperty(guiContext.getGuestPhoneNumber());
+            phoneLabel.textProperty().bind(guiContext.getPhoneProperty());
+            nameLabel.setText("vieras");
+            emailLabel.setVisible(false); // figure a way to remove the empty space, this only hides the text
+            editButton.setVisible(false);
+        } else {
+            showAlert(Alert.AlertType.ERROR, "virhe", "käyttäjätietoja ei löydy");
+            System.err.println("ERROR: No user or guest data found");
         }
     }
 
@@ -53,7 +62,6 @@ public class ProfileController extends BaseController {
 
     @FXML
     private void handleEditClick(MouseEvent event) {
-        //showAlert(Alert.AlertType.INFORMATION, "muokkaus", "siirrytään muokkaukseen");
         switchScene("edit_profile");
     }
 }
