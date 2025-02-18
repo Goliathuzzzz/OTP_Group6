@@ -1,5 +1,6 @@
 package controller;
 
+import context.GUIContext;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -55,7 +56,9 @@ public class RegistrationController extends BaseController {
             return;
         }
         //showAlert(Alert.AlertType.INFORMATION, "onnistunut", "tili luotu onnistuneesti!");
-        uController.registerUser(new User("korvaa tää oikeel usernamel", password, email, "ei oo admin tää kaveri", phone, new Date()));
+        User user = new User("käyttäjänimi", password, email, "none", phone, new Date());
+        uController.registerUser(user);
+        GUIContext.getInstance().setUser(user);
         switchScene("begin_session");
     }
 
