@@ -34,15 +34,15 @@
     </Pane>
     <Pane layoutY="765.0" prefHeight="87.0" prefWidth="393.0" styleClass="bottom-nav">
         <ImageView fx:id="homeIcon" fitHeight="45.0" fitWidth="42.0" layoutX="65.0" layoutY="23.0" preserveRatio="true"
-                   onMouseClicked="#handleHomeClick">
+                   onMouseClicked="#handleHomeClick" pickOnBounds="true">
             <Image url="@/images/home_icon.png"/>
         </ImageView>
         <ImageView fx:id="profileIcon" fitHeight="45.0" fitWidth="42.0" layoutX="182.0" layoutY="23.0"
-                   preserveRatio="true" onMouseClicked="#handleProfileClick">
+                   preserveRatio="true" onMouseClicked="#handleProfileClick" pickOnBounds="true">
             <Image url="@/images/profile_icon.png"/>
         </ImageView>
         <ImageView fx:id="backIcon" fitHeight="45.0" fitWidth="42.0" layoutX="294.0" layoutY="23.0" preserveRatio="true"
-                   onMouseClicked="#handleBackClick">
+                   onMouseClicked="#handleBackClick" pickOnBounds="true">
             <Image url="@/images/back_icon.png"/>
         </ImageView>
     </Pane>
