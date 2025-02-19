@@ -1,6 +1,7 @@
 package util;
 
 import controller.GuestController;
+import controller.MatchController;
 import controller.UserController;
 import model.Guest;
 import model.User;
@@ -15,10 +16,12 @@ public class Seeder {
     public static void main(String[] args) {
         UserController userController = new UserController();
         GuestController guestController = new GuestController();
+        MatchController matchController = new MatchController();
         userController.deleteAll();
         guestController.deleteAll();
+        matchController.deleteAll();
 
-        User user1 = new User("Alice", "password1", "alice@example.com", "dummy", "1234567890",new Date());
+        User user1 = new User("alice", "password1", "alice@example.com", "dummy", "1234567890",new Date());
         user1.addAnimalInterest(Animal.HEVONEN);
         user1.addAnimalInterest(Animal.KOIRA);
         user1.addAnimalInterest(Animal.KISSA);
@@ -33,7 +36,7 @@ public class Seeder {
         user1.addScienceInterest(Science.BIOLOGIA);
 
 
-        User user2 = new User("Bob", "password2", "bob@example.com", "dummy", "0987654321",new Date());
+        User user2 = new User("bob", "password2", "bob@example.com", "dummy", "0987654321",new Date());
         user2.addAnimalInterest(Animal.HIIRI);
         user2.addFoodInterest(Food.KAIKKI_MENEE);
         user2.addHobbiesInterest(Hobby.INVESTOINTI);
@@ -43,7 +46,7 @@ public class Seeder {
         user2.addSportsInterest(Sports.KAMPPAILULAJIT);
 
 
-        User user3 = new User("Charlie", "password3", "charlie@example.com", "dummy", "1122334455", new Date());
+        User user3 = new User("charlie", "password3", "charlie@example.com", "dummy", "1122334455", new Date());
         user3.addAnimalInterest(Animal.KOIRA);
         user3.addFoodInterest(Food.VEGAANI);
         user3.addHobbiesInterest(Hobby.TÄHTIENTARKKAILU);
@@ -53,7 +56,7 @@ public class Seeder {
         user3.addSportsInterest(Sports.PYÖRÄILY);
         user3.addSportsInterest(Sports.LENKKEILY);
 
-        User user4 = new User("Agatha", "password4", "agatha@example.com", "dummy", "23232323211", new Date());
+        User user4 = new User("agatha", "password4", "agatha@example.com", "dummy", "23232323211", new Date());
         user4.addAnimalInterest(Animal.KISSA);
         user4.addFoodInterest(Food.KAIKKI_MENEE);
         user4.addHobbiesInterest(Hobby.AKTIVISMI);
@@ -71,6 +74,11 @@ public class Seeder {
         userController.registerUser(user3);
         userController.registerUser(user4);
         userController.registerUser(admin);
+
+        matchController.matchParticipants(user1, user2, 0.8);
+        matchController.matchParticipants(user1, user3, 0.6);
+        matchController.matchParticipants(user1, user4, 0.7);
+        matchController.matchParticipants(user2, user3, 0.9);
     }
 
 }
