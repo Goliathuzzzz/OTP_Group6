@@ -151,4 +151,20 @@ public class GUIContext {
     public void setMatches(List<Match> matches) {
         this.matches = matches;
     }
+
+    public void logout() {
+        user = null;
+        guest = null;
+        session = null;
+        matcher = null;
+        matches = null;
+
+        isUser = false;
+        isGuest = false;
+        isAdmin = false;
+
+        nameProperty.set("");
+        emailProperty.set("");
+        phoneProperty.set("");
+    }
 }
