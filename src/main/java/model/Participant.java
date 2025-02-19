@@ -51,6 +51,11 @@ public abstract class Participant {
         return id;
     }
 
+    // for admin match display
+    public String getDisplayName() {
+        return "vieras" + id;
+    }
+
     public String getPhoneNumber() {
         return phoneNumber;
     }

@@ -39,6 +39,11 @@ public class User extends Participant{
         return userName;
     }
 
+    @Override
+    public String getDisplayName() {
+        return getUserName();
+    }
+
     public void setUserName(String userName) {
         this.userName = userName;
     }
