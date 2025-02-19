@@ -12,6 +12,8 @@ public class GUIContext {
     private User user;
     private boolean isUser = false;
     private Guest guest;
+    private boolean isGuest = false;
+    private boolean isAdmin = false;
     private Session session;
     private Matcher matcher;
     private List<Match> matches;
@@ -36,6 +38,9 @@ public class GUIContext {
     public void setUser(User user) {
         this.user = user;
         isUser = true;
+        if (user.getRole().equals("admin")) {
+            isAdmin = true;
+        }
     }
 
     public User getUser() {
@@ -101,6 +106,32 @@ public class GUIContext {
         this.session = session;
     }
 
+    public void setGuest(Guest guest) {
+        this.guest = guest;
+        isGuest = true;
+    }
+
+    public Guest getGuest() {
+        return guest;
+    }
+
+    public boolean isGuest() {
+        return isGuest;
+    }
+
+    public void setGuestPhoneNumber(String pn) {
+        guest.setPhoneNumber(pn);
+        setPhoneProperty(pn);
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public String getGuestPhoneNumber() {
+        return guest.getPhoneNumber();
+    }
+
     public Session getSession() {
         return session;
     }
@@ -111,14 +142,6 @@ public class GUIContext {
 
     public void setMatcher(Matcher matcher) {
         this.matcher = matcher;
-    }
-
-    public Guest getGuest() {
-        return guest;
-    }
-
-    public void setGuest(Guest guest) {
-        this.guest = guest;
     }
 
     public List<Match> getMatches() {

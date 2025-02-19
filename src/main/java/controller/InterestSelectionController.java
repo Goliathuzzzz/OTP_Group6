@@ -102,12 +102,11 @@ public class InterestSelectionController extends BaseController {
 
     private Pane createOptionPane(Category interest) {
         Pane optionPane = new Pane();
-        optionPane.setPrefSize(315, 71);
+        optionPane.setPrefSize(290, 71);
         optionPane.getStyleClass().add("option-btn");
 
-        Rectangle background = new Rectangle(315, 71);
-        background.setArcHeight(28);
-        background.setArcWidth(28);
+        Pane background = new Pane();
+        background.setPrefSize(290, 71);
         background.getStyleClass().add("option-bg");
 
         RadioButton radioButton = new RadioButton();
@@ -115,7 +114,8 @@ public class InterestSelectionController extends BaseController {
         radioButton.setLayoutY(21);
         radioButton.getStyleClass().add("radio");
 
-        Label label = new Label(interest.toString());
+        String labelName = interest.toString().replaceAll("_", " ");
+        Label label = new Label(labelName.toLowerCase());
         label.setLayoutX(80);
         label.setLayoutY(20);
         label.getStyleClass().add("option-text");

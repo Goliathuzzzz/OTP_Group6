@@ -1,12 +1,11 @@
 package controller;
 
+import context.GUIContext;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
 import model.User;
 
 import java.util.Date;
@@ -54,8 +53,10 @@ public class RegistrationController extends BaseController {
             showAlert(Alert.AlertType.ERROR, "virhe", "sähköpostiosoite on jo käytössä!");
             return;
         }
-        //showAlert(Alert.AlertType.INFORMATION, "onnistunut", "tili luotu onnistuneesti!");
-        uController.registerUser(new User("korvaa tää oikeel usernamel", password, email, "ei oo admin tää kaveri", phone, new Date()));
+        String userName = email.substring(0, email.indexOf("@")).replace(".", " "); // can be improved
+        User user = new User(userName, password, email, "none", phone, new Date());
+        uController.registerUser(user);
+        GUIContext.getInstance().setUser(user);
         switchScene("begin_session");
     }
 

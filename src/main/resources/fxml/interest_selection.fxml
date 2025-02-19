@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.geometry.Insets?>
 <AnchorPane prefHeight="852" prefWidth="393" styleClass="edit-profile" stylesheets="@/css/animal.css"
             xmlns="http://javafx.com/javafx/22"
             xmlns:fx="http://javafx.com/fxml/1"
@@ -26,8 +27,12 @@
 
     <!-- dynamic selection container -->
     <ScrollPane fx:id="scrollContainer" layoutX="38" layoutY="190" prefWidth="315" prefHeight="430"
-                fitToWidth="true" fitToHeight="false" styleClass="scroll-pane">
-        <VBox fx:id="optionsContainer" spacing="10" prefWidth="300"/>
+                fitToWidth="true" styleClass="scroll-pane">
+        <VBox fx:id="optionsContainer" spacing="10" prefWidth="300" >
+        <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+        </padding>
+        </VBox>
     </ScrollPane>
 
 

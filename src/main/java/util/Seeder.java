@@ -19,47 +19,49 @@ public class Seeder {
         guestController.deleteAll();
 
         User user1 = new User("Alice", "password1", "alice@example.com", "dummy", "1234567890",new Date());
-        user1.addAnimalInterest(Animal.HORSE);
-        user1.addAnimalInterest(Animal.DOG);
-        user1.addAnimalInterest(Animal.CAT);
-        user1.addFoodInterest(Food.VEGETARIAN);
-        user1.addFoodInterest(Food.VEGAN);
-        user1.addHobbiesInterest(Hobby.ACTIVISM);
-        user1.addHobbiesInterest(Hobby.SHOWS);
-        user1.addHobbiesInterest(Hobby.PUBLIC_SPEAKING);
-        user1.addSportsInterest(Sports.RUNNING);
-        user1.addSportsInterest(Sports.SWIMMING);
-        user1.addScienceInterest(Science.ASTRONOMY);
-        user1.addScienceInterest(Science.BIOLOGY);
+        user1.addAnimalInterest(Animal.HEVONEN);
+        user1.addAnimalInterest(Animal.KOIRA);
+        user1.addAnimalInterest(Animal.KISSA);
+        user1.addFoodInterest(Food.VEGETARISTI);
+        user1.addFoodInterest(Food.VEGAANI);
+        user1.addHobbiesInterest(Hobby.AKTIVISMI);
+        user1.addHobbiesInterest(Hobby.TV_SARJAT);
+        user1.addHobbiesInterest(Hobby.JULKINEN_PUHUMINEN);
+        user1.addSportsInterest(Sports.LENKKEILY);
+        user1.addSportsInterest(Sports.UIMINEN);
+        user1.addScienceInterest(Science.TÄHTITIEDE);
+        user1.addScienceInterest(Science.BIOLOGIA);
 
 
         User user2 = new User("Bob", "password2", "bob@example.com", "dummy", "0987654321",new Date());
-        user2.addAnimalInterest(Animal.MOUSE);
-        user2.addFoodInterest(Food.ANYTHING_GOES);
-        user2.addHobbiesInterest(Hobby.INVESTING);
-        user2.addHobbiesInterest(Hobby.VIDEO_GAMES);
-        user2.addScienceInterest(Science.MATHEMATICS);
-        user2.addScienceInterest(Science.PROGRAMMING);
-        user2.addSportsInterest(Sports.MARTIAL_ARTS);
+        user2.addAnimalInterest(Animal.HIIRI);
+        user2.addFoodInterest(Food.KAIKKI_MENEE);
+        user2.addHobbiesInterest(Hobby.INVESTOINTI);
+        user2.addHobbiesInterest(Hobby.VIDEOPELIT);
+        user2.addScienceInterest(Science.MATEMATIIKKA);
+        user2.addScienceInterest(Science.OHJELMOINTI);
+        user2.addSportsInterest(Sports.KAMPPAILULAJIT);
 
 
         User user3 = new User("Charlie", "password3", "charlie@example.com", "dummy", "1122334455", new Date());
-        user3.addAnimalInterest(Animal.DOG);
-        user3.addFoodInterest(Food.VEGAN);
-        user3.addHobbiesInterest(Hobby.STARGAZING);
-        user3.addHobbiesInterest(Hobby.MEDITATION);
-        user3.addScienceInterest(Science.ASTRONOMY);
-        user3.addScienceInterest(Science.PHYSICS);
-        user3.addSportsInterest(Sports.CYCLING);
-        user3.addSportsInterest(Sports.RUNNING);
+        user3.addAnimalInterest(Animal.KOIRA);
+        user3.addFoodInterest(Food.VEGAANI);
+        user3.addHobbiesInterest(Hobby.TÄHTIENTARKKAILU);
+        user3.addHobbiesInterest(Hobby.MEDITOINTI);
+        user3.addScienceInterest(Science.TÄHTITIEDE);
+        user3.addScienceInterest(Science.FYSIIKKA);
+        user3.addSportsInterest(Sports.PYÖRÄILY);
+        user3.addSportsInterest(Sports.LENKKEILY);
 
         User user4 = new User("Agatha", "password4", "agatha@example.com", "dummy", "23232323211", new Date());
-        user4.addAnimalInterest(Animal.CAT);
-        user4.addFoodInterest(Food.ANYTHING_GOES);
-        user4.addHobbiesInterest(Hobby.ACTING);
-        user4.addHobbiesInterest(Hobby.MEDITATION);
-        user4.addScienceInterest(Science.CHEMISTRY);
+        user4.addAnimalInterest(Animal.KISSA);
+        user4.addFoodInterest(Food.KAIKKI_MENEE);
+        user4.addHobbiesInterest(Hobby.AKTIVISMI);
+        user4.addHobbiesInterest(Hobby.MEDITOINTI);
+        user4.addScienceInterest(Science.KEMIA);
         user4.addSportsInterest(Sports.TENNIS);
+
+        User admin = new User("admin", "admin", "admin@admin.com", "admin", "1234567890", new Date());
 
         Guest guest1 = new Guest("1231321312312", new Date());
         guestController.registerGuest(guest1);
@@ -68,6 +70,7 @@ public class Seeder {
         userController.registerUser(user2);
         userController.registerUser(user3);
         userController.registerUser(user4);
+        userController.registerUser(admin);
     }
 
 }

@@ -31,11 +31,11 @@
     -fx-background-color: transparent; /* Background handled by option-bg */
 }
 
-/* bg for otpion buttons */
+/* bg for option buttons */
 .option-bg {
-    -fx-fill: #ECCEDA;
-    -fx-arc-height: 28px;
-    -fx-arc-width: 28px;
+    -fx-background-color: #ECCEDA;
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
 }
 
 /* radio buttons */
@@ -43,8 +43,8 @@
     -fx-pref-width: 28px;
     -fx-pref-height: 28px;
     -fx-background-color: #FFFFFF;
-    -fx-border-color: #4D4D4D;
-    -fx-border-width: 2px;
+    /* -fx-border-color: #4D4D4D;
+    -fx-border-width: 2px; */
     -fx-background-radius: 50%;
     -fx-border-radius: 50%; /* ensures the border is also round */
     -fx-alignment: center;

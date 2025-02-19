@@ -33,6 +33,13 @@
     -fx-font-size: 22px;
 }
 
+.admin-text {
+    -fx-font-family: "Hoefler Text";
+    -fx-font-style: italic;
+    -fx-font-weight: bold;
+    -fx-font-size: 22px;
+}
+
 .vector {
     -fx-border-color: #000000;
     -fx-border-width: 2;
@@ -69,6 +76,29 @@
 }
 
 .edit-button:hover {
+    -fx-cursor: hand;
+    -fx-opacity: 1;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 6, 0, 0, 3);
+}
+
+.admin-button {
+    -fx-position: absolute;
+    -fx-pref-width: 150px;
+    -fx-pref-height: 71px;
+    -fx-background-color: #ECCEDA;
+    -fx-background-radius: 28px;
+    -fx-font-size: 22px;
+    -fx-text-fill: black;
+    -fx-border-radius: 28px;
+    -fx-border-color: transparent;
+    -fx-font-family: "Hoefler Text";
+    -fx-font-style: italic;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 4, 0, 0, 4);
+}
+
+.admin-button:hover {
     -fx-cursor: hand;
     -fx-opacity: 1;
     -fx-scale-x: 1.1;

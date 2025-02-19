@@ -29,25 +29,25 @@
     <Pane layoutX="38" layoutY="190" prefHeight="335" prefWidth="315">
 
         <Pane prefHeight="71" prefWidth="315" styleClass="option-btn">
-            <Rectangle arcHeight="28" arcWidth="28" height="71" width="315" styleClass="option-bg"/>
+            <Rectangle arcHeight="28" arcWidth="28" height="71" width="290" styleClass="option-bg"/>
             <RadioButton fx:id="koiratRadio" layoutX="24" layoutY="21" styleClass="radio"/>
             <Label layoutX="80" layoutY="20" text="koirat" styleClass="option-text"/>
         </Pane>
 
         <Pane layoutY="88" prefHeight="71" prefWidth="315" styleClass="option-btn">
-            <Rectangle arcHeight="28" arcWidth="28" height="71" width="315" styleClass="option-bg"/>
+            <Rectangle arcHeight="28" arcWidth="28" height="71" width="290" styleClass="option-bg"/>
             <RadioButton fx:id="kissatRadio" layoutX="24" layoutY="21" styleClass="radio"/>
             <Label layoutX="80" layoutY="20" text="kissat" styleClass="option-text"/>
         </Pane>
 
         <Pane layoutY="176" prefHeight="71" prefWidth="315" styleClass="option-btn">
-            <Rectangle arcHeight="28" arcWidth="28" height="71" width="315" styleClass="option-bg"/>
+            <Rectangle arcHeight="28" arcWidth="28" height="71" width="290" styleClass="option-bg"/>
             <RadioButton fx:id="hiiretRadio" layoutX="24" layoutY="21" styleClass="radio"/>
             <Label layoutX="80" layoutY="20" text="hiiret" styleClass="option-text"/>
         </Pane>
 
         <Pane layoutY="264" prefHeight="71" prefWidth="315" styleClass="option-btn">
-            <Rectangle arcHeight="28" arcWidth="28" height="71" width="315" styleClass="option-bg"/>
+            <Rectangle arcHeight="28" arcWidth="28" height="71" width="290" styleClass="option-bg"/>
             <RadioButton fx:id="hevosetRadio" layoutX="24" layoutY="21" styleClass="radio"/>
             <Label layoutX="80" layoutY="20" text="hevoset" styleClass="option-text"/>
         </Pane>

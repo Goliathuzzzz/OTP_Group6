@@ -1,5 +1,6 @@
 package controller;
 
+import context.GUIContext;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -21,13 +22,35 @@ public abstract class BaseController {
     }
 
     protected void switchScene(String destination, Object data) {
+        GUIContext context = GUIContext.getInstance();
+
+        if (destination.equals("profile")) {
+            if (!context.isUser() && !context.isGuest()) {
+                System.err.println("ERROR: Cannot access profile without user or guest data");
+                showAlert(Alert.AlertType.ERROR, "virhe", "käyttäjätietoja ei löydy");
+                return;
+            }
+            if (context.isAdmin()) {
+                destination = "admin_profile"; // redirect to admin profile
+            }
+        }
+
         String path = "/fxml/" + destination + ".fxml";
+
         try {
+            System.out.println("DEBUG: Loading FXML from " + path);
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(path));
             Parent root = fxmlLoader.load();
 
             BaseController controller = fxmlLoader.getController();
-            controller.setStage(stage);
+
+            if (controller != null) {
+                System.out.println("DEBUG: Controller loaded successfully for " + destination);
+                controller.setStage(this.stage);
+                System.out.println("DEBUG: Stage set in " + destination + " controller.");
+            } else {
+                System.err.println("DEBUG: Controller is null for " + destination);
+            }
 
             //pass the data only if applicable (InterestSelectionController)
             if (data != null && controller instanceof InterestSelectionController interestController) {
@@ -42,8 +65,14 @@ public abstract class BaseController {
                     }
                 }
             }
-            stage.setScene(new Scene(root));
-            stage.show();
+
+            if (this.stage != null) {
+                this.stage.setScene(new Scene(root));
+                this.stage.show();
+            } else {
+                System.err.println("DEBUG: Stage is null in BaseController.switchScene");
+            }
+
         } catch (IOException e) {
             System.err.println("Error: " + e.getMessage());
             showAlert(Alert.AlertType.ERROR, "Error", "Failed to switch scene");
