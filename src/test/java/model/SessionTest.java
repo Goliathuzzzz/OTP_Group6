@@ -31,29 +31,29 @@ class SessionTest {
 
     @Test
     void addParticipantInterest() {
-        session.addParticipantInterest(Animal.DOG);
-        interests.add(Animal.DOG);
-        session.addParticipantInterest(Hobby.INVESTING);
-        interests.add(Hobby.INVESTING);
-        session.addParticipantInterest(Science.ASTRONOMY);
-        interests.add(Science.ASTRONOMY);
-        session.addParticipantInterest(Sports.SWIMMING);
-        interests.add(Sports.SWIMMING);
-        session.addParticipantInterest(Food.ANYTHING_GOES);
-        interests.add(Food.ANYTHING_GOES);
+        session.addParticipantInterest(Animal.KISSA);
+        interests.add(Animal.KISSA);
+        session.addParticipantInterest(Hobby.INVESTOINTI);
+        interests.add(Hobby.INVESTOINTI);
+        session.addParticipantInterest(Science.TÄHTITIEDE);
+        interests.add(Science.TÄHTITIEDE);
+        session.addParticipantInterest(Sports.UIMINEN);
+        interests.add(Sports.UIMINEN);
+        session.addParticipantInterest(Food.KAIKKI_MENEE);
+        interests.add(Food.KAIKKI_MENEE);
         assertEquals(interests, session.getParticipantInterests());
     }
 
     @Test
     void removeParticipantInterest() {
-        session.addParticipantInterest(Animal.CAT);
-        session.addParticipantInterest(Animal.HORSE);
-        session.addParticipantInterest(Hobby.SHOWS);
+        session.addParticipantInterest(Animal.KISSA);
+        session.addParticipantInterest(Animal.HEVONEN);
+        session.addParticipantInterest(Hobby.TV_SARJAT);
         assertEquals(3, session.getParticipantInterests().size());
-        session.removeParticipantInterest(Animal.CAT);
+        session.removeParticipantInterest(Animal.KISSA);
         assertEquals(2, session.getParticipantInterests().size());
-        assertFalse(session.getParticipantInterests().contains(Animal.CAT));
-        session.removeParticipantInterest(Animal.DOG);
+        assertFalse(session.getParticipantInterests().contains(Animal.KISSA));
+        session.removeParticipantInterest(Animal.KOIRA);
         assertEquals(2, session.getParticipantInterests().size());
     }
 
