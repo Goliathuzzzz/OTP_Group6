@@ -4,14 +4,19 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import model.Participant;
 
 public class PairItemController {
     @FXML private Label nameLabel1;
     @FXML private Label nameLabel2;
+    private Participant part1;
+    private Participant part2;
 
-    public void setNames(String name1, String name2) {
-        nameLabel1.setText(name1);
-        nameLabel2.setText(name2);
+    public void setParticipants(Participant part1, Participant part2) {
+        this.part1 = part1;
+        this.part2 = part2;
+        nameLabel1.setText(part1.getDisplayName());
+        nameLabel2.setText(part2.getDisplayName());
     }
 
     @FXML
@@ -19,7 +24,7 @@ public class PairItemController {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("nimen klikkaus");
         alert.setHeaderText(null);
-        alert.setContentText("klikkasit nimeä " + nameLabel1.getText());
+        alert.setContentText("klikkasit nimeä " + part1.getDisplayName());
         alert.showAndWait();
     }
 
@@ -28,7 +33,7 @@ public class PairItemController {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("nimen klikkaus");
         alert.setHeaderText(null);
-        alert.setContentText("klikkasit nimeä " + nameLabel2.getText());
+        alert.setContentText("klikkasit nimeä " + part2.getDisplayName());
         alert.showAndWait();
     }
 
@@ -37,7 +42,7 @@ public class PairItemController {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("parihistorian nouto");
         alert.setHeaderText(null);
-        alert.setContentText("noudetaan parihistoriaa: " + nameLabel1.getText() + " x " + nameLabel2.getText());
+        alert.setContentText("noudetaan parihistoriaa: " + part1.getDisplayName() + " x " + part2.getDisplayName());
         alert.showAndWait();
     }
 }
