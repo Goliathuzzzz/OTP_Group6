@@ -4,7 +4,9 @@ import jakarta.persistence.EntityManager;
 import model.Match;
 import model.Participant;
 import service.MatchService;
+import javafx.util.Pair;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MatchController {
@@ -38,6 +40,15 @@ public class MatchController {
         return matches;
     }
 
+    public List<Pair<Participant, Participant>> fetchPairsFromDatabase() {
+        List<Match> matches = displayAllMatches();
+        List<Pair<Participant, Participant>> pairs = new ArrayList<>();
+        for (Match match : matches) {
+            pairs.add(new Pair<>(match.getParticipant1(), match.getParticipant2()));
+        }
+        return pairs;
+    }
+
     public List<Match> displayAllByParticipant(Participant participant) {
         List<Match> matches = matchService.findByParticipant(participant);
         for (Match m: matches) {
@@ -56,7 +67,7 @@ public class MatchController {
         System.out.println("Match deleted successfully");
     }
 
-    public void deleteAllMatches() {
+    public void deleteAll() {
         matchService.deleteAllMatches();
         System.out.println("All matches deleted");
     }

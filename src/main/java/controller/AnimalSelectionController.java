@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
+import util.SceneNames;
 
 public class AnimalSelectionController extends BaseController {
 
@@ -20,12 +21,12 @@ public class AnimalSelectionController extends BaseController {
 
     @FXML
     private void handleHomeClick(MouseEvent event) {
-        switchScene("begin_session");
+        switchScene(SceneNames.BEGIN_SESSION);
     }
 
     @FXML
     private void handleProfileClick(MouseEvent event) {
-        switchScene("profile");
+        switchScene(SceneNames.PROFILE);
     }
 
     // kirjaudu ulös

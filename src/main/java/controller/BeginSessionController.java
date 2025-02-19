@@ -3,6 +3,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import util.SceneNames;
 
 public class BeginSessionController extends BaseController {
 
@@ -11,26 +12,22 @@ public class BeginSessionController extends BaseController {
 
     @FXML
     private void handleBeginSessionClick(MouseEvent event) {
-        // showAlert(Alert.AlertType.INFORMATION, "aloitetaan", "siirrytään valintoihin");
-        switchScene("session");
+        switchScene(SceneNames.SESSION);
     }
 
     @FXML
     private void handleHomeClick(MouseEvent event) {
-        //showAlert( Alert.AlertType.INFORMATION, "kotiin","siirrytään etusivulle");
-        switchScene("begin_session");
+        switchScene(SceneNames.BEGIN_SESSION);
     }
 
     @FXML
     private void handleProfileClick(MouseEvent event) {
-        //showAlert( Alert.AlertType.INFORMATION, "profiiliin","siirrytään profiiliin");
-        switchScene("profile");
+        switchScene(SceneNames.PROFILE);
     }
 
     @FXML
     private void handleBackClick(MouseEvent event) {
-        //showAlert(Alert.AlertType.INFORMATION, "takaisin", "siirrytään kirjautumiseen");
-        switchScene("options");
+        switchScene(SceneNames.OPTIONS);
     }
 }
 

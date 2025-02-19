@@ -9,6 +9,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
 import model.User;
+import util.SceneNames;
 
 public class AdminProfileController extends BaseController {
 
@@ -37,34 +38,32 @@ public class AdminProfileController extends BaseController {
 
     @FXML
     private void handleHomeClick(MouseEvent event) {
-        //showAlert( Alert.AlertType.INFORMATION, "kotiin","siirrytään etusivulle");
         switchScene("begin_session");
     }
 
     @FXML
     private void handleProfileClick(MouseEvent event) {
-        switchScene("profile");
+        switchScene(SceneNames.PROFILE);
     }
 
     @FXML
     private void handleBackClick(MouseEvent event) {
-        switchScene("options");
+        switchScene(SceneNames.OPTIONS);
     }
 
     @FXML
     private void handleUsersClick(MouseEvent event) {
-        switchScene("admin_users");
+        switchScene(SceneNames.ADMIN_USERS);
     }
 
     @FXML
     private void handlePairsClick(MouseEvent event) {
-        switchScene("admin_home");
+        switchScene(SceneNames.ADMIN_HOME);
     }
 
     @FXML
     private void handleEditClick(MouseEvent event) {
-        //showAlert(Alert.AlertType.INFORMATION, "muokkaus", "siirrytään muokkaukseen");
-        switchScene("edit_profile");
+        switchScene(SceneNames.EDIT_PROFILE);
     }
 }
 

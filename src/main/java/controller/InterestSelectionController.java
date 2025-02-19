@@ -13,6 +13,7 @@ import model.Session;
 import model.categories.Animal;
 import model.categories.Category;
 import org.checkerframework.checker.units.qual.C;
+import util.SceneNames;
 
 import java.util.*;
 
@@ -57,22 +58,22 @@ public class InterestSelectionController extends BaseController {
 
     @FXML
     private void handleHomeClick(MouseEvent event) {
-        switchScene("begin_session");
+        switchScene(SceneNames.BEGIN_SESSION);
     }
 
     @FXML
     private void handleProfileClick(MouseEvent event) {
-        switchScene("profile");
+        switchScene(SceneNames.PROFILE);
     }
 
     @FXML
     private void handleBackClick(MouseEvent event) {
-        switchScene("options");
+        switchScene(SceneNames.OPTIONS);
     }
 
     @FXML
     private void handleBack() {
-        switchScene("session");
+        switchScene(SceneNames.SESSION);
     }
 
     @FXML
@@ -85,7 +86,7 @@ public class InterestSelectionController extends BaseController {
     private void loadNextCategory() {
         int currentIndex = CATEGORY_ORDER.indexOf(currentCategory);
         if (currentIndex == -1 || currentIndex + 1 >= CATEGORY_ORDER.size()) {
-            switchScene("session");
+            switchScene(SceneNames.SESSION);
         } else {
             loadInterests(CATEGORY_ORDER.get(currentIndex + 1));
         }

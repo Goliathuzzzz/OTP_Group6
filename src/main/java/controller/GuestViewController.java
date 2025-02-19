@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import model.Guest;
+import util.SceneNames;
 
 import java.util.Date;
 
@@ -29,27 +30,33 @@ public class GuestViewController extends BaseController {
         String phoneNumber = phoneField.getText();
         if (phoneNumber.isEmpty()) {
             showAlert( Alert.AlertType.INFORMATION, "syötä","syötä puhelinnumero.");
+        }
+        else if (!isValidPhone(phoneNumber)) {
+            showAlert( Alert.AlertType.INFORMATION, "virhe", "puhelinnumero ei ole kelvollinen.");
         } else {
             Guest guest = new Guest(phoneNumber, new Date());
             gController.registerGuest(guest);
             GUIContext.getInstance().setGuest(guest);
-            switchScene("begin_session");
+            switchScene(SceneNames.BEGIN_SESSION);
         }
     }
 
     @FXML
     private void handleHomeClick(MouseEvent event) {
-        //showAlert( Alert.AlertType.INFORMATION, "kotiin","siirrytään etusivulle");
-        switchScene("begin_session");
+        switchScene(SceneNames.BEGIN_SESSION);
     }
 
     @FXML
     private void handleProfileClick(MouseEvent event) {
-        switchScene("profile");
+        switchScene(SceneNames.PROFILE);
     }
 
     @FXML
     private void handleBackClick(MouseEvent event) {
-        switchScene("options");
+        switchScene(SceneNames.OPTIONS);
+    }
+
+    private boolean isValidPhone(String phone) {
+        return phone.matches("^[0-9]{10,15}$");
     }
 }
