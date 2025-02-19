@@ -7,11 +7,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import util.SceneNames;
-
 import java.io.IOException;
 
 // Common methods for all controllers which interact with the GUI
 public abstract class BaseController {
+
+    GuestController guestController = new GuestController();
     protected Stage stage;
 
     public void setStage(Stage stage) {
@@ -26,20 +27,19 @@ public abstract class BaseController {
         GUIContext context = GUIContext.getInstance();
 
         if (destination.equals(SceneNames.PROFILE)) {
-            if (!context.isUser() && !context.isGuest()) {
-                System.err.println("ERROR: Cannot access profile without user or guest data");
-                showAlert(Alert.AlertType.ERROR, "virhe", "käyttäjätietoja ei löydy");
+            destination = handleProfileSwitch(context, destination);
+            if (destination == null) {
                 return;
             }
-            if (context.isAdmin()) {
-                destination = SceneNames.ADMIN_PROFILE; // redirect to admin profile
-            }
         }
-
         if (destination.equals(SceneNames.OPTIONS)) {
-            context.logout();
+            handleOptionsSwitch(context);
         }
 
+        loadFXML(destination, data);
+    }
+
+    private void loadFXML(String destination, Object data) {
         String path = "/fxml/" + destination + ".fxml";
 
         try {
@@ -50,11 +50,9 @@ public abstract class BaseController {
             BaseController controller = fxmlLoader.getController();
 
             if (controller != null) {
-                System.out.println("DEBUG: Controller loaded successfully for " + destination);
                 controller.setStage(this.stage);
-                System.out.println("DEBUG: Stage set in " + destination + " controller.");
             } else {
-                System.err.println("DEBUG: Controller is null for " + destination);
+                logError("Controller is null in BaseController.switchScene");
             }
 
             //pass the data only if applicable (InterestSelectionController)
@@ -75,12 +73,12 @@ public abstract class BaseController {
                 this.stage.setScene(new Scene(root));
                 this.stage.show();
             } else {
-                System.err.println("DEBUG: Stage is null in BaseController.switchScene");
+                logError("Stage is null in BaseController.switchScene");
             }
 
         } catch (IOException e) {
-            System.err.println("Error: " + e.getMessage());
-            showAlert(Alert.AlertType.ERROR, "Error", "Failed to switch scene");
+            logError("Failed to load FXML: " + e.getMessage());
+            showAlert(Alert.AlertType.ERROR, "virhe", "näkymää ei voitu ladata");
         }
     }
 
@@ -90,5 +88,28 @@ public abstract class BaseController {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    private void logError(String message) {
+        System.err.println("ERROR: " + message);
+    }
+
+    private String handleProfileSwitch(GUIContext context, String destination) {
+        if (!context.isUser() && !context.isGuest()) {
+            logError("No user data found in BaseController.switchScene");
+            showAlert(Alert.AlertType.ERROR, "virhe", "käyttäjätietoja ei löydy");
+            return null;
+        }
+        if (context.isAdmin()) {
+            destination = SceneNames.ADMIN_PROFILE; // redirect to admin profile
+        }
+        return destination;
+    }
+
+    private void handleOptionsSwitch(GUIContext context) {
+        if (context.isGuest()) {
+            guestController.deleteGuest(context.getGuest());
+        }
+        context.logout();
     }
 }
