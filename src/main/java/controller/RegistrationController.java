@@ -1,11 +1,14 @@
 package controller;
 
 import context.GUIContext;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import model.User;
 import util.SceneNames;
 
@@ -14,6 +17,19 @@ import java.util.Date;
 public class RegistrationController extends BaseController {
 
     UserController uController = new UserController();
+
+    @FXML
+    private AnchorPane registrationPane;
+
+    @FXML
+    public void initialize() {
+        Platform.runLater(() -> {
+            Stage stage = (Stage) registrationPane.getScene().getWindow();
+            if (stage != null) {
+                stage.setTitle("rekisteröinti");
+            }
+        });
+    }
 
     @FXML
     private TextField emailField, phoneField;
