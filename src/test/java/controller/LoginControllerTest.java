@@ -42,6 +42,7 @@ public class LoginControllerTest extends ApplicationTest {
         assertNotNull(controller, "Controller should be initialized");
     }
 
+    // use seeder if this test fails
     @Test
     void testValidLoginSwitchesScene() {
         clickOn("#emailField").write("alice@example.com");
