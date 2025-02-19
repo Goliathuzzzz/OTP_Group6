@@ -44,8 +44,8 @@ public class LoginControllerTest extends ApplicationTest {
 
     @Test
     void testValidLoginSwitchesScene() {
-        clickOn("#emailField").write("ade@gmail.com");
-        clickOn("#passwordField").write("uwu");
+        clickOn("#emailField").write("alice@example.com");
+        clickOn("#passwordField").write("password1");
         clickOn("#loginButton");
 
         Parent newRoot = stage.getScene().getRoot();
