@@ -30,6 +30,9 @@ public class GuestViewController extends BaseController {
         String phoneNumber = phoneField.getText();
         if (phoneNumber.isEmpty()) {
             showAlert( Alert.AlertType.INFORMATION, "syötä","syötä puhelinnumero.");
+        }
+        else if (!isValidPhone(phoneNumber)) {
+            showAlert( Alert.AlertType.INFORMATION, "virhe", "puhelinnumero ei ole kelvollinen.");
         } else {
             Guest guest = new Guest(phoneNumber, new Date());
             gController.registerGuest(guest);
@@ -51,5 +54,9 @@ public class GuestViewController extends BaseController {
     @FXML
     private void handleBackClick(MouseEvent event) {
         switchScene(SceneNames.OPTIONS);
+    }
+
+    private boolean isValidPhone(String phone) {
+        return phone.matches("^[0-9]{10,15}$");
     }
 }
