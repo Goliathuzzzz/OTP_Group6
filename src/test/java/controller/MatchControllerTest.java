@@ -35,7 +35,7 @@ class MatchControllerTest {
     }
     @BeforeEach
     void setUp() {
-        matchController.deleteAllMatches();
+        matchController.deleteAll();
     }
 
     @Test
@@ -84,7 +84,7 @@ class MatchControllerTest {
     void deleteAllMatches() {
         matchController.matchParticipants(testUser, testUser3, 0.6);
         matchController.matchParticipants(testUser, testUser2, 0.6);
-        matchController.deleteAllMatches();
+        matchController.deleteAll();
         assertEquals(0, matchController.displayAllMatches().size());
     }
 }
