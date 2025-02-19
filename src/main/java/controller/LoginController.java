@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import model.User;
+import util.SceneNames;
 
 public class LoginController extends BaseController {
 
@@ -38,7 +39,7 @@ public class LoginController extends BaseController {
         User user = uController.login(email, password);
         if (user != null) {
             guiContext.setUser(user);
-            switchScene("begin_session");
+            switchScene(SceneNames.BEGIN_SESSION);
         } else {
             showAlert(Alert.AlertType.ERROR, "virhe", "sähköpostiosoite tai salasana on väärä!");
         }
@@ -51,13 +52,7 @@ public class LoginController extends BaseController {
 
     @FXML
     private void handleNewAccount() {
-        //showAlert(Alert.AlertType.INFORMATION, "luo uusi tili", "uuden tilin luominen ei ole vielä käytössä.");
-        switchScene("registration");
-    }
-
-    private boolean authenticateUser(String email, String password) {
-        // lisää oikea käyttäjätunnistus
-        return email.equals("ade@gmail.com") && password.equals("uwu");
+        switchScene(SceneNames.REGISTRATION);
     }
 }
 

@@ -1,6 +1,7 @@
 package controller;
 
 import javafx.fxml.FXML;
+import util.SceneNames;
 
 public class WelcomeController extends BaseController {
 
@@ -11,6 +12,6 @@ public class WelcomeController extends BaseController {
 
     @FXML
     private void handleClick() {
-        switchScene("options");
+        switchScene(SceneNames.OPTIONS);
     }
 }

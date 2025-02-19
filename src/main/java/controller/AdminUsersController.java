@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import model.User;
+import util.SceneNames;
 
 import java.io.IOException;
 import java.net.URL;
@@ -23,24 +24,21 @@ public class AdminUsersController extends BaseController implements Initializabl
 
     @FXML
     private void handleHomeClick(MouseEvent event) {
-        // showAlert(Alert.AlertType.INFORMATION, "kotiin","siirrytään etusivulle");
-        switchScene("begin_session");
+        switchScene(SceneNames.BEGIN_SESSION);
     }
 
     @FXML
     private void handleProfileClick(MouseEvent event) {
-        // showAlert(Alert.AlertType.INFORMATION, "profiiliin","siirrytään profiiliin");
-        switchScene("profile");
+        switchScene(SceneNames.PROFILE);
     }
 
     @FXML
     private void handleBackClick(MouseEvent event) {
-        // showAlert(Alert.AlertType.INFORMATION, "takaisin", "siirrytään kirjautumiseen");
-        switchScene("options");
+        switchScene(SceneNames.OPTIONS);
     }
 
     public void handlePreviousClick(MouseEvent mouseEvent) {
-        switchScene("profile");
+        switchScene(SceneNames.PROFILE);
     }
 
     @Override

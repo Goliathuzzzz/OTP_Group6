@@ -13,6 +13,8 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import util.SceneNames;
+
 import java.io.IOException;
 
 public class SessionController extends BaseController {
@@ -36,14 +38,12 @@ public class SessionController extends BaseController {
 
     @FXML
     private void handleProfileClick(MouseEvent event) {
-        //showAlert(Alert.AlertType.INFORMATION, "profiiliin", "siirrytään profiiliin");
-        switchScene("profile");
+        switchScene(SceneNames.PROFILE);
     }
 
     @FXML
     private void handleBackClick(MouseEvent event) {
-        //showAlert(Alert.AlertType.INFORMATION,"takaisin", "siirrytään kirjautumiseen");
-        switchScene("options");
+        switchScene(SceneNames.OPTIONS);
     }
 
     @FXML

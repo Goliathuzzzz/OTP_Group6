@@ -6,10 +6,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
+import util.SceneNames;
+
 import java.io.IOException;
 
 // Common methods for all controllers which interact with the GUI
-
 public abstract class BaseController {
     protected Stage stage;
 
@@ -24,15 +25,19 @@ public abstract class BaseController {
     protected void switchScene(String destination, Object data) {
         GUIContext context = GUIContext.getInstance();
 
-        if (destination.equals("profile")) {
+        if (destination.equals(SceneNames.PROFILE)) {
             if (!context.isUser() && !context.isGuest()) {
                 System.err.println("ERROR: Cannot access profile without user or guest data");
                 showAlert(Alert.AlertType.ERROR, "virhe", "käyttäjätietoja ei löydy");
                 return;
             }
             if (context.isAdmin()) {
-                destination = "admin_profile"; // redirect to admin profile
+                destination = SceneNames.ADMIN_PROFILE; // redirect to admin profile
             }
+        }
+
+        if (destination.equals(SceneNames.OPTIONS)) {
+            context.logout();
         }
 
         String path = "/fxml/" + destination + ".fxml";

@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import util.SceneNames;
 
 public class EditProfileController extends BaseController {
 
@@ -45,29 +46,28 @@ public class EditProfileController extends BaseController {
 
     @FXML
     private void handlePreviousClick(MouseEvent event) {
-        //showAlert(Alert.AlertType.INFORMATION, "profiiliin", "siirrytään profiiliin");
+        showAlert(Alert.AlertType.INFORMATION, "tallennus", "muutokset tallennettu");
         saveChanges();
-        switchScene("profile");
+        switchScene(SceneNames.PROFILE);
     }
 
     @FXML
     private void handleHomeClick(MouseEvent event) {
-        //showAlert(Alert.AlertType.INFORMATION, "kotiin", "siirrytään etusivulle");
         saveChanges();
-        switchScene("begin_session");
+        switchScene(SceneNames.BEGIN_SESSION);
     }
 
     @FXML
     private void handleProfileClick(MouseEvent event) {
-        //showAlert(Alert.AlertType.INFORMATION, "profiiliin", "siirrytään profiiliin");
+        showAlert(Alert.AlertType.INFORMATION, "tallennus", "muutokset tallennettu");
         saveChanges();
-        switchScene("profile");
+        switchScene(SceneNames.PROFILE);
     }
 
     @FXML
     private void handleBackClick(MouseEvent event) {
-        //showAlert(Alert.AlertType.INFORMATION,"takaisin", "siirrytään kirjautumiseen");
+        showAlert(Alert.AlertType.INFORMATION, "tallennus", "muutokset tallennettu");
         saveChanges();
-        switchScene("options");
+        switchScene(SceneNames.OPTIONS);
     }
 }

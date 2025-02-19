@@ -7,6 +7,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import model.User;
+import util.SceneNames;
 
 import java.util.Date;
 
@@ -57,12 +58,12 @@ public class RegistrationController extends BaseController {
         User user = new User(userName, password, email, "none", phone, new Date());
         uController.registerUser(user);
         GUIContext.getInstance().setUser(user);
-        switchScene("begin_session");
+        switchScene(SceneNames.BEGIN_SESSION);
     }
 
     @FXML
     private void handleBack() {
-        switchScene("options");
+        switchScene(SceneNames.OPTIONS);
     }
 
     private boolean isValidEmail(String email) {

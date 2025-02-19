@@ -12,6 +12,7 @@ import javafx.scene.Node;
 import javafx.event.ActionEvent;
 import javafx.scene.input.MouseEvent;
 import model.*;
+import util.SceneNames;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -54,18 +55,17 @@ public class SessionController2 extends BaseController {
 
     @FXML
     private void handleHomeClick(MouseEvent event) {
-        //showAlert( Alert.AlertType.INFORMATION, "kotiin","siirrytään etusivulle");
-        switchScene("begin_session");
+        switchScene(SceneNames.BEGIN_SESSION);
     }
 
     @FXML
     private void handleProfileClick(MouseEvent event) {
-        switchScene("profile");
+        switchScene(SceneNames.PROFILE);
     }
 
     @FXML
     private void handleBackClick(MouseEvent event) {
-        switchScene("options");
+        switchScene(SceneNames.OPTIONS);
     }
 
     @FXML
