@@ -1,6 +1,8 @@
-package controller;
+package controller.view_controllers;
 
 import context.GUIContext;
+import controller.BaseController;
+import controller.UserController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
@@ -15,7 +17,7 @@ public class EditProfileController extends BaseController {
     private final GUIContext guiContext = GUIContext.getInstance();
 
     @FXML
-    private ImageView profileImage, homeIcon, profileIcon, backIcon;
+    private ImageView profileImage, homeIcon, profileIcon, backIcon, helpIcon;
 
     @FXML
     private Label nameLabel, emailLabel, phoneLabel;
@@ -69,5 +71,10 @@ public class EditProfileController extends BaseController {
         showAlert(Alert.AlertType.INFORMATION, "tallennus", "muutokset tallennettu");
         saveChanges();
         switchScene(SceneNames.OPTIONS);
+    }
+
+    @FXML
+    private void handleHelpClick(MouseEvent mouseEvent) {
+        System.out.println("help");
     }
 }
