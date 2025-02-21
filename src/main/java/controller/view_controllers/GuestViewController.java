@@ -1,6 +1,8 @@
-package controller;
+package controller.view_controllers;
 
 import context.GUIContext;
+import controller.BaseController;
+import controller.GuestController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -54,6 +56,11 @@ public class GuestViewController extends BaseController {
     @FXML
     private void handleBackClick(MouseEvent event) {
         switchScene(SceneNames.OPTIONS);
+    }
+
+    @FXML
+    private void handleHelpClick(MouseEvent event) {
+        System.out.println("help");
     }
 
     private boolean isValidPhone(String phone) {
