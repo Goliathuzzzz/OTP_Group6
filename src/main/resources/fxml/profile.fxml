@@ -6,23 +6,28 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
+<?import javafx.scene.layout.VBox?>
 <AnchorPane prefHeight="852" prefWidth="393" styleClass="profile" stylesheets="@/css/profile.css"
             xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/22"
-            fx:controller="controller.ProfileController">
+            fx:controller="controller.view_controllers.ProfileController">
     <Pane prefHeight="556" prefWidth="393" styleClass="tausta" />
     <Pane layoutY="196" prefHeight="656" prefWidth="393" styleClass="rectangle15">
         <Pane layoutY="569.0" prefHeight="87" prefWidth="393" styleClass="bottom-nav">
-            <ImageView fx:id="homeIcon" fitHeight="45.0" fitWidth="42.0" layoutX="65.0" layoutY="23.0"
-                       pickOnBounds="true" preserveRatio="true" onMouseClicked="#handleHomeClick">
+            <ImageView fx:id="homeIcon" fitHeight="45.0" fitWidth="42.0" layoutX="45" layoutY="23.0"
+                       onMouseClicked="#handleHomeClick" pickOnBounds="true" preserveRatio="true">
                 <Image url="@/images/home_icon.png"/>
             </ImageView>
-            <ImageView fx:id="profileIcon" fitHeight="45.0" fitWidth="42.0" layoutX="182.0" layoutY="23.0"
-                       pickOnBounds="true" preserveRatio="true" onMouseClicked="#handleProfileClick">
+            <ImageView fx:id="profileIcon" fitHeight="45.0" fitWidth="42.0" layoutX="132" layoutY="23.0"
+                       onMouseClicked="#handleProfileClick" pickOnBounds="true" preserveRatio="true">
                 <Image url="@/images/profile_icon.png"/>
             </ImageView>
-            <ImageView fx:id="backIcon" fitHeight="45.0" fitWidth="42.0" layoutX="294.0" layoutY="23.0"
-                       pickOnBounds="true" preserveRatio="true" onMouseClicked="#handleBackClick">
+            <ImageView fx:id="backIcon" fitHeight="45.0" fitWidth="42.0" layoutX="219" layoutY="23.0"
+                       onMouseClicked="#handleBackClick" pickOnBounds="true" preserveRatio="true">
                 <Image url="@/images/back_icon.png"/>
+            </ImageView>
+            <ImageView fx:id="helpIcon" fitHeight="45.0" fitWidth="42.0" layoutX="306" layoutY="23.0"
+                       onMouseClicked="#handleHelpClick" pickOnBounds="true" preserveRatio="true">
+                <Image url="@/images/help_icon.png"/>
             </ImageView>
         </Pane>
         <ImageView fx:id="editButton" fitHeight="28.0" fitWidth="26.0" layoutX="342.0" layoutY="25.0"
@@ -31,7 +36,9 @@
         </ImageView>
     </Pane>
     <Pane fx:id="profileImagePane" layoutX="97" layoutY="252" prefHeight="200" prefWidth="200" styleClass="frame4" />
-    <Label fx:id="nameLabel" layoutX="41" layoutY="508" prefHeight="22" prefWidth="188" styleClass="info-text" text="heta" />
-    <Label fx:id="emailLabel" layoutX="39" layoutY="554" prefHeight="22" prefWidth="188" styleClass="info-text" text="hetahar@metropolia.fi" />
-    <Label fx:id="phoneLabel" layoutX="39" layoutY="600" prefHeight="22" prefWidth="188" styleClass="info-text" text="0401234567" />
+    <VBox layoutX="39" layoutY="508" spacing="10">
+        <Label fx:id="nameLabel" prefWidth="188" styleClass="info-text" text="heta" />
+        <Label fx:id="emailLabel" prefWidth="188" styleClass="info-text" text="hetahar@metropolia.fi" />
+        <Label fx:id="phoneLabel" prefWidth="188" styleClass="info-text" text="0401234567" />
+    </VBox>
 </AnchorPane>
