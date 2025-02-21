@@ -12,21 +12,25 @@
 
 <AnchorPane prefHeight="852" prefWidth="393" styleClass="profile" stylesheets="@/css/admin_home.css"
             xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="controller.AdminController">
+            fx:controller="controller.view_controllers.AdminHomeController">
     <Pane prefHeight="556" prefWidth="393" styleClass="tausta"/>
     <Pane layoutY="95.0" prefHeight="757.0" prefWidth="393" styleClass="rectangle15">
         <Pane layoutY="670.0" prefHeight="87" prefWidth="393" styleClass="bottom-nav">
-            <ImageView fx:id="homeIcon" fitHeight="45.0" fitWidth="42.0" layoutX="65.0" layoutY="23.0"
+            <ImageView fx:id="homeIcon" fitHeight="45.0" fitWidth="42.0" layoutX="45" layoutY="23.0"
                        onMouseClicked="#handleHomeClick" pickOnBounds="true" preserveRatio="true">
                 <Image url="@/images/home_icon.png"/>
             </ImageView>
-            <ImageView fx:id="profileIcon" fitHeight="45.0" fitWidth="42.0" layoutX="182.0" layoutY="23.0"
+            <ImageView fx:id="profileIcon" fitHeight="45.0" fitWidth="42.0" layoutX="132" layoutY="23.0"
                        onMouseClicked="#handleProfileClick" pickOnBounds="true" preserveRatio="true">
                 <Image url="@/images/profile_icon.png"/>
             </ImageView>
-            <ImageView fx:id="backIcon" fitHeight="45.0" fitWidth="42.0" layoutX="294.0" layoutY="23.0"
+            <ImageView fx:id="backIcon" fitHeight="45.0" fitWidth="42.0" layoutX="219" layoutY="23.0"
                        onMouseClicked="#handleBackClick" pickOnBounds="true" preserveRatio="true">
                 <Image url="@/images/back_icon.png"/>
+            </ImageView>
+            <ImageView fx:id="helpIcon" fitHeight="45.0" fitWidth="42.0" layoutX="306" layoutY="23.0"
+                       onMouseClicked="#handleHelpClick" pickOnBounds="true" preserveRatio="true">
+                <Image url="@/images/help_icon.png"/>
             </ImageView>
         </Pane>
         <Label layoutX="38.0" layoutY="74.0" styleClass="tell" text="parit"/>
@@ -48,7 +52,7 @@
             </font>
         </Label>
         <ImageView fx:id="backIcon1" fitHeight="21.0" fitWidth="16" layoutX="40.0" layoutY="25.0"
-                   onMouseClicked="#handlePreviousClick" styleClass="back-icon" pickOnBounds="true">
+                   onMouseClicked="#handlePreviousClick" pickOnBounds="true" styleClass="back-icon">
             <Image url="@/images/Icon.png"/>
         </ImageView>
     </Pane>
