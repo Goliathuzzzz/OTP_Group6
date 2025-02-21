@@ -1,6 +1,8 @@
-package controller;
+package controller.view_controllers;
 
 import context.GUIContext;
+import controller.BaseController;
+import controller.MatchController;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -19,7 +21,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class SessionController2 extends BaseController {
+public class SessionController extends BaseController {
 
     private final GUIContext context = GUIContext.getInstance();
     private Session session;
@@ -49,8 +51,9 @@ public class SessionController2 extends BaseController {
 
     @FXML
     private void handleReady(ActionEvent event) {
-        matchParticipant();
+        // matchParticipant();
         System.out.println("valmis painettu.");
+        switchScene(SceneNames.MATCH);
     }
 
     @FXML
@@ -66,6 +69,11 @@ public class SessionController2 extends BaseController {
     @FXML
     private void handleBackClick(MouseEvent event) {
         switchScene(SceneNames.OPTIONS);
+    }
+
+    @FXML
+    private void handleHelpClick(MouseEvent event) {
+        System.out.println("help");
     }
 
     @FXML
