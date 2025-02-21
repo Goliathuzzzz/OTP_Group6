@@ -20,12 +20,6 @@
     -fx-background-radius: 30;
 }
 
-.frame4 {
-    -fx-background-image: url("../images/profile_image.png");
-    -fx-background-size: cover;
-    -fx-background-radius: 100;
-}
-
 .info-text {
     -fx-font-family: "Hoefler Text";
     -fx-font-style: italic;
