@@ -1,0 +1,177 @@
+/* if scenebuilder breaks, comment out font-face */
+@font-face {
+    font-family: 'HoeflerText';
+    src: url('/hoefler.ttf');
+}
+
+.welcome {
+    -fx-pref-width: 393px;
+    -fx-pref-height: 852px;
+    -fx-position: relative;
+}
+
+.paper-gradient {
+    -fx-pref-width: 393px;
+    -fx-pref-height: 852px;
+    -fx-background-color: linear-gradient(to bottom, #F6BAD2 0%, #EC679D 95.61%);
+    -fx-position: absolute;
+}
+
+.paper-texture {
+    -fx-pref-width: 393px;
+    -fx-pref-height: 852px;
+    -fx-background-blend-mode: normal;
+    -fx-position: absolute;
+}
+
+.inner-items {
+    -fx-pref-width: 372px;
+    -fx-pref-height: 465px;
+    -fx-position: absolute;
+    -fx-layout-x: 10px;
+    -fx-layout-y: 141px;
+}
+
+.bottom-nav {
+    -fx-background-color: #ECCEDA;
+    -fx-border-radius: 0px 0px 30px 30px;
+}
+
+.bottom-nav ImageView {
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 4, 0, 0, 2);
+    -fx-opacity: 0.9;
+}
+
+.bottom-nav ImageView:hover {
+    -fx-opacity: 1;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 6, 0, 0, 3);
+}
+
+.bottom-nav .selected {
+    -fx-opacity: 1;
+    -fx-scale-x: 1.2;
+    -fx-scale-y: 1.2;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 6, 0, 0, 3);
+}
+
+.paper-gradient {
+    -fx-pref-width: 393px;
+    -fx-pref-height: 852px;
+    -fx-background-color: linear-gradient(to bottom, #F6BAD2 0%, #EC679D 95.61%);
+    -fx-position: absolute;
+}
+
+.paper-texture {
+    -fx-pref-width: 393px;
+    -fx-pref-height: 852px;
+    -fx-background-blend-mode: normal;
+    -fx-position: absolute;
+}
+
+
+.loysit {
+    -fx-font-family: "Hoefler Text";
+    -fx-font-style: italic;
+    -fx-font-size: 40px;
+    -fx-text-fill: #D90014;
+}
+
+/* Group 56 */
+.group56 {
+    -fx-pref-width: 340px;
+    -fx-pref-height: 318px;
+}
+
+/* channels4_profile 1 */
+.channels4_profile {
+    -fx-pref-width: 200px;
+    -fx-pref-height: 200px;
+    -fx-background-image: url("../images/placeholder_profile1.png");
+    -fx-background-size: cover;
+    -fx-background-radius: 100px;
+}
+
+/* Frame 3 */
+.frame3 {
+    -fx-pref-width: 200px;
+    -fx-pref-height: 200px;
+    -fx-background-image: url("../images/placeholder_profile2.png");
+    -fx-background-size: cover;
+    -fx-background-radius: 100px;
+}
+
+/* Group 57 */
+.group57 {
+    -fx-pref-width: 78px;
+    -fx-pref-height: 78px;
+}
+
+/* Ellipse 8 */
+.ellipse8 {
+    -fx-pref-width: 78px;
+    -fx-pref-height: 78px;
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 39px;  /* Half of 78px for a circle */
+}
+
+/* path98 */
+.path98 {
+    -fx-pref-width: 45px;
+    -fx-pref-height: 48px;
+    -fx-background-color: #D90014;
+    /* Flip vertically (equivalent to transform: matrix(1, 0, 0, -1, 0, 0) */
+    -fx-scale-y: -1;
+}
+
+/* Group 58 */
+.group58 {
+    -fx-pref-width: 40px;
+    -fx-pref-height: 53px;
+}
+
+/* path94 */
+.path94 {
+    -fx-pref-width: 13px;
+    -fx-pref-height: 20px;
+    -fx-background-color: #D90014;
+    -fx-scale-y: -1;
+}
+
+/* path88 */
+.path88 {
+    -fx-pref-width: 15px;
+    -fx-pref-height: 16px;
+    -fx-background-color: #D90014;
+    -fx-scale-y: -1;
+}
+
+/* path78 */
+.path78 {
+    -fx-pref-width: 13px;
+    -fx-pref-height: 17px;
+    -fx-background-color: #D90014;
+    -fx-scale-y: -1;
+}
+
+.tiedot {
+    -fx-pref-width: 316px;
+    -fx-pref-height: 46px;
+    -fx-background-color: #D90014;
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 4, 0, 0, 4);
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 24px;
+    -fx-font-style: italic;
+    -fx-font-family: "Hoefler Text";
+}
+
+.tiedot:hover {
+    -fx-opacity: 1;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 6, 0, 0, 3);
+}
