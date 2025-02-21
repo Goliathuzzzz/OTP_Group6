@@ -1,5 +1,7 @@
-package controller;
+package controller.view_controllers;
 
+import controller.BaseController;
+import controller.UserController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -37,8 +39,14 @@ public class AdminUsersController extends BaseController implements Initializabl
         switchScene(SceneNames.OPTIONS);
     }
 
-    public void handlePreviousClick(MouseEvent mouseEvent) {
+    @FXML
+    private void handlePreviousClick(MouseEvent mouseEvent) {
         switchScene(SceneNames.PROFILE);
+    }
+
+    @FXML
+    private void handleHelpClick(MouseEvent mouseEvent) {
+        System.out.println("help");
     }
 
     @Override
