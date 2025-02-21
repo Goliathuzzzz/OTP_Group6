@@ -1,15 +1,19 @@
 package controller;
 
 import controller.view_controllers.RegistrationController;
+import jakarta.persistence.Persistence;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.User;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
+
+import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.testfx.api.FxAssert.verifyThat;
@@ -18,8 +22,15 @@ import static org.testfx.util.NodeQueryUtils.isVisible;
 public class RegistrationControllerTest extends ApplicationTest {
 
     private RegistrationController controller;
+    private static UserController userController;
     private Parent root;
     private Stage stage;
+
+    @BeforeAll
+    static void starter() {
+        userController = new UserController();
+        userController.setEm(Persistence.createEntityManagerFactory("test-persistence-unit-tt").createEntityManager());
+    }
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -30,6 +41,7 @@ public class RegistrationControllerTest extends ApplicationTest {
         FXMLLoader loader = new FXMLLoader(fxmlLocation);
         root = loader.load();
         controller = loader.getController();
+        controller.getUController().setEm(Persistence.createEntityManagerFactory("test-persistence-unit-tt").createEntityManager());
 
         if (controller != null) {
             ((BaseController) controller).setStage(stage);
@@ -43,6 +55,7 @@ public class RegistrationControllerTest extends ApplicationTest {
     @BeforeEach
     void setUp() {
         assertNotNull(controller, "Controller should be initialized");
+        userController.deleteAll();
     }
 
     @Test
@@ -100,18 +113,7 @@ public class RegistrationControllerTest extends ApplicationTest {
 
     @Test
     void testDuplicateEmailShowsError() {
-        UserController userController = new UserController();
-        if (!userController.existsByEmail("existing@example.com")) {
-            User existingUser = new User();
-            existingUser.setEmail("existing@example.com");
-            existingUser.setPassword("password123");
-            existingUser.setUserName("Existing User");
-            existingUser.setJoinDate(new java.util.Date());
-            existingUser.setPhoneNumber("1234567890");
-            existingUser.setRole("USER");
-            userController.registerUser(existingUser);
-        }
-
+        userController.registerUser(new User("alice", "password1", "existing@example.com", "dummy", "1234567890",new Date()));
         clickOn("#emailField").write("existing@example.com");
         clickOn("#phoneField").write("1234567890");
         clickOn("#passwordField").write("password123");
