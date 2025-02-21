@@ -1,4 +1,4 @@
-package controller;
+package controller.view_controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
