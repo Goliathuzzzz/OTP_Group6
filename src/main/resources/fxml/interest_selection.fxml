@@ -1,35 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.geometry.Insets?>
-<AnchorPane prefHeight="852" prefWidth="393" styleClass="edit-profile" stylesheets="@/css/animal.css"
-            xmlns="http://javafx.com/javafx/22"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="controller.InterestSelectionController">
-
-    <!-- bg image -->
+<AnchorPane prefHeight="852" prefWidth="393" styleClass="edit-profile" stylesheets="@/css/interest_selection.css"
+            xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.view_controllers.InterestSelectionController">
     <Pane prefHeight="556" prefWidth="393" styleClass="tausta"/>
-
-    <!-- white panel -->
     <Pane layoutY="95.0" prefHeight="757.0" prefWidth="393" styleClass="rectangle15"/>
 
     <!-- go back icon -->
     <ImageView fx:id="goBack" fitHeight="21.0" fitWidth="16" layoutX="40.0" layoutY="120" onMouseClicked="#handleBack"
-               styleClass="back-icon" pickOnBounds="true">
+               pickOnBounds="true" styleClass="back-icon">
         <Image url="@/images/Icon.png"/>
     </ImageView>
 
     <!-- dynamic selection container -->
-    <ScrollPane fx:id="scrollContainer" layoutX="38" layoutY="190" prefWidth="315" prefHeight="430"
-                fitToWidth="true" styleClass="scroll-pane">
-        <VBox fx:id="optionsContainer" spacing="10" prefWidth="300">
+    <ScrollPane fx:id="scrollContainer" fitToWidth="true" layoutX="38" layoutY="190" prefHeight="430" prefWidth="315"
+                styleClass="scroll-pane">
+        <VBox fx:id="optionsContainer" prefWidth="300" spacing="10">
             <padding>
                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
             </padding>
@@ -38,23 +33,26 @@
 
 
     <!-- jatka button -->
-    <Button fx:id="continueButton" layoutX="39.0" layoutY="665" prefHeight="50.0" prefWidth="315.0"
-            styleClass="rectangle14" text="jatka" onMouseClicked="#handleContinue"/>
+    <Button fx:id="continueButton" layoutX="39.0" layoutY="665" onMouseClicked="#handleContinue" prefHeight="50.0"
+            prefWidth="315.0" styleClass="rectangle14" text="jatka"/>
 
     <!-- btm nav -->
-    <Pane layoutY="765" prefHeight="87" prefWidth="393" styleClass="bottom-nav">
-        <ImageView fx:id="homeIcon" fitHeight="45" fitWidth="42" layoutX="65" layoutY="23"
-                   onMouseClicked="#handleHomeClick" preserveRatio="true" pickOnBounds="true">
+    <Pane layoutY="765.0" prefHeight="87" prefWidth="393" styleClass="bottom-nav">
+        <ImageView fx:id="homeIcon" fitHeight="45.0" fitWidth="42.0" layoutX="45" layoutY="23.0"
+                   onMouseClicked="#handleHomeClick" pickOnBounds="true" preserveRatio="true">
             <Image url="@/images/home_icon.png"/>
         </ImageView>
-        <ImageView fx:id="profileIcon" fitHeight="45" fitWidth="42" layoutX="182" layoutY="23"
-                   onMouseClicked="#handleProfileClick" preserveRatio="true" pickOnBounds="true">
+        <ImageView fx:id="profileIcon" fitHeight="45.0" fitWidth="42.0" layoutX="132" layoutY="23.0"
+                   onMouseClicked="#handleProfileClick" pickOnBounds="true" preserveRatio="true">
             <Image url="@/images/profile_icon.png"/>
         </ImageView>
-        <ImageView fx:id="backIcon" fitHeight="45" fitWidth="42" layoutX="294" layoutY="23"
-                   onMouseClicked="#handleBackClick" preserveRatio="true" pickOnBounds="true">
+        <ImageView fx:id="backIcon" fitHeight="45.0" fitWidth="42.0" layoutX="219" layoutY="23.0"
+                   onMouseClicked="#handleBackClick" pickOnBounds="true" preserveRatio="true">
             <Image url="@/images/back_icon.png"/>
         </ImageView>
+        <ImageView fx:id="helpIcon" fitHeight="45.0" fitWidth="42.0" layoutX="306" layoutY="23.0"
+                   onMouseClicked="#handleHelpClick" pickOnBounds="true" preserveRatio="true">
+            <Image url="@/images/help_icon.png"/>
+        </ImageView>
     </Pane>
-
 </AnchorPane>
