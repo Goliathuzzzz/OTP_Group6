@@ -1,6 +1,7 @@
 package controller;
 
 import context.GUIContext;
+import controller.view_controllers.InterestSelectionController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
