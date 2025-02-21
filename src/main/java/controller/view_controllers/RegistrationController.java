@@ -91,4 +91,8 @@ public class RegistrationController extends BaseController {
     private boolean isValidPhone(String phone) {
         return phone.matches("^[0-9]{10,15}$");
     }
+
+    public UserController getUController() {
+        return uController;
+    }
 }
