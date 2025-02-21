@@ -1,14 +1,12 @@
-package controller;
+package controller.view_controllers;
 
 import context.GUIContext;
-import javafx.beans.property.StringProperty;
+import controller.BaseController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
-import model.User;
 import util.SceneNames;
 
 public class AdminProfileController extends BaseController {
@@ -19,7 +17,7 @@ public class AdminProfileController extends BaseController {
     private Pane bottomNavPane, profileImagePane;
 
     @FXML
-    private ImageView homeIcon, profileIcon, backIcon, editButton;
+    private ImageView homeIcon, profileIcon, backIcon, editButton, helpIcon;
 
     @FXML
     private Label nameLabel, emailLabel, phoneLabel;
@@ -49,6 +47,11 @@ public class AdminProfileController extends BaseController {
     @FXML
     private void handleBackClick(MouseEvent event) {
         switchScene(SceneNames.OPTIONS);
+    }
+
+    @FXML
+    private void handleHelpClick(MouseEvent event) {
+        System.out.println("help");
     }
 
     @FXML
