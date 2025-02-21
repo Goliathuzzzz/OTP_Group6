@@ -1,5 +1,6 @@
-package controller;
+package controller.view_controllers;
 
+import controller.BaseController;
 import javafx.fxml.FXML;
 import util.SceneNames;
 
