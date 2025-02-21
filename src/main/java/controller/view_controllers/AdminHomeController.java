@@ -1,5 +1,7 @@
-package controller;
+package controller.view_controllers;
 
+import controller.BaseController;
+import controller.MatchController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -15,7 +17,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class AdminController extends BaseController implements Initializable {
+public class AdminHomeController extends BaseController implements Initializable {
 
     private final MatchController matchController = new MatchController();
 
@@ -38,8 +40,13 @@ public class AdminController extends BaseController implements Initializable {
     }
 
     @FXML
-    public void handlePreviousClick(MouseEvent mouseEvent) {
+    private void handlePreviousClick(MouseEvent mouseEvent) {
         switchScene(SceneNames.PROFILE);
+    }
+
+    @FXML
+    private void handleHelpClick(MouseEvent mouseEvent) {
+        System.out.println("help");
     }
 
     @Override
