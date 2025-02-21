@@ -1,18 +1,16 @@
-package controller;
+package controller.view_controllers;
 
 import context.GUIContext;
+import controller.BaseController;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.image.ImageView;
 import model.Participant;
 import model.Session;
-import model.categories.Animal;
 import model.categories.Category;
-import org.checkerframework.checker.units.qual.C;
 import util.SceneNames;
 
 import java.util.*;
@@ -26,7 +24,7 @@ public class InterestSelectionController extends BaseController {
     private Button continueButton;
 
     @FXML
-    private ImageView goBack, homeIcon, profileIcon, backIcon;
+    private ImageView goBack, homeIcon, profileIcon, backIcon, helpIcon;
 
     @FXML
     private VBox optionsContainer; //holds dynamically generated options
@@ -69,6 +67,11 @@ public class InterestSelectionController extends BaseController {
     @FXML
     private void handleBackClick(MouseEvent event) {
         switchScene(SceneNames.OPTIONS);
+    }
+
+    @FXML
+    private void handleHelpClick(MouseEvent event) {
+        System.out.println("help");
     }
 
     @FXML
