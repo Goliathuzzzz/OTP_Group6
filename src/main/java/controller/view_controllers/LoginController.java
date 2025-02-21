@@ -1,6 +1,8 @@
-package controller;
+package controller.view_controllers;
 
 import context.GUIContext;
+import controller.BaseController;
+import controller.UserController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
