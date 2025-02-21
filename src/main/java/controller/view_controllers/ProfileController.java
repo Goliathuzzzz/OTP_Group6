@@ -1,15 +1,18 @@
-package controller;
+package controller.view_controllers;
 
 import context.GUIContext;
-import javafx.beans.property.StringProperty;
+import controller.BaseController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
-import model.User;
 import util.SceneNames;
+
+import java.util.Objects;
+import java.util.Random;
 
 public class ProfileController extends BaseController {
 
@@ -37,12 +40,35 @@ public class ProfileController extends BaseController {
             guiContext.setPhoneProperty(guiContext.getGuestPhoneNumber());
             phoneLabel.textProperty().bind(guiContext.getPhoneProperty());
             nameLabel.setText("vieras");
-            emailLabel.setVisible(false); // figure a way to remove the empty space, this only hides the text
+
+            emailLabel.setVisible(false);
+            emailLabel.setManaged(false);
             editButton.setVisible(false);
         } else {
             showAlert(Alert.AlertType.ERROR, "virhe", "käyttäjätietoja ei löydy");
             System.err.println("ERROR: No user or guest data found");
         }
+
+        String[] imagePaths = {
+                "/images/alpaca_icon.png",
+                "/images/elephant_icon.png",
+                "/images/flamingo_icon.png",
+                "/images/giraffe_icon.png",
+                "/images/parrot_icon.png",
+                "/images/rhino_icon.png",
+                "/images/tiger_icon.png"
+        };
+
+        Random random = new Random();
+        int randomIndex = random.nextInt(imagePaths.length);
+
+        Image profileImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream(imagePaths[randomIndex])));
+
+        ImageView profileImageView = new ImageView(profileImage);
+        profileImageView.setFitWidth(200);
+        profileImageView.setFitHeight(200);
+        profileImageView.setPreserveRatio(true);
+        profileImagePane.getChildren().add(profileImageView);
     }
 
     @FXML
@@ -63,6 +89,11 @@ public class ProfileController extends BaseController {
     @FXML
     private void handleEditClick(MouseEvent event) {
         switchScene(SceneNames.EDIT_PROFILE);
+    }
+
+    @FXML
+    private void handleHelpClick(MouseEvent event) {
+        System.out.println("help");
     }
 }
 
