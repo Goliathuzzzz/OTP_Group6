@@ -1,7 +1,7 @@
-package controller;
+package controller.view_controllers;
+import controller.BaseController;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import util.SceneNames;
@@ -46,6 +46,11 @@ public class BeginSessionController extends BaseController {
     @FXML
     private void handleBackClick(MouseEvent event) {
         switchScene(SceneNames.OPTIONS);
+    }
+
+    @FXML
+    private void handleHelpClick(MouseEvent mouseEvent) {
+        System.out.println("help");
     }
 }
 
