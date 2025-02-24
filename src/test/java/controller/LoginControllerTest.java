@@ -2,6 +2,7 @@ package controller;
 
 import controller.view_controllers.LoginController;
 import jakarta.persistence.Persistence;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -69,6 +70,7 @@ public class LoginControllerTest extends ApplicationTest {
         clickOn("#emailField").write("alice@example.com");
         clickOn("#passwordField").write("password1");
         clickOn("#loginButton");
+        sleep(500);
 
         Parent newRoot = stage.getScene().getRoot();
 
@@ -82,6 +84,7 @@ public class LoginControllerTest extends ApplicationTest {
     @Test
     void testNewAccountSwitchesScene() {
         clickOn("#newAccount");
+        sleep(500);
         Parent newRoot = stage.getScene().getRoot();
         System.out.println("New scene root id: " + newRoot.getId());
         assertNotNull(newRoot.lookup("#registrationPane"), "Registration scene should be loaded.");
@@ -95,18 +98,21 @@ public class LoginControllerTest extends ApplicationTest {
         clickOn("#emailField").write("invalid@example.com");
         clickOn("#passwordField").write("wrongpassword");
         clickOn("#loginButton");
+        sleep(500);
         verifyThat(".alert", isVisible());
     }
 
     @Test
     void testForgotPasswordShowsAlert() {
         clickOn("#forgotPassword");
+        sleep(500);
         verifyThat(".alert", isVisible());
     }
 
     @Test
     void testEmptyFieldsShowError() {
         clickOn("#loginButton");
+        sleep(500);
         verifyThat(".alert", isVisible());
     }
 

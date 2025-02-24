@@ -30,7 +30,7 @@ public class LoginController extends BaseController {
     private Button loginButton;
 
     @FXML
-    public void handleLogin() {
+    private void handleLogin() {
         String email = emailField.getText();
         String password = passwordField.getText();
 
