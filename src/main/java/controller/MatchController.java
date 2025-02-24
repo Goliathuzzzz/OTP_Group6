@@ -4,9 +4,6 @@ import jakarta.persistence.EntityManager;
 import model.Match;
 import model.Participant;
 import service.MatchService;
-import javafx.util.Pair;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class MatchController {
@@ -25,7 +22,7 @@ public class MatchController {
     public Match displayMatch(int id) {
         Match match = matchService.findMatchById(id);
         if (match != null) {
-            System.out.println("Match found: " + match.getParticipant1() + " + " + match.getParticipant2());
+            System.out.println("Match found: " + match.getParticipant1().getDisplayName() + " + " + match.getParticipant2().getDisplayName());
         } else {
             System.out.println("Match not found");
         }
@@ -35,24 +32,15 @@ public class MatchController {
     public List<Match> displayAllMatches() {
         List<Match> matches = matchService.findAllMatches();
         for (Match m: matches) {
-            System.out.println(m.getParticipant1() + " + " + m.getParticipant2());
+            System.out.println(m.getParticipant1().getDisplayName() + " + " + m.getParticipant2().getDisplayName());
         }
         return matches;
-    }
-
-    public List<Pair<Participant, Participant>> fetchPairsFromDatabase() {
-        List<Match> matches = displayAllMatches();
-        List<Pair<Participant, Participant>> pairs = new ArrayList<>();
-        for (Match match : matches) {
-            pairs.add(new Pair<>(match.getParticipant1(), match.getParticipant2()));
-        }
-        return pairs;
     }
 
     public List<Match> displayAllByParticipant(Participant participant) {
         List<Match> matches = matchService.findByParticipant(participant);
         for (Match m: matches) {
-            System.out.println(m.getParticipant1() + " + " + m.getParticipant2());
+            System.out.println(m.getParticipant1().getDisplayName() + " + " + m.getParticipant2().getDisplayName());
         }
         return matches;
     }
