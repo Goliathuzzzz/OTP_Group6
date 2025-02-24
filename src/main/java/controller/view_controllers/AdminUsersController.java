@@ -21,42 +21,19 @@ public class AdminUsersController extends BaseController implements Initializabl
 
     private final UserController userController = new UserController();
 
+    private List<User> users;
+
     @FXML
     private GridPane usersGrid;
 
-    @FXML
-    private void handleHomeClick(MouseEvent event) {
-        switchScene(SceneNames.BEGIN_SESSION);
-    }
-
-    @FXML
-    private void handleProfileClick(MouseEvent event) {
-        switchScene(SceneNames.PROFILE);
-    }
-
-    @FXML
-    private void handleBackClick(MouseEvent event) {
-        switchScene(SceneNames.OPTIONS);
-    }
-
-    @FXML
-    private void handlePreviousClick(MouseEvent mouseEvent) {
-        switchScene(SceneNames.PROFILE);
-    }
-
-    @FXML
-    private void handleHelpClick(MouseEvent mouseEvent) {
-        System.out.println("help");
-    }
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        List<User> users = userController.displayAllUsers(); // fetch users from database
-        populateUserGrid(users);
+        users = userController.displayAllUsers(); // fetch users from database
+        populateUserGrid();
     }
 
     // populate the grid pane with user items
-    private void populateUserGrid(List<User> users) {
+    private void populateUserGrid() {
         usersGrid.getChildren().clear();
 
         int columns = 2; // determine how many columns we want to have
@@ -69,8 +46,7 @@ public class AdminUsersController extends BaseController implements Initializabl
                 usersGrid.add(userItemNode, column, row); // add the user item to the grid pane at the position
 
                 // move to the next cell
-                column++;
-                if (column == columns) {
+                if (++column == columns) {
                     column = 0;
                     row++;
                 }
@@ -100,6 +76,7 @@ public class AdminUsersController extends BaseController implements Initializabl
     // calls the user controller to delete the user
     private void handleUserDeleted(User user) {
         userController.deleteUser(user);
+        users.remove(user);
         removeUserFromGrid(user);
     }
 
@@ -120,19 +97,17 @@ public class AdminUsersController extends BaseController implements Initializabl
 
     // refresh the grid after a user has been removed to prevent empty spaces
     private void refreshGrid() {
-        List<Node> children = new ArrayList<>(usersGrid.getChildren());
-        populateUserGrid(extractUsersFromChildren(children));
-    }
+        int columns = 2;
+        int row = 0;
+        int column = 0;
 
-    // extract users from the user item nodes
-    private List<User> extractUsersFromChildren(List<Node> children) {
-        List<User> users = new ArrayList<>();
-        for (Node node : children) {
-            UserItemController controller = (UserItemController) node.getUserData();
-            if (controller != null) {
-                users.add(controller.getUser());
+        for (Node node : usersGrid.getChildren()) {
+            GridPane.setColumnIndex(node, column);
+            GridPane.setRowIndex(node, row);
+            if (++column == columns) {
+                column = 0;
+                row++;
             }
         }
-        return users;
     }
 }
