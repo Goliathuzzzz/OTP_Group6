@@ -95,4 +95,8 @@ public class RegistrationController extends BaseController {
     public UserController getUController() {
         return uController;
     }
+
+    public void setuController(UserController uController) {
+        this.uController = uController;
+    }
 }

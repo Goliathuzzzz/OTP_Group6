@@ -11,6 +11,7 @@ import model.User;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.testfx.framework.junit5.ApplicationTest;
 
 import java.util.Date;
@@ -18,6 +19,7 @@ import java.util.Date;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.testfx.api.FxAssert.verifyThat;
 import static org.testfx.util.NodeQueryUtils.isVisible;
+import static org.mockito.Mockito.*;
 
 public class RegistrationControllerTest extends ApplicationTest {
 
@@ -28,8 +30,7 @@ public class RegistrationControllerTest extends ApplicationTest {
 
     @BeforeAll
     static void starter() {
-        userController = new UserController();
-        userController.setEm(Persistence.createEntityManagerFactory("test-persistence-unit-tt").createEntityManager());
+        userController = Mockito.mock(UserController.class);
     }
 
     @Override
@@ -41,7 +42,7 @@ public class RegistrationControllerTest extends ApplicationTest {
         FXMLLoader loader = new FXMLLoader(fxmlLocation);
         root = loader.load();
         controller = loader.getController();
-        controller.getUController().setEm(Persistence.createEntityManagerFactory("test-persistence-unit-tt").createEntityManager());
+        controller.setuController(userController);
 
         if (controller != null) {
             ((BaseController) controller).setStage(stage);
@@ -55,7 +56,6 @@ public class RegistrationControllerTest extends ApplicationTest {
     @BeforeEach
     void setUp() {
         assertNotNull(controller, "Controller should be initialized");
-        userController.deleteAll();
     }
 
     @Test
@@ -113,7 +113,7 @@ public class RegistrationControllerTest extends ApplicationTest {
 
     @Test
     void testDuplicateEmailShowsError() {
-        userController.registerUser(new User("alice", "password1", "existing@example.com", "dummy", "1234567890",new Date()));
+        when(userController.existsByEmail("existing@example.com")).thenReturn(true);
         clickOn("#emailField").write("existing@example.com");
         clickOn("#phoneField").write("1234567890");
         clickOn("#passwordField").write("password123");
