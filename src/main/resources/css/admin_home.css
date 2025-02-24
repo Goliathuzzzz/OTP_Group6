@@ -98,7 +98,7 @@
 }
 
 .line-heart:hover {
-    -fx-background-image: url("../images/hearts.png");
+    -fx-background-image: url("../images/broken-heart.png");
     -fx-background-size: 40px 40px;
     -fx-background-position: center;
 }
