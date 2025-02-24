@@ -1,20 +1,25 @@
 package controller.view_controllers;
+
 import controller.BaseController;
+import javafx.animation.ScaleTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import util.SceneNames;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import util.SceneNames;
 
 public class BeginSessionController extends BaseController {
 
     @FXML
-    private ImageView homeIcon, profileIcon, backIcon;
+    private ImageView homeIcon, profileIcon, backIcon, bigHeart;
 
     @FXML
     private AnchorPane beginSessionPane;
+
+    private ScaleTransition heartbeat;
 
     @FXML
     public void initialize() {
@@ -25,6 +30,24 @@ public class BeginSessionController extends BaseController {
             } else {
                 System.out.println("Stage is null in BeginSessionController initialize()");
             }
+        });
+
+        setupHoverHeartbeat();
+    }
+
+    private void setupHoverHeartbeat() {
+        heartbeat = new ScaleTransition(Duration.seconds(0.8), bigHeart);
+        heartbeat.setByX(0.1);
+        heartbeat.setByY(0.1);
+        heartbeat.setCycleCount(ScaleTransition.INDEFINITE);
+        heartbeat.setAutoReverse(true);
+
+        bigHeart.setOnMouseEntered(event -> heartbeat.play());
+
+        bigHeart.setOnMouseExited(event -> {
+            heartbeat.stop();
+            bigHeart.setScaleX(1.0);
+            bigHeart.setScaleY(1.0);
         });
     }
 
@@ -53,4 +76,3 @@ public class BeginSessionController extends BaseController {
         System.out.println("help");
     }
 }
-

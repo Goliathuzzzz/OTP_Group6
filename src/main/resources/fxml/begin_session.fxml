@@ -28,7 +28,7 @@
             <Image url="@/images/help_icon.png"/>
         </ImageView>
     </Pane>
-    <ImageView fitHeight="278.0" fitWidth="352.0" layoutX="22.0" layoutY="255.0" pickOnBounds="true"
+    <ImageView fx:id="bigHeart" fitHeight="278.0" fitWidth="352.0" layoutX="22.0" layoutY="255.0" pickOnBounds="true"
                preserveRatio="true" onMouseClicked="#handleBeginSessionClick">
         <Image url="@/images/big_heart.png"/>
     </ImageView>
