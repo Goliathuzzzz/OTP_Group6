@@ -1,23 +1,36 @@
 package controller;
 
 import controller.view_controllers.LoginController;
+import jakarta.persistence.Persistence;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.User;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 import org.testfx.framework.junit5.ApplicationTest;
+
+import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.testfx.api.FxAssert.verifyThat;
 import static org.testfx.util.NodeQueryUtils.isVisible;
+import static org.mockito.Mockito.*;
 
 public class LoginControllerTest extends ApplicationTest {
 
-    private LoginController controller;
+    @Mock
+    private static UserController userController;
+
+    private static LoginController controller;
     private Parent root;
     private Stage stage;
+
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -28,6 +41,7 @@ public class LoginControllerTest extends ApplicationTest {
         FXMLLoader loader = new FXMLLoader(fxmlLocation);
         root = loader.load();
         controller = loader.getController();
+        controller.setUserController(userController);
 
         if (controller != null) {
             ((BaseController) controller).setStage(stage);
@@ -38,6 +52,10 @@ public class LoginControllerTest extends ApplicationTest {
         stage.show();
     }
 
+    @BeforeAll
+    static void start() {
+        userController = Mockito.mock(UserController.class);
+    }
     @BeforeEach
     void setUp() {
         assertNotNull(controller, "Controller should be initialized");
@@ -46,6 +64,8 @@ public class LoginControllerTest extends ApplicationTest {
     // use seeder if this test fails
     @Test
     void testValidLoginSwitchesScene() {
+        User user = new User("alice", "password1", "alice@example.com", "dummy", "1234567890",new Date());
+        when(userController.login("alice@example.com", "password1")).thenReturn(user);
         clickOn("#emailField").write("alice@example.com");
         clickOn("#passwordField").write("password1");
         clickOn("#loginButton");
@@ -71,6 +91,14 @@ public class LoginControllerTest extends ApplicationTest {
     }
 
     @Test
+    void testInvalidLoginShowsError() {
+        clickOn("#emailField").write("invalid@example.com");
+        clickOn("#passwordField").write("wrongpassword");
+        clickOn("#loginButton");
+        verifyThat(".alert", isVisible());
+    }
+
+    @Test
     void testForgotPasswordShowsAlert() {
         clickOn("#forgotPassword");
         verifyThat(".alert", isVisible());
@@ -82,11 +110,5 @@ public class LoginControllerTest extends ApplicationTest {
         verifyThat(".alert", isVisible());
     }
 
-    @Test
-    void testInvalidLoginShowsError() {
-        clickOn("#emailField").write("invalid@example.com");
-        clickOn("#passwordField").write("wrongpassword");
-        clickOn("#loginButton");
-        verifyThat(".alert", isVisible());
-    }
+
 }
