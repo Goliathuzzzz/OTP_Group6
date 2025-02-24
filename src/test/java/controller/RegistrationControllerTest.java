@@ -65,6 +65,7 @@ public class RegistrationControllerTest extends ApplicationTest {
         clickOn("#passwordField").write("password123");
         clickOn("#confirmPasswordField").write("password123");
         clickOn("#signupButton");
+        sleep(500);
 
         Parent newRoot = stage.getScene().getRoot();
         assertNotNull(newRoot.lookup("#beginSessionPane"), "Begin session scene should be loaded.");
@@ -75,6 +76,7 @@ public class RegistrationControllerTest extends ApplicationTest {
     @Test
     void testEmptyFieldsShowError() {
         clickOn("#signupButton");
+        sleep(500);
         verifyThat(".alert", isVisible());
     }
 
@@ -85,7 +87,7 @@ public class RegistrationControllerTest extends ApplicationTest {
         clickOn("#passwordField").write("password123");
         clickOn("#confirmPasswordField").write("password456");
         clickOn("#signupButton");
-
+        sleep(500);
         verifyThat(".alert", isVisible());
     }
 
@@ -96,7 +98,7 @@ public class RegistrationControllerTest extends ApplicationTest {
         clickOn("#passwordField").write("password123");
         clickOn("#confirmPasswordField").write("password123");
         clickOn("#signupButton");
-
+        sleep(500);
         verifyThat(".alert", isVisible());
     }
 
@@ -107,7 +109,7 @@ public class RegistrationControllerTest extends ApplicationTest {
         clickOn("#passwordField").write("password123");
         clickOn("#confirmPasswordField").write("password123");
         clickOn("#signupButton");
-
+        sleep(500);
         verifyThat(".alert", isVisible());
     }
 
@@ -119,7 +121,7 @@ public class RegistrationControllerTest extends ApplicationTest {
         clickOn("#passwordField").write("password123");
         clickOn("#confirmPasswordField").write("password123");
         clickOn("#signupButton");
-
+        sleep(500);
         verifyThat(".alert", isVisible());
     }
 
@@ -131,7 +133,7 @@ public class RegistrationControllerTest extends ApplicationTest {
         Node backIcon = root.lookup("#backIcon");
         assertNotNull(backIcon, "backIcon should be present in the scene.");
         clickOn(backIcon);
-
+        sleep(500);
         Parent newRoot = stage.getScene().getRoot();
         assertNotNull(newRoot.lookup("#optionsPane"), "Options scene should be loaded after navigating back.");
         assertEquals("päävalikko", stage.getTitle(), "Stage title should be updated after navigating back.");
