@@ -71,7 +71,6 @@
     -fx-position: absolute;
 }
 
-
 .loysit {
     -fx-font-family: "Hoefler Text";
     -fx-font-style: italic;
@@ -79,13 +78,11 @@
     -fx-text-fill: #D90014;
 }
 
-/* Group 56 */
 .group56 {
     -fx-pref-width: 340px;
     -fx-pref-height: 318px;
 }
 
-/* channels4_profile 1 */
 .channels4_profile {
     -fx-pref-width: 200px;
     -fx-pref-height: 200px;
@@ -94,7 +91,6 @@
     -fx-background-radius: 100px;
 }
 
-/* Frame 3 */
 .frame3 {
     -fx-pref-width: 200px;
     -fx-pref-height: 200px;
@@ -103,36 +99,30 @@
     -fx-background-radius: 100px;
 }
 
-/* Group 57 */
 .group57 {
     -fx-pref-width: 78px;
     -fx-pref-height: 78px;
 }
 
-/* Ellipse 8 */
 .ellipse8 {
     -fx-pref-width: 78px;
     -fx-pref-height: 78px;
     -fx-background-color: #FFFFFF;
-    -fx-background-radius: 39px;  /* Half of 78px for a circle */
+    -fx-background-radius: 39px;
 }
 
-/* path98 */
 .path98 {
     -fx-pref-width: 45px;
     -fx-pref-height: 48px;
     -fx-background-color: #D90014;
-    /* Flip vertically (equivalent to transform: matrix(1, 0, 0, -1, 0, 0) */
     -fx-scale-y: -1;
 }
 
-/* Group 58 */
 .group58 {
     -fx-pref-width: 40px;
     -fx-pref-height: 53px;
 }
 
-/* path94 */
 .path94 {
     -fx-pref-width: 13px;
     -fx-pref-height: 20px;
@@ -140,7 +130,6 @@
     -fx-scale-y: -1;
 }
 
-/* path88 */
 .path88 {
     -fx-pref-width: 15px;
     -fx-pref-height: 16px;
@@ -148,7 +137,6 @@
     -fx-scale-y: -1;
 }
 
-/* path78 */
 .path78 {
     -fx-pref-width: 13px;
     -fx-pref-height: 17px;
@@ -175,3 +163,22 @@
     -fx-scale-y: 1.1;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 6, 0, 0, 3);
 }
+
+.match-heart {
+    -fx-effect: dropshadow(gaussian, rgba(255, 0, 0, 0.6), 20, 0.5, 0, 0);
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-translate-y: 0;
+    -fx-animation: heartbeat 1.5s infinite ease-in-out;
+}
+
+@keyframes heartbeat {
+    0% { -fx-scale-x: 1; -fx-scale-y: 1; }
+    25% { -fx-scale-x: 1.1; -fx-scale-y: 1.1; }
+    50% { -fx-scale-x: 1; -fx-scale-y: 1; }
+    75% { -fx-scale-x: 1.1; -fx-scale-y: 1.1; }
+    100% { -fx-scale-x: 1; -fx-scale-y: 1; }
+}
+
+
+
