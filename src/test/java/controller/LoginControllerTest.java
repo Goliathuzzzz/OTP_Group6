@@ -4,6 +4,7 @@ import controller.view_controllers.LoginController;
 import jakarta.persistence.Persistence;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -65,6 +66,7 @@ public class LoginControllerTest extends ApplicationTest {
     // use seeder if this test fails
     @Test
     void testValidLoginSwitchesScene() {
+        verifyThat("#emailField", Node::isVisible);
         User user = new User("alice", "password1", "alice@example.com", "dummy", "1234567890",new Date());
         when(userController.login("alice@example.com", "password1")).thenReturn(user);
         clickOn("#emailField").write("alice@example.com");
@@ -95,6 +97,7 @@ public class LoginControllerTest extends ApplicationTest {
 
     @Test
     void testInvalidLoginShowsError() {
+        verifyThat("#emailField", Node::isVisible);
         clickOn("#emailField").write("invalid@example.com");
         clickOn("#passwordField").write("wrongpassword");
         clickOn("#loginButton");

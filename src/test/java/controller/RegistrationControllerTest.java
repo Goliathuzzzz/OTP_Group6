@@ -60,6 +60,7 @@ public class RegistrationControllerTest extends ApplicationTest {
 
     @Test
     void testSuccessfulRegistration() {
+        verifyThat("#emailField", Node::isVisible);
         clickOn("#emailField").write("newuser@example.com");
         clickOn("#phoneField").write("1234567890");
         clickOn("#passwordField").write("password123");
@@ -82,6 +83,7 @@ public class RegistrationControllerTest extends ApplicationTest {
 
     @Test
     void testPasswordMismatchShowsError() {
+        verifyThat("#emailField", Node::isVisible);
         clickOn("#emailField").write("user@example.com");
         clickOn("#phoneField").write("1234567890");
         clickOn("#passwordField").write("password123");
@@ -93,6 +95,7 @@ public class RegistrationControllerTest extends ApplicationTest {
 
     @Test
     void testInvalidEmailShowsError() {
+        verifyThat("#emailField", Node::isVisible);
         clickOn("#emailField").write("invalid-email");
         clickOn("#phoneField").write("1234567890");
         clickOn("#passwordField").write("password123");
@@ -104,6 +107,7 @@ public class RegistrationControllerTest extends ApplicationTest {
 
     @Test
     void testInvalidPhoneShowsError() {
+        verifyThat("#emailField", Node::isVisible);
         clickOn("#emailField").write("user@example.com");
         clickOn("#phoneField").write("abcde12345");
         clickOn("#passwordField").write("password123");
@@ -115,6 +119,7 @@ public class RegistrationControllerTest extends ApplicationTest {
 
     @Test
     void testDuplicateEmailShowsError() {
+        verifyThat("#emailField", Node::isVisible);
         when(userController.existsByEmail("existing@example.com")).thenReturn(true);
         clickOn("#emailField").write("existing@example.com");
         clickOn("#phoneField").write("1234567890");
