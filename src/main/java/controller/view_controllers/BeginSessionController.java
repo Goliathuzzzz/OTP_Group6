@@ -56,23 +56,4 @@ public class BeginSessionController extends BaseController {
         switchScene(SceneNames.SESSION);
     }
 
-    @FXML
-    private void handleHomeClick(MouseEvent event) {
-        switchScene(SceneNames.BEGIN_SESSION);
-    }
-
-    @FXML
-    private void handleProfileClick(MouseEvent event) {
-        switchScene(SceneNames.PROFILE);
-    }
-
-    @FXML
-    private void handleBackClick(MouseEvent event) {
-        switchScene(SceneNames.OPTIONS);
-    }
-
-    @FXML
-    private void handleHelpClick(MouseEvent mouseEvent) {
-        System.out.println("help");
-    }
 }

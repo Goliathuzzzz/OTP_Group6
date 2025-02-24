@@ -55,26 +55,6 @@ public class InterestSelectionController extends BaseController {
     );
 
     @FXML
-    private void handleHomeClick(MouseEvent event) {
-        switchScene(SceneNames.BEGIN_SESSION);
-    }
-
-    @FXML
-    private void handleProfileClick(MouseEvent event) {
-        switchScene(SceneNames.PROFILE);
-    }
-
-    @FXML
-    private void handleBackClick(MouseEvent event) {
-        switchScene(SceneNames.OPTIONS);
-    }
-
-    @FXML
-    private void handleHelpClick(MouseEvent event) {
-        System.out.println("help");
-    }
-
-    @FXML
     private void handleBack() {
         switchScene(SceneNames.SESSION);
     }
