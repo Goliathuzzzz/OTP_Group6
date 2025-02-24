@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import util.SceneNames;
 import java.io.IOException;
@@ -112,5 +113,24 @@ public abstract class BaseController {
             guestController.deleteGuest(context.getGuest());
         }
         context.logout();
+    }
+
+    public void handleHomeClick(MouseEvent e) {
+        switchScene(SceneNames.BEGIN_SESSION);
+    }
+
+    public void handleProfileClick(MouseEvent e) {
+        switchScene(SceneNames.PROFILE);
+    }
+
+    public void handleBackClick(MouseEvent e) {
+        switchScene(SceneNames.OPTIONS);
+    }
+
+    public void handlePreviousClick(MouseEvent e) {
+        switchScene(SceneNames.PROFILE);
+    }
+    public void handleHelpClick(MouseEvent e) {
+        System.out.println("help");
     }
 }

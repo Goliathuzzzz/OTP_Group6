@@ -57,26 +57,6 @@ public class SessionController extends BaseController {
     }
 
     @FXML
-    private void handleHomeClick(MouseEvent event) {
-        switchScene(SceneNames.BEGIN_SESSION);
-    }
-
-    @FXML
-    private void handleProfileClick(MouseEvent event) {
-        switchScene(SceneNames.PROFILE);
-    }
-
-    @FXML
-    private void handleBackClick(MouseEvent event) {
-        switchScene(SceneNames.OPTIONS);
-    }
-
-    @FXML
-    private void handleHelpClick(MouseEvent event) {
-        System.out.println("help");
-    }
-
-    @FXML
     public void initialize() {
         for (Node interest : interestsContainer.getChildren()) {
             interest.setOnMouseClicked(this::handleInterestSelection);

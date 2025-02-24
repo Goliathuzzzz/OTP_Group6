@@ -47,34 +47,29 @@ public class EditProfileController extends BaseController {
     }
 
     @FXML
-    private void handlePreviousClick(MouseEvent event) {
+    public void handlePreviousClick(MouseEvent event) {
         showAlert(Alert.AlertType.INFORMATION, "tallennus", "muutokset tallennettu");
         saveChanges();
         switchScene(SceneNames.PROFILE);
     }
 
     @FXML
-    private void handleHomeClick(MouseEvent event) {
+    public void handleHomeClick(MouseEvent event) {
         saveChanges();
         switchScene(SceneNames.BEGIN_SESSION);
     }
 
     @FXML
-    private void handleProfileClick(MouseEvent event) {
+    public void handleProfileClick(MouseEvent event) {
         showAlert(Alert.AlertType.INFORMATION, "tallennus", "muutokset tallennettu");
         saveChanges();
         switchScene(SceneNames.PROFILE);
     }
 
     @FXML
-    private void handleBackClick(MouseEvent event) {
+    public void handleBackClick(MouseEvent event) {
         showAlert(Alert.AlertType.INFORMATION, "tallennus", "muutokset tallennettu");
         saveChanges();
         switchScene(SceneNames.OPTIONS);
-    }
-
-    @FXML
-    private void handleHelpClick(MouseEvent mouseEvent) {
-        System.out.println("help");
     }
 }
