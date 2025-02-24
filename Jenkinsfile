@@ -3,6 +3,9 @@ pipeline {
     tools {
         maven 'maven_3.9.9'
     }
+    environment {
+        MAVEN_OPTS = "-Dtestfx.headless=true -Dprism.order=sw -Dheadless=true"
+    }
     stages {
         stage('Checkout') {
             steps {
@@ -11,12 +14,12 @@ pipeline {
         }
         stage('Build') {
             steps {
-                bat 'mvn clean install -Dtestfx.robot=glass -Dglass.platform=Monocle -Dmonocle.platform=Headless -Dprism.order=sw'
+                bat 'mvn clean install 
             }
         }
         stage('Test') {
             steps {
-                bat 'mvn test -Dtestfx.robot=glass -Dglass.platform=Monocle -Dmonocle.platform=Headless -Dprism.order=sw'
+                bat 'mvn test 
             }
         }
         stage('Code Coverage') {
