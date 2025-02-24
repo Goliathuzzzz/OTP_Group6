@@ -12,14 +12,9 @@ pipeline {
                 git branch: "main", url:'https://github.com/Goliathuzzzz/OTP_Group6.git'
             }
         }
-        stage('Build') {
+        stage('Build & Test') {
             steps {
                 bat 'mvn clean install' 
-            }
-        }
-        stage('Test') {
-            steps {
-                bat 'mvn test' 
             }
         }
         stage('Code Coverage') {
