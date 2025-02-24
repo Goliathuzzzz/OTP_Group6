@@ -2,47 +2,50 @@ package controller.view_controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import model.Participant;
+import model.Match;
+
+import java.util.function.Consumer;
 
 public class PairItemController {
     @FXML private Label nameLabel1;
     @FXML private Label nameLabel2;
-    private Participant part1;
-    private Participant part2;
 
-    public void setParticipants(Participant part1, Participant part2) {
-        this.part1 = part1;
-        this.part2 = part2;
-        nameLabel1.setText(part1.getDisplayName());
-        nameLabel2.setText(part2.getDisplayName());
+    private Match match;
+    private Consumer<Match> onDelete;
+
+    public void setMatch(Match match, Consumer<Match> onDelete) {
+        this.match = match;
+        this.onDelete = onDelete;
+        nameLabel1.setText(match.getParticipant1().getDisplayName());
+        nameLabel2.setText(match.getParticipant2().getDisplayName());
     }
 
-    @FXML
-    private void handleName1Click(MouseEvent event) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("nimen klikkaus");
-        alert.setHeaderText(null);
-        alert.setContentText("klikkasit nimeä " + part1.getDisplayName());
-        alert.showAndWait();
-    }
-
-    @FXML
-    private void handleName2Click(MouseEvent event) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("nimen klikkaus");
-        alert.setHeaderText(null);
-        alert.setContentText("klikkasit nimeä " + part2.getDisplayName());
-        alert.showAndWait();
+    public Match getMatch() {
+        return match;
     }
 
     @FXML
     private void handleMatchClick(MouseEvent event) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("parihistorian nouto");
+        if (match == null) {
+            System.err.println("ERROR: Match is null in PairItemController.handleMatchClick");
+        }
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("parin poisto");
         alert.setHeaderText(null);
-        alert.setContentText("noudetaan parihistoriaa: " + part1.getDisplayName() + " x " + part2.getDisplayName());
-        alert.showAndWait();
+        alert.setContentText("oletko varma että haluat poistaa parin " + match.getParticipant1().getDisplayName() + " ja " + match.getParticipant2().getDisplayName() + "?");
+        alert.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK) {
+                deletePair();
+            }
+        });
+    }
+
+    private void deletePair() {
+        if (match != null && onDelete != null) {
+            onDelete.accept(match);
+        }
     }
 }
