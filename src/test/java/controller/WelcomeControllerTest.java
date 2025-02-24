@@ -44,6 +44,7 @@ public class WelcomeControllerTest extends ApplicationTest {
     @Test
     void testHandleClickSwitchesScene() {
         clickOn(root);
+        sleep(500);
         Parent newRoot = stage.getScene().getRoot();
 
         System.out.println("New scene root id: " + newRoot.getId());
