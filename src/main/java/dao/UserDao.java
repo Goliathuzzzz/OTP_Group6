@@ -46,10 +46,10 @@ public class UserDao implements IDao<User> {
         return query.getResultStream().findFirst();
     }
 
+    // Find all users except admin
     public List<User> findAll() {
-        return em.createQuery("SELECT u FROM User u", User.class).getResultList();
+        return em.createQuery("SELECT u FROM User u WHERE u.role <> 'admin'", User.class).getResultList();
     }
-
 
     public void update(User object) {
         try {
