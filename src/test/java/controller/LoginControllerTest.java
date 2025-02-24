@@ -1,8 +1,6 @@
 package controller;
 
 import controller.view_controllers.LoginController;
-import jakarta.persistence.Persistence;
-import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -14,7 +12,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
 import org.testfx.framework.junit5.ApplicationTest;
 
 import java.util.Date;
@@ -54,9 +51,18 @@ public class LoginControllerTest extends ApplicationTest {
         stage.show();
     }
 
+
+
     @BeforeAll
     static void start() {
         userController = Mockito.mock(UserController.class);
+        System.setProperty("java.awt.headless", "true");
+        System.setProperty("testfx.robot", "glass");
+        System.setProperty("testfx.headless", "true");
+        System.setProperty("prism.order", "sw");
+        System.setProperty("prism.text", "t2k");
+        System.setProperty("glass.platform", "Monocle");
+        System.setProperty("monocle.platform", "Headless");
     }
     @BeforeEach
     void setUp() {
@@ -72,7 +78,6 @@ public class LoginControllerTest extends ApplicationTest {
         clickOn("#emailField").write("alice@example.com");
         clickOn("#passwordField").write("password1");
         clickOn("#loginButton");
-        sleep(500);
 
         Parent newRoot = stage.getScene().getRoot();
 
@@ -86,7 +91,6 @@ public class LoginControllerTest extends ApplicationTest {
     @Test
     void testNewAccountSwitchesScene() {
         clickOn("#newAccount");
-        sleep(500);
         Parent newRoot = stage.getScene().getRoot();
         System.out.println("New scene root id: " + newRoot.getId());
         assertNotNull(newRoot.lookup("#registrationPane"), "Registration scene should be loaded.");
@@ -101,21 +105,18 @@ public class LoginControllerTest extends ApplicationTest {
         clickOn("#emailField").write("invalid@example.com");
         clickOn("#passwordField").write("wrongpassword");
         clickOn("#loginButton");
-        sleep(500);
         verifyThat(".alert", isVisible());
     }
 
     @Test
     void testForgotPasswordShowsAlert() {
         clickOn("#forgotPassword");
-        sleep(500);
         verifyThat(".alert", isVisible());
     }
 
     @Test
     void testEmptyFieldsShowError() {
         clickOn("#loginButton");
-        sleep(500);
         verifyThat(".alert", isVisible());
     }
 

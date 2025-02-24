@@ -31,6 +31,13 @@ public class RegistrationControllerTest extends ApplicationTest {
     @BeforeAll
     static void starter() {
         userController = Mockito.mock(UserController.class);
+        System.setProperty("java.awt.headless", "true");
+        System.setProperty("testfx.robot", "glass");
+        System.setProperty("testfx.headless", "true");
+        System.setProperty("prism.order", "sw");
+        System.setProperty("prism.text", "t2k");
+        System.setProperty("glass.platform", "Monocle");
+        System.setProperty("monocle.platform", "Headless");
     }
 
     @Override
@@ -66,7 +73,7 @@ public class RegistrationControllerTest extends ApplicationTest {
         clickOn("#passwordField").write("password123");
         clickOn("#confirmPasswordField").write("password123");
         clickOn("#signupButton");
-        sleep(500);
+
 
         Parent newRoot = stage.getScene().getRoot();
         assertNotNull(newRoot.lookup("#beginSessionPane"), "Begin session scene should be loaded.");
@@ -77,7 +84,7 @@ public class RegistrationControllerTest extends ApplicationTest {
     @Test
     void testEmptyFieldsShowError() {
         clickOn("#signupButton");
-        sleep(500);
+
         verifyThat(".alert", isVisible());
     }
 
@@ -89,7 +96,6 @@ public class RegistrationControllerTest extends ApplicationTest {
         clickOn("#passwordField").write("password123");
         clickOn("#confirmPasswordField").write("password456");
         clickOn("#signupButton");
-        sleep(500);
         verifyThat(".alert", isVisible());
     }
 
@@ -101,7 +107,6 @@ public class RegistrationControllerTest extends ApplicationTest {
         clickOn("#passwordField").write("password123");
         clickOn("#confirmPasswordField").write("password123");
         clickOn("#signupButton");
-        sleep(500);
         verifyThat(".alert", isVisible());
     }
 
@@ -113,7 +118,7 @@ public class RegistrationControllerTest extends ApplicationTest {
         clickOn("#passwordField").write("password123");
         clickOn("#confirmPasswordField").write("password123");
         clickOn("#signupButton");
-        sleep(500);
+
         verifyThat(".alert", isVisible());
     }
 
@@ -126,7 +131,7 @@ public class RegistrationControllerTest extends ApplicationTest {
         clickOn("#passwordField").write("password123");
         clickOn("#confirmPasswordField").write("password123");
         clickOn("#signupButton");
-        sleep(500);
+
         verifyThat(".alert", isVisible());
     }
 
@@ -138,7 +143,7 @@ public class RegistrationControllerTest extends ApplicationTest {
         Node backIcon = root.lookup("#backIcon");
         assertNotNull(backIcon, "backIcon should be present in the scene.");
         clickOn(backIcon);
-        sleep(500);
+
         Parent newRoot = stage.getScene().getRoot();
         assertNotNull(newRoot.lookup("#optionsPane"), "Options scene should be loaded after navigating back.");
         assertEquals("päävalikko", stage.getTitle(), "Stage title should be updated after navigating back.");
