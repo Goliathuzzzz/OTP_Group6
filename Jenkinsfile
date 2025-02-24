@@ -11,12 +11,12 @@ pipeline {
         }
         stage('Build') {
             steps {
-                bat 'mvn clean install'
+                bat 'mvn clean install -Dtestfx.robot=glass -Dglass.platform=Monocle -Dmonocle.platform=Headless -Dprism.order=sw'
             }
         }
         stage('Test') {
             steps {
-                bat 'mvn test'
+                bat 'mvn test -Dtestfx.robot=glass -Dglass.platform=Monocle -Dmonocle.platform=Headless -Dprism.order=sw'
             }
         }
         stage('Code Coverage') {
