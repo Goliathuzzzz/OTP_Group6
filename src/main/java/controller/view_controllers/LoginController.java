@@ -56,5 +56,9 @@ public class LoginController extends BaseController {
     private void handleNewAccount() {
         switchScene(SceneNames.REGISTRATION);
     }
+
+    public UserController getUController() {
+        return uController;
+    }
 }
 
