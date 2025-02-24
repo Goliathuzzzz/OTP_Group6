@@ -18,18 +18,6 @@ public class WelcomeControllerTest extends ApplicationTest {
     private Parent root;
     private Stage stage;
 
-    @BeforeAll
-    public static void setupHeadless() {
-        System.setProperty("java.awt.headless", "true");
-        System.setProperty("testfx.robot", "glass");
-        System.setProperty("testfx.headless", "true");
-        System.setProperty("prism.order", "sw");
-        System.setProperty("prism.text", "t2k");
-        System.setProperty("glass.platform", "Monocle");
-        System.setProperty("monocle.platform", "Headless");
-    }
-
-
     @Override
     public void start(Stage stage) throws Exception {
         this.stage = stage;

@@ -1,6 +1,7 @@
 package controller;
 
 import controller.view_controllers.LoginController;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -51,19 +52,11 @@ public class LoginControllerTest extends ApplicationTest {
         stage.show();
     }
 
-
-
     @BeforeAll
     static void start() {
         userController = Mockito.mock(UserController.class);
-        System.setProperty("java.awt.headless", "true");
-        System.setProperty("testfx.robot", "glass");
-        System.setProperty("testfx.headless", "true");
-        System.setProperty("prism.order", "sw");
-        System.setProperty("prism.text", "t2k");
-        System.setProperty("glass.platform", "Monocle");
-        System.setProperty("monocle.platform", "Headless");
     }
+
     @BeforeEach
     void setUp() {
         assertNotNull(controller, "Controller should be initialized");
