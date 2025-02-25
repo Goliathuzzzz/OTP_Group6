@@ -37,7 +37,7 @@
                 <Image url="@../images/match_hearts.png"/>
             </image>
         </ImageView>
-        <Button layoutX="40.0" layoutY="660" mnemonicParsing="false" styleClass="tiedot" text="tarkemmat tiedot"/>
+        <Button layoutX="40.0" layoutY="660" mnemonicParsing="false" styleClass="tiedot" text="tarkemmat tiedot" onMouseClicked="#handleNext"/>
     </Pane>
     <Pane layoutY="765.0" prefHeight="87" prefWidth="393" styleClass="bottom-nav">
         <ImageView fx:id="homeIcon" fitHeight="45.0" fitWidth="42.0" layoutX="45" layoutY="23.0"

@@ -26,4 +26,9 @@ public class MatchViewController extends BaseController {
     private void handleHelpClick(MouseEvent event) {
         System.out.println("help");
     }
+
+    @FXML
+    private void handleNext(MouseEvent event) {
+        switchScene(SceneNames.AFTER_MATCH);
+    }
 }
