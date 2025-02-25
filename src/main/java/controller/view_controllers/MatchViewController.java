@@ -63,4 +63,9 @@ public class MatchViewController extends BaseController {
         heartbeat.setAutoReverse(true);
         heartbeat.play();
     }
+
+    @FXML
+    private void handleNext(MouseEvent event) {
+        switchScene(SceneNames.AFTER_MATCH);
+    }
 }

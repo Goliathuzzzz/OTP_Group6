@@ -1,0 +1,104 @@
+@font-face {
+    font-family: 'HoeflerText';
+    src: url('/hoefler.ttf');
+}
+
+.root {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 30px;
+    -fx-pref-width: 393px;
+    -fx-pref-height: 852px;
+}
+
+/* Background Image */
+.tausta {
+    -fx-background-size: cover;
+    -fx-background-image: url("../images/background.png");
+}
+
+/* White Overlay */
+.rectangle15 {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 30;
+}
+
+/* Bottom Navigation */
+.bottom-nav {
+    -fx-background-color: #ECCEDA;
+    -fx-border-radius: 0px 0px 30px 30px;
+}
+
+.bottom-nav ImageView {
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 4, 0, 0, 2);
+    -fx-opacity: 0.9;
+}
+
+/* Navigation Icons */
+.nav-icon {
+    -fx-border-width: 4px;
+    -fx-border-color: #FFFFFF;
+}
+
+.bottom-nav ImageView:hover {
+    -fx-opacity: 1;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 6, 0, 0, 3);
+}
+
+.bottom-nav .selected {
+    -fx-opacity: 1;
+    -fx-scale-x: 1.2;
+    -fx-scale-y: 1.2;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 6, 0, 0, 3);
+}
+
+/* Text Section */
+.subtitle {
+    -fx-font-family: "Hoefler Text";
+    -fx-font-style: italic;
+    -fx-font-weight: 400;
+    -fx-font-size: 22px;
+    -fx-text-fill: #7E7E7E;
+}
+
+/* Text Section */
+.description {
+    -fx-font-family: "Hoefler Text";
+    -fx-font-style: italic;
+    -fx-font-weight: 400;
+    -fx-font-size: 22px;
+    -fx-text-fill: #7E7E7E;
+}
+
+/* Name Section */
+.main-text {
+    -fx-font-family: "Hoefler Text";
+    -fx-font-style: italic;
+    -fx-font-weight: 400;
+    -fx-font-size: 40px;
+    -fx-text-fill: #000000;
+}
+
+.begin {
+    -fx-position: absolute;
+    -fx-pref-width: 175px;
+    -fx-pref-height: 40px;
+    -fx-translate-x: 165px;
+    -fx-translate-y: 385px;
+
+    -fx-font-family: "Hoefler Text";
+    -fx-font-style: italic;
+    -fx-font-weight: normal;
+    -fx-font-size: 40px;
+    -fx-line-height: 40px;
+    -fx-text-fill: #FFFFFF;
+}
+
+ImageView:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 6, 0, 0, 3);
+}

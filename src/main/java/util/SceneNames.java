@@ -18,4 +18,5 @@ public class SceneNames {
     public static final String USER_ITEM = "user_item";
     public static final String WELCOME = "welcome";
     public static final String MATCH = "match";
+    public static final String AFTER_MATCH = "after_match";
 }
