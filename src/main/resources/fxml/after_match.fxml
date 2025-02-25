@@ -43,7 +43,7 @@
                preserveRatio="true">
         <Image url="@/images/big_heart.png"/>
     </ImageView>
-    <Label layoutY="-1.0" styleClass="begin" text="92%"/>
+    <Label fx:id="percentageLabel" layoutY="-1.0" styleClass="begin" text="92%"/>
     <ImageView fitHeight="31.0" fitWidth="28.0" layoutX="263.0" layoutY="540.0" pickOnBounds="true"
                preserveRatio="true" >
         <Image url="@/images/hearts.png"/>

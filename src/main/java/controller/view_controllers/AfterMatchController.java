@@ -7,12 +7,16 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import util.SceneNames;
+import javafx.scene.control.Label;
+
 
 public class AfterMatchController extends BaseController {
 
     @FXML
     private ImageView homeIcon, profileIcon, backIcon;
+
+    @FXML
+    private Label percentageLabel;
 
     @FXML
     private AnchorPane afterMatchPane;
@@ -26,6 +30,11 @@ public class AfterMatchController extends BaseController {
             } else {
                 System.out.println("Stage is null in AfterMatchController initialize()");
             }
+            setPercentage();
         });
+    }
+
+    private void setPercentage() {
+        percentageLabel.setText("100%");
     }
 }
