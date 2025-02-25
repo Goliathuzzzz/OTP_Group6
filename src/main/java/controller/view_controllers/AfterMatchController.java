@@ -15,37 +15,17 @@ public class AfterMatchController extends BaseController {
     private ImageView homeIcon, profileIcon, backIcon;
 
     @FXML
-    private AnchorPane sportPane;
+    private AnchorPane afterMatchPane;
 
     @FXML
     public void initialize() {
         Platform.runLater(() -> {
-            Stage stage = (Stage) sportPane.getScene().getWindow();
+            Stage stage = (Stage) afterMatchPane.getScene().getWindow();
             if (stage != null) {
                 stage.setTitle("Sport");
             } else {
-                System.out.println("Stage is null in SportController initialize()");
+                System.out.println("Stage is null in AfterMatchController initialize()");
             }
         });
-    }
-
-    @FXML
-    private void handleHomeClick(MouseEvent event) {
-        switchScene(SceneNames.BEGIN_SESSION);
-    }
-
-    @FXML
-    private void handleProfileClick(MouseEvent event) {
-        switchScene(SceneNames.PROFILE);
-    }
-
-    @FXML
-    private void handleBackClick(MouseEvent event) {
-        switchScene(SceneNames.OPTIONS);
-    }
-
-    @FXML
-    private void handleHelpClick(MouseEvent mouseEvent) {
-        System.out.println("Help button clicked");
     }
 }

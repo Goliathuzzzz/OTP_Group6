@@ -2,11 +2,14 @@ package controller.view_controllers;
 
 import controller.BaseController;
 import javafx.animation.ScaleTransition;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import util.SceneNames;
 
@@ -28,14 +31,25 @@ public class MatchViewController extends BaseController {
 
     @FXML
     private void handleDetailsButtonClick(MouseEvent event) {
-        System.out.println("Details button clicked!");
+        switchScene(SceneNames.AFTER_MATCH);
     }
+
+    @FXML
+    private AnchorPane matchPane;
 
     @FXML
     public void initialize() {
         startHeartbeatAnimation();
         loadProfileImages();
-        detailsButton.setOnMouseClicked(this::handleDetailsButtonClick);
+        Platform.runLater(() -> {
+            Stage stage = (Stage) matchPane.getScene().getWindow();
+            if (stage != null) {
+                stage.setTitle("aloita");
+            } else {
+                System.out.println("Stage is null in MatchViewController initialize()");
+            }
+        });
+//        detailsButton.setOnMouseClicked(this::handleDetailsButtonClick);
     }
 
     private void loadProfileImages() {
@@ -64,8 +78,5 @@ public class MatchViewController extends BaseController {
         heartbeat.play();
     }
 
-    @FXML
-    private void handleNext(MouseEvent event) {
-        switchScene(SceneNames.AFTER_MATCH);
-    }
+
 }

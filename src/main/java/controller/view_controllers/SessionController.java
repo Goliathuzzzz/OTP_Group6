@@ -8,11 +8,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.Node;
 import javafx.event.ActionEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import model.*;
 import util.SceneNames;
 
@@ -41,6 +43,9 @@ public class SessionController extends BaseController {
     @FXML
     private Label titleLabel, subtitleLabel;
 
+    @FXML
+    private AnchorPane sessionPane;
+
     private static final Map<String, String> CATEGORY_MAP = Map.of(
             "eläimet", "animals",
             "ruoka", "food",
@@ -65,6 +70,7 @@ public class SessionController extends BaseController {
         Platform.runLater(() -> {
             System.out.println("DEBUG: stage is " + (stage == null ? "NULL" : "SET"));
             session = context.getSession();
+            Stage stage = (Stage) sessionPane.getScene().getWindow();
             if (session == null) {
                 System.err.println("ERROR: session is null in SessionController2");
                 return;

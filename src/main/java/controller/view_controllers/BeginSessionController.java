@@ -55,5 +55,4 @@ public class BeginSessionController extends BaseController {
     private void handleBeginSessionClick(MouseEvent event) {
         switchScene(SceneNames.SESSION);
     }
-
 }
