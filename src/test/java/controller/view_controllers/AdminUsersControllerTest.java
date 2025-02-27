@@ -6,7 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
+
 import javafx.stage.Stage;
 import model.User;
 import org.junit.jupiter.api.BeforeAll;
@@ -14,8 +14,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.testfx.framework.junit5.ApplicationTest;
-import org.testfx.service.query.PointQuery;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -40,10 +40,9 @@ class AdminUsersControllerTest extends ApplicationTest {
         var fxmlLocation = getClass().getResource("/fxml/admin_users.fxml");
         assertNotNull(fxmlLocation, "admin_users.fxml file not found.");
 
-        FXMLLoader loader = new FXMLLoader(fxmlLocation);
+        FXMLLoader loader = getFxmlLoader(fxmlLocation);
         root = loader.load();
         adminUsersController = loader.getController();
-        adminUsersController.setUserController(userController);
 
         if (adminUsersController != null) {
             adminUsersController.setStage(stage);
@@ -52,6 +51,24 @@ class AdminUsersControllerTest extends ApplicationTest {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    private static FXMLLoader getFxmlLoader(URL fxmlLocation) {
+        FXMLLoader loader = new FXMLLoader(fxmlLocation);
+        loader.setControllerFactory(param -> {
+            if (param == AdminUsersController.class) {
+                AdminUsersController controller = new AdminUsersController();
+                controller.setUserController(userController);
+                return controller;
+            } else {
+                try {
+                    return param.getDeclaredConstructor().newInstance();
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+        return loader;
     }
 
     @BeforeAll
