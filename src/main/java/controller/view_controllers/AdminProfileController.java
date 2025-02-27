@@ -11,7 +11,7 @@ import util.SceneNames;
 
 public class AdminProfileController extends BaseController {
 
-    private final GUIContext guiContext = GUIContext.getInstance();
+    private GUIContext guiContext = GUIContext.getInstance();
 
     @FXML
     private Pane bottomNavPane, profileImagePane;
@@ -21,6 +21,16 @@ public class AdminProfileController extends BaseController {
 
     @FXML
     private Label nameLabel, emailLabel, phoneLabel;
+
+    // default constructor for FXML loader
+    public AdminProfileController() {
+        this(GUIContext.getInstance());
+    }
+
+    // constructor for testing
+    public AdminProfileController(GUIContext guiContext) {
+        this.guiContext = guiContext;
+    }
 
     @FXML
     private void initialize() {

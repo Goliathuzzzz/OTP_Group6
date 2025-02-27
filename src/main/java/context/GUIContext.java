@@ -104,6 +104,7 @@ public class GUIContext {
 
     public void setSession(Session session) {
         this.session = session;
+        System.out.println("DEBUG: session set in GUIContext");
     }
 
     public void setGuest(Guest guest) {
@@ -150,6 +151,10 @@ public class GUIContext {
 
     public void setMatches(List<Match> matches) {
         this.matches = matches;
+    }
+
+    public void setMatch(Match match) {
+        matches.add(match);
     }
 
     public void logout() {

@@ -127,4 +127,14 @@ public abstract class Participant {
     public void addSportsInterest(Sports sport) {
         sportsInterests.add(sport);
     }
+
+    public List<Category> getInterests() {
+        List<Category> interests = new ArrayList<>();
+        interests.addAll(animalInterests);
+        interests.addAll(foodInterests);
+        interests.addAll(hobbyInterests);
+        interests.addAll(scienceInterests);
+        interests.addAll(sportsInterests);
+        return interests;
+    }
 }

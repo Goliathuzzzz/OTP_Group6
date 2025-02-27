@@ -50,7 +50,7 @@
     </ImageView>
 
     <!-- Text Labels -->
-    <Label layoutX="37" layoutY="118" styleClass="main-text" text="sinä ja sam">
+    <Label fx:id="matchParticipantsLabel" layoutX="37" layoutY="118" styleClass="main-text">
         <font>
             <Font name="Hoefler Text" size="40.0"/>
         </font>
@@ -60,7 +60,7 @@
             <Font name="Hoefler Text" size="22.0"/>
         </font>
     </Label>
-    <Label layoutX="37" layoutY="653" styleClass="description" text="lenkkeily, tv-sarjat ja avaruus!">
+    <Label fx:id="interestsLabel" layoutX="37" layoutY="653" styleClass="description">
         <font>
             <Font name="Hoefler Text" size="22.0"/>
         </font>

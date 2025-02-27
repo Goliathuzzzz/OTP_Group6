@@ -16,6 +16,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import model.*;
+import model.categories.Category;
 import util.SceneNames;
 
 import java.util.ArrayList;
@@ -56,28 +57,38 @@ public class SessionController extends BaseController {
 
     @FXML
     private void handleReady(ActionEvent event) {
-        // matchParticipant();
-        System.out.println("valmis painettu.");
+        matchParticipant();
         switchScene(SceneNames.MATCH);
     }
 
     @FXML
     public void initialize() {
+        // check if session is set
+        session = context.getSession();
+        if (session == null) {
+            System.err.println("ERROR: Session is null in SessionController");
+            return;
+        }
+
+        // initialize participant, matchController and matcher
+        participant = session.getParticipant();
+        if (participant == null) {
+            System.err.println("ERROR: Participant is null in SessionController");
+            return;
+        }
+        matchController = new MatchController();
+        matcher = new Matcher(session);
+
+        // set event handlers for interests
         for (Node interest : interestsContainer.getChildren()) {
             interest.setOnMouseClicked(this::handleInterestSelection);
         }
-        // needs to wait for stage to be set
+
+        // wait for stage to be set before accessing UI elements
+        // redundant?
         Platform.runLater(() -> {
             System.out.println("DEBUG: stage is " + (stage == null ? "NULL" : "SET"));
-            session = context.getSession();
             Stage stage = (Stage) sessionPane.getScene().getWindow();
-            if (session == null) {
-                System.err.println("ERROR: session is null in SessionController2");
-                return;
-            }
-            participant = session.getParticipant();
-            matchController = new MatchController();
-            matcher = new Matcher(session);
         });
     }
 
@@ -107,6 +118,12 @@ public class SessionController extends BaseController {
         matcher.matchParticipant();
         List<Match> matches = new ArrayList<>();
         HashMap<User, Double> topMatches = matcher.getTopMatches();
+
+        if (topMatches.isEmpty()) {
+            System.err.println("ERROR: No top matches found in SessionController matchParticipant()");
+            return;
+        }
+
         for (Map.Entry<User, Double> entry: topMatches.entrySet()) {
             matchController.matchParticipants(participant, entry.getKey(), entry.getValue());
             matches.add(new Match(participant, entry.getKey(), entry.getValue()));
