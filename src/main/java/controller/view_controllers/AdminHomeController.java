@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
 
 public class AdminHomeController extends BaseController implements Initializable {
 
-    private final MatchController matchController = new MatchController();
+    private MatchController matchController = new MatchController();
 
     @FXML
     private VBox pairsContainer;
@@ -62,5 +62,15 @@ public class AdminHomeController extends BaseController implements Initializable
                     return controller != null && controller.getMatch().equals(match);
                 })
                 .findFirst().ifPresent(nodeToRemove -> pairsContainer.getChildren().remove(nodeToRemove));
+    }
+
+    // testing purposes
+    public void setMatchController(MatchController matchController) {
+        this.matchController = matchController;
+    }
+
+    // testing purposes
+    public VBox getPairsContainer() {
+        return pairsContainer;
     }
 }
