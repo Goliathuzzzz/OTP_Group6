@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class Matcher {
     private final Session session;
-    private final UserController userController;
+    private UserController userController;
     // Double arvo on yhteensopivuus-prosentti. Periaatteessa voi olla useampi paras match, niin tallennetaan hashmappiin
     private final HashMap<User, Double> topMatches;
 
@@ -29,7 +29,6 @@ public class Matcher {
         double increment;
         List<User> potentialMatches = userController.displayAllUsers();
         List<Category> pMatchInterests;
-        Participant toMatch = session.getParticipant();
         for (User u: potentialMatches) {
             pMatchInterests = groupMatchInterests(u);
             compatibility = 0;
@@ -74,6 +73,7 @@ public class Matcher {
         return interests;
     }
 
+    // Palauttaa käyttäjän parhaat matchit
     public HashMap<User, Double> getTopMatches() {
         return topMatches;
     }
@@ -81,6 +81,11 @@ public class Matcher {
     // For testing
     public UserController getUserController() {
         return userController;
+    }
+
+    // For testing
+    public void setUserController(UserController userController) {
+        this.userController = userController;
     }
 
     private double roundToTwoDecimalPlaces(double value) {
