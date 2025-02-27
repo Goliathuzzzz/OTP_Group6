@@ -71,7 +71,6 @@ class MatcherTest {
         actual = matcher.getTopMatches().entrySet().iterator().next().getKey();
         assertEquals(75, compatibility, 0.01, "Should have 75% compatibility");
         assertEquals(expected, actual, "Users should match");
-
     }
 
     @Test
