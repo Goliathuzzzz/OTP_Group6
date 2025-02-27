@@ -42,10 +42,7 @@
                text="admin"/>
     </Pane>
     <Pane fx:id="profileImagePane" layoutX="97" layoutY="252" prefHeight="200" prefWidth="200" styleClass="frame4"/>
-    <Label fx:id="nameLabel" layoutX="39.0" layoutY="507.0" prefHeight="22" prefWidth="188" styleClass="info-text"
-           text="heta"/>
-    <Label fx:id="emailLabel" layoutX="39.0" layoutY="549.0" prefHeight="22" prefWidth="188" styleClass="info-text"
-           text="hetahar@metropolia.fi"/>
-    <Label fx:id="phoneLabel" layoutX="39.0" layoutY="593.0" prefHeight="22" prefWidth="188" styleClass="info-text"
-           text="0401234567"/>
+    <Label fx:id="nameLabel" layoutX="39.0" layoutY="507.0" prefHeight="22" prefWidth="188" styleClass="info-text"/>
+    <Label fx:id="emailLabel" layoutX="39.0" layoutY="549.0" prefHeight="22" prefWidth="188" styleClass="info-text"/>
+    <Label fx:id="phoneLabel" layoutX="39.0" layoutY="593.0" prefHeight="22" prefWidth="188" styleClass="info-text"/>
 </AnchorPane>
