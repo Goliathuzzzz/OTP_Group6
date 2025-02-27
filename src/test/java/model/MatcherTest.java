@@ -1,32 +1,35 @@
 package model;
 
 import controller.UserController;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.Persistence;
 import model.categories.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
+import org.mockito.Mockito;
+
+
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 class MatcherTest {
 
     private static Session session;
     private static Matcher matcher;
+    private static UserController userController;
+    private static List<User> userList;
 
     @BeforeAll
     static void init() {
         session = new Session(new Guest("21313233", new Date()));
         matcher = new Matcher(session);
-        EntityManager em = Persistence.createEntityManagerFactory("test-persistence-unit-tt").createEntityManager();
-        matcher.getUserController().setEm(em);
-        seedTestDB(matcher.getUserController());
+        userController = Mockito.mock(UserController.class);
+        matcher.setUserController(userController);
+        userList = seedTestDB();
     }
 
     @BeforeEach
@@ -36,7 +39,7 @@ class MatcherTest {
     }
 
     @Test
-    void matchParticipant() {
+    void matchParticipantTest() {
         session.addParticipantInterest(Animal.HEVONEN);
         session.addParticipantInterest(Animal.KOIRA);
         session.addParticipantInterest(Animal.KISSA);
@@ -45,9 +48,11 @@ class MatcherTest {
         session.addParticipantInterest(Sports.LENKKEILY);
         session.addParticipantInterest(Science.TÄHTITIEDE);
         session.addParticipantInterest(Science.BIOLOGIA);
+        when(userController.displayAllUsers()).thenReturn(userList);
         matcher.matchParticipant();
         double compatibility = matcher.getTopMatches().entrySet().iterator().next().getValue();
         assertEquals(66.67, compatibility, 0.01, "Should have 66.67% compatibility");
+        when(userController.displayUser(1)).thenReturn(userList.getFirst());
         User expected = matcher.getUserController().displayUser(1);
         User actual = matcher.getTopMatches().entrySet().iterator().next().getKey();
         assertEquals(expected, actual, "Users should match");
@@ -61,31 +66,33 @@ class MatcherTest {
         session.addParticipantInterest(Science.TÄHTITIEDE);
         matcher.matchParticipant();
         compatibility = matcher.getTopMatches().entrySet().iterator().next().getValue();
+        when(userController.displayUser(3)).thenReturn(userList.get(2));
         expected = matcher.getUserController().displayUser(3);
         actual = matcher.getTopMatches().entrySet().iterator().next().getKey();
         assertEquals(75, compatibility, 0.01, "Should have 75% compatibility");
         assertEquals(expected, actual, "Users should match");
-
     }
 
     @Test
-    void matchParticipantWithoutInterests() {
+    void matchParticipantWithoutInterestsTest() {
+        when(userController.displayAllUsers()).thenReturn(userList);
         matcher.matchParticipant();
         assertEquals(0, matcher.getTopMatches().size(), "There should be no matches");
     }
 
     @Test
-    void matchParticipantMultipleMatches() {
+    void matchParticipantMultipleMatchesTest() {
         session.addParticipantInterest(Animal.KISSA);
         session.addParticipantInterest(Science.BIOLOGIA);
+        when(userController.displayAllUsers()).thenReturn(userList);
         matcher.matchParticipant();
         assertEquals(2, matcher.getTopMatches().size(), "There should be 2 matches");
         double compatibility = matcher.getTopMatches().entrySet().iterator().next().getValue();
         assertEquals(16.67, compatibility, 0.01, "Compatibility should be 16.67%");
     }
 
-
-    private static void seedTestDB(UserController uS) {
+    private static List<User> seedTestDB() {
+        List<User> testUserList = new ArrayList<>();
         User user1 = new User("Alice", "password1", "alice@example.com", "dummy", "1234567890",new Date());
         user1.addAnimalInterest(Animal.HEVONEN);
         user1.addAnimalInterest(Animal.KOIRA);
@@ -128,10 +135,10 @@ class MatcherTest {
         user4.addHobbiesInterest(Hobby.MEDITOINTI);
         user4.addScienceInterest(Science.KEMIA);
         user4.addSportsInterest(Sports.TENNIS);
-        uS.registerUser(user1);
-        uS.registerUser(user2);
-        uS.registerUser(user3);
-        uS.registerUser(user4);
-
+        testUserList.add(user1);
+        testUserList.add(user2);
+        testUserList.add(user3);
+        testUserList.add(user4);
+        return testUserList;
     }
 }

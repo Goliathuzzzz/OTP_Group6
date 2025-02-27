@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class Matcher {
     private final Session session;
-    private final UserController userController;
+    private UserController userController;
     // Double arvo on yhteensopivuus-prosentti. Periaatteessa voi olla useampi paras match, niin tallennetaan hashmappiin
     private final HashMap<User, Double> topMatches;
 
@@ -112,6 +112,11 @@ public class Matcher {
     // For testing
     public UserController getUserController() {
         return userController;
+    }
+
+    // For testing
+    public void setUserController(UserController userController) {
+        this.userController = userController;
     }
 
     private double roundToTwoDecimalPlaces(double value) {

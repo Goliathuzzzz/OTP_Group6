@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 
 public class AdminUsersController extends BaseController implements Initializable {
 
-    private final UserController userController = new UserController();
+    private UserController userController = new UserController();
 
     private List<User> users;
 
@@ -109,5 +109,15 @@ public class AdminUsersController extends BaseController implements Initializabl
                 row++;
             }
         }
+    }
+
+    // For testing
+    public void setUserController(UserController userController) {
+        this.userController = userController;
+    }
+
+    // For testing
+    public GridPane getUsersGrid() {
+        return usersGrid;
     }
 }
