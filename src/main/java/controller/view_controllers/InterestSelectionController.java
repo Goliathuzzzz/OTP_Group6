@@ -5,6 +5,7 @@ import controller.BaseController;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.image.ImageView;
@@ -28,6 +29,9 @@ public class InterestSelectionController extends BaseController {
 
     @FXML
     private VBox optionsContainer; //holds dynamically generated options
+
+    @FXML
+    private AnchorPane interestSelectionPane;
 
     private String currentCategory;
     private final List<RadioButton> allRadioButtons = new ArrayList<>();

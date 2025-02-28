@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="852" prefWidth="393" styleClass="edit-profile" stylesheets="@/css/interest_selection.css"
+<AnchorPane fx:id="interestSelectionPane" prefHeight="852" prefWidth="393" styleClass="edit-profile" stylesheets="@/css/interest_selection.css"
             xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="controller.view_controllers.InterestSelectionController">
     <Pane prefHeight="556" prefWidth="393" styleClass="tausta"/>
