@@ -41,14 +41,16 @@ public class AfterMatchController extends BaseController {
 
     private void setResults() {
         GUIContext context = GUIContext.getInstance();
-        Match match = context.getMatches().getLast();
-        if (match == null) {
+        List<Match> matches = context.getMatches();
+        if (matches == null) {
             System.err.println("ERROR: Match is null in AfterMatchController setResults()");
-            return;
         }
-        matchParticipantsLabel.setText(match.getParticipant1().getDisplayName() + " ja " + match.getParticipant2().getDisplayName());
-        percentageLabel.setText(Math.round(match.getCompatibility()) + "%");
-        List<Category> interests = MatchUtils.findCommonInterests(match.getParticipant1().getInterests(), match.getParticipant2().getInterests());
-        interestsLabel.setText(interests.isEmpty() ? "ei yhteisiä kiinnostuksenkohteita" : MatchUtils.formatInterests(interests));
+        else {
+            Match match = matches.getLast();
+            matchParticipantsLabel.setText(match.getParticipant1().getDisplayName() + " ja " + match.getParticipant2().getDisplayName());
+            percentageLabel.setText(Math.round(match.getCompatibility()) + "%");
+            List<Category> interests = MatchUtils.findCommonInterests(match.getParticipant1().getInterests(), match.getParticipant2().getInterests());
+            interestsLabel.setText(interests.isEmpty() ? "ei yhteisiä kiinnostuksenkohteita" : MatchUtils.formatInterests(interests));
+        }
     }
 }
