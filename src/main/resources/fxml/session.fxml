@@ -14,7 +14,7 @@
             fx:controller="controller.view_controllers.SessionController">
     <Pane prefHeight="556" prefWidth="393" styleClass="tausta"/>
     <Pane layoutY="95.0" prefHeight="757.0" prefWidth="393" styleClass="rectangle15">
-        <Button fx:id="continueButton" layoutX="39.0" layoutY="570.0" prefHeight="50.0" prefWidth="315.0"
+        <Button fx:id="readyButton" layoutX="39.0" layoutY="570.0" prefHeight="50.0" prefWidth="315.0"
                 styleClass="rectangle14" text="valmis" onAction="#handleReady"/>
         <Pane layoutY="670.0" prefHeight="87" prefWidth="393" styleClass="bottom-nav">
             <ImageView fx:id="homeIcon" fitHeight="45.0" fitWidth="42.0" layoutX="45" layoutY="23.0"
@@ -48,35 +48,35 @@
         <VBox fx:id="interestsContainer" layoutX="38" layoutY="238" spacing="10">
             <Pane styleClass="interest-group">
                 <Pane styleClass="rectangle-20"/>
-                <Label layoutX="48" layoutY="7" styleClass="interest-label" text="eläimet" textAlignment="CENTER"/>
+                <Label fx:id="animalLabel" layoutX="48" layoutY="7" styleClass="interest-label" text="eläimet" textAlignment="CENTER"/>
                 <ImageView fitHeight="22" fitWidth="22" layoutX="10" layoutY="7">
                     <Image url="@/images/paw_icon.png"/>
                 </ImageView>
             </Pane>
             <Pane styleClass="interest-group">
                 <Pane styleClass="rectangle-21"/>
-                <Label layoutX="48" layoutY="7" styleClass="interest-label" text="ruoka" textAlignment="CENTER"/>
+                <Label fx:id="foodLabel" layoutX="48" layoutY="7" styleClass="interest-label" text="ruoka" textAlignment="CENTER"/>
                 <ImageView fitHeight="22" fitWidth="22" layoutX="10" layoutY="7">
                     <Image url="@/images/food_icon.png"/>
                 </ImageView>
             </Pane>
             <Pane styleClass="interest-group">
                 <Pane styleClass="rectangle-22"/>
-                <Label layoutX="48" layoutY="7" styleClass="interest-label" text="harrastukset" textAlignment="CENTER"/>
+                <Label fx:id="hobbiesLabel" layoutX="48" layoutY="7" styleClass="interest-label" text="harrastukset" textAlignment="CENTER"/>
                 <ImageView fitHeight="22" fitWidth="22" layoutX="10" layoutY="7">
                     <Image url="@/images/hobby_icon.png"/>
                 </ImageView>
             </Pane>
             <Pane styleClass="interest-group">
                 <Pane styleClass="rectangle-24"/>
-                <Label layoutX="48" layoutY="7" styleClass="interest-label" text="urheilu" textAlignment="CENTER"/>
+                <Label fx:id="sportsLabel" layoutX="48" layoutY="7" styleClass="interest-label" text="urheilu" textAlignment="CENTER"/>
                 <ImageView fitHeight="22" fitWidth="22" layoutX="10" layoutY="7">
                     <Image url="@/images/sports_icon.png"/>
                 </ImageView>
             </Pane>
             <Pane styleClass="interest-group">
                 <Pane styleClass="rectangle-23"/>
-                <Label layoutX="48" layoutY="7" styleClass="interest-label" text="tiede" textAlignment="CENTER"/>
+                <Label fx:id="scienceLabel" layoutX="48" layoutY="7" styleClass="interest-label" text="tiede" textAlignment="CENTER"/>
                 <ImageView fitHeight="22" fitWidth="22" layoutX="10" layoutY="7">
                     <Image url="@/images/science_icon.png"/>
                 </ImageView>

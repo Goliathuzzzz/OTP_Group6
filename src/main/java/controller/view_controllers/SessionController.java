@@ -26,14 +26,14 @@ import java.util.Map;
 
 public class SessionController extends BaseController {
 
-    private final GUIContext context = GUIContext.getInstance();
+    private GUIContext context = GUIContext.getInstance();
     private Session session;
     private Participant participant;
     private MatchController matchController;
     private Matcher matcher;
 
     @FXML
-    private Button valmisButton;
+    private Button readyButton;
 
     @FXML
     private ImageView homeIcon, profileIcon, backIcon;
@@ -46,6 +46,9 @@ public class SessionController extends BaseController {
 
     @FXML
     private AnchorPane sessionPane;
+
+    @FXML
+    private Label animalLabel, foodLabel, hobbiesLabel, sportsLabel, scienceLabel;
 
     private static final Map<String, String> CATEGORY_MAP = Map.of(
             "eläimet", "animals",
@@ -129,5 +132,15 @@ public class SessionController extends BaseController {
             matches.add(new Match(participant, entry.getKey(), entry.getValue()));
         }
         context.setMatches(matches);
+    }
+
+    // For testing
+    public void setMatchController(MatchController matchController) {
+        this.matchController = matchController;
+    }
+
+    // For testing
+    public Map<String, String> getCategoryMap() {
+        return CATEGORY_MAP;
     }
 }
