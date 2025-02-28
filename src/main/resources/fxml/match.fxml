@@ -32,7 +32,7 @@
                    preserveRatio="true">
             <Image url="@../images/match_hearts.png"/>
         </ImageView>
-        <Button layoutX="40.0" layoutY="660" mnemonicParsing="false" styleClass="tiedot" text="tarkemmat tiedot" onMouseClicked="#handleDetailsButtonClick"/>
+        <Button fx:id="detailsButton" layoutX="40.0" layoutY="660" mnemonicParsing="false" styleClass="tiedot" text="tarkemmat tiedot" onMouseClicked="#handleDetailsButtonClick"/>
     </Pane>
     <Pane layoutY="765.0" prefHeight="87" prefWidth="393" styleClass="bottom-nav">
         <ImageView fx:id="homeIcon" fitHeight="45.0" fitWidth="42.0" layoutX="45" layoutY="23.0"
