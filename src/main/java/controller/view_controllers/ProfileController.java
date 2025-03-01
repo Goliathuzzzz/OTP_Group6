@@ -16,7 +16,7 @@ import java.util.Random;
 
 public class ProfileController extends BaseController {
 
-    private final GUIContext guiContext = GUIContext.getInstance();
+    private GUIContext guiContext = GUIContext.getInstance();
 
     @FXML
     private Pane bottomNavPane, profileImagePane;
@@ -26,6 +26,16 @@ public class ProfileController extends BaseController {
 
     @FXML
     private Label nameLabel, emailLabel, phoneLabel;
+
+    // default constructor for FXML loader
+    public ProfileController() {
+        this(GUIContext.getInstance());
+    }
+
+    // constructor for testing
+    public ProfileController(GUIContext guiContext) {
+        this.guiContext = guiContext;
+    }
 
     @FXML
     private void initialize() {
