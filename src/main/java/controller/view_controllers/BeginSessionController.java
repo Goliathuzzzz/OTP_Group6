@@ -61,6 +61,8 @@ public class BeginSessionController extends BaseController {
                 context.isGuest() ? context.getGuest() : null;
         if (participant != null) {
             context.setSession(new Session(participant));
+            // reset participant interests
+            context.getSession().getParticipant().clearInterests();
             switchScene(SceneNames.SESSION);
         } else {
             System.err.println("No user or guest found in GUIContext");
