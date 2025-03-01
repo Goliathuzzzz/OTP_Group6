@@ -4,15 +4,13 @@ import context.GUIContext;
 import controller.BaseController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
 import util.SceneNames;
 
-import java.util.Objects;
-import java.util.Random;
+import static util.ProfilePictureUtil.getProfilePictureView;
 
 public class ProfileController extends BaseController {
 
@@ -48,26 +46,7 @@ public class ProfileController extends BaseController {
             showAlert(Alert.AlertType.ERROR, "virhe", "käyttäjätietoja ei löydy");
             System.err.println("ERROR: No user or guest data found");
         }
-
-        String[] imagePaths = {
-                "/images/alpaca_icon.png",
-                "/images/elephant_icon.png",
-                "/images/flamingo_icon.png",
-                "/images/giraffe_icon.png",
-                "/images/parrot_icon.png",
-                "/images/rhino_icon.png",
-                "/images/tiger_icon.png"
-        };
-
-        Random random = new Random();
-        int randomIndex = random.nextInt(imagePaths.length);
-
-        Image profileImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream(imagePaths[randomIndex])));
-
-        ImageView profileImageView = new ImageView(profileImage);
-        profileImageView.setFitWidth(200);
-        profileImageView.setFitHeight(200);
-        profileImageView.setPreserveRatio(true);
+        ImageView profileImageView = getProfilePictureView(guiContext.getId(), 200, 200);
         profileImagePane.getChildren().add(profileImageView);
     }
 

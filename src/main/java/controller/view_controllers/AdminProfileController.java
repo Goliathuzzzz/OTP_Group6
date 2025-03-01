@@ -9,6 +9,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.input.MouseEvent;
 import util.SceneNames;
 
+import static util.ProfilePictureUtil.getProfilePictureView;
+
 public class AdminProfileController extends BaseController {
 
     private GUIContext guiContext = GUIContext.getInstance();
@@ -41,6 +43,9 @@ public class AdminProfileController extends BaseController {
             nameLabel.textProperty().bind(guiContext.getUserNameProperty());
             emailLabel.textProperty().bind(guiContext.getEmailProperty());
             phoneLabel.textProperty().bind(guiContext.getPhoneProperty());
+
+            ImageView profileImageView = getProfilePictureView(guiContext.getId(), 200, 200);
+            profileImagePane.getChildren().add(profileImageView);
         }
     }
 
