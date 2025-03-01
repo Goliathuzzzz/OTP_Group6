@@ -130,7 +130,8 @@ public abstract class BaseController {
     public void handlePreviousClick(MouseEvent e) {
         switchScene(SceneNames.PROFILE);
     }
+
     public void handleHelpClick(MouseEvent e) {
-        System.out.println("help");
+        switchScene(SceneNames.HELP);
     }
 }

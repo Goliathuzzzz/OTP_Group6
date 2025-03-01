@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<?import javafx.scene.layout.VBox?>
+<AnchorPane prefHeight="852.0" prefWidth="393.0" fx:id="matchPane" styleClass="edit-profile" stylesheets="@/css/match.css"
+            xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.view_controllers.HelpController">
+    <Pane fx:id="paperGradient" layoutY="-2" prefHeight="854" prefWidth="392" styleClass="help-paper-gradient"/>
+    <Pane fx:id="paperTexture" prefHeight="852.0" prefWidth="393.0" styleClass="paper-texture">
+        <VBox prefWidth="393.0" prefHeight="852.0" spacing="20.0" fx:id="vBox">
+            <Label text="tervetuloa tatskatytöt speed dating -sovellukseen!" fx:id="middleText1" wrapText="true" maxWidth="300" styleClass="centered-text"/>
+            <Label text="päivitä ensin profiilisi ajan tasalle profiili-näkymässä, niin olet valmis deittaamaan. aloita sessio etusivulta, valitse mielenkiinnon kohteesi ja katso, kenen kanssa mätsäät parhaiten – ja millä perusteilla!" fx:id="middleText2" wrapText="true" maxWidth="300" styleClass="centered-text"/>
+        </VBox>
+
+    </Pane>
+    <Pane layoutY="765.0" prefHeight="87" prefWidth="393" styleClass="bottom-nav">
+        <ImageView fx:id="homeIcon" fitHeight="45.0" fitWidth="42.0" layoutX="45" layoutY="23.0"
+                   onMouseClicked="#handleHomeClick" pickOnBounds="true" preserveRatio="true">
+            <Image url="@/images/home_icon.png"/>
+        </ImageView>
+        <ImageView fx:id="profileIcon" fitHeight="45.0" fitWidth="42.0" layoutX="132" layoutY="23.0"
+                   onMouseClicked="#handleProfileClick" pickOnBounds="true" preserveRatio="true">
+            <Image url="@/images/profile_icon.png"/>
+        </ImageView>
+        <ImageView fx:id="backIcon" fitHeight="45.0" fitWidth="42.0" layoutX="219" layoutY="23.0"
+                   onMouseClicked="#handleBackClick" pickOnBounds="true" preserveRatio="true">
+            <Image url="@/images/back_icon.png"/>
+        </ImageView>
+        <ImageView fx:id="helpIcon" fitHeight="45.0" fitWidth="42.0" layoutX="306" layoutY="23.0"
+                   onMouseClicked="#handleHelpClick" pickOnBounds="true" preserveRatio="true">
+            <Image url="@/images/help_icon.png"/>
+        </ImageView>
+    </Pane>
+</AnchorPane>

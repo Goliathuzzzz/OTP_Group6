@@ -61,6 +61,10 @@
     -fx-pref-width: 393px;
     -fx-pref-height: 852px;
     -fx-background-color: linear-gradient(to bottom, #F6BAD2 0%, #EC679D 95.61%);
+    -fx-background-image: url("../images/cherry-nobg.png");
+    -fx-background-size: 100%;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
     -fx-position: absolute;
 }
 
@@ -180,5 +184,25 @@
     100% { -fx-scale-x: 1; -fx-scale-y: 1; }
 }
 
+/*for help page*/
+.centered-text {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-alignment: center;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 4, 0, 0, 4);
+    -fx-text-fill: #FFFFFF;
+    -fx-font-style: italic;
+    -fx-font-family: "Hoefler Text";
+    -fx-line-spacing: 10px;
+}
 
-
+.help-paper-gradient {
+    -fx-pref-width: 393px;
+    -fx-pref-height: 852px;
+    -fx-background-color: linear-gradient(to bottom, #F6BAD2 0%, #EC679D 95.61%);
+    -fx-background-image: url("../images/cherry-nobg.png");
+    -fx-background-size: 100%;
+    -fx-background-position: 100% 80%;
+    -fx-background-repeat: no-repeat;
+    -fx-position: absolute;
+}
