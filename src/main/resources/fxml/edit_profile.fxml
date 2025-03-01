@@ -15,7 +15,6 @@
         <Pane layoutX="39.0" layoutY="56.0" prefHeight="444.0" prefWidth="315.0">
             <ImageView fx:id="profileImage" fitHeight="120.0" fitWidth="120.0" layoutX="98.0" layoutY="23.0"
                        styleClass="frame2">
-                <Image url="@/images/profile_image.png"/>
             </ImageView>
         </Pane>
         <Pane layoutX="39.0" layoutY="212.0" prefHeight="288.0" prefWidth="315.0" styleClass="group18">
