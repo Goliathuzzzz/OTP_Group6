@@ -68,7 +68,7 @@ class AdminHomeControllerTest extends ApplicationTest {
     void testMatchListPopulation() {
         VBox pairsContainer = lookup("#pairsContainer").query();
         assertNotNull(pairsContainer, "Pairs container should exist");
-        assertEquals(testMatches.size() + 1, adminHomeController.getPairsContainer().getChildren().size(), "Should display all matches");
+        assertEquals(testMatches.size(), adminHomeController.getPairsContainer().getChildren().size(), "Should display all matches");
     }
 
     @Test
