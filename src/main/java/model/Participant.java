@@ -137,4 +137,12 @@ public abstract class Participant {
         interests.addAll(sportsInterests);
         return interests;
     }
+
+    public void clearInterests() {
+        animalInterests.clear();
+        foodInterests.clear();
+        hobbyInterests.clear();
+        scienceInterests.clear();
+        sportsInterests.clear();
+    }
 }

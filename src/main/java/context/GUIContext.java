@@ -157,6 +157,17 @@ public class GUIContext {
         matches.add(match);
     }
 
+    public int getId() {
+        if (isUser) {
+            return user.getId();
+        } else if (isGuest) {
+            return guest.getId();
+        } else {
+            System.err.println("ERROR: No user or guest data found");
+            return -1;
+        }
+    }
+
     public void logout() {
         user = null;
         guest = null;
