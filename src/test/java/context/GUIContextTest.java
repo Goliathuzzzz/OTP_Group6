@@ -1,0 +1,137 @@
+package context;
+
+import model.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+class GUIContextTest {
+
+    private GUIContext guiContext;
+    private User testUser;
+    private Guest testGuest;
+    private Session testSession;
+    private Matcher testMatcher;
+    private List<Match> testMatches;
+
+    @BeforeEach
+    void setUp() {
+        guiContext = GUIContext.getInstance();
+        guiContext.logout();
+
+        testUser = new User("Alice", "password", "alice@example.com", "user", "1234567890", null);
+        testGuest = new Guest("9876543210", null);
+        testSession = new Session(testUser);
+        testMatcher = new Matcher(testSession);
+        testMatches = new ArrayList<>();
+    }
+
+
+    @Test
+    void testSingletonInstance() {
+        GUIContext instance1 = GUIContext.getInstance();
+        GUIContext instance2 = GUIContext.getInstance();
+        assertSame(instance1, instance2, "GUIContext should be a singleton.");
+    }
+
+    @Test
+    void testSetAndGetUser() {
+        guiContext.setUser(testUser);
+        assertTrue(guiContext.isUser(), "User should be set.");
+        assertEquals(testUser, guiContext.getUser(), "Retrieved user should match set user.");
+        assertFalse(guiContext.isAdmin(), "Regular user should not be an admin.");
+    }
+
+    @Test
+    void testSetAndGetAdminUser() {
+        User adminUser = new User("Admin", "adminpass", "admin@example.com", "admin", "9998887777", null);
+        guiContext.setUser(adminUser);
+        assertTrue(guiContext.isAdmin(), "Admin flag should be true.");
+    }
+
+    @Test
+    void testSetAndGetGuest() {
+        guiContext.setGuest(testGuest);
+        assertTrue(guiContext.isGuest(), "Guest should be set.");
+        assertEquals(testGuest, guiContext.getGuest(), "Retrieved guest should match set guest.");
+    }
+
+    @Test
+    void testSetAndGetUserProperties() {
+        guiContext.setUser(testUser);
+
+        guiContext.setUserName("NewAlice");
+        guiContext.setUserEmail("newalice@example.com");
+        guiContext.setUserPhoneNumber("5556667777");
+
+        assertEquals("NewAlice", guiContext.getUserName());
+        assertEquals("newalice@example.com", guiContext.getUserEmail());
+        assertEquals("5556667777", guiContext.getUserPhoneNumber());
+
+        assertEquals("NewAlice", guiContext.getUserNameProperty().get());
+        assertEquals("newalice@example.com", guiContext.getEmailProperty().get());
+        assertEquals("5556667777", guiContext.getPhoneProperty().get());
+    }
+
+    @Test
+    void testSetAndGetSession() {
+        guiContext.setSession(testSession);
+        assertEquals(testSession, guiContext.getSession(), "Session should be set correctly.");
+    }
+
+    @Test
+    void testSetAndGetMatcher() {
+        guiContext.setMatcher(testMatcher);
+        assertEquals(testMatcher, guiContext.getMatcher(), "Matcher should be set correctly.");
+    }
+
+    @Test
+    void testSetAndGetMatches() {
+        Match match1 = new Match(testUser, new User("Bob", "pass", "bob@example.com", "user", "1112223333", null), 90.5);
+        Match match2 = new Match(testUser, new User("Charlie", "pass", "charlie@example.com", "user", "4445556666", null), 85.2);
+
+        testMatches.add(match1);
+        testMatches.add(match2);
+
+        guiContext.setMatches(testMatches);
+        assertEquals(2, guiContext.getMatches().size(), "Match list should contain 2 matches.");
+    }
+
+    @Test
+    void testSetMatch() {
+        Match match = new Match(testUser, new User("David", "pass", "david@example.com", "user", "7778889999", null), 78.0);
+        guiContext.setMatches(new ArrayList<>());
+        guiContext.setMatch(match);
+
+        assertEquals(1, guiContext.getMatches().size(), "Match should be added.");
+        assertEquals(match, guiContext.getMatches().get(0), "Added match should be retrieved correctly.");
+    }
+
+    @Test
+    void testLogout() {
+        guiContext.setUser(testUser);
+        guiContext.setGuest(testGuest);
+        guiContext.setSession(testSession);
+        guiContext.setMatcher(testMatcher);
+        guiContext.setMatches(testMatches);
+
+        guiContext.logout();
+
+        assertNull(guiContext.getUser(), "User should be null after logout.");
+        assertNull(guiContext.getGuest(), "Guest should be null after logout.");
+        assertNull(guiContext.getSession(), "Session should be null after logout.");
+        assertNull(guiContext.getMatcher(), "Matcher should be null after logout.");
+        assertNull(guiContext.getMatches(), "Matches should be null after logout.");
+
+        assertFalse(guiContext.isUser(), "isUser should be false after logout.");
+        assertFalse(guiContext.isGuest(), "isGuest should be false after logout.");
+        assertFalse(guiContext.isAdmin(), "isAdmin should be false after logout.");
+
+        assertEquals("", guiContext.getUserNameProperty().get(), "UserNameProperty should be cleared.");
+        assertEquals("", guiContext.getEmailProperty().get(), "EmailProperty should be cleared.");
+        assertEquals("", guiContext.getPhoneProperty().get(), "PhoneProperty should be cleared.");
+    }
+}
