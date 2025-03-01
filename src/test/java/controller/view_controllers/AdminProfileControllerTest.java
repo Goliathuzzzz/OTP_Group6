@@ -36,7 +36,7 @@ public class AdminProfileControllerTest extends ApplicationTest {
         assertNotNull(fxmlLocation, "admin_profile.fxml file not found.");
 
         FXMLLoader loader = new FXMLLoader(fxmlLocation);
-        loader.setControllerFactory(param -> new AdminProfileController(guiContextMock)); // Inject the mock
+        loader.setControllerFactory(param -> new AdminProfileController(guiContextMock));
 
         root = loader.load();
         adminProfileController = loader.getController();
