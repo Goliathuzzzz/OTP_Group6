@@ -28,6 +28,7 @@ public class AdminHomeController extends BaseController implements Initializable
     }
 
     private void populateMatchList(List<Match> matches) {
+        pairsContainer.getChildren().clear();
         for (Match match : matches) {
             Node matchNode = createMatchItemNode(match);
             if (matchNode != null) {
