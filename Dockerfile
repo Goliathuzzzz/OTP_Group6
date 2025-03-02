@@ -8,6 +8,6 @@ COPY pom.xml /app/
 
 COPY . /app/
 
-RUN mvn package
+RUN mvn clean package -DskipTests
 
 CMD ["java", "-jar", "target/otp-group6.jar"]
