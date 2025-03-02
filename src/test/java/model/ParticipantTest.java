@@ -16,7 +16,7 @@ class ParticipantTest {
 
     @BeforeEach
     void setUp() {
-        participant = new Guest("123456789", new Date()); // Using Guest subclass
+        participant = new Guest("123456789", new Date());
         expectedInterests = new ArrayList<>();
     }
 
