@@ -27,11 +27,11 @@ import java.util.Map;
 
 public class SessionController extends BaseController {
 
-    private GUIContext context = GUIContext.getInstance();
-    private Session session;
-    private Participant participant;
-    private MatchController matchController;
-    private Matcher matcher;
+    private final GUIContext context = GUIContext.getInstance();
+    private Session session = context.getSession();
+    private final Participant participant = session.getParticipant();
+    private MatchController matchController = new MatchController();
+    private Matcher matcher = new Matcher(session);
 
     @FXML
     private Button readyButton;
@@ -74,20 +74,15 @@ public class SessionController extends BaseController {
     @FXML
     public void initialize() {
         // check if session is set
-        session = context.getSession();
         if (session == null) {
             System.err.println("ERROR: Session is null in SessionController");
             return;
         }
 
-        // initialize participant, matchController and matcher
-        participant = session.getParticipant();
         if (participant == null) {
             System.err.println("ERROR: Participant is null in SessionController");
             return;
         }
-        matchController = new MatchController();
-        matcher = new Matcher(session);
 
         // set event handlers for interests
         for (Node interest : interestsContainer.getChildren()) {
@@ -149,5 +144,15 @@ public class SessionController extends BaseController {
     // For testing
     public Map<String, String> getCategoryMap() {
         return CATEGORY_MAP;
+    }
+
+    // For testing
+    public void setMatcher(Matcher matcher) {
+        this.matcher = matcher;
+    }
+
+    // For testing
+    public Matcher getMatcher() {
+        return matcher;
     }
 }

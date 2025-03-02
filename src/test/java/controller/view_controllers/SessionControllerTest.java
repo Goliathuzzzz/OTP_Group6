@@ -3,6 +3,7 @@ package controller.view_controllers;
 import context.GUIContext;
 import controller.MatchController;
 
+import controller.UserController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -13,18 +14,18 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import model.Participant;
-import model.Session;
-import model.User;
-import model.categories.Category;
+import model.*;
+import model.categories.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.testfx.framework.junit5.ApplicationTest;
 
 import java.net.URL;
-import java.util.Date;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.testfx.api.FxAssert.verifyThat;
@@ -39,7 +40,10 @@ class SessionControllerTest extends ApplicationTest {
     private Stage stage;
     private static Session session;
     private static MatchController matchController;
+    private static UserController userController;
+    private static Matcher matcher;
     private static User user;
+    private static List<User> userList;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -66,6 +70,7 @@ class SessionControllerTest extends ApplicationTest {
             if (param == SessionController.class) {
                 SessionController controller = new SessionController();
                 controller.setMatchController(matchController);
+                controller.setMatcher(matcher);
                 return controller;
             } else {
                 try {
@@ -81,11 +86,14 @@ class SessionControllerTest extends ApplicationTest {
     @BeforeAll
     static void start() {
         matchController = Mockito.mock(MatchController.class);
+        userController = Mockito.mock(UserController.class);
         guiContext = GUIContext.getInstance();
-        user = new User("alice", "password1", "alice@example.com", "dummy", "1234567890",new Date());
+        user = new User("alicia", "password1", "alicia@example.com", "dummy", "1234567890",new Date());
         session = new Session(user);
         guiContext.setUser(user);
         guiContext.setSession(session);
+        matcher = mock(Matcher.class, withSettings().useConstructor(session).defaultAnswer(CALLS_REAL_METHODS));
+        userList = seedTestDB();
     }
 
     @BeforeEach
@@ -142,76 +150,69 @@ class SessionControllerTest extends ApplicationTest {
         assertTrue(participant.getInterests().contains(selectedInterest), "Participant should have selected interest.");
     }
 
-    /*
     @Test
     void testSessionWithNoSelectedInterests() {
         session = new Session(user);
         guiContext.setSession(session);
         verifyThat("#readyButton", isVisible());
         clickOn("#readyButton");
-        Parent newRoot = stage.getScene().getRoot();
-        System.out.println("New scene root id: " + newRoot.getId());
-        assertEquals("sessionPane", newRoot.getId(), "Should still be in session view."); // as it now warns the user if no interests are selected
-        assertNull(session.getParticipant(), "Participant should be null.");
+        verifyThat(".alert", isVisible());
     }
 
-    /*
-    @Test
-    void testFullSession() {
-        session = new Session(user);
-        guiContext.setSession(session);
-        Participant participant = session.getParticipant();
-        System.out.println("Session participant: " + participant);
-        assertNotNull(participant, "Participant should not be null.");
-
-        participant.clearInterests();
-        assertTrue(participant.getInterests().isEmpty(), "Participant should have no interests.");
-
-        verifyThat("#interestsContainer", isVisible());
-
-        VBox interestsContainer = lookup("#interestsContainer").query();
-        assertFalse(interestsContainer.getChildren().isEmpty(), "There should be available interests to select.");
-
-        Node selectedCategory = interestsContainer.getChildren().getFirst();
-        clickOn(selectedCategory);
-
-        verifyThat("#optionsContainer", isVisible());
-
-        VBox optionsContainer = lookup("#optionsContainer").query();
-        assertFalse(optionsContainer.getChildren().isEmpty(), "There should be available options to select.");
-
-        Pane firstOptionPane = (Pane) optionsContainer.getChildren().getFirst();
-        RadioButton selectedOption = (RadioButton) firstOptionPane.getChildren().stream()
-                .filter(node -> node instanceof RadioButton)
-                .findFirst()
-                .orElseThrow(() -> new IllegalStateException("No radio buttons found in options pane."));
-        clickOn(selectedOption);
-        assertTrue(selectedOption.isSelected(), "Option should be selected.");
-
-        verifyThat("#goBack", isVisible());
-        clickOn("#goBack");
-
-        assertFalse(session.getParticipantInterests().isEmpty(), "There should be selected interests.");
-        Category selectedInterest = session.getParticipantInterests().getFirst();
-        System.out.println("Selected interest: " + selectedInterest);
-
-        assertTrue(participant.getInterests().contains(selectedInterest), "Participant should have selected interest.");
-
-        verifyThat("#readyButton", isVisible());
-        clickOn("#readyButton");
-
-        if (guiContext.getMatches() == null || guiContext.getMatches().isEmpty()) {
-            fail("There should be matches.");
-        }
-
-        verifyThat("#matchHeart", isVisible());
-        verifyThat("#detailsButton", isVisible());
-        clickOn("#detailsButton");
-
-        verifyThat("#afterMatchPane", isVisible());
-    }
-
-     */
+//    @Test
+//    void testFullSession() {
+//        Participant participant = session.getParticipant();
+//        System.out.println("Session participant: " + participant);
+//        assertNotNull(participant, "Participant should not be null.");
+//
+//        participant.clearInterests();
+//        assertTrue(participant.getInterests().isEmpty(), "Participant should have no interests.");
+//
+//        verifyThat("#interestsContainer", isVisible());
+//
+//        VBox interestsContainer = lookup("#interestsContainer").query();
+//        assertFalse(interestsContainer.getChildren().isEmpty(), "There should be available interests to select.");
+//
+//        Node selectedCategory = interestsContainer.getChildren().getFirst();
+//        clickOn(selectedCategory);
+//
+//        verifyThat("#optionsContainer", isVisible());
+//
+//        VBox optionsContainer = lookup("#optionsContainer").query();
+//        assertFalse(optionsContainer.getChildren().isEmpty(), "There should be available options to select.");
+//
+//        Pane firstOptionPane = (Pane) optionsContainer.getChildren().getFirst();
+//        RadioButton selectedOption = (RadioButton) firstOptionPane.getChildren().stream()
+//                .filter(node -> node instanceof RadioButton)
+//                .findFirst()
+//                .orElseThrow(() -> new IllegalStateException("No radio buttons found in options pane."));
+//        clickOn(selectedOption);
+//        assertTrue(selectedOption.isSelected(), "Option should be selected.");
+//
+//        verifyThat("#goBack", isVisible());
+//        clickOn("#goBack");
+//
+//        assertFalse(session.getParticipantInterests().isEmpty(), "There should be selected interests.");
+//        Category selectedInterest = session.getParticipantInterests().getFirst();
+//        System.out.println("Selected interest: " + selectedInterest);
+//
+//        assertTrue(participant.getInterests().contains(selectedInterest), "Participant should have selected interest.");
+//        HashMap<User, Double> topMatches = getMatches();
+//        when(matcher.getTopMatches()).thenReturn(topMatches);
+//        sessionController.setMatcher(matcher);
+//        verifyThat("#readyButton", isVisible());
+//        clickOn("#readyButton");
+//        verify(matcher, times(1)).getTopMatches();
+//        if (guiContext.getMatches() == null || guiContext.getMatches().isEmpty()) {
+//            fail("There should be matches.");
+//        }
+//        verifyThat("#matchPane", Node::isVisible);
+//        verifyThat("#matchHeart", isVisible());
+//        verifyThat("#detailsButton", isVisible());
+//        clickOn("#detailsButton");
+//
+//        verifyThat("#afterMatchPane", isVisible());
+//    }
 
     @Test
     void testBackButtonInInterestSelection() {
@@ -226,5 +227,63 @@ class SessionControllerTest extends ApplicationTest {
         newRoot = stage.getScene().getRoot();
         System.out.println("New scene root id: " + newRoot.getId());
         verifyThat("#readyButton", isVisible());
+    }
+
+    private static List<User> seedTestDB() {
+        List<User> testUserList = new ArrayList<>();
+        User user1 = new User("alice", "password1", "alice@example.com", "dummy", "1234567890",new Date());
+        user1.addAnimalInterest(Animal.HEVONEN);
+        user1.addAnimalInterest(Animal.KOIRA);
+        user1.addAnimalInterest(Animal.KISSA);
+        user1.addFoodInterest(Food.VEGETARISTI);
+        user1.addFoodInterest(Food.VEGAANI);
+        user1.addHobbiesInterest(Hobby.AKTIVISMI);
+        user1.addHobbiesInterest(Hobby.TV_SARJAT);
+        user1.addHobbiesInterest(Hobby.JULKINEN_PUHUMINEN);
+        user1.addSportsInterest(Sports.LENKKEILY);
+        user1.addSportsInterest(Sports.UIMINEN);
+        user1.addScienceInterest(Science.TÄHTITIEDE);
+        user1.addScienceInterest(Science.BIOLOGIA);
+
+        User user2 = new User("bob", "password2", "bob@example.com", "dummy", "0987654321",new Date());
+        user2.addAnimalInterest(Animal.HIIRI);
+        user2.addFoodInterest(Food.KAIKKI_MENEE);
+        user2.addHobbiesInterest(Hobby.INVESTOINTI);
+        user2.addHobbiesInterest(Hobby.VIDEOPELIT);
+        user2.addScienceInterest(Science.MATEMATIIKKA);
+        user2.addScienceInterest(Science.OHJELMOINTI);
+        user2.addSportsInterest(Sports.KAMPPAILULAJIT);
+
+        User user3 = new User("charlie", "password3", "charlie@example.com", "dummy", "1122334455", new Date());
+        user3.addAnimalInterest(Animal.KOIRA);
+        user3.addFoodInterest(Food.VEGAANI);
+        user3.addHobbiesInterest(Hobby.TÄHTIENTARKKAILU);
+        user3.addHobbiesInterest(Hobby.MEDITOINTI);
+        user3.addScienceInterest(Science.TÄHTITIEDE);
+        user3.addScienceInterest(Science.FYSIIKKA);
+        user3.addSportsInterest(Sports.PYÖRÄILY);
+        user3.addSportsInterest(Sports.LENKKEILY);
+
+        User user4 = new User("agatha", "password4", "agatha@example.com", "dummy", "23232323211", new Date());
+        user4.addAnimalInterest(Animal.KISSA);
+        user4.addFoodInterest(Food.KAIKKI_MENEE);
+        user4.addHobbiesInterest(Hobby.AKTIVISMI);
+        user4.addHobbiesInterest(Hobby.MEDITOINTI);
+        user4.addScienceInterest(Science.KEMIA);
+        user4.addSportsInterest(Sports.TENNIS);
+
+        testUserList.add(user1);
+        testUserList.add(user2);
+        testUserList.add(user3);
+        testUserList.add(user4);
+        return testUserList;
+    }
+
+    private HashMap<User, Double> getMatches() {
+        Matcher testMatcher = new Matcher(guiContext.getSession());
+        testMatcher.setUserController(userController);
+        when(userController.displayAllUsers()).thenReturn(userList);
+        testMatcher.matchParticipant();
+        return testMatcher.getTopMatches();
     }
 }
