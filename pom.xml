@@ -97,6 +97,7 @@
 
 
     <build>
+        <finalName>otp-group6</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -112,6 +113,26 @@
                         <glass.platform>Monocle</glass.platform>
                         <monocle.platform>Headless</monocle.platform>
                     </systemPropertyVariables>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.4.1</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>Main</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <release>21</release>
                 </configuration>
             </plugin>
             <plugin>
@@ -144,5 +165,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
