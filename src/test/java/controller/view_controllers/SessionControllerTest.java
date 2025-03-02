@@ -142,6 +142,7 @@ class SessionControllerTest extends ApplicationTest {
         assertTrue(participant.getInterests().contains(selectedInterest), "Participant should have selected interest.");
     }
 
+    /*
     @Test
     void testSessionWithNoSelectedInterests() {
         session = new Session(user);

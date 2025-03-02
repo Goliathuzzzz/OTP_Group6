@@ -46,4 +46,8 @@ public class GuestViewController extends BaseController {
     private boolean isValidPhone(String phone) {
         return phone.matches("^[0-9]{10,15}$");
     }
+
+    public void setGuestViewController(GuestController guestController) {
+        this.gController = guestController;
+    }
 }
