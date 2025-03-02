@@ -3,6 +3,7 @@ package controller.view_controllers;
 import static org.junit.jupiter.api.Assertions.*;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -26,7 +27,11 @@ class HelpControllerTest {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/help.fxml"));
         Parent root = loader.load();
         helpController = loader.getController();
+
+        stage.setScene(new Scene(root));
+        stage.show();
     }
+
 
     @Test
     void testInitialize() throws Exception {
