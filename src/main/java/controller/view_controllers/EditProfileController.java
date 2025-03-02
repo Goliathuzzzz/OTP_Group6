@@ -15,11 +15,11 @@ import static util.ProfilePictureUtil.getProfilePictureView;
 
 public class EditProfileController extends BaseController {
 
-    private final UserController userController = new UserController();
+    private UserController userController = new UserController();
     private final GUIContext guiContext = GUIContext.getInstance();
 
     @FXML
-    private ImageView profileImage, homeIcon, profileIcon, backIcon, helpIcon;
+    private ImageView profileImage, homeIcon, profileIcon, backIcon, helpIcon, backIcon1;
 
     @FXML
     private Label nameLabel, emailLabel, phoneLabel;
@@ -76,5 +76,10 @@ public class EditProfileController extends BaseController {
         showAlert(Alert.AlertType.INFORMATION, "tallennus", "muutokset tallennettu");
         saveChanges();
         switchScene(SceneNames.OPTIONS);
+    }
+
+    // For testing
+    public void setUserController(UserController userController) {
+        this.userController = userController;
     }
 }
