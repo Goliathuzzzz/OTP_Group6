@@ -55,6 +55,13 @@ public class MatchViewController extends BaseController {
     }
 
     private void loadProfileImages() {
+        if (context.getMatches().isEmpty() || context.getMatches().getLast() == null) {
+            System.err.println("ERROR: Match is null in MatchViewController initialize()");
+            placeholderProfile1.setImage(null);
+            placeholderProfile2.setImage(null);
+            detailsButton.setDisable(true);
+            return;
+        }
         int profile1Id = context.getId();
         int profile2Id = context.getMatches().getLast().getParticipant2().getId();
 
