@@ -5,6 +5,7 @@ import controller.BaseController;
 import controller.MatchController;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Label;
@@ -60,6 +61,12 @@ public class SessionController extends BaseController {
 
     @FXML
     private void handleReady(ActionEvent event) {
+        List<Category> selectedInterests = session.getParticipantInterests();
+        if (selectedInterests.isEmpty()) {
+            System.err.println("ERROR: No interests selected in SessionController handleReady()");
+            showAlert(Alert.AlertType.WARNING, "virhe", "valitse ainakin yksi kiinnostuksenkohde");
+            return;
+        }
         matchParticipant();
         switchScene(SceneNames.MATCH);
     }

@@ -15,6 +15,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.testfx.framework.junit5.ApplicationTest;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -40,10 +41,9 @@ class AdminHomeControllerTest extends ApplicationTest {
         var fxmlLocation = getClass().getResource("/fxml/admin_home.fxml");
         assertNotNull(fxmlLocation, "admin_home.fxml file not found.");
 
-        FXMLLoader loader = new FXMLLoader(fxmlLocation);
+        FXMLLoader loader = getFxmlLoader(fxmlLocation);
         root = loader.load();
         adminHomeController = loader.getController();
-        adminHomeController.setMatchController(matchController);
 
         if (adminHomeController != null) {
             adminHomeController.initialize(null, null);
@@ -52,6 +52,24 @@ class AdminHomeControllerTest extends ApplicationTest {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    private static FXMLLoader getFxmlLoader(URL fxmlLocation) {
+        FXMLLoader loader = new FXMLLoader(fxmlLocation);
+        loader.setControllerFactory(param -> {
+            if (param == AdminHomeController.class) {
+                AdminHomeController controller = new AdminHomeController();
+                controller.setMatchController(matchController);
+                return controller;
+            } else {
+                try {
+                    return param.getDeclaredConstructor().newInstance();
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+        return loader;
     }
 
     @BeforeAll

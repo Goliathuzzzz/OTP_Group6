@@ -20,6 +20,10 @@ public class Session {
     private final List<Category> participantInterests;
 
     public Session(Participant participant) {
+        if (participant == null) {
+            System.err.println("ERROR: Participant is null in Session constructor");
+            throw new IllegalArgumentException("Participant cannot be null");
+        }
         this.participant = participant;
         participantInterests = new ArrayList<>();
     }
