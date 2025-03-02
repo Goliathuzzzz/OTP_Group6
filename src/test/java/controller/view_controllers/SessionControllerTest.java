@@ -68,10 +68,7 @@ class SessionControllerTest extends ApplicationTest {
         FXMLLoader loader = new FXMLLoader(fxmlLocation);
         loader.setControllerFactory(param -> {
             if (param == SessionController.class) {
-                SessionController controller = new SessionController();
-                controller.setMatchController(matchController);
-                controller.setMatcher(matcher);
-                return controller;
+                return new SessionController();
             } else {
                 try {
                     return param.getDeclaredConstructor().newInstance();
@@ -85,20 +82,17 @@ class SessionControllerTest extends ApplicationTest {
 
     @BeforeAll
     static void start() {
-        matchController = Mockito.mock(MatchController.class);
-        userController = Mockito.mock(UserController.class);
         guiContext = GUIContext.getInstance();
         user = new User("alicia", "password1", "alicia@example.com", "dummy", "1234567890",new Date());
         session = new Session(user);
         guiContext.setUser(user);
         guiContext.setSession(session);
-        matcher = mock(Matcher.class, withSettings().useConstructor(session).defaultAnswer(CALLS_REAL_METHODS));
-        userList = seedTestDB();
     }
 
     @BeforeEach
     void setUp() {
         assertNotNull(sessionController, "Controller should be initialized");
+        session.getParticipantInterests().clear();
     }
 
     @Test
@@ -229,61 +223,4 @@ class SessionControllerTest extends ApplicationTest {
         verifyThat("#readyButton", isVisible());
     }
 
-    private static List<User> seedTestDB() {
-        List<User> testUserList = new ArrayList<>();
-        User user1 = new User("alice", "password1", "alice@example.com", "dummy", "1234567890",new Date());
-        user1.addAnimalInterest(Animal.HEVONEN);
-        user1.addAnimalInterest(Animal.KOIRA);
-        user1.addAnimalInterest(Animal.KISSA);
-        user1.addFoodInterest(Food.VEGETARISTI);
-        user1.addFoodInterest(Food.VEGAANI);
-        user1.addHobbiesInterest(Hobby.AKTIVISMI);
-        user1.addHobbiesInterest(Hobby.TV_SARJAT);
-        user1.addHobbiesInterest(Hobby.JULKINEN_PUHUMINEN);
-        user1.addSportsInterest(Sports.LENKKEILY);
-        user1.addSportsInterest(Sports.UIMINEN);
-        user1.addScienceInterest(Science.TÄHTITIEDE);
-        user1.addScienceInterest(Science.BIOLOGIA);
-
-        User user2 = new User("bob", "password2", "bob@example.com", "dummy", "0987654321",new Date());
-        user2.addAnimalInterest(Animal.HIIRI);
-        user2.addFoodInterest(Food.KAIKKI_MENEE);
-        user2.addHobbiesInterest(Hobby.INVESTOINTI);
-        user2.addHobbiesInterest(Hobby.VIDEOPELIT);
-        user2.addScienceInterest(Science.MATEMATIIKKA);
-        user2.addScienceInterest(Science.OHJELMOINTI);
-        user2.addSportsInterest(Sports.KAMPPAILULAJIT);
-
-        User user3 = new User("charlie", "password3", "charlie@example.com", "dummy", "1122334455", new Date());
-        user3.addAnimalInterest(Animal.KOIRA);
-        user3.addFoodInterest(Food.VEGAANI);
-        user3.addHobbiesInterest(Hobby.TÄHTIENTARKKAILU);
-        user3.addHobbiesInterest(Hobby.MEDITOINTI);
-        user3.addScienceInterest(Science.TÄHTITIEDE);
-        user3.addScienceInterest(Science.FYSIIKKA);
-        user3.addSportsInterest(Sports.PYÖRÄILY);
-        user3.addSportsInterest(Sports.LENKKEILY);
-
-        User user4 = new User("agatha", "password4", "agatha@example.com", "dummy", "23232323211", new Date());
-        user4.addAnimalInterest(Animal.KISSA);
-        user4.addFoodInterest(Food.KAIKKI_MENEE);
-        user4.addHobbiesInterest(Hobby.AKTIVISMI);
-        user4.addHobbiesInterest(Hobby.MEDITOINTI);
-        user4.addScienceInterest(Science.KEMIA);
-        user4.addSportsInterest(Sports.TENNIS);
-
-        testUserList.add(user1);
-        testUserList.add(user2);
-        testUserList.add(user3);
-        testUserList.add(user4);
-        return testUserList;
-    }
-
-    private HashMap<User, Double> getMatches() {
-        Matcher testMatcher = new Matcher(guiContext.getSession());
-        testMatcher.setUserController(userController);
-        when(userController.displayAllUsers()).thenReturn(userList);
-        testMatcher.matchParticipant();
-        return testMatcher.getTopMatches();
-    }
 }
