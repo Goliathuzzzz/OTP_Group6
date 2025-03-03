@@ -38,4 +38,4 @@ WORKDIR /app
 # Copy the jar from the build stage
 COPY --from=build /app/target/otp-group6.jar /app/
 
-CMD ["xvfb-run", "Xvfb :1 -screen 0 1024x768x16", "java", "-jar", "/app/otp-group6.jar"]
+CMD ["xvfb-run", "java", "-jar", "/app/otp-group6.jar"]
