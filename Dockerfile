@@ -12,30 +12,27 @@ RUN mvn dependency:go-offline -B
 
 # Copy the source code
 COPY src/ ./src/
+COPY src/main/resources/ ./src/main/resources/
 
 # Build the application
 RUN mvn clean package -DskipTests
 
-# Stage 2: Create the runtime image
-FROM eclipse-temurin:21-jdk
+FROM openjdk:21-jdk-slim
 
-# Install required libraries for JavaFX
+# Install necessary dependencies
 RUN apt-get update && apt-get install -y \
-    libx11-6 \
+    openjfx \
     libgl1 \
-    libglib2.0-0 \
     libgtk-3-0 \
-    libxrandr2 \
-    libxrender1 \
-    libxext6 \
-    libxi6 \
+    libcanberra-gtk-module \
     && rm -rf /var/lib/apt/lists/*
 
-RUN apt-get update && apt-get install -y xvfb
+# Copy the application JAR
+COPY target/otp-group6.jar /app/otp-group6.jar
 
+# Set working directory
 WORKDIR /app
 
-# Copy the jar from the build stage
-COPY --from=build /app/target/otp-group6.jar /app/
+RUN apt-get update && apt-get install -y xvfb
+CMD ["xvfb-run", "java", "--module-path", "/usr/javafx/lib", "--add-modules", "javafx.controls,javafx.fxml", "-jar", "otp-group6.jar"]
 
-CMD ["xvfb-run", "java", "-jar", "/app/otp-group6.jar"]
