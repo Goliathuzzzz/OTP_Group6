@@ -1,27 +1,44 @@
-FROM openjdk:17
+# Use a base image with Maven and Java
+FROM maven:latest
 
-# Install JavaFX and GUI dependencies
+# Set metadata
+LABEL authors="hetahar"
+
+# Set working directory
+WORKDIR /app
+
+# Copy the Maven project files
+COPY pom.xml /app/
+COPY src /app/src/
+
+# Install dependencies for JavaFX and GUI
 RUN apt-get update && apt-get install -y \
-    libgl1-mesa-glx \
+    openjfx \
+    mesa-utils \
     libxext6 \
     libxrender1 \
     libxtst6 \
-    && rm -rf /var/lib/apt/lists/* \
-
-RUN mvn clean package -DskipTests
-
-RUN apt-get update && apt-get install -y \
-    libx11-6 \
-    libgl1 \
-    libglib2.0-0 \
     libgtk-3-0 \
-    libxrandr2 \
-    libxrender1 \
-    libxext6 \
-    libxi6 \
+    libcanberra-gtk-module \
+    libasound2t64 \
+    wget \
+    unzip \
     && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /app
-COPY target/otp-group6.jar app.jar
 
-CMD ["java", "-jar", "app.jar"]
+# Download and extract JavaFX SDK
+RUN wget https://download2.gluonhq.com/openjfx/20.0.1/openjfx-20.0.1_linux-x64_bin-sdk.zip && \
+    unzip openjfx-20.0.1_linux-x64_bin-sdk.zip && \
+    rm openjfx-20.0.1_linux-x64_bin-sdk.zip
+
+# Set the path to the JavaFX libraries
+ENV PATH_TO_FX=/app/javafx-sdk-20.0.1/lib
+
+# Build the application
+RUN mvn clean package -DskipTests
+
+# Copy the built JAR file
+COPY target/otp-group6.jar /app/otp-group6.jar
+
+# Set the command to run the application with JavaFX
+CMD ["java", "--module-path", "/app/javafx-sdk-20.0.1/lib", "--add-modules", "javafx.controls,javafx.fxml", "-Dprism.order=sw", "-Djavafx.platform=x11", "-jar", "/app/otp-group6.jar"]
