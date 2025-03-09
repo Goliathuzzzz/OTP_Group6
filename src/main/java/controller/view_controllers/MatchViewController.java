@@ -42,7 +42,7 @@ public class MatchViewController extends BaseController {
     @FXML
     public void initialize() {
         startHeartbeatAnimation();
-//        loadProfileImages();
+        loadProfileImages();
         Platform.runLater(() -> {
             Stage stage = (Stage) matchPane.getScene().getWindow();
             if (stage != null) {
