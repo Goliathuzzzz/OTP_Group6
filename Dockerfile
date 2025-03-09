@@ -1,13 +1,9 @@
-# Use a base image with Maven and Java
 FROM maven:latest
 
-# Set metadata
 LABEL authors="hetahar"
 
-# Set working directory
 WORKDIR /app
 
-# Copy the Maven project files
 COPY pom.xml /app/
 COPY src /app/src/
 
