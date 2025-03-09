@@ -11,13 +11,15 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import util.SceneNames;
 
+import static util.ProfilePictureUtil.getProfilePictureView;
+
 public class EditProfileController extends BaseController {
 
-    private final UserController userController = new UserController();
+    private UserController userController = new UserController();
     private final GUIContext guiContext = GUIContext.getInstance();
 
     @FXML
-    private ImageView profileImage, homeIcon, profileIcon, backIcon, helpIcon;
+    private ImageView profileImage, homeIcon, profileIcon, backIcon, helpIcon, backIcon1;
 
     @FXML
     private Label nameLabel, emailLabel, phoneLabel;
@@ -31,6 +33,9 @@ public class EditProfileController extends BaseController {
             nameField.setText(guiContext.getUserName());
             emailField.setText(guiContext.getUserEmail());
             phoneField.setText(guiContext.getUserPhoneNumber());
+
+            ImageView profileImageView = getProfilePictureView(guiContext.getId(), 120, 120);
+            profileImage.setImage(profileImageView.getImage());
         } else {
             showAlert(Alert.AlertType.ERROR, "virhe", "käyttäjätietoja ei löydy");
             System.err.println("ERROR: No logged in user data found");
@@ -71,5 +76,10 @@ public class EditProfileController extends BaseController {
         showAlert(Alert.AlertType.INFORMATION, "tallennus", "muutokset tallennettu");
         saveChanges();
         switchScene(SceneNames.OPTIONS);
+    }
+
+    // For testing
+    public void setUserController(UserController userController) {
+        this.userController = userController;
     }
 }

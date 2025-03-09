@@ -9,9 +9,11 @@ import javafx.scene.layout.Pane;
 import javafx.scene.input.MouseEvent;
 import util.SceneNames;
 
+import static util.ProfilePictureUtil.getProfilePictureView;
+
 public class AdminProfileController extends BaseController {
 
-    private final GUIContext guiContext = GUIContext.getInstance();
+    private GUIContext guiContext = GUIContext.getInstance();
 
     @FXML
     private Pane bottomNavPane, profileImagePane;
@@ -22,6 +24,16 @@ public class AdminProfileController extends BaseController {
     @FXML
     private Label nameLabel, emailLabel, phoneLabel;
 
+    // default constructor for FXML loader
+    public AdminProfileController() {
+        this(GUIContext.getInstance());
+    }
+
+    // constructor for testing
+    public AdminProfileController(GUIContext guiContext) {
+        this.guiContext = guiContext;
+    }
+
     @FXML
     private void initialize() {
         if (guiContext.isUser()) {
@@ -31,6 +43,9 @@ public class AdminProfileController extends BaseController {
             nameLabel.textProperty().bind(guiContext.getUserNameProperty());
             emailLabel.textProperty().bind(guiContext.getEmailProperty());
             phoneLabel.textProperty().bind(guiContext.getPhoneProperty());
+
+            ImageView profileImageView = getProfilePictureView(guiContext.getId(), 200, 200);
+            profileImagePane.getChildren().add(profileImageView);
         }
     }
 

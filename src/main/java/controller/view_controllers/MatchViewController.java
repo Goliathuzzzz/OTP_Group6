@@ -1,11 +1,11 @@
 package controller.view_controllers;
 
+import context.GUIContext;
 import controller.BaseController;
 import javafx.animation.ScaleTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import util.SceneNames;
 
-import java.util.Objects;
+import static util.ProfilePictureUtil.getProfilePictureView;
 
 public class MatchViewController extends BaseController {
 
@@ -37,10 +37,12 @@ public class MatchViewController extends BaseController {
     @FXML
     private AnchorPane matchPane;
 
+    GUIContext context = GUIContext.getInstance();
+
     @FXML
     public void initialize() {
         startHeartbeatAnimation();
-        loadProfileImages();
+//        loadProfileImages();
         Platform.runLater(() -> {
             Stage stage = (Stage) matchPane.getScene().getWindow();
             if (stage != null) {
@@ -53,20 +55,20 @@ public class MatchViewController extends BaseController {
     }
 
     private void loadProfileImages() {
-        Image dummyImage1 = loadDummyImage("/images/placeholder_profile2.png");
-        Image dummyImage2 = loadDummyImage("/images/placeholder_profile1.png");
-
-        placeholderProfile1.setImage(dummyImage1);
-        placeholderProfile2.setImage(dummyImage2);
-    }
-
-    private Image loadDummyImage(String imagePath) {
-        try {
-            return new Image(Objects.requireNonNull(getClass().getResourceAsStream(imagePath)));
-        } catch (Exception e) {
-            System.out.println("Failed to load image: " + imagePath);
-            return new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/placeholder_profile.png")));
+        if (context.getMatches().isEmpty() || context.getMatches().getLast() == null) {
+            System.err.println("ERROR: Match is null in MatchViewController initialize()");
+            placeholderProfile1.setImage(null);
+            placeholderProfile2.setImage(null);
+            detailsButton.setDisable(true);
+            return;
         }
+        int profile1Id = context.getId();
+        int profile2Id = context.getMatches().getLast().getParticipant2().getId();
+
+        ImageView profile1 = getProfilePictureView(profile1Id, 200, 200);
+        ImageView profile2 = getProfilePictureView(profile2Id, 200, 200);
+        placeholderProfile1.setImage(profile1.getImage());
+        placeholderProfile2.setImage(profile2.getImage());
     }
 
     private void startHeartbeatAnimation() {

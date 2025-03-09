@@ -1,6 +1,5 @@
 package controller;
 
-import jakarta.persistence.EntityManager;
 import jakarta.persistence.Persistence;
 import model.User;
 import org.junit.jupiter.api.BeforeAll;
@@ -19,9 +18,8 @@ class UserControllerTest {
 
     @BeforeAll
     static void init() {
-        EntityManager em = Persistence.createEntityManagerFactory("test-persistence-unit-tt").createEntityManager();
         userController = new UserController();
-        userController.setEm(em);
+        userController.setEm(Persistence.createEntityManagerFactory("test-persistence-unit-tt").createEntityManager());
     }
 
     @BeforeEach

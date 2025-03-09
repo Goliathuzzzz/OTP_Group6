@@ -6,8 +6,6 @@ import controller.UserController;
 import model.Guest;
 import model.User;
 import model.categories.*;
-import service.GuestService;
-import service.UserService;
 
 import java.util.Date;
 
@@ -75,10 +73,9 @@ public class Seeder {
         userController.registerUser(user4);
         userController.registerUser(admin);
 
-        matchController.matchParticipants(user1, user2, 0.8);
-        matchController.matchParticipants(user1, user3, 0.6);
-        matchController.matchParticipants(user1, user4, 0.7);
-        matchController.matchParticipants(user2, user3, 0.9);
+        matchController.matchParticipants(user1, user2, 70);
+        matchController.matchParticipants(user1, user3, 50);
+        matchController.matchParticipants(user1, user4, 90);
+        matchController.matchParticipants(user2, user3, 20);
     }
-
 }

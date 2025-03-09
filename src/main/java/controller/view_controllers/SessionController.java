@@ -5,6 +5,7 @@ import controller.BaseController;
 import controller.MatchController;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Label;
@@ -16,6 +17,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import model.*;
+import model.categories.Category;
 import util.SceneNames;
 
 import java.util.ArrayList;
@@ -26,13 +28,13 @@ import java.util.Map;
 public class SessionController extends BaseController {
 
     private final GUIContext context = GUIContext.getInstance();
-    private Session session;
-    private Participant participant;
-    private MatchController matchController;
-    private Matcher matcher;
+    private Session session = context.getSession();
+    private final Participant participant = session.getParticipant();
+    private MatchController matchController = new MatchController();
+    private Matcher matcher = new Matcher(session);
 
     @FXML
-    private Button valmisButton;
+    private Button readyButton;
 
     @FXML
     private ImageView homeIcon, profileIcon, backIcon;
@@ -46,6 +48,9 @@ public class SessionController extends BaseController {
     @FXML
     private AnchorPane sessionPane;
 
+    @FXML
+    private Label animalLabel, foodLabel, hobbiesLabel, sportsLabel, scienceLabel;
+
     private static final Map<String, String> CATEGORY_MAP = Map.of(
             "eläimet", "animals",
             "ruoka", "food",
@@ -56,28 +61,39 @@ public class SessionController extends BaseController {
 
     @FXML
     private void handleReady(ActionEvent event) {
-        // matchParticipant();
-        System.out.println("valmis painettu.");
+        List<Category> selectedInterests = session.getParticipantInterests();
+        if (selectedInterests.isEmpty()) {
+            System.err.println("ERROR: No interests selected in SessionController handleReady()");
+            showAlert(Alert.AlertType.WARNING, "virhe", "valitse ainakin yksi kiinnostuksenkohde");
+            return;
+        }
+        matchParticipant();
         switchScene(SceneNames.MATCH);
     }
 
     @FXML
     public void initialize() {
+        // check if session is set
+        if (session == null) {
+            System.err.println("ERROR: Session is null in SessionController");
+            return;
+        }
+
+        if (participant == null) {
+            System.err.println("ERROR: Participant is null in SessionController");
+            return;
+        }
+
+        // set event handlers for interests
         for (Node interest : interestsContainer.getChildren()) {
             interest.setOnMouseClicked(this::handleInterestSelection);
         }
-        // needs to wait for stage to be set
+
+        // wait for stage to be set before accessing UI elements
+        // redundant?
         Platform.runLater(() -> {
             System.out.println("DEBUG: stage is " + (stage == null ? "NULL" : "SET"));
-            session = context.getSession();
             Stage stage = (Stage) sessionPane.getScene().getWindow();
-            if (session == null) {
-                System.err.println("ERROR: session is null in SessionController2");
-                return;
-            }
-            participant = session.getParticipant();
-            matchController = new MatchController();
-            matcher = new Matcher(session);
         });
     }
 
@@ -107,10 +123,36 @@ public class SessionController extends BaseController {
         matcher.matchParticipant();
         List<Match> matches = new ArrayList<>();
         HashMap<User, Double> topMatches = matcher.getTopMatches();
+
+        if (topMatches.isEmpty()) {
+            System.err.println("ERROR: No top matches found in SessionController matchParticipant()");
+            return;
+        }
+
         for (Map.Entry<User, Double> entry: topMatches.entrySet()) {
             matchController.matchParticipants(participant, entry.getKey(), entry.getValue());
             matches.add(new Match(participant, entry.getKey(), entry.getValue()));
         }
         context.setMatches(matches);
+    }
+
+    // For testing
+    public void setMatchController(MatchController matchController) {
+        this.matchController = matchController;
+    }
+
+    // For testing
+    public Map<String, String> getCategoryMap() {
+        return CATEGORY_MAP;
+    }
+
+    // For testing
+    public void setMatcher(Matcher matcher) {
+        this.matcher = matcher;
+    }
+
+    // For testing
+    public Matcher getMatcher() {
+        return matcher;
     }
 }

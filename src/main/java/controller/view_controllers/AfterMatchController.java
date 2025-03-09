@@ -1,5 +1,6 @@
 package controller.view_controllers;
 
+import context.GUIContext;
 import controller.BaseController;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -8,6 +9,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
+import model.Match;
+import model.categories.Category;
+import util.MatchUtils;
+import java.util.List;
 
 
 public class AfterMatchController extends BaseController {
@@ -16,7 +21,7 @@ public class AfterMatchController extends BaseController {
     private ImageView homeIcon, profileIcon, backIcon;
 
     @FXML
-    private Label percentageLabel;
+    private Label percentageLabel, matchParticipantsLabel, interestsLabel;
 
     @FXML
     private AnchorPane afterMatchPane;
@@ -30,11 +35,24 @@ public class AfterMatchController extends BaseController {
             } else {
                 System.out.println("Stage is null in AfterMatchController initialize()");
             }
-            setPercentage();
+            setResults();
         });
     }
 
-    private void setPercentage() {
-        percentageLabel.setText("100%");
+    private void setResults() {
+        GUIContext context = GUIContext.getInstance();
+        List<Match> matches = context.getMatches();
+        if (matches == null || matches.isEmpty()) {
+            System.err.println("ERROR: Match is null in AfterMatchController setResults()");
+            matchParticipantsLabel.setText("ei mätsiä");
+            percentageLabel.setText("0%");
+            interestsLabel.setText("ei yhteisiä kiinnostuksenkohteita");
+            return;
+        }
+        Match match = matches.getLast();
+        matchParticipantsLabel.setText(match.getParticipant1().getDisplayName() + " ja " + match.getParticipant2().getDisplayName());
+        percentageLabel.setText(Math.round(match.getCompatibility()) + "%");
+        List<Category> interests = MatchUtils.findCommonInterests(match.getParticipant1().getInterests(), match.getParticipant2().getInterests());
+        interestsLabel.setText(interests.isEmpty() ? "ei yhteisiä kiinnostuksenkohteita" : MatchUtils.formatInterests(interests));
     }
 }

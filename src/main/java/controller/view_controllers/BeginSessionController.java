@@ -1,5 +1,6 @@
 package controller.view_controllers;
 
+import context.GUIContext;
 import controller.BaseController;
 import javafx.animation.ScaleTransition;
 import javafx.application.Platform;
@@ -9,6 +10,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import model.Participant;
+import model.Session;
 import util.SceneNames;
 
 public class BeginSessionController extends BaseController {
@@ -53,6 +56,16 @@ public class BeginSessionController extends BaseController {
 
     @FXML
     private void handleBeginSessionClick(MouseEvent event) {
-        switchScene(SceneNames.SESSION);
+        GUIContext context = GUIContext.getInstance();
+        Participant participant = context.isUser() ? context.getUser() :
+                context.isGuest() ? context.getGuest() : null;
+        if (participant != null) {
+            context.setSession(new Session(participant));
+            // reset participant interests
+            context.getSession().getParticipant().clearInterests();
+            switchScene(SceneNames.SESSION);
+        } else {
+            System.err.println("No user or guest found in GUIContext");
+        }
     }
 }

@@ -7,30 +7,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
+<?import javafx.scene.layout.VBox?>
 <AnchorPane prefHeight="852.0" prefWidth="393.0" fx:id="matchPane" styleClass="edit-profile" stylesheets="@/css/match.css"
             xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="controller.view_controllers.MatchViewController">
-    <Pane fx:id="paperGradient" layoutY="-2" prefHeight="854" prefWidth="392" styleClass="paper-gradient"/>
+            fx:controller="controller.view_controllers.HelpController">
+    <Pane fx:id="paperGradient" layoutY="-2" prefHeight="854" prefWidth="392" styleClass="help-paper-gradient"/>
     <Pane fx:id="paperTexture" prefHeight="852.0" prefWidth="393.0" styleClass="paper-texture">
-        <Label layoutX="39.0" layoutY="80.0" styleClass="loysit" text="löysit parin!"/>
-        <ImageView fx:id="placeholderProfile1" fitHeight="200.0" fitWidth="200.0" layoutX="26.0" layoutY="226.0"
-                   pickOnBounds="true"
-                   preserveRatio="true">
-        </ImageView>
+        <VBox prefWidth="393.0" prefHeight="852.0" spacing="20.0" fx:id="vBox">
+            <Label text="tervetuloa tatskatytöt speed dating -sovellukseen!" fx:id="middleText1" wrapText="true" maxWidth="300" styleClass="centered-text"/>
+            <Label text="päivitä ensin profiilisi ajan tasalle profiili-näkymässä, niin olet valmis deittaamaan. aloita sessio etusivulta, valitse mielenkiinnon kohteesi ja katso, kenen kanssa mätsäät parhaiten – ja millä perusteilla!" fx:id="middleText2" wrapText="true" maxWidth="300" styleClass="centered-text"/>
+        </VBox>
 
-        <ImageView fx:id="placeholderProfile2" fitHeight="200.0" fitWidth="200.0" layoutX="166.0" layoutY="344.0"
-                   pickOnBounds="true"
-                   preserveRatio="true">
-        </ImageView>
-        <ImageView fx:id="matchHeart" fitHeight="78.0" fitWidth="78.0" layoutX="127.0" layoutY="387.0" pickOnBounds="true"
-                   preserveRatio="true" styleClass="match-heart">
-            <Image url="@../images/match_heart.png"/>
-        </ImageView>
-        <ImageView fitHeight="53.0" fitWidth="40.0" layoutX="247.0" layoutY="253.0" pickOnBounds="true"
-                   preserveRatio="true">
-            <Image url="@../images/match_hearts.png"/>
-        </ImageView>
-        <Button fx:id="detailsButton" layoutX="40.0" layoutY="660" mnemonicParsing="false" styleClass="tiedot" text="tarkemmat tiedot" onMouseClicked="#handleDetailsButtonClick"/>
     </Pane>
     <Pane layoutY="765.0" prefHeight="87" prefWidth="393" styleClass="bottom-nav">
         <ImageView fx:id="homeIcon" fitHeight="45.0" fitWidth="42.0" layoutX="45" layoutY="23.0"

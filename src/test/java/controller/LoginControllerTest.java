@@ -1,7 +1,6 @@
 package controller;
 
 import controller.view_controllers.LoginController;
-import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -24,9 +23,8 @@ import static org.mockito.Mockito.*;
 
 public class LoginControllerTest extends ApplicationTest {
 
-    @Mock
-    private static UserController userController;
 
+    private static UserController userController;
     private static LoginController controller;
     private Parent root;
     private Stage stage;
