@@ -27,9 +27,6 @@ RUN wget https://download2.gluonhq.com/openjfx/20.0.1/openjfx-20.0.1_linux-x64_b
     unzip openjfx-20.0.1_linux-x64_bin-sdk.zip && \
     rm openjfx-20.0.1_linux-x64_bin-sdk.zip
 
-# Set the path to the JavaFX libraries
-ENV PATH_TO_FX=/app/javafx-sdk-20.0.1/lib
-
 # Build the application
 RUN mvn clean package -DskipTests
 
