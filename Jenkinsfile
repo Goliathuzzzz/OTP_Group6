@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: "main", url:'https://github.com/Goliathuzzzz/OTP_Group6.git'
+                git branch: "mika", url:'https://github.com/Goliathuzzzz/OTP_Group6.git'
             }
         }
         stage('Build & Test') {
