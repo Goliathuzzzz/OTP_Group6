@@ -3,7 +3,7 @@ CREATE DATABASE tatskatytot;
 use tatskatytot;
 
 
-DROP USER IF EXISTS 'appuser'@'localhost';
-CREATE USER 'appuser'@'localhost' IDENTIFIED by 'maailmanilmaa';
-GRANT SELECT,INSERT,UPDATE,ALTER,DELETE ON tatskatytot.* TO 'appuser'@'localhost';
-GRANT CREATE, DROP ON tatskatytot.* TO 'appuser'@'localhost';
+DROP USER IF EXISTS 'appuser'@'%';
+CREATE USER 'appuser'@'%' IDENTIFIED by 'maailmanilmaa';
+GRANT SELECT,INSERT,UPDATE,ALTER,DELETE ON tatskatytot.* TO 'appuser'@'%';
+GRANT CREATE, DROP ON tatskatytot.* TO 'appuser'@'%';
