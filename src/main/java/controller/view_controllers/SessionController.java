@@ -119,7 +119,7 @@ public class SessionController extends BaseController {
         System.out.println("Navigated to category: " + category);
     }
 
-    private void matchParticipant() {
+    public void matchParticipant() {
         matcher.matchParticipant();
         List<Match> matches = new ArrayList<>();
         HashMap<User, Double> topMatches = matcher.getTopMatches();

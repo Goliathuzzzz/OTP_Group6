@@ -61,6 +61,7 @@
         </executions>
         <configuration>
           <excludes>
+            <exclude>util/Seeder</exclude>
             <exclude>sun/util/resources/**</exclude>
             <exclude>sun/text/resources/**</exclude>
             <exclude>sun/util/cldr/**</exclude>
