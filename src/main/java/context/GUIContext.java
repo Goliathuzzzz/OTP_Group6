@@ -120,11 +120,6 @@ public class GUIContext {
         return isGuest;
     }
 
-    public void setGuestPhoneNumber(String pn) {
-        guest.setPhoneNumber(pn);
-        setPhoneProperty(pn);
-    }
-
     public boolean isAdmin() {
         return isAdmin;
     }
