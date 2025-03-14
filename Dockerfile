@@ -30,6 +30,8 @@ RUN wget https://download2.gluonhq.com/openjfx/20.0.1/openjfx-20.0.1_linux-x64_b
 # Build the application
 RUN mvn clean package -DskipTests
 
+ENV DB_HOST=mariadb
+
 # Copy the built JAR file
 COPY target/otp-group6.jar /app/otp-group6.jar
 

@@ -92,9 +92,22 @@
             <version>2.19.0</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 
+    <profiles>
+        <profile>
+            <id>test</id>
+            <properties>
+                <db.host>localhost</db.host>
+            </properties>
+        </profile>
+        <profile>
+            <id>production</id>
+            <properties>
+                <db.host>mariadb</db.host>
+            </properties>
+        </profile>
+    </profiles>
 
     <build>
         <finalName>otp-group6</finalName>
