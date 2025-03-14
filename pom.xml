@@ -98,13 +98,13 @@
         <profile>
             <id>test</id>
             <properties>
-                <db.host>localhost</db.host>
+                <dbhost>localhost</dbhost>
             </properties>
         </profile>
         <profile>
             <id>production</id>
             <properties>
-                <db.host>mariadb</db.host>
+                <dbhost>mariadb</dbhost>
             </properties>
         </profile>
     </profiles>
