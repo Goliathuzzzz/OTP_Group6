@@ -7,6 +7,12 @@ WORKDIR /app
 COPY pom.xml /app/
 COPY src /app/src/
 
+# Set environment variable first
+ENV dbhost=mariadb
+
+# Directly replace the placeholder in persistence.xml
+RUN sed -i "s|\${dbhost}|$dbhost|g" /app/src/main/resources/META-INF/persistence.xml
+
 # Install dependencies for JavaFX and GUI
 RUN apt-get update && apt-get install -y \
     openjfx \
@@ -30,10 +36,8 @@ RUN wget https://download2.gluonhq.com/openjfx/20.0.1/openjfx-20.0.1_linux-x64_b
 # Build the application
 RUN mvn clean package -DskipTests
 
-ENV dbhost=mariadb
-
 # Copy the built JAR file
-COPY target-docker/otp-group6.jar /app/otp-group6.jar
+COPY target/otp-group6.jar /app/otp-group6.jar
 
 # Set the command to run the application with JavaFX
 CMD ["java", "--module-path", "/app/javafx-sdk-20.0.1/lib", "--add-modules", "javafx.controls,javafx.fxml", "-Dprism.order=sw", "-Djavafx.platform=x11", "-jar", "/app/otp-group6.jar"]

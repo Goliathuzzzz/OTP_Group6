@@ -18,8 +18,6 @@ pipeline {
         stage('Build & Test') {
             steps {
                 bat 'mvn clean install -Ptest'
-                bat 'mkdir -p target-docker'
-                bat 'copy target\\otp-group6.jar target-docker\\'
             }
         }
         stage('Code Coverage') {
