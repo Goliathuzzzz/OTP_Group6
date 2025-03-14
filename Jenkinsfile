@@ -5,6 +5,9 @@ pipeline {
     }
     environment {
         MAVEN_OPTS = "-Dtestfx.headless=true -Dprism.order=sw -Dheadless=true"
+        DOCKERHUB_CREDENTIALS_ID = 'DOCKER_login'
+        DOCKERHUB_REPO = 'mikaklaa/OTP_Group6'
+        DOCKER_IMAGE_TAG = 'latest'
     }
     stages {
         stage('Checkout') {
@@ -31,6 +34,30 @@ pipeline {
             steps {
                 jacoco()
             }
+        }
+        stage('Build Docker Image') {
+            steps {
+                // Build Docker image
+                script {
+                    bat "docker build -t ${DOCKERHUB_REPO}:${DOCKER_IMAGE_TAG} ."
+                }
+            }
+        }
+        stage('Push Docker Image to Docker Hub') {
+            steps {
+                // Push Docker image to Docker Hub
+                script {
+                    docker.withRegistry('https://index.docker.io/v1/', DOCKERHUB_CREDENTIALS_ID) {
+                        docker.image("${DOCKERHUB_REPO}:${DOCKER_IMAGE_TAG}").push()
+                    }
+                }
+            }
+        }
+    }
+    post {
+        always {
+            // Clean up
+            bat "docker logout"
         }
     }
 }
