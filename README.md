@@ -107,10 +107,24 @@ Ensure you have the following installed:
 
 ## 🛠 Usage
 
-1. **Register**: Sign up as a user or guest.
-2. **Select interests**: Choose categories such as hobbies, sports, or food preferences.
-3. **Matchmaking**: The system pairs participants based on shared interests.
-4. **View matches**: Participants see their match results at the end of the session.
+1. **Start the App**
+   - Launch the application to access the main menu.
+
+2. **Sign In / Register**
+   - Choose to log in, create a new user, or continue as a guest.
+   - If registering, fill in your email, phone number, and password.
+
+3. **Begin a Session**
+   - Click on **"aloita sessio"** (start session) to enter matchmaking.
+
+4. **Select Your Interests**
+   - Choose from available categories such as hobbies, food, or science.
+
+5. **Match Found!**
+   - The system pairs you with a potential match based on shared interests.
+
+6. **View Match Details**
+   - See your compatibility percentage and common interests with your match.
 
 ---
 
