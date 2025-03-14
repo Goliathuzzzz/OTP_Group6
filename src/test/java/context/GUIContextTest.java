@@ -107,7 +107,7 @@ class GUIContextTest {
         guiContext.setMatch(match);
 
         assertEquals(1, guiContext.getMatches().size(), "Match should be added.");
-        assertEquals(match, guiContext.getMatches().get(0), "Added match should be retrieved correctly.");
+        assertEquals(match, guiContext.getMatches().getFirst(), "Added match should be retrieved correctly.");
     }
 
     @Test
@@ -133,5 +133,21 @@ class GUIContextTest {
         assertEquals("", guiContext.getUserNameProperty().get(), "UserNameProperty should be cleared.");
         assertEquals("", guiContext.getEmailProperty().get(), "EmailProperty should be cleared.");
         assertEquals("", guiContext.getPhoneProperty().get(), "PhoneProperty should be cleared.");
+    }
+
+    @Test
+    void testGetId() {
+        guiContext.setUser(testUser);
+        assertTrue(testUser.getId() >= 0, "User ID should be 0 or a positive number.");
+        assertEquals(testUser.getId(), guiContext.getId(), "getId() should return the correct user ID.");
+        guiContext.logout();
+
+        guiContext.setGuest(testGuest);
+
+        assertTrue(testGuest.getId() >= 0, "Guest ID should be 0 or a positive number.");
+        assertEquals(testGuest.getId(), guiContext.getId(), "getId() should return the correct guest ID.");
+        guiContext.logout();
+
+        assertEquals(-1, guiContext.getId(), "getId() should return -1 when no user or guest data is found.");
     }
 }
