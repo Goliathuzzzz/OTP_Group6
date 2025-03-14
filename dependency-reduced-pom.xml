@@ -71,7 +71,7 @@
       </plugin>
       <plugin>
         <artifactId>maven-shade-plugin</artifactId>
-        <version>3.5.1</version>
+        <version>3.6.0</version>
         <executions>
           <execution>
             <phase>package</phase>
@@ -79,6 +79,7 @@
               <goal>shade</goal>
             </goals>
             <configuration>
+              <finalName>otp-group6</finalName>
               <transformers>
                 <transformer>
                   <mainClass>Main</mainClass>
