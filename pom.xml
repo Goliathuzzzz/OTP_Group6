@@ -156,8 +156,6 @@
                 </executions>
                 <configuration>
                     <excludes>
-                        <exclude>util/Seeder*</exclude>
-                        <exclude>util/Seeder.class</exclude>
                         <exclude>sun/util/resources/**</exclude>
                         <exclude>sun/text/resources/**</exclude>
                         <exclude>sun/util/cldr/**</exclude>
@@ -169,7 +167,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>3.6.0</version>
+                <version>3.5.1</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -177,7 +175,6 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
-                            <finalName>otp-group6</finalName>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <mainClass>Main</mainClass>
