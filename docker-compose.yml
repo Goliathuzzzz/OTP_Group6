@@ -27,7 +27,6 @@ services:
       - DB_PASSWORD=maailmanilmaa
     stdin_open: true
     tty: true
-    network_mode: bridge
 
 volumes:
   mariadb_data:
