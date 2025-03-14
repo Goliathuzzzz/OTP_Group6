@@ -120,7 +120,7 @@ Ensure you have the following installed:
 4. **Select Your Interests**
    - Choose from available categories such as hobbies, food, or science.
 
-5. **Match Found!**
+5. **Match Found**
    - The system pairs you with a potential match based on shared interests.
 
 6. **View Match Details**
