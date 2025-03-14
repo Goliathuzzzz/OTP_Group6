@@ -54,10 +54,4 @@ pipeline {
             }
         }
     }
-    post {
-        always {
-            // Clean up
-            bat "docker logout"
-        }
-    }
 }
