@@ -55,12 +55,6 @@ public class GuestDao implements IDao<Guest> {
         }
     }
 
-    public List<Guest> findExpiredGuests(Date currentDate) {
-        TypedQuery<Guest> query = em.createQuery("SELECT g FROM Guest g WHERE g.deleteDate <= :currentDate", Guest.class);
-        query.setParameter("currentDate", currentDate);
-        return query.getResultList();
-    }
-
     public void deleteAll() {
         List<Guest> guestsToDelete = findAll();
         for (Guest guest: guestsToDelete) {
