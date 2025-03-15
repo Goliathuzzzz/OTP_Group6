@@ -103,6 +103,8 @@ class SessionControllerTest extends ApplicationTest {
         Parent newRoot = stage.getScene().getRoot();
         System.out.println("New scene root id: " + newRoot.getId());
         verifyThat("#continueButton", Node::isVisible);
+        clickOn("#continueButton");
+        verifyThat("#optionsContainer", Node::isVisible);
     }
 
     @Test
