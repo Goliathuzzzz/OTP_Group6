@@ -82,6 +82,20 @@ Ensure you have the following installed:
 - [MariaDB](https://mariadb.org/)
 - [Docker](https://www.docker.com/)
 
+> 🪟 **Note for Windows/macOS users:**  
+> If you're running the application via Docker locally, it uses a GUI (JavaFX), therefor you need an X server installed to display the interface. We recommend [**VcXsrv**](https://vcxsrv.com/) on Windows.  
+>
+> - After installing VcXsrv, launch it with:
+>   - `Disable access control` enabled  
+>   - `Multiple windows` or `One large window`
+> - Set your environment variable:
+>   ```bash
+>   set DISPLAY=host.docker.internal:0.0
+>   ```
+>   or update Docker settings to include this as a default env var.  
+>
+> Without this, the GUI may not launch correctly from inside the Docker container.
+
 ### Setup
 
 1. **Clone the Repository**:
