@@ -83,7 +83,7 @@ Ensure you have the following installed:
 - [Docker](https://www.docker.com/)
 
 > 🪟 **Note for Windows/macOS users:**  
-> If you're running the application via Docker locally, it uses a GUI (JavaFX), therefor you need an X server installed to display the interface. We recommend [**VcXsrv**](https://vcxsrv.com/) on Windows.  
+> If you're running the application via Docker locally, it uses a GUI (JavaFX), therefore you need an X server installed to display the interface. We recommend [**VcXsrv**](https://vcxsrv.com/) on Windows.  
 >
 > - After installing VcXsrv, launch it with:
 >   - `Disable access control` enabled  
