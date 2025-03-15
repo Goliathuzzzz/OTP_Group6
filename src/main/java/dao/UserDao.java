@@ -22,15 +22,8 @@ public class UserDao implements IDao<User> {
         }
     }
 
-
     public User find(int id) {
         return em.find(User.class, id);
-    }
-
-    public Optional<User> findByUsername(String username) {
-        TypedQuery<User> query = em.createQuery("SELECT u FROM User u WHERE u.userName = :username", User.class);
-        query.setParameter("username", username);
-        return query.getResultStream().findFirst();
     }
 
     public boolean existsByEmail(String email) {
