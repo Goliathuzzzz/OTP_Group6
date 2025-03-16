@@ -2,16 +2,16 @@ FROM maven:latest
 
 LABEL authors="hetahar"
 
+# Set environment variable first
+ENV dbhost=mariadb
+
 WORKDIR /app
 
 COPY pom.xml /app/
 COPY src /app/src/
 
-# Set environment variable first
-ENV dbhost=mariadb
-
 # Directly replace the placeholder in persistence.xml
-RUN sed -i "s|\${dbhost}|$dbhost|g" /app/src/main/resources/META-INF/persistence.xml
+RUN sed -i "s|\localhost|$dbhost|g" /app/src/main/resources/META-INF/persistence.xml
 
 # Install dependencies for JavaFX and GUI
 RUN apt-get update && apt-get install -y \
