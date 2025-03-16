@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AfterMatchController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">OT_Project</a> &gt; <a href="index.source.html" class="el_package">controller.view_controllers</a> &gt; <span class="el_source">AfterMatchController.java</span></div><h1>AfterMatchController.java</h1><pre class="source lang-java linenums">package controller.view_controllers;
+
+import context.GUIContext;
+import controller.BaseController;
+import javafx.application.Platform;
+import javafx.fxml.FXML;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import javafx.scene.control.Label;
+import model.Match;
+import model.categories.Category;
+import util.MatchUtils;
+import java.util.List;
+
+
+<span class="nc" id="L18">public class AfterMatchController extends BaseController {</span>
+
+    @FXML
+    private ImageView homeIcon, profileIcon, backIcon;
+
+    @FXML
+    private Label percentageLabel, matchParticipantsLabel, interestsLabel;
+
+    @FXML
+    private AnchorPane afterMatchPane;
+
+    @FXML
+    public void initialize() {
+<span class="nc" id="L31">        Platform.runLater(() -&gt; {</span>
+<span class="nc" id="L32">            Stage stage = (Stage) afterMatchPane.getScene().getWindow();</span>
+<span class="nc bnc" id="L33" title="All 2 branches missed.">            if (stage != null) {</span>
+<span class="nc" id="L34">                stage.setTitle(&quot;Sport&quot;);</span>
+            } else {
+<span class="nc" id="L36">                System.out.println(&quot;Stage is null in AfterMatchController initialize()&quot;);</span>
+            }
+<span class="nc" id="L38">            setResults();</span>
+<span class="nc" id="L39">        });</span>
+<span class="nc" id="L40">    }</span>
+
+    private void setResults() {
+<span class="nc" id="L43">        GUIContext context = GUIContext.getInstance();</span>
+<span class="nc" id="L44">        List&lt;Match&gt; matches = context.getMatches();</span>
+<span class="nc bnc" id="L45" title="All 4 branches missed.">        if (matches == null || matches.isEmpty()) {</span>
+<span class="nc" id="L46">            System.err.println(&quot;ERROR: Match is null in AfterMatchController setResults()&quot;);</span>
+<span class="nc" id="L47">            matchParticipantsLabel.setText(&quot;ei mätsiä&quot;);</span>
+<span class="nc" id="L48">            percentageLabel.setText(&quot;0%&quot;);</span>
+<span class="nc" id="L49">            interestsLabel.setText(&quot;ei yhteisiä kiinnostuksenkohteita&quot;);</span>
+<span class="nc" id="L50">            return;</span>
+        }
+<span class="nc" id="L52">        Match match = matches.getLast();</span>
+<span class="nc" id="L53">        matchParticipantsLabel.setText(match.getParticipant1().getDisplayName() + &quot; ja &quot; + match.getParticipant2().getDisplayName());</span>
+<span class="nc" id="L54">        percentageLabel.setText(Math.round(match.getCompatibility()) + &quot;%&quot;);</span>
+<span class="nc" id="L55">        List&lt;Category&gt; interests = MatchUtils.findCommonInterests(match.getParticipant1().getInterests(), match.getParticipant2().getInterests());</span>
+<span class="nc bnc" id="L56" title="All 2 branches missed.">        interestsLabel.setText(interests.isEmpty() ? &quot;ei yhteisiä kiinnostuksenkohteita&quot; : MatchUtils.formatInterests(interests));</span>
+<span class="nc" id="L57">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

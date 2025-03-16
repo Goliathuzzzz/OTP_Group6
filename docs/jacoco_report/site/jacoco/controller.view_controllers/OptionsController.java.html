@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>OptionsController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">OT_Project</a> &gt; <a href="index.source.html" class="el_package">controller.view_controllers</a> &gt; <span class="el_source">OptionsController.java</span></div><h1>OptionsController.java</h1><pre class="source lang-java linenums">package controller.view_controllers;
+
+import controller.BaseController;
+import javafx.application.Platform;
+import javafx.fxml.FXML;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import util.SceneNames;
+
+<span class="fc" id="L10">public class OptionsController extends BaseController {</span>
+
+    @FXML
+    private AnchorPane optionsPane;
+
+    @FXML
+    public void initialize() {
+<span class="fc" id="L17">        Platform.runLater(() -&gt; {</span>
+<span class="fc" id="L18">            Stage stage = (Stage) optionsPane.getScene().getWindow();</span>
+<span class="pc bpc" id="L19" title="1 of 2 branches missed.">            if (stage != null) {</span>
+<span class="fc" id="L20">                stage.setTitle(&quot;päävalikko&quot;);</span>
+            }
+<span class="fc" id="L22">        });</span>
+<span class="fc" id="L23">    }</span>
+
+    @FXML
+    private void handleLogin() {
+<span class="nc" id="L27">        switchScene(SceneNames.LOGIN);</span>
+<span class="nc" id="L28">    }</span>
+
+    @FXML
+    private void handleNewUser() {
+<span class="nc" id="L32">        switchScene(SceneNames.REGISTRATION);</span>
+<span class="nc" id="L33">    }</span>
+
+    @FXML
+    private void handleGuest() {
+<span class="nc" id="L37">        switchScene(SceneNames.GUEST);</span>
+<span class="nc" id="L38">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

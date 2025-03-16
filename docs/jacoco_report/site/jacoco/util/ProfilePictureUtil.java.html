@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ProfilePictureUtil.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">OT_Project</a> &gt; <a href="index.source.html" class="el_package">util</a> &gt; <span class="el_source">ProfilePictureUtil.java</span></div><h1>ProfilePictureUtil.java</h1><pre class="source lang-java linenums">package util;
+
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import java.util.Objects;
+
+<span class="nc" id="L7">public class ProfilePictureUtil {</span>
+<span class="fc" id="L8">    public static final String[] PROFILE_PICTURES = {</span>
+            &quot;alpaca_icon.png&quot;, &quot;elephant_icon.png&quot;, &quot;flamingo_icon.png&quot;, &quot;giraffe_icon.png&quot;,
+            &quot;parrot_icon.png&quot;, &quot;rhino_icon.png&quot;, &quot;tiger_icon.png&quot;
+    };
+
+    private static Image getProfilePicture(int participantId) {
+<span class="fc" id="L14">        int i = Math.abs(participantId % PROFILE_PICTURES.length);</span>
+<span class="fc" id="L15">        String imagePath = &quot;/images/&quot; + PROFILE_PICTURES[i];</span>
+<span class="fc" id="L16">        Image image = new Image(Objects.requireNonNull(ProfilePictureUtil.class.getResourceAsStream(imagePath)));</span>
+<span class="pc bpc" id="L17" title="1 of 2 branches missed.">        if (image.isError()) {</span>
+<span class="nc" id="L18">            System.err.println(&quot;ERROR: Error loading image: &quot; + imagePath + &quot;. Using default image.&quot;);</span>
+<span class="nc" id="L19">            image = new Image(Objects.requireNonNull(ProfilePictureUtil.class.getResourceAsStream(&quot;/images/&quot; + PROFILE_PICTURES[0])));</span>
+        }
+<span class="fc" id="L21">        return image;</span>
+    }
+
+    public static ImageView getProfilePictureView(int participantId, int width, int height) {
+<span class="fc" id="L25">        ImageView imageView = new ImageView(getProfilePicture(participantId));</span>
+<span class="fc" id="L26">        imageView.setFitWidth(width);</span>
+<span class="fc" id="L27">        imageView.setFitHeight(height);</span>
+<span class="fc" id="L28">        imageView.setPreserveRatio(true);</span>
+<span class="fc" id="L29">        return imageView;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

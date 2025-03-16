@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RegistrationController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">OT_Project</a> &gt; <a href="index.source.html" class="el_package">controller.view_controllers</a> &gt; <span class="el_source">RegistrationController.java</span></div><h1>RegistrationController.java</h1><pre class="source lang-java linenums">package controller.view_controllers;
+
+import context.GUIContext;
+import controller.BaseController;
+import controller.UserController;
+import javafx.application.Platform;
+import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import model.User;
+import util.SceneNames;
+
+import java.util.Date;
+
+<span class="fc" id="L19">public class RegistrationController extends BaseController {</span>
+
+<span class="fc" id="L21">    UserController uController = new UserController();</span>
+
+    @FXML
+    private AnchorPane registrationPane;
+
+    @FXML
+    public void initialize() {
+<span class="fc" id="L28">        Platform.runLater(() -&gt; {</span>
+<span class="fc" id="L29">            Stage stage = (Stage) registrationPane.getScene().getWindow();</span>
+<span class="pc bpc" id="L30" title="1 of 2 branches missed.">            if (stage != null) {</span>
+<span class="fc" id="L31">                stage.setTitle(&quot;rekisteröinti&quot;);</span>
+            }
+<span class="fc" id="L33">        });</span>
+<span class="fc" id="L34">    }</span>
+
+    @FXML
+    private TextField emailField, phoneField;
+
+    @FXML
+    private PasswordField passwordField, confirmPasswordField;
+
+    @FXML
+    private ImageView backIcon;
+
+    @FXML
+    private void handleSignUp() {
+<span class="fc" id="L47">        String email = emailField.getText();</span>
+<span class="fc" id="L48">        String phone = phoneField.getText();</span>
+<span class="fc" id="L49">        String password = passwordField.getText();</span>
+<span class="fc" id="L50">        String confirmPassword = confirmPasswordField.getText();</span>
+
+<span class="pc bpc" id="L52" title="3 of 8 branches missed.">        if (email.isEmpty() || phone.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {</span>
+<span class="fc" id="L53">            showAlert(Alert.AlertType.ERROR, &quot;virhe&quot;, &quot;täytä kaikki kentät!&quot;);</span>
+<span class="fc" id="L54">            return;</span>
+        }
+
+<span class="fc bfc" id="L57" title="All 2 branches covered.">        if (!password.equals(confirmPassword)) {</span>
+<span class="fc" id="L58">            showAlert(Alert.AlertType.ERROR, &quot;virhe&quot;, &quot;salasanat eivät täsmää!&quot;);</span>
+<span class="fc" id="L59">            return;</span>
+        }
+
+<span class="fc bfc" id="L62" title="All 2 branches covered.">        if (!isValidEmail(email)) {</span>
+<span class="fc" id="L63">            showAlert(Alert.AlertType.ERROR, &quot;virhe&quot;, &quot;sähköpostiosoite ei ole kelvollinen!&quot;);</span>
+<span class="fc" id="L64">            return;</span>
+        }
+
+<span class="fc bfc" id="L67" title="All 2 branches covered.">        if (!isValidPhone(phone)) {</span>
+<span class="fc" id="L68">            showAlert(Alert.AlertType.ERROR, &quot;virhe&quot;, &quot;puhelinnumero ei ole kelvollinen!&quot;);</span>
+<span class="fc" id="L69">            return;</span>
+        }
+<span class="fc bfc" id="L71" title="All 2 branches covered.">        if (uController.existsByEmail(email)) {</span>
+<span class="fc" id="L72">            showAlert(Alert.AlertType.ERROR, &quot;virhe&quot;, &quot;sähköpostiosoite on jo käytössä!&quot;);</span>
+<span class="fc" id="L73">            return;</span>
+        }
+<span class="fc" id="L75">        String userName = email.substring(0, email.indexOf(&quot;@&quot;)).replace(&quot;.&quot;, &quot; &quot;); // can be improved</span>
+<span class="fc" id="L76">        User user = new User(userName, password, email, &quot;none&quot;, phone, new Date());</span>
+<span class="fc" id="L77">        uController.registerUser(user);</span>
+<span class="fc" id="L78">        GUIContext.getInstance().setUser(user);</span>
+<span class="fc" id="L79">        switchScene(SceneNames.BEGIN_SESSION);</span>
+<span class="fc" id="L80">    }</span>
+
+    @FXML
+    private void handleBack() {
+<span class="fc" id="L84">        switchScene(SceneNames.OPTIONS);</span>
+<span class="fc" id="L85">    }</span>
+
+    private boolean isValidEmail(String email) {
+<span class="fc" id="L88">        return email.matches(&quot;^[A-Za-z0-9+_.-]+@(.+)$&quot;);</span>
+    }
+
+    private boolean isValidPhone(String phone) {
+<span class="fc" id="L92">        return phone.matches(&quot;^[0-9]{10,15}$&quot;);</span>
+    }
+
+    public UserController getUController() {
+<span class="nc" id="L96">        return uController;</span>
+    }
+
+    public void setuController(UserController uController) {
+<span class="fc" id="L100">        this.uController = uController;</span>
+<span class="fc" id="L101">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

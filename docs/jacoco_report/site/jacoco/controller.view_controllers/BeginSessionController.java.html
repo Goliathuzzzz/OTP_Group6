@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BeginSessionController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">OT_Project</a> &gt; <a href="index.source.html" class="el_package">controller.view_controllers</a> &gt; <span class="el_source">BeginSessionController.java</span></div><h1>BeginSessionController.java</h1><pre class="source lang-java linenums">package controller.view_controllers;
+
+import context.GUIContext;
+import controller.BaseController;
+import javafx.animation.ScaleTransition;
+import javafx.application.Platform;
+import javafx.fxml.FXML;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import javafx.util.Duration;
+import model.Participant;
+import model.Session;
+import util.SceneNames;
+
+<span class="fc" id="L17">public class BeginSessionController extends BaseController {</span>
+
+    @FXML
+    private ImageView homeIcon, profileIcon, backIcon, bigHeart;
+
+    @FXML
+    private AnchorPane beginSessionPane;
+
+    private ScaleTransition heartbeat;
+
+    @FXML
+    public void initialize() {
+<span class="fc" id="L29">        Platform.runLater(() -&gt; {</span>
+<span class="fc" id="L30">            Stage stage = (Stage) beginSessionPane.getScene().getWindow();</span>
+<span class="pc bpc" id="L31" title="1 of 2 branches missed.">            if (stage != null) {</span>
+<span class="fc" id="L32">                stage.setTitle(&quot;aloita&quot;);</span>
+            } else {
+<span class="nc" id="L34">                System.out.println(&quot;Stage is null in BeginSessionController initialize()&quot;);</span>
+            }
+<span class="fc" id="L36">        });</span>
+
+<span class="fc" id="L38">        setupHoverHeartbeat();</span>
+<span class="fc" id="L39">    }</span>
+
+    private void setupHoverHeartbeat() {
+<span class="fc" id="L42">        heartbeat = new ScaleTransition(Duration.seconds(0.8), bigHeart);</span>
+<span class="fc" id="L43">        heartbeat.setByX(0.1);</span>
+<span class="fc" id="L44">        heartbeat.setByY(0.1);</span>
+<span class="fc" id="L45">        heartbeat.setCycleCount(ScaleTransition.INDEFINITE);</span>
+<span class="fc" id="L46">        heartbeat.setAutoReverse(true);</span>
+
+<span class="pc" id="L48">        bigHeart.setOnMouseEntered(event -&gt; heartbeat.play());</span>
+
+<span class="fc" id="L50">        bigHeart.setOnMouseExited(event -&gt; {</span>
+<span class="nc" id="L51">            heartbeat.stop();</span>
+<span class="nc" id="L52">            bigHeart.setScaleX(1.0);</span>
+<span class="nc" id="L53">            bigHeart.setScaleY(1.0);</span>
+<span class="nc" id="L54">        });</span>
+<span class="fc" id="L55">    }</span>
+
+    @FXML
+    private void handleBeginSessionClick(MouseEvent event) {
+<span class="nc" id="L59">        GUIContext context = GUIContext.getInstance();</span>
+<span class="nc bnc" id="L60" title="All 2 branches missed.">        Participant participant = context.isUser() ? context.getUser() :</span>
+<span class="nc bnc" id="L61" title="All 2 branches missed.">                context.isGuest() ? context.getGuest() : null;</span>
+<span class="nc bnc" id="L62" title="All 2 branches missed.">        if (participant != null) {</span>
+<span class="nc" id="L63">            context.setSession(new Session(participant));</span>
+            // reset participant interests
+<span class="nc" id="L65">            context.getSession().getParticipant().clearInterests();</span>
+<span class="nc" id="L66">            switchScene(SceneNames.SESSION);</span>
+        } else {
+<span class="nc" id="L68">            System.err.println(&quot;No user or guest found in GUIContext&quot;);</span>
+        }
+<span class="nc" id="L70">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

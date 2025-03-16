@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UserItemController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">OT_Project</a> &gt; <a href="index.source.html" class="el_package">controller.view_controllers</a> &gt; <span class="el_source">UserItemController.java</span></div><h1>UserItemController.java</h1><pre class="source lang-java linenums">package controller.view_controllers;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import model.User;
+
+import java.util.function.Consumer;
+
+<span class="fc" id="L13">public class UserItemController {</span>
+
+    @FXML
+    public ImageView deleteIcon;
+
+    @FXML
+    private Label userNameLabel;
+
+    private User user;
+    private Consumer&lt;User&gt; onDelete;
+
+    public void setUser(User user, Consumer&lt;User&gt; onDelete) {
+<span class="fc" id="L25">        this.user = user;</span>
+<span class="fc" id="L26">        this.onDelete = onDelete;</span>
+<span class="fc" id="L27">        userNameLabel.setText(user.getUserName());</span>
+<span class="fc" id="L28">    }</span>
+
+    public User getUser() {
+<span class="fc" id="L31">        return user;</span>
+    }
+
+    @FXML
+    private void handleUserNameClick(MouseEvent event) {
+<span class="pc bpc" id="L36" title="1 of 2 branches missed.">        if (user == null) {</span>
+<span class="nc" id="L37">            System.err.println(&quot;ERROR: User is null in UserItemController&quot;);</span>
+<span class="nc" id="L38">            return;</span>
+        }
+<span class="fc" id="L40">        Alert alert = new Alert(Alert.AlertType.INFORMATION);</span>
+<span class="fc" id="L41">        alert.setTitle(&quot;nimen klikkaus&quot;);</span>
+<span class="fc" id="L42">        alert.setHeaderText(null);</span>
+<span class="fc" id="L43">        alert.setContentText(&quot;klikkasit nimeä &quot; + user.getUserName());</span>
+<span class="fc" id="L44">        alert.showAndWait();</span>
+<span class="fc" id="L45">    }</span>
+
+    @FXML
+    private void handleDeleteClick(MouseEvent event) {
+<span class="pc bpc" id="L49" title="1 of 2 branches missed.">        if (user == null) {</span>
+<span class="nc" id="L50">            System.err.println(&quot;User is null in UserItemController&quot;);</span>
+<span class="nc" id="L51">            return;</span>
+        }
+<span class="fc" id="L53">        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);</span>
+<span class="fc" id="L54">        alert.setTitle(&quot;käyttäjän poisto&quot;);</span>
+<span class="fc" id="L55">        alert.setHeaderText(null);</span>
+<span class="fc" id="L56">        alert.setContentText(&quot;oletko varma että haluat poistaa käyttäjän &quot; + user.getUserName() + &quot;?&quot;);</span>
+<span class="fc" id="L57">        alert.showAndWait().ifPresent(response -&gt; {</span>
+<span class="pc bpc" id="L58" title="1 of 2 branches missed.">            if (response == ButtonType.OK) {</span>
+<span class="fc" id="L59">                deleteUser();</span>
+            }
+<span class="fc" id="L61">        });</span>
+<span class="fc" id="L62">    }</span>
+
+    private void deleteUser() {
+        // notify AdminUsersController that user should be deleted
+<span class="pc bpc" id="L66" title="1 of 2 branches missed.">        if (user != null) {</span>
+<span class="fc" id="L67">            onDelete.accept(user);</span>
+        } else {
+<span class="nc" id="L69">            System.err.println(&quot;ERROR: User is null in UserItemController&quot;);</span>
+        }
+<span class="fc" id="L71">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AdminProfileController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">OT_Project</a> &gt; <a href="index.source.html" class="el_package">controller.view_controllers</a> &gt; <span class="el_source">AdminProfileController.java</span></div><h1>AdminProfileController.java</h1><pre class="source lang-java linenums">package controller.view_controllers;
+
+import context.GUIContext;
+import controller.BaseController;
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
+import javafx.scene.input.MouseEvent;
+import util.SceneNames;
+
+import static util.ProfilePictureUtil.getProfilePictureView;
+
+public class AdminProfileController extends BaseController {
+
+<span class="fc" id="L16">    private GUIContext guiContext = GUIContext.getInstance();</span>
+
+    @FXML
+    private Pane bottomNavPane, profileImagePane;
+
+    @FXML
+    private ImageView homeIcon, profileIcon, backIcon, editButton, helpIcon;
+
+    @FXML
+    private Label nameLabel, emailLabel, phoneLabel;
+
+    // default constructor for FXML loader
+    public AdminProfileController() {
+<span class="nc" id="L29">        this(GUIContext.getInstance());</span>
+<span class="nc" id="L30">    }</span>
+
+    // constructor for testing
+<span class="fc" id="L33">    public AdminProfileController(GUIContext guiContext) {</span>
+<span class="fc" id="L34">        this.guiContext = guiContext;</span>
+<span class="fc" id="L35">    }</span>
+
+    @FXML
+    private void initialize() {
+<span class="pc bpc" id="L39" title="1 of 2 branches missed.">        if (guiContext.isUser()) {</span>
+<span class="fc" id="L40">            guiContext.setUserNameProperty(guiContext.getUserName());</span>
+<span class="fc" id="L41">            guiContext.setEmailProperty(guiContext.getUserEmail());</span>
+<span class="fc" id="L42">            guiContext.setPhoneProperty(guiContext.getUserPhoneNumber());</span>
+<span class="fc" id="L43">            nameLabel.textProperty().bind(guiContext.getUserNameProperty());</span>
+<span class="fc" id="L44">            emailLabel.textProperty().bind(guiContext.getEmailProperty());</span>
+<span class="fc" id="L45">            phoneLabel.textProperty().bind(guiContext.getPhoneProperty());</span>
+
+<span class="fc" id="L47">            ImageView profileImageView = getProfilePictureView(guiContext.getId(), 200, 200);</span>
+<span class="fc" id="L48">            profileImagePane.getChildren().add(profileImageView);</span>
+        }
+<span class="fc" id="L50">    }</span>
+
+    @FXML
+    private void handleUsersClick(MouseEvent event) {
+<span class="nc" id="L54">        switchScene(SceneNames.ADMIN_USERS);</span>
+<span class="nc" id="L55">    }</span>
+
+    @FXML
+    private void handlePairsClick(MouseEvent event) {
+<span class="nc" id="L59">        switchScene(SceneNames.ADMIN_HOME);</span>
+<span class="nc" id="L60">    }</span>
+
+    @FXML
+    private void handleEditClick(MouseEvent event) {
+<span class="nc" id="L64">        switchScene(SceneNames.EDIT_PROFILE);</span>
+<span class="nc" id="L65">    }</span>
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

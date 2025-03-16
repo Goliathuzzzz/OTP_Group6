@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MatchViewController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">OT_Project</a> &gt; <a href="index.source.html" class="el_package">controller.view_controllers</a> &gt; <span class="el_source">MatchViewController.java</span></div><h1>MatchViewController.java</h1><pre class="source lang-java linenums">package controller.view_controllers;
+
+import context.GUIContext;
+import controller.BaseController;
+import javafx.animation.ScaleTransition;
+import javafx.application.Platform;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import javafx.util.Duration;
+import util.SceneNames;
+
+import static util.ProfilePictureUtil.getProfilePictureView;
+
+<span class="nc" id="L18">public class MatchViewController extends BaseController {</span>
+
+    @FXML
+    private ImageView matchHeart;
+
+    @FXML
+    private ImageView placeholderProfile1;
+
+    @FXML
+    private ImageView placeholderProfile2;
+
+    @FXML
+    private Button detailsButton;
+
+    @FXML
+    private void handleDetailsButtonClick(MouseEvent event) {
+<span class="nc" id="L34">        switchScene(SceneNames.AFTER_MATCH);</span>
+<span class="nc" id="L35">    }</span>
+
+    @FXML
+    private AnchorPane matchPane;
+
+<span class="nc" id="L40">    GUIContext context = GUIContext.getInstance();</span>
+
+    @FXML
+    public void initialize() {
+<span class="nc" id="L44">        startHeartbeatAnimation();</span>
+<span class="nc" id="L45">        loadProfileImages();</span>
+<span class="nc" id="L46">        Platform.runLater(() -&gt; {</span>
+<span class="nc" id="L47">            Stage stage = (Stage) matchPane.getScene().getWindow();</span>
+<span class="nc bnc" id="L48" title="All 2 branches missed.">            if (stage != null) {</span>
+<span class="nc" id="L49">                stage.setTitle(&quot;aloita&quot;);</span>
+            } else {
+<span class="nc" id="L51">                System.out.println(&quot;Stage is null in MatchViewController initialize()&quot;);</span>
+            }
+<span class="nc" id="L53">        });</span>
+//        detailsButton.setOnMouseClicked(this::handleDetailsButtonClick);
+<span class="nc" id="L55">    }</span>
+
+    private void loadProfileImages() {
+<span class="nc bnc" id="L58" title="All 4 branches missed.">        if (context.getMatches().isEmpty() || context.getMatches().getLast() == null) {</span>
+<span class="nc" id="L59">            System.err.println(&quot;ERROR: Match is null in MatchViewController initialize()&quot;);</span>
+<span class="nc" id="L60">            placeholderProfile1.setImage(null);</span>
+<span class="nc" id="L61">            placeholderProfile2.setImage(null);</span>
+<span class="nc" id="L62">            detailsButton.setDisable(true);</span>
+<span class="nc" id="L63">            return;</span>
+        }
+<span class="nc" id="L65">        int profile1Id = context.getId();</span>
+<span class="nc" id="L66">        int profile2Id = context.getMatches().getLast().getParticipant2().getId();</span>
+
+<span class="nc" id="L68">        ImageView profile1 = getProfilePictureView(profile1Id, 200, 200);</span>
+<span class="nc" id="L69">        ImageView profile2 = getProfilePictureView(profile2Id, 200, 200);</span>
+<span class="nc" id="L70">        placeholderProfile1.setImage(profile1.getImage());</span>
+<span class="nc" id="L71">        placeholderProfile2.setImage(profile2.getImage());</span>
+<span class="nc" id="L72">    }</span>
+
+    private void startHeartbeatAnimation() {
+<span class="nc" id="L75">        ScaleTransition heartbeat = new ScaleTransition(Duration.seconds(1), matchHeart);</span>
+<span class="nc" id="L76">        heartbeat.setByX(0.1);</span>
+<span class="nc" id="L77">        heartbeat.setByY(0.1);</span>
+<span class="nc" id="L78">        heartbeat.setCycleCount(ScaleTransition.INDEFINITE);</span>
+<span class="nc" id="L79">        heartbeat.setAutoReverse(true);</span>
+<span class="nc" id="L80">        heartbeat.play();</span>
+<span class="nc" id="L81">    }</span>
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
