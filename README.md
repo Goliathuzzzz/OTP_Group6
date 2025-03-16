@@ -153,7 +153,17 @@ mvn jacoco:report
 
 ---
 
+## 🐳 Running the app from a Docker container
 
+Build and run the docker container by running the following command from your project's source folder:
+
+   ```sh
+   docker-compose up --build
+   ```
+
+Make sure VcXsrv is running in the background with the correct settings!
+
+---
 
 ## ✨ Future Enhancements
 
