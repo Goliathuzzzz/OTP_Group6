@@ -6,7 +6,8 @@
     <persistence-unit name="TatskatytotMariaDbUnit" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <properties>
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:mariadb://localhost:3306/tatskatytot"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mariadb://${dbhost}:3306/tatskatytot"/>
+            <!--            <property name="jakarta.persistence.jdbc.url" value="jdbc:mariadb://localhost:3306/tatskatytot"/>-->
             <property name="jakarta.persistence.jdbc.user" value="appuser"/>
             <property name="jakarta.persistence.jdbc.password" value="maailmanilmaa"/>
             <property name="jakarta.persistence.jdbc.driver" value="org.mariadb.jdbc.Driver"/>
@@ -14,6 +15,5 @@
             <property name="jakarta.persistence.sql-dialect" value="org.hibernate.dialect.MariaDBDialect"/>
             <property name="hibernate.show_sql" value="true" />
         </properties>
-
     </persistence-unit>
 </persistence>

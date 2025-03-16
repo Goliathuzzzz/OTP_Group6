@@ -19,7 +19,6 @@ class UserControllerTest {
     @BeforeAll
     static void init() {
         userController = new UserController();
-        userController.setEm(Persistence.createEntityManagerFactory("test-persistence-unit-tt").createEntityManager());
     }
 
     @BeforeEach
