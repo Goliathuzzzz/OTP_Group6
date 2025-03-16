@@ -88,12 +88,7 @@ Ensure you have the following installed:
 > - After installing VcXsrv, launch it with:
 >   - `Disable access control` enabled  
 >   - `Multiple windows` or `One large window`
-> - Set your environment variable:
->   ```bash
->   set DISPLAY=host.docker.internal:0.0
->   ```
->   or update Docker settings to include this as a default env var.  
->
+> 
 > Without this, the GUI may not launch correctly from inside the Docker container.
 
 ### Setup
@@ -157,6 +152,8 @@ mvn jacoco:report
 ```
 
 ---
+
+
 
 ## ✨ Future Enhancements
 
