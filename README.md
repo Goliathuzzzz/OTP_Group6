@@ -14,6 +14,28 @@
 
 ---
 
+## 🎯 Matchmaking Algorithm
+
+The **Qupids Speed Dating** uses a **compatibility-based matchmaking algorithm** to pair participants based on shared interests.
+
+### ⚙️ How It Works
+
+#### Interest-Based Matching
+- Each participant selects their **interests** before the session starts.
+- The system retrieves a list of **all potential matches** from the database.
+
+#### Compatibility Scoring
+- A **compatibility score** (0-100%) is calculated based on **shared interests**.
+- Each shared interest **increases compatibility**, while unmatched interests reduce the **maximum potential score**.
+- If a user has **more interests**, the score is **evenly distributed** across them.
+
+#### Finding the Best Match
+- The system identifies the **highest compatibility match** for each participant.
+- If multiple users have the **same compatibility score**, they are **both considered top matches**.
+- The algorithm **excludes the participant themselves** and **skips low-potential matches early** for efficiency.
+
+---
+
 ## 🔧 Technology Stack
 
 ### **Frontend**
