@@ -16,7 +16,7 @@
 
 ## 🎯 Matchmaking Algorithm
 
-The **Qupids Speed Dating** uses a **compatibility-based matchmaking algorithm** to pair participants based on shared interests.
+The **Qupids Speed Dating** uses a **compatibility based matchmaking algorithm** to pair participants based on shared interests.
 
 ### ⚙️ How It Works
 
