@@ -102,7 +102,7 @@ Ensure you have the following installed:
 
 2. **Database Configuration**:
 
-    - Start MariaDB and create a database named `tatskatytot`.
+    - Start MariaDB and create a database named `qupids_db`.
     - Update `persistence.xml` with your database credentials.
 
 3. **Build and Run**:
@@ -151,9 +151,14 @@ Generate a JaCoCo test coverage report:
 mvn jacoco:report
 ```
 
+> **Testing Overview**  
+> - **Mockito** – Used for mocking services and dependencies in unit tests.  
+> - **JaCoCo** – Ensures **code coverage analysis**.  
+> - **TestFX** – Simulates user interactions for GUI testing. 
+
 ---
 
-## 🐳 Running the app from a Docker container
+## 🐳 Running the App with Docker
 
 Build and run the docker container by running the following command from your project's source folder:
 
