@@ -1,38 +1,38 @@
 # Qupids - Speed Dating
 
-**Qupids Speed Dating** is a locally hosted mock implementation of an **automated speed dating system**. It enhances event management by automating **participant enrollment, interest selection, matchmaking, and match display**, reducing the inefficiencies of manual speed dating events.
+**Qupids Speed Dating** is a locally hosted mock implementation of an automated speed dating system. It enhances event management by automating participant enrollment, interest selection, matchmaking, and match display, reducing the inefficiencies of manual speed dating events.
 
 ---
 
 ## 🌟 Features
 
-- **Automated Enrollment** – Participants register with personal details.
-- **Interest-Based Matchmaking** – Matches are determined by shared interests.
-- **Match Display** – View pairing results post-session.
-- **Admin Controls** – Manage users and matches through a database interface.
-- **Testing & Deployment** – JUnit tests, CI/CD pipelines, and Docker support.
+- Automated Enrollment – Participants register with personal details.
+- Interest-Based Matchmaking – Matches are determined by shared interests.
+- Match Display – View pairing results post-session.
+- Admin Controls – Manage users and matches through a database interface.
+- Testing & Deployment – JUnit tests, CI/CD pipelines, and Docker implementation.
 
 ---
 
 ## 🎯 Matchmaking Algorithm
 
-The **Qupids Speed Dating** uses a **compatibility based matchmaking algorithm** to pair participants based on shared interests.
+The Qupids Speed Dating uses a compatibility based matchmaking algorithm to pair participants based on shared interests.
 
 ### ⚙️ How It Works
 
 #### Interest-Based Matching
-- Each participant selects their **interests** before the session starts.
-- The system retrieves a list of **all potential matches** from the database.
+- Each participant selects their interests before the session starts.
+- The system retrieves a list of all potential matches from the database.
 
 #### Compatibility Scoring
-- A **compatibility score** 0-100% is calculated based on **shared interests**.
-- Each shared interest **increases compatibility**, while unmatched interests reduce the **maximum potential score**.
-- If a user has **more interests**, the score is **evenly distributed** across them.
+- A compatibility score 0-100% is calculated based on shared interests.
+- Each shared interest increases compatibility, while unmatched interests reduce the maximum potential score.
+- If a user has more interests, the score is evenly distributed across them.
 
 #### Finding the Best Match
-- The system identifies the **highest compatibility match** for each participant.
-- If multiple users have the **same compatibility score**, they are **both considered top matches**.
-- The algorithm **excludes the participant themselves** and **skips low potential matches early** for efficiency.
+- The system identifies the highest compatibility match for each participant.
+- If multiple users have the same compatibility score, they are both considered top matches.
+- The algorithm excludes the participant themselves and skips low potential matches early for efficiency.
 
 ---
 
@@ -174,9 +174,9 @@ mvn jacoco:report
 ```
 
 > **Testing Overview**  
-> - **Mockito** – Used for mocking services and dependencies in unit tests.  
-> - **JaCoCo** – Ensures **code coverage analysis**.  
-> - **TestFX** – Simulates user interactions for GUI testing. 
+> - Mockito – Used for mocking services and dependencies in unit tests.  
+> - JaCoCo – Ensures code coverage analysis.  
+> - TestFX – Simulates user interactions for GUI testing. 
 
 ---
 
@@ -194,17 +194,17 @@ Ensure that VcXsrv is running in the background with the correct settings before
 
 ## ✨ Future Enhancements
 
-- **Mobile App Development** – Build a React Native version.
-- **Cloud Deployment** – Move backend to Render, frontend to Vercel.
-- **Session Notifications** – SMS/Email reminders for upcoming events.
-- **Two-Factor Authentication** – Secure login with OTP/Auth apps.
-- **Advanced Admin Dashboard** – Session tracking & analytics.
+- Mobile App Development – Build a React Native version.
+- Cloud Deployment – Move backend to Render, frontend to Vercel.
+- Session Notifications – SMS/Email reminders for upcoming events.
+- Two-Factor Authentication – Secure login with OTP/Auth apps.
+- Advanced Admin Dashboard – Session tracking & analytics.
 
 ---
 
 ## 🤝 Contributors
 
-- **Ade Aiho**
-- **Heta Hartzell**
-- **Mika Laakkonen**
-- **Jonne Roponen**
+- Ade Aiho
+- Heta Hartzell
+- Mika Laakkonen
+- Jonne Roponen
