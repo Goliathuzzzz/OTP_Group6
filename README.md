@@ -1,6 +1,6 @@
 # Qupids - Speed Dating
 
-**Qupids Speed Dating** is a locally hosted mock implementation of an **automated speed dating system**. It streamlines event management by automating **participant enrollment, interest selection, matchmaking, and match display**, reducing the inefficiencies of manual speed dating events.
+**Qupids Speed Dating** is a locally hosted mock implementation of an **automated speed dating system**. It enhances event management by automating **participant enrollment, interest selection, matchmaking, and match display**, reducing the inefficiencies of manual speed dating events.
 
 ---
 
@@ -25,7 +25,7 @@ The **Qupids Speed Dating** uses a **compatibility-based matchmaking algorithm**
 - The system retrieves a list of **all potential matches** from the database.
 
 #### Compatibility Scoring
-- A **compatibility score** (0-100%) is calculated based on **shared interests**.
+- A **compatibility score** 0-100% is calculated based on **shared interests**.
 - Each shared interest **increases compatibility**, while unmatched interests reduce the **maximum potential score**.
 - If a user has **more interests**, the score is **evenly distributed** across them.
 
@@ -182,13 +182,13 @@ mvn jacoco:report
 
 ## 🐳 Running the App with Docker
 
-Build and run the docker container by running the following command from your project's source folder:
+Build and launch the Docker container by running the following command from your project's root directory:
 
    ```sh
    docker-compose up --build
    ```
 
-Make sure VcXsrv is running in the background with the correct settings!
+Ensure that VcXsrv is running in the background with the correct settings before starting the application!
 
 ---
 
