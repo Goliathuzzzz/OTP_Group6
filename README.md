@@ -20,7 +20,7 @@ Qupids Speed Dating uses a compatibility based matchmaking algorithm to pair par
 
 ### ⚙️ How It Works
 
-#### Interest-Based Matching
+#### Interest Based Matching
 - Each participant selects their interests before the session starts.
 - The system retrieves a list of all potential matches from the database.
 
