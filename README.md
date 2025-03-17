@@ -32,7 +32,7 @@ The **Qupids Speed Dating** uses a **compatibility based matchmaking algorithm**
 #### Finding the Best Match
 - The system identifies the **highest compatibility match** for each participant.
 - If multiple users have the **same compatibility score**, they are **both considered top matches**.
-- The algorithm **excludes the participant themselves** and **skips low-potential matches early** for efficiency.
+- The algorithm **excludes the participant themselves** and **skips low potential matches early** for efficiency.
 
 ---
 
