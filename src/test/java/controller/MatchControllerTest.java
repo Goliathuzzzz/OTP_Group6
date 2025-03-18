@@ -21,11 +21,8 @@ class MatchControllerTest {
 
     @BeforeAll
     static void init() {
-        EntityManager em = Persistence.createEntityManagerFactory("test-persistence-unit-tt").createEntityManager();
         matchController = new MatchController();
         UserController userController = new UserController();
-        matchController.setEm(em);
-        userController.setEm(em);
         testUser = new User("Test2", "testpassword", "test@email.com", "test-subject", "123456789", new Date());
         testUser2 = new User("Test2", "testpassword", "test@email.com", "test-subject", "123456789", new Date());
         userController.registerUser(testUser);

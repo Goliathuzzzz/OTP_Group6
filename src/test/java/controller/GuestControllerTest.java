@@ -19,9 +19,7 @@ class GuestControllerTest {
 
     @BeforeAll
     static void init() {
-        EntityManager em = Persistence.createEntityManagerFactory("test-persistence-unit-tt").createEntityManager();
         guestController = new GuestController();
-        guestController.setEm(em);
     }
 
     @BeforeEach
