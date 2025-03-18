@@ -169,8 +169,8 @@
                 </executions>
                 <configuration>
                     <excludes>
-                        <exclude>util/Seeder*</exclude>
-                        <exclude>util/Seeder.class</exclude>
+                        <exclude>com/example/util/Seeder*</exclude>
+                        <exclude>com/example/util/Seeder.class</exclude>
                         <exclude>sun/util/resources/**</exclude>
                         <exclude>sun/text/resources/**</exclude>
                         <exclude>sun/util/cldr/**</exclude>
