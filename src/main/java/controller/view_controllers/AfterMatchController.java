@@ -31,7 +31,7 @@ public class AfterMatchController extends BaseController {
         Platform.runLater(() -> {
             Stage stage = (Stage) afterMatchPane.getScene().getWindow();
             if (stage != null) {
-                stage.setTitle("Sport");
+                stage.setTitle("outcome");
             } else {
                 System.out.println("Stage is null in AfterMatchController initialize()");
             }
@@ -44,15 +44,17 @@ public class AfterMatchController extends BaseController {
         List<Match> matches = context.getMatches();
         if (matches == null || matches.isEmpty()) {
             System.err.println("ERROR: Match is null in AfterMatchController setResults()");
-            matchParticipantsLabel.setText("ei mätsiä");
-            percentageLabel.setText("0%");
-            interestsLabel.setText("ei yhteisiä kiinnostuksenkohteita");
+            matchParticipantsLabel.setText("no_match");
+            percentageLabel.setText("zero_percent");
+            interestsLabel.setText("no_common_interests");
             return;
         }
+
+        // "and" still needs to be replaced once resourcebundle is imported
         Match match = matches.getLast();
-        matchParticipantsLabel.setText(match.getParticipant1().getDisplayName() + " ja " + match.getParticipant2().getDisplayName());
+        matchParticipantsLabel.setText(match.getParticipant1().getDisplayName() + " " + "and" + " " + match.getParticipant2().getDisplayName());
         percentageLabel.setText(Math.round(match.getCompatibility()) + "%");
         List<Category> interests = MatchUtils.findCommonInterests(match.getParticipant1().getInterests(), match.getParticipant2().getInterests());
-        interestsLabel.setText(interests.isEmpty() ? "ei yhteisiä kiinnostuksenkohteita" : MatchUtils.formatInterests(interests));
+        interestsLabel.setText(interests.isEmpty() ? "no_common_interests" : MatchUtils.formatInterests(interests));
     }
 }

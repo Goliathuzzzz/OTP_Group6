@@ -29,7 +29,7 @@ public class BeginSessionController extends BaseController {
         Platform.runLater(() -> {
             Stage stage = (Stage) beginSessionPane.getScene().getWindow();
             if (stage != null) {
-                stage.setTitle("aloita");
+                stage.setTitle("begin");
             } else {
                 System.out.println("Stage is null in BeginSessionController initialize()");
             }

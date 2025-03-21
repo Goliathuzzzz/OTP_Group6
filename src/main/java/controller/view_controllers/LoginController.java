@@ -35,7 +35,7 @@ public class LoginController extends BaseController {
         String password = passwordField.getText();
 
         if (email.isEmpty() || password.isEmpty()) {
-            showAlert(Alert.AlertType.ERROR, "virhe", "täytä kaikki kentät!");
+            showAlert(Alert.AlertType.ERROR, "error_title", "fill_all_fields");
             return;
         }
         User user = uController.login(email, password);
@@ -43,13 +43,13 @@ public class LoginController extends BaseController {
             guiContext.setUser(user);
             switchScene(SceneNames.BEGIN_SESSION);
         } else {
-            showAlert(Alert.AlertType.ERROR, "virhe", "sähköpostiosoite tai salasana on väärä!");
+            showAlert(Alert.AlertType.ERROR, "error_title", "invalid_credentials");
         }
     }
 
     @FXML
     private void handleForgotPassword() {
-        showAlert(Alert.AlertType.INFORMATION, "salasana unohtunut?", "ohjeet salasanan palauttamiseen lähetetään sähköpostiisi.");
+        showAlert(Alert.AlertType.INFORMATION, "forgot_password_title", "forgot_password_instructions");
     }
 
     @FXML

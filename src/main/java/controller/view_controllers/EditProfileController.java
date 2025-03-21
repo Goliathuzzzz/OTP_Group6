@@ -37,7 +37,7 @@ public class EditProfileController extends BaseController {
             ImageView profileImageView = getProfilePictureView(guiContext.getId(), 120, 120);
             profileImage.setImage(profileImageView.getImage());
         } else {
-            showAlert(Alert.AlertType.ERROR, "virhe", "käyttäjätietoja ei löydy");
+            showAlert(Alert.AlertType.ERROR, "error_title", "no_user_data");
             System.err.println("ERROR: No logged in user data found");
         }
     }
@@ -53,7 +53,7 @@ public class EditProfileController extends BaseController {
 
     @FXML
     public void handlePreviousClick(MouseEvent event) {
-        showAlert(Alert.AlertType.INFORMATION, "tallennus", "muutokset tallennettu");
+        showAlert(Alert.AlertType.INFORMATION, "save_title", "changes_saved");
         saveChanges();
         switchScene(SceneNames.PROFILE);
     }
@@ -66,14 +66,14 @@ public class EditProfileController extends BaseController {
 
     @FXML
     public void handleProfileClick(MouseEvent event) {
-        showAlert(Alert.AlertType.INFORMATION, "tallennus", "muutokset tallennettu");
+        showAlert(Alert.AlertType.INFORMATION, "save_title", "changes_saved");
         saveChanges();
         switchScene(SceneNames.PROFILE);
     }
 
     @FXML
     public void handleBackClick(MouseEvent event) {
-        showAlert(Alert.AlertType.INFORMATION, "tallennus", "muutokset tallennettu");
+        showAlert(Alert.AlertType.INFORMATION, "save_title", "changes_saved");
         saveChanges();
         switchScene(SceneNames.OPTIONS);
     }

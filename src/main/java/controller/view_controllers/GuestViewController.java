@@ -31,10 +31,10 @@ public class GuestViewController extends BaseController {
     private void handleContinueClick() {
         String phoneNumber = phoneField.getText();
         if (phoneNumber.isEmpty()) {
-            showAlert( Alert.AlertType.INFORMATION, "syötä","syötä puhelinnumero.");
+            showAlert( Alert.AlertType.INFORMATION, "input_title","enter_phone_prompt");
         }
         else if (!isValidPhone(phoneNumber)) {
-            showAlert( Alert.AlertType.INFORMATION, "virhe", "puhelinnumero ei ole kelvollinen.");
+            showAlert( Alert.AlertType.INFORMATION, "error_title", "invalid_phone");
         } else {
             Guest guest = new Guest(phoneNumber, new Date());
             gController.registerGuest(guest);
