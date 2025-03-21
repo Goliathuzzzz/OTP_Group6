@@ -14,7 +14,7 @@
         <Image url="@/images/background.png" />
     </ImageView>
     <Pane fx:id="rectangle13" layoutY="283" prefHeight="569" prefWidth="393" />
-    <Label fx:id="speedDating" layoutX="105" layoutY="219" text="speed dating" />
+    <Label fx:id="speedDating" layoutX="105" layoutY="219" text="%speed_dating" />
     <ImageView fitHeight="210" fitWidth="214" layoutX="90" layoutY="18">
         <Image url="@/images/punainenlogo.png" />
     </ImageView>
@@ -22,22 +22,22 @@
         <Line endX="116.5" layoutX="198.0" layoutY="100.0" stroke="#7e7e7e" />
         <Line endX="116.5" layoutX="1.0" layoutY="100.0" stroke="#7e7e7e" />
     </Pane>
-    <Button fx:id="loginButton" layoutX="39" layoutY="339" onAction="#handleLogin" prefHeight="63" prefWidth="315" text="kirjaudu sisään">
+    <Button fx:id="loginButton" layoutX="39" layoutY="339" onAction="#handleLogin" prefHeight="63" prefWidth="315" text="%login">
         <padding>
             <Insets left="20.0" />
         </padding>
     </Button>
-    <Button fx:id="newUserButton" layoutX="39" layoutY="472" onAction="#handleNewUser" prefHeight="63" prefWidth="315" text="luo käyttäjä">
+    <Button fx:id="newUserButton" layoutX="39" layoutY="472" onAction="#handleNewUser" prefHeight="63" prefWidth="315" text="%register">
         <padding>
             <Insets left="20.0" />
         </padding>
     </Button>
-    <Button fx:id="guestButton" layoutX="39" layoutY="559" onAction="#handleGuest" prefHeight="63" prefWidth="315" text="jatka vierailijana">
+    <Button fx:id="guestButton" layoutX="39" layoutY="559" onAction="#handleGuest" prefHeight="63" prefWidth="315" text="%continue_as_guest">
         <padding>
             <Insets left="20.0" />
         </padding>
     </Button>
-    <Label fx:id="tai" layoutX="184" layoutY="426" text="tai" />
+    <Label fx:id="tai" layoutX="184" layoutY="426" text="%or" />
     <ImageView fitHeight="50.0" fitWidth="45.0" layoutX="289.0" layoutY="348.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@/images/stars.png" />
     </ImageView>

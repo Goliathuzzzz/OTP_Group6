@@ -64,7 +64,7 @@ public class SessionController extends BaseController {
         List<Category> selectedInterests = session.getParticipantInterests();
         if (selectedInterests.isEmpty()) {
             System.err.println("ERROR: No interests selected in SessionController handleReady()");
-            showAlert(Alert.AlertType.WARNING, "virhe", "valitse ainakin yksi kiinnostuksenkohde");
+            showAlert(Alert.AlertType.WARNING, "error", "choose_one_interest_alert");
             return;
         }
         matchParticipant();

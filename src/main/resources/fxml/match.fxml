@@ -12,7 +12,7 @@
             fx:controller="controller.view_controllers.MatchViewController">
     <Pane fx:id="paperGradient" layoutY="-2" prefHeight="854" prefWidth="392" styleClass="paper-gradient"/>
     <Pane fx:id="paperTexture" prefHeight="852.0" prefWidth="393.0" styleClass="paper-texture">
-        <Label layoutX="39.0" layoutY="80.0" styleClass="loysit" text="löysit parin!"/>
+        <Label layoutX="39.0" layoutY="80.0" styleClass="loysit" text="%you_found_a_match"/>
         <ImageView fx:id="placeholderProfile1" fitHeight="200.0" fitWidth="200.0" layoutX="26.0" layoutY="226.0"
                    pickOnBounds="true"
                    preserveRatio="true">
@@ -30,7 +30,7 @@
                    preserveRatio="true">
             <Image url="@../images/match_hearts.png"/>
         </ImageView>
-        <Button fx:id="detailsButton" layoutX="40.0" layoutY="660" mnemonicParsing="false" styleClass="tiedot" text="tarkemmat tiedot" onMouseClicked="#handleDetailsButtonClick"/>
+        <Button fx:id="detailsButton" layoutX="40.0" layoutY="660" mnemonicParsing="false" styleClass="tiedot" text="%more_details" onMouseClicked="#handleDetailsButtonClick"/>
     </Pane>
     <Pane layoutY="765.0" prefHeight="87" prefWidth="393" styleClass="bottom-nav">
         <ImageView fx:id="homeIcon" fitHeight="45.0" fitWidth="42.0" layoutX="45" layoutY="23.0"

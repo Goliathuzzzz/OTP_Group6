@@ -33,9 +33,10 @@ public class PairItemController {
             System.err.println("ERROR: Match is null in PairItemController.handleMatchClick");
         }
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("parin poisto");
+        alert.setTitle("remove_match");
         alert.setHeaderText(null);
-        alert.setContentText("oletko varma että haluat poistaa parin " + match.getParticipant1().getDisplayName() + " ja " + match.getParticipant2().getDisplayName() + "?");
+        alert.setContentText("oletko varma että haluat poistaa parin " + match.getParticipant1().getDisplayName() + " ja " +
+                match.getParticipant2().getDisplayName() + "?"); // needs localization variable
         alert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
                 deletePair();

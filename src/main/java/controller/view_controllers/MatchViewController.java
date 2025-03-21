@@ -46,7 +46,7 @@ public class MatchViewController extends BaseController {
         Platform.runLater(() -> {
             Stage stage = (Stage) matchPane.getScene().getWindow();
             if (stage != null) {
-                stage.setTitle("aloita");
+                stage.setTitle("start");
             } else {
                 System.out.println("Stage is null in MatchViewController initialize()");
             }

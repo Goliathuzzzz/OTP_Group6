@@ -38,9 +38,9 @@ public class UserItemController {
             return;
         }
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("nimen klikkaus");
+        alert.setTitle("click_name_alert");
         alert.setHeaderText(null);
-        alert.setContentText("klikkasit nimeä " + user.getUserName());
+        alert.setContentText("klikkasit nimeä " + user.getUserName()); // Needs variable for localization
         alert.showAndWait();
     }
 
@@ -51,9 +51,9 @@ public class UserItemController {
             return;
         }
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("käyttäjän poisto");
+        alert.setTitle("user_removal_alert");
         alert.setHeaderText(null);
-        alert.setContentText("oletko varma että haluat poistaa käyttäjän " + user.getUserName() + "?");
+        alert.setContentText("oletko varma että haluat poistaa käyttäjän " + user.getUserName() + "?"); // Needs variable for localization
         alert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
                 deleteUser();

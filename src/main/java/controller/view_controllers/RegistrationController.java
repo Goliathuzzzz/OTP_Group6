@@ -50,26 +50,26 @@ public class RegistrationController extends BaseController {
         String confirmPassword = confirmPasswordField.getText();
 
         if (email.isEmpty() || phone.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
-            showAlert(Alert.AlertType.ERROR, "virhe", "täytä kaikki kentät!");
+            showAlert(Alert.AlertType.ERROR, "error", "fill_all_fields_alert");
             return;
         }
 
         if (!password.equals(confirmPassword)) {
-            showAlert(Alert.AlertType.ERROR, "virhe", "salasanat eivät täsmää!");
+            showAlert(Alert.AlertType.ERROR, "error", "mismatching_passwords_alert");
             return;
         }
 
         if (!isValidEmail(email)) {
-            showAlert(Alert.AlertType.ERROR, "virhe", "sähköpostiosoite ei ole kelvollinen!");
+            showAlert(Alert.AlertType.ERROR, "error", "invalid_email_alert");
             return;
         }
 
         if (!isValidPhone(phone)) {
-            showAlert(Alert.AlertType.ERROR, "virhe", "puhelinnumero ei ole kelvollinen!");
+            showAlert(Alert.AlertType.ERROR, "error", "invalid_phone_number_alert");
             return;
         }
         if (uController.existsByEmail(email)) {
-            showAlert(Alert.AlertType.ERROR, "virhe", "sähköpostiosoite on jo käytössä!");
+            showAlert(Alert.AlertType.ERROR, "error", "email_in_use_alert");
             return;
         }
         String userName = email.substring(0, email.indexOf("@")).replace(".", " "); // can be improved

@@ -6,13 +6,13 @@ pipeline {
     environment {
         MAVEN_OPTS = "-Dtestfx.headless=true -Dprism.order=sw -Dheadless=true"
         DOCKERHUB_CREDENTIALS_ID = 'Docker_login'
-        DOCKERHUB_REPO = 'mikaklaa/otp_group6'
+        DOCKERHUB_REPO = 'mikaklaa/otp_group6_test'
         DOCKER_IMAGE_TAG = 'latest'
     }
     stages {
         stage('Checkout') {
             steps {
-                git branch: "main", url:'https://github.com/Goliathuzzzz/OTP_Group6.git'
+                git branch: "mika", url:'https://github.com/Goliathuzzzz/OTP_Group6.git'
             }
         }
         stage('Build & Test') {

@@ -20,20 +20,20 @@
                    onMouseClicked="#handleBack" styleClass="back-icon" pickOnBounds="true">
             <Image url="@/images/Icon.png"/>
         </ImageView>
-        <Label layoutX="40" layoutY="96" styleClass="text-header" text="luo käyttäjä"/>
-        <Label layoutX="40" layoutY="192" styleClass="text-label" text="sähköposti"/>
+        <Label layoutX="40" layoutY="96" styleClass="text-header" text="%register"/>
+        <Label layoutX="40" layoutY="192" styleClass="text-label" text="%email"/>
         <TextField fx:id="emailField" layoutX="39" layoutY="226" prefHeight="46" prefWidth="315"
                    styleClass="input-box"/>
-        <Label layoutX="40" layoutY="296" styleClass="text-label" text="puhelinnumero"/>
+        <Label layoutX="40" layoutY="296" styleClass="text-label" text="%phone_number"/>
         <TextField fx:id="phoneField" layoutX="39" layoutY="330" prefHeight="46" prefWidth="315"
                    styleClass="input-box"/>
-        <Label layoutX="40" layoutY="400" styleClass="text-label" text="salasana"/>
+        <Label layoutX="40" layoutY="400" styleClass="text-label" text="%password"/>
         <PasswordField fx:id="passwordField" layoutX="39" layoutY="434" prefHeight="46" prefWidth="315"
                        styleClass="input-box"/>
-        <Label layoutX="40" layoutY="504" styleClass="text-label" text="salasana uudelleen"/>
+        <Label layoutX="40" layoutY="504" styleClass="text-label" text="%confirm_password"/>
         <PasswordField fx:id="confirmPasswordField" layoutX="39" layoutY="538" prefHeight="46" prefWidth="315"
                        styleClass="input-box"/>
         <Button fx:id="signupButton" layoutX="40" layoutY="640" onAction="#handleSignUp" prefHeight="46" prefWidth="313"
-                styleClass="submit-button" text="luo käyttäjä"/>
+                styleClass="submit-button" text="%register"/>
     </Pane>
 </AnchorPane>
