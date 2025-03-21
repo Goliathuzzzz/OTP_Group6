@@ -17,7 +17,7 @@ public class OptionsController extends BaseController {
         Platform.runLater(() -> {
             Stage stage = (Stage) optionsPane.getScene().getWindow();
             if (stage != null) {
-                stage.setTitle("päävalikko");
+                stage.setTitle("main_menu");
             }
         });
     }

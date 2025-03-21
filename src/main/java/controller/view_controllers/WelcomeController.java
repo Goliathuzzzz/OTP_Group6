@@ -13,7 +13,7 @@ public class WelcomeController extends BaseController {
 
     @FXML
     public void initialize() {
-        System.out.println("tervetuloa!");
+        System.out.println("welcome");
         startPulsatingLogo();
     }
 

@@ -47,13 +47,13 @@ public class ProfileController extends BaseController {
         } else if (guiContext.isGuest()) {
             guiContext.setPhoneProperty(guiContext.getGuestPhoneNumber());
             phoneLabel.textProperty().bind(guiContext.getPhoneProperty());
-            nameLabel.setText("vieras");
+            nameLabel.setText("guest");
 
             emailLabel.setVisible(false);
             emailLabel.setManaged(false);
             editButton.setVisible(false);
         } else {
-            showAlert(Alert.AlertType.ERROR, "virhe", "käyttäjätietoja ei löydy");
+            showAlert(Alert.AlertType.ERROR, "error", "user_details_not_found_alert");
             System.err.println("ERROR: No user or guest data found");
         }
         ImageView profileImageView = getProfilePictureView(guiContext.getId(), 200, 200);
