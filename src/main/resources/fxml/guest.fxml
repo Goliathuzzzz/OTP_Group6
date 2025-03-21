@@ -14,13 +14,13 @@
     <Pane prefHeight="556.0" prefWidth="393.0" styleClass="tausta"/>
     <Pane layoutY="283" prefHeight="569" prefWidth="393" styleClass="rectangle15">
         <Label layoutX="39.0" layoutY="39.0" prefHeight="50.0" prefWidth="180.0" styleClass="vierailija"
-               text="vierailija"/>
+               text="%guest"/>
         <Pane layoutX="38.0" layoutY="120.0" prefHeight="288.0" prefWidth="315.0" styleClass="group18">
             <Label fx:id="phoneLabel" layoutY="16.0" prefHeight="22.0" prefWidth="173.0" styleClass="puhelinnumero"
-                   text="puhelinnumero"/>
+                   text="%phone_number"/>
             <TextField fx:id="phoneField" layoutY="55.0" prefHeight="46.0" prefWidth="315.0" styleClass="input-field"/>
             <Button fx:id="continueButton" layoutY="244.0" onAction="#handleContinueClick" prefHeight="50.0"
-                    prefWidth="315.0" styleClass="rectangle14" text="jatka"/>
+                    prefWidth="315.0" styleClass="rectangle14" text="%continue"/>
             <ImageView fitHeight="38.0" fitWidth="34.0" layoutX="280.0" layoutY="183.0" pickOnBounds="true"
                        preserveRatio="true">
                 <Image url="@/images/hearts.png"/>

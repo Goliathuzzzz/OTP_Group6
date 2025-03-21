@@ -34,7 +34,7 @@
 
     <!-- jatka button -->
     <Button fx:id="continueButton" layoutX="39.0" layoutY="665" onMouseClicked="#handleContinue" prefHeight="50.0"
-            prefWidth="315.0" styleClass="rectangle14" text="jatka"/>
+            prefWidth="315.0" styleClass="rectangle14" text="%continue"/>
 
     <!-- btm nav -->
     <Pane layoutY="765.0" prefHeight="87" prefWidth="393" styleClass="bottom-nav">
