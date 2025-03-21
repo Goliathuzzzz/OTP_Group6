@@ -80,7 +80,7 @@ public abstract class BaseController {
 
         } catch (IOException e) {
             logError("Failed to load FXML: " + e.getMessage());
-            showAlert(Alert.AlertType.ERROR, "virhe", "näkymää ei voitu ladata");
+            showAlert(Alert.AlertType.ERROR, "error_title", "cannot_load_view");
         }
     }
 
@@ -99,7 +99,7 @@ public abstract class BaseController {
     private String handleProfileSwitch(GUIContext context, String destination) {
         if (!context.isUser() && !context.isGuest()) {
             logError("No user data found in BaseController.switchScene");
-            showAlert(Alert.AlertType.ERROR, "virhe", "käyttäjätietoja ei löydy");
+            showAlert(Alert.AlertType.ERROR, "error_title", "no_user_data");
             return null;
         }
         if (context.isAdmin()) {
