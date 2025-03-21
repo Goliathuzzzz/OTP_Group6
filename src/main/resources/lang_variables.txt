@@ -42,3 +42,46 @@ email=sähköposti
 password=salasana
 create_account=luo uusi tili
 
+# WelcomeController
+welcome=tervetuloa
+
+# UserItemController
+click_name_alert=nimen klikkaus
+click_name_confirmation=klikkasit nimeä
+user_removal_alert=käyttäjän poisto
+confirm_user_removal=Oletko varma että haluat poistaa käyttäjän
+
+# SessionController
+error=virhe
+choose_one_interest_alert=valitse ainakin yksi kinnostuksenkohde
+
+# RegistrationController
+registration=rekisteröinti
+fill_all_fields_alert=täytä kaikki kentät!
+mismatching_passwords_alert=salasanat eivät täsmää!
+invalid_email_alert=sähköpostiosoite ei ole kelvollinen!
+invalid_phone_number_alert=puhelinnumero ei ole kelvollinen!
+email_in_use_alert=sähköpostiosoite on jo käytössä!
+
+# ProfileController
+guest=vieras
+user_details_not_found_alert=käyttäjätietoja ei löydy
+
+# PairItemController
+remove_match=parin poisto
+confirm_match_removal=Oletko varma että haluat poistaa parin
+and=ja
+
+# OptionsController
+main_menu=päävalikko
+
+# MatchViewController
+start=aloita
+
+# LoginController
+fill_all_fields_alert=täytä kaikki kentät!
+wrong_email_or_password_alert=sähköpostiosoite tai salasana on väärä!
+forgot_password=salasana unohtunut?
+password_recovery_instructions_message=ohjeet salasanan palauttamiseen lähetetään sähköpostiisi.
+
+
