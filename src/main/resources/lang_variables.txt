@@ -1,0 +1,44 @@
+# welcome.fxml
+speed_dating=teho-deittailu
+
+# user_item.fxml
+user_name=käyttäjän nimi
+
+# session.fxml
+ready_button_text=valmis
+introduce_self=kerro itsestäsi
+choose_category=valitse seuraavista kategorioista
+animals=eläimet
+food=ruoka
+hobbies=harrastukset
+sports=urheilu
+science=tiede
+personal_interests=mielenkiinnonkohteesi
+
+# registration.fxml
+register=luo käyttäjä
+email=sähköposti
+phone_number=puhelinnumero
+password=salasana
+confirm_password=salasana uudelleen
+
+# profile.fxml
+
+# pair_item.fxml
+speed_dating=teho-deittailu
+login=kirjaudu sisään
+register=luo käyttäjä
+continue_as_guest=jatka vierailijana
+tai=or
+
+# match.fxml
+you_found_a_match=löysit parin!
+more_details=tarkemmat tiedot
+
+# login.fxml
+forgot_password=unohditko salasanan?
+login=kirjaudu sisään
+email=sähköposti
+password=salasana
+create_account=luo uusi tili
+
