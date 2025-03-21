@@ -18,13 +18,13 @@
             </ImageView>
         </Pane>
         <Pane layoutX="39.0" layoutY="212.0" prefHeight="288.0" prefWidth="315.0" styleClass="group18">
-            <Label fx:id="nameLabel" prefHeight="22.0" prefWidth="40.0" styleClass="field-label" text="nimi"/>
+            <Label fx:id="nameLabel" prefHeight="22.0" prefWidth="40.0" styleClass="field-label" text="%name"/>
             <TextField fx:id="nameField" layoutY="34.0" prefHeight="46.0" prefWidth="315.0" styleClass="input-field"/>
             <Label fx:id="emailLabel" layoutY="104.0" prefHeight="22.0" prefWidth="87.0" styleClass="field-label"
-                   text="sähköposti"/>
+                   text="%email"/>
             <TextField fx:id="emailField" layoutY="138.0" prefHeight="46.0" prefWidth="315.0" styleClass="input-field"/>
             <Label fx:id="phoneLabel" layoutY="208.0" prefHeight="22.0" prefWidth="173.0" styleClass="field-label"
-                   text="puhelinnumero"/>
+                   text="%phone_number"/>
             <TextField fx:id="phoneField" layoutY="242.0" prefHeight="46.0" prefWidth="315.0" styleClass="input-field"/>
         </Pane>
         <ImageView fx:id="backIcon1" fitHeight="21.0" fitWidth="16" layoutX="40.0" layoutY="25.0"

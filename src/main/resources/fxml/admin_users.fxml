@@ -37,9 +37,9 @@
                    onMouseClicked="#handlePreviousClick" styleClass="back-icon" pickOnBounds="true">
             <Image url="@/images/Icon.png"/>
         </ImageView>
-        <Label layoutX="38.0" layoutY="74.0" styleClass="tell" text="käyttäjät"/>
+        <Label layoutX="38.0" layoutY="74.0" styleClass="tell" text="%users"/>
         <Label layoutX="38.0" layoutY="140.0" prefHeight="32.0" prefWidth="323.0" styleClass="hallinnoi"
-               text="hallinnoi käyttäjiä">
+               text="%manage_users">
             <font>
                 <Font size="22.0"/>
             </font>

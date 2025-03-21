@@ -35,11 +35,11 @@
             <Image url="@/images/edit_button.png"/>
         </ImageView>
         <Button layoutX="37.0" layoutY="471.0" mnemonicParsing="false" onMouseClicked="#handlePairsClick"
-                styleClass="admin-button" text="parihistoria"/>
+                styleClass="admin-button" text="%pair_history"/>
         <Button layoutX="204.0" layoutY="471.0" mnemonicParsing="false" onMouseClicked="#handleUsersClick"
-                styleClass="admin-button" text="käyttäjät"/>
+                styleClass="admin-button" text="%users"/>
         <Label fx:id="admin" layoutX="39.0" layoutY="269.0" prefHeight="22" prefWidth="188" styleClass="admin-text"
-               text="admin"/>
+               text="%admin"/>
     </Pane>
     <Pane fx:id="profileImagePane" layoutX="97" layoutY="252" prefHeight="200" prefWidth="200" styleClass="frame4"/>
     <Label fx:id="nameLabel" layoutX="39.0" layoutY="507.0" prefHeight="22" prefWidth="188" styleClass="info-text"/>

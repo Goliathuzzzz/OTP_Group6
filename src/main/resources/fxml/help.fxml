@@ -14,8 +14,8 @@
     <Pane fx:id="paperGradient" layoutY="-2" prefHeight="854" prefWidth="392" styleClass="help-paper-gradient"/>
     <Pane fx:id="paperTexture" prefHeight="852.0" prefWidth="393.0" styleClass="paper-texture">
         <VBox prefWidth="393.0" prefHeight="852.0" spacing="20.0" fx:id="vBox">
-            <Label text="tervetuloa tatskatytöt speed dating -sovellukseen!" fx:id="middleText1" wrapText="true" maxWidth="300" styleClass="centered-text"/>
-            <Label text="päivitä ensin profiilisi ajan tasalle profiili-näkymässä, niin olet valmis deittaamaan. aloita sessio etusivulta, valitse mielenkiinnon kohteesi ja katso, kenen kanssa mätsäät parhaiten – ja millä perusteilla!" fx:id="middleText2" wrapText="true" maxWidth="300" styleClass="centered-text"/>
+            <Label text="%welcome_message" fx:id="middleText1" wrapText="true" maxWidth="300" styleClass="centered-text"/>
+            <Label text="%instructions_message" fx:id="middleText2" wrapText="true" maxWidth="300" styleClass="centered-text"/>
         </VBox>
 
     </Pane>
