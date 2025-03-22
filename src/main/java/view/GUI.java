@@ -9,6 +9,9 @@ import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
 import util.SceneNames;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 public class GUI extends Application {
     private static final String path = "/fxml/" + SceneNames.WELCOME + ".fxml";
     // placeholder title
@@ -17,7 +20,13 @@ public class GUI extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+        // set locale here
+        Locale locale = new Locale("ja", "JP");
+        ResourceBundle bundle = ResourceBundle.getBundle("Messages", locale);
+
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(path));
+        fxmlLoader.setResources(bundle); // insert resource bundle into fxml
+
         Parent root = fxmlLoader.load();
 
         Object controller = fxmlLoader.getController();
@@ -25,7 +34,8 @@ public class GUI extends Application {
             baseController.setStage(stage);
         }
 
-        stage.setTitle(TITLE); // placeholder title
+        stage.setTitle(bundle.getString("welcome"));
+
         stage.setResizable(false);
         Scene scene = new Scene(root);
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/images/cherries.png")));
