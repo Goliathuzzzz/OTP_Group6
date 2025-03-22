@@ -10,6 +10,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import util.SceneNames;
 import java.io.IOException;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 // Common methods for all controllers which interact with the GUI
 public abstract class BaseController {
@@ -46,9 +48,16 @@ public abstract class BaseController {
 
         try {
             System.out.println("DEBUG: Loading FXML from " + path);
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(path));
-            Parent root = fxmlLoader.load();
 
+            // load japanese locale bundle
+            Locale locale = new Locale("ja", "JP"); // or use Locale.getDefault()
+            ResourceBundle bundle = ResourceBundle.getBundle("Messages", locale);
+
+            // load fxml with bundle
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(path));
+            fxmlLoader.setResources(bundle);
+
+            Parent root = fxmlLoader.load();
             BaseController controller = fxmlLoader.getController();
 
             if (controller != null) {
@@ -57,7 +66,6 @@ public abstract class BaseController {
                 logError("Controller is null in BaseController.switchScene");
             }
 
-            //pass the data only if applicable (InterestSelectionController)
             if (data != null && controller instanceof InterestSelectionController interestController) {
                 if (data instanceof String category) {
                     interestController.setCategory(category);
@@ -83,6 +91,7 @@ public abstract class BaseController {
             showAlert(Alert.AlertType.ERROR, "error_title", "cannot_load_view");
         }
     }
+
 
     protected void showAlert(Alert.AlertType alertType, String title, String message) {
         Alert alert = new Alert(alertType);
