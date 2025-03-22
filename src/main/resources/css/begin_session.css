@@ -36,7 +36,7 @@
 
 .begin {
     -fx-position: absolute;
-    -fx-pref-width: 175px;
+    -fx-pref-width: 200px;
     -fx-pref-height: 40px;
     -fx-translate-x: 109px;
     -fx-translate-y: 370px;
