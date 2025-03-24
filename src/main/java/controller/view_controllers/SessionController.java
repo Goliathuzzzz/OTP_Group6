@@ -37,6 +37,9 @@ public class SessionController extends BaseController {
     private Button readyButton;
 
     @FXML
+    private Pane animals, food, hobbies, sports, science;
+
+    @FXML
     private ImageView homeIcon, profileIcon, backIcon;
 
     @FXML
@@ -50,14 +53,6 @@ public class SessionController extends BaseController {
 
     @FXML
     private Label animalLabel, foodLabel, hobbiesLabel, sportsLabel, scienceLabel;
-
-    private static final Map<String, String> CATEGORY_MAP = Map.of(
-            "eläimet", "animals",
-            "ruoka", "food",
-            "harrastukset", "hobbies",
-            "urheilu", "sports",
-            "tiede", "science"
-    );
 
     @FXML
     private void handleReady(ActionEvent event) {
@@ -106,12 +101,9 @@ public class SessionController extends BaseController {
             selectedInterest.getStyleClass().add("selected");
         }
 
-        Label interestLabel = (Label) selectedInterest.lookup(".interest-label");
-        if (interestLabel != null) {
-            String categoryKey = interestLabel.getText().toLowerCase();
-            if (CATEGORY_MAP.containsKey(categoryKey)) {
-                navigateToInterests(event, CATEGORY_MAP.get(categoryKey));
-            }
+        String categoryString = selectedInterest.getId();
+        if (categoryString != null) {
+            navigateToInterests(event, categoryString);
         }
     }
     private void navigateToInterests(MouseEvent event, String category) {
@@ -139,11 +131,6 @@ public class SessionController extends BaseController {
     // For testing
     public void setMatchController(MatchController matchController) {
         this.matchController = matchController;
-    }
-
-    // For testing
-    public Map<String, String> getCategoryMap() {
-        return CATEGORY_MAP;
     }
 
     // For testing
