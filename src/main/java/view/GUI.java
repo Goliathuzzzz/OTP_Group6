@@ -1,5 +1,6 @@
 package view;
 
+import context.LocaleManager;
 import controller.BaseController;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -17,12 +18,13 @@ public class GUI extends Application {
     // placeholder title
     private static final String TITLE = " \uD835\uDCC9\uD835\uDCB6\uD835\uDCC9\uD835\uDCC8\uD835\uDCC0\uD835\uDCB6\uD835\uDCC9\uD835\uDCCE\uD835\uDCC9ö\uD835\uDCC9 " +
             "\uD835\uDCC8\uD835\uDCC5\uD835\uDC52\uD835\uDC52\uD835\uDCB9 \uD835\uDCB9\uD835\uDCB6\uD835\uDCC9\uD835\uDCBE\uD835\uDCC3\uD835\uDC54";
+    LocaleManager localeManager = LocaleManager.getInstance();
 
     @Override
     public void start(Stage stage) throws Exception {
         // set locale here
-        Locale locale = new Locale("ja", "JP");
-        ResourceBundle bundle = ResourceBundle.getBundle("Messages", locale);
+        localeManager.setLocale(new Locale("fi", "FI"));
+        ResourceBundle bundle = ResourceBundle.getBundle("Messages", localeManager.getLocale());
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(path));
         fxmlLoader.setResources(bundle); // insert resource bundle into fxml
