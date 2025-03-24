@@ -1,6 +1,7 @@
 package controller;
 
 import context.GUIContext;
+import context.LocaleManager;
 import controller.view_controllers.InterestSelectionController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,12 +12,14 @@ import javafx.stage.Stage;
 import util.SceneNames;
 import java.io.IOException;
 import java.util.Locale;
+import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
 // Common methods for all controllers which interact with the GUI
 public abstract class BaseController {
 
     GuestController guestController = new GuestController();
+    LocaleManager localeManager = LocaleManager.getInstance();
     protected Stage stage;
 
     public void setStage(Stage stage) {
@@ -49,11 +52,15 @@ public abstract class BaseController {
         try {
             System.out.println("DEBUG: Loading FXML from " + path);
 
-            // load japanese locale bundle
-            Locale locale = new Locale("ja", "JP"); // or use Locale.getDefault()
-            ResourceBundle bundle = ResourceBundle.getBundle("Messages", locale);
+            Locale locale = localeManager.getLocale();
+            ResourceBundle bundle;
+            try {
+                bundle = ResourceBundle.getBundle("Messages", locale);
+            } catch (MissingResourceException e) {
+                System.err.println("ERROR: ResourceBundle not found for locale " + locale + ". Loading default locale.");
+                bundle = ResourceBundle.getBundle("Messages", new Locale("en", "US"));
+            }
 
-            // load fxml with bundle
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(path));
             fxmlLoader.setResources(bundle);
 
