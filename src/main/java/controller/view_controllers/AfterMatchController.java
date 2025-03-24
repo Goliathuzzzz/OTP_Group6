@@ -13,6 +13,8 @@ import model.Match;
 import model.categories.Category;
 import util.MatchUtils;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 
 public class AfterMatchController extends BaseController {
@@ -25,6 +27,10 @@ public class AfterMatchController extends BaseController {
 
     @FXML
     private AnchorPane afterMatchPane;
+
+    // hardcoded for testing
+    private final ResourceBundle bundle = ResourceBundle.getBundle("Messages", new Locale("ja", "JP"));
+
 
     @FXML
     public void initialize() {
@@ -44,17 +50,38 @@ public class AfterMatchController extends BaseController {
         List<Match> matches = context.getMatches();
         if (matches == null || matches.isEmpty()) {
             System.err.println("ERROR: Match is null in AfterMatchController setResults()");
-            matchParticipantsLabel.setText("no_match");
-            percentageLabel.setText("zero_percent");
-            interestsLabel.setText("no_common_interests");
+            // using localized strings for fallback messages
+            matchParticipantsLabel.setText(bundle.getString("no_match"));
+            percentageLabel.setText("0%");
+            interestsLabel.setText(bundle.getString("no_common_interests"));
             return;
         }
 
-        // "and" still needs to be replaced once resourcebundle is imported
+        // temporary solution for and?
+        String and = bundle.getString("and");
         Match match = matches.getLast();
-        matchParticipantsLabel.setText(match.getParticipant1().getDisplayName() + " " + "and" + " " + match.getParticipant2().getDisplayName());
+        matchParticipantsLabel.setText(match.getParticipant1().getDisplayName() + " " + and + " " + match.getParticipant2().getDisplayName());
         percentageLabel.setText(Math.round(match.getCompatibility()) + "%");
-        List<Category> interests = MatchUtils.findCommonInterests(match.getParticipant1().getInterests(), match.getParticipant2().getInterests());
-        interestsLabel.setText(interests.isEmpty() ? "no_common_interests" : MatchUtils.formatInterests(interests));
+
+        List<Category> interests = MatchUtils.findCommonInterests(
+                match.getParticipant1().getInterests(),
+                match.getParticipant2().getInterests()
+        );
+
+        // localize each shared interest using resource bundle
+        if (interests.isEmpty()) {
+            interestsLabel.setText(bundle.getString("no_common_interests"));
+        } else {
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < interests.size(); i++) {
+                Category interest = interests.get(i);
+                // dynamically construct the localization key based on enum name
+                String key = interest.getClass().getSimpleName().toLowerCase() + "_" + ((Enum<?>) interest).name().toLowerCase();
+                sb.append(bundle.getString(key));
+                if (i < interests.size() - 1) sb.append(", ");
+            }
+            interestsLabel.setText(sb.toString());
+        }
+
     }
 }

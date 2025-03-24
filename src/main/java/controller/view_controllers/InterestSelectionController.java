@@ -38,6 +38,9 @@ public class InterestSelectionController extends BaseController {
     private final GUIContext context = GUIContext.getInstance();
     private Session session;
 
+    // hardcoded for testing
+    private final ResourceBundle bundle = ResourceBundle.getBundle("Messages", new Locale("zh", "CN"));
+
     private Participant getParticipant() {
         if (context.isUser()) {
             return context.getUser();
@@ -110,8 +113,19 @@ public class InterestSelectionController extends BaseController {
         radioButton.setLayoutY(21);
         radioButton.getStyleClass().add("radio");
 
-        String labelName = interest.toString().replaceAll("_", " ");
-        Label label = new Label(labelName.toLowerCase());
+        // get the localized name for the enum value from the resource bundle
+        String labelName;
+        if (interest instanceof Enum<?>) {
+            // key is formed in the format "animal_kissa" "food_vegaani"
+            String key = interest.getClass().getSimpleName().toLowerCase() + "_" + ((Enum<?>) interest).name().toLowerCase();
+            labelName = bundle.getString(key); // get the translation from the resource bundle
+        } else {
+            labelName = interest.toString();
+        }
+
+        System.out.println("localized name: " + labelName);
+
+        Label label = new Label(labelName);
         label.setLayoutX(80);
         label.setLayoutY(20);
         label.getStyleClass().add("option-text");
