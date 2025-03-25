@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
+import util.SceneNames;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -39,6 +40,8 @@ public class LanguageController extends BaseController {
                 setLanguageFromToggle(toggle);
             });
         }
+
+        readyButton.setOnAction(event -> handleReady());
     }
 
     private void resetAllToggles() {
@@ -62,5 +65,10 @@ public class LanguageController extends BaseController {
     //placeholder for now
     public void setLanguage(String language) {
         System.out.println("Language set to: " + language);
+    }
+
+    @FXML
+    private void handleReady() {
+        switchScene(SceneNames.OPTIONS);
     }
 }

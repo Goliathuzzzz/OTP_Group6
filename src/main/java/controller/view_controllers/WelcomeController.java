@@ -28,6 +28,6 @@ public class WelcomeController extends BaseController {
 
     @FXML
     private void handleClick() {
-        switchScene(SceneNames.OPTIONS);
+        switchScene(SceneNames.LANGUAGE);
     }
 }
