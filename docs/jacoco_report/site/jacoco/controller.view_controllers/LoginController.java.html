@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>LoginController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">OT_Project</a> &gt; <a href="index.source.html" class="el_package">controller.view_controllers</a> &gt; <span class="el_source">LoginController.java</span></div><h1>LoginController.java</h1><pre class="source lang-java linenums">package controller.view_controllers;
+
+import context.GUIContext;
+import controller.BaseController;
+import controller.UserController;
+import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import model.User;
+import util.SceneNames;
+
+<span class="fc" id="L15">public class LoginController extends BaseController {</span>
+
+<span class="fc" id="L17">    UserController uController = new UserController();</span>
+<span class="fc" id="L18">    GUIContext guiContext = GUIContext.getInstance();</span>
+
+    @FXML
+    private TextField emailField;
+
+    @FXML
+    private Label newAccount, forgotPassword;
+
+    @FXML
+    private PasswordField passwordField;
+
+    @FXML
+    private Button loginButton;
+
+    @FXML
+    private void handleLogin() {
+<span class="fc" id="L34">        String email = emailField.getText();</span>
+<span class="fc" id="L35">        String password = passwordField.getText();</span>
+
+<span class="pc bpc" id="L37" title="1 of 4 branches missed.">        if (email.isEmpty() || password.isEmpty()) {</span>
+<span class="fc" id="L38">            showAlert(Alert.AlertType.ERROR, &quot;virhe&quot;, &quot;täytä kaikki kentät!&quot;);</span>
+<span class="fc" id="L39">            return;</span>
+        }
+<span class="fc" id="L41">        User user = uController.login(email, password);</span>
+<span class="fc bfc" id="L42" title="All 2 branches covered.">        if (user != null) {</span>
+<span class="fc" id="L43">            guiContext.setUser(user);</span>
+<span class="fc" id="L44">            switchScene(SceneNames.BEGIN_SESSION);</span>
+        } else {
+<span class="fc" id="L46">            showAlert(Alert.AlertType.ERROR, &quot;virhe&quot;, &quot;sähköpostiosoite tai salasana on väärä!&quot;);</span>
+        }
+<span class="fc" id="L48">    }</span>
+
+    @FXML
+    private void handleForgotPassword() {
+<span class="fc" id="L52">        showAlert(Alert.AlertType.INFORMATION, &quot;salasana unohtunut?&quot;, &quot;ohjeet salasanan palauttamiseen lähetetään sähköpostiisi.&quot;);</span>
+<span class="fc" id="L53">    }</span>
+
+    @FXML
+    private void handleNewAccount() {
+<span class="fc" id="L57">        switchScene(SceneNames.REGISTRATION);</span>
+<span class="fc" id="L58">    }</span>
+
+    public UserController getUController() {
+<span class="nc" id="L61">        return uController;</span>
+    }
+
+    public void setUserController(UserController userController) {
+<span class="fc" id="L65">        uController = userController;</span>
+<span class="fc" id="L66">    }</span>
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

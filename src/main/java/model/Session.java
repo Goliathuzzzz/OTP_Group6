@@ -55,26 +55,6 @@ public class Session {
     public static List<Sports> getSports() {
         return sports;
     }
-    // Käyttäjän interestien tallentaminen tietokantaan
-    public void addParticipantAnimalInterest(Animal a) {
-        participant.addAnimalInterest(a);
-    }
-
-    public void addParticipantFoodInterest(Food f) {
-        participant.addFoodInterest(f);
-    }
-
-    public void addParticipantHobbyInterest(Hobby h) {
-        participant.addHobbiesInterest(h);
-    }
-
-    public void addParticipantSportsInterest(Sports s) {
-        participant.addSportsInterest(s);
-    }
-
-    public void addParticipantScienceInterest(Science s) {
-        participant.addScienceInterest(s);
-    }
     // Matcheria varten
     public List<Category> getParticipantInterests() {
         return participantInterests;

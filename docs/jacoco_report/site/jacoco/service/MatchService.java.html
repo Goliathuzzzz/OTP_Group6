@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MatchService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">OT_Project</a> &gt; <a href="index.source.html" class="el_package">service</a> &gt; <span class="el_source">MatchService.java</span></div><h1>MatchService.java</h1><pre class="source lang-java linenums">package service;
+
+import dao.MatchDao;
+import jakarta.persistence.EntityManager;
+import model.Match;
+import model.Participant;
+
+import java.util.List;
+
+public class MatchService {
+    private final MatchDao dao;
+
+<span class="fc" id="L13">    public MatchService() {</span>
+<span class="fc" id="L14">        dao = new MatchDao();</span>
+<span class="fc" id="L15">    }</span>
+
+    public void addMatch(Match match) {
+<span class="fc" id="L18">        dao.persist(match);</span>
+<span class="fc" id="L19">    }</span>
+
+    public Match findMatchById(int id) {
+<span class="nc" id="L22">        return dao.find(id);</span>
+    }
+
+    public List&lt;Match&gt; findAllMatches() {
+<span class="fc" id="L26">        return dao.findAll();</span>
+    }
+
+    public List&lt;Match&gt; findByParticipant(Participant participant) {
+<span class="fc" id="L30">        return dao.findByParticipant(participant);</span>
+    }
+
+    public void updateMatch(Match match) {
+<span class="fc" id="L34">        dao.update(match);</span>
+<span class="fc" id="L35">    }</span>
+
+    public void deleteMatch(Match match) {
+<span class="fc" id="L38">        dao.delete(match);</span>
+<span class="fc" id="L39">    }</span>
+
+    public void deleteAllMatches() {
+<span class="fc" id="L42">        dao.deleteAll();</span>
+<span class="fc" id="L43">    }</span>
+
+    // For tests
+    public void setEm(EntityManager em) {
+<span class="fc" id="L47">        dao.setEm(em);</span>
+<span class="fc" id="L48">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

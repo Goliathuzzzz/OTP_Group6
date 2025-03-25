@@ -10,6 +10,7 @@ import org.mockito.Mockito;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -109,7 +110,6 @@ class MatcherTest {
 
 
         User user2 = new User("Bob", "password2", "bob@example.com", "dummy", "0987654321",new Date());
-        user2.addAnimalInterest(Animal.HIIRI);
         user2.addFoodInterest(Food.KAIKKI_MENEE);
         user2.addHobbiesInterest(Hobby.INVESTOINTI);
         user2.addHobbiesInterest(Hobby.VIDEOPELIT);
@@ -140,5 +140,58 @@ class MatcherTest {
         testUserList.add(user3);
         testUserList.add(user4);
         return testUserList;
+    }
+
+    @Test
+    void testNullParticipantMatching() {
+        Session mockSession = mock(Session.class);
+        Matcher matcher = new Matcher(mockSession);
+        matcher.setUserController(userController);
+
+        when(mockSession.getParticipant()).thenReturn(null);
+
+        matcher.matchParticipant();
+    }
+
+    @Test
+    void testNoPotentialMatches() {
+        Session mockSession = mock(Session.class);
+        UserController userController = mock(UserController.class);
+        Matcher matcher = new Matcher(mockSession);
+        matcher.setUserController(userController);
+
+        Participant participant = mock(Participant.class);
+        when(mockSession.getParticipant()).thenReturn(participant);
+        when(userController.displayAllUsers()).thenReturn(Collections.emptyList());
+
+        matcher.matchParticipant();
+
+        verify(userController, times(1)).displayAllUsers();
+        assertEquals(0, matcher.getTopMatches().size(), "There should be no matches");
+    }
+
+    @Test
+    void matchParticipantWithNoCommonInterestsTest() {
+        session.getParticipantInterests().clear();
+        session.addParticipantInterest(Animal.HIIRI);
+
+        when(userController.displayAllUsers()).thenReturn(userList);
+
+        matcher.matchParticipant();
+
+        assertEquals(0, matcher.getTopMatches().size(), "No matches should be found");
+    }
+
+    @Test
+    void matchParticipantWithUsersHavingNoInterestsTest() {
+        List<User> usersWithNoInterests = new ArrayList<>();
+        User emptyUser = new User("NoInterestUser", "pass", "email@example.com", "dummy", "123", new Date());
+        usersWithNoInterests.add(emptyUser);
+
+        when(userController.displayAllUsers()).thenReturn(usersWithNoInterests);
+
+        matcher.matchParticipant();
+
+        assertEquals(0, matcher.getTopMatches().size(), "No matches should be found");
     }
 }

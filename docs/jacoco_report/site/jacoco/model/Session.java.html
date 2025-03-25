@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Session.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">OT_Project</a> &gt; <a href="index.source.html" class="el_package">model</a> &gt; <span class="el_source">Session.java</span></div><h1>Session.java</h1><pre class="source lang-java linenums">package model;
+
+import model.categories.*;
+
+import java.util.ArrayList;
+import java.util.EnumSet;
+import java.util.List;
+
+// Tarvitseeko edes laittaa tietokantaan?
+// On nyt se tapahtuma jossa valitaan kiinnostuksenkohteet näytöltä
+public class Session {
+    // Jotta kategoriat saadaan viewhun
+<span class="fc" id="L13">    private final static List&lt;Animal&gt; animals = List.copyOf(EnumSet.allOf(Animal.class));</span>
+<span class="fc" id="L14">    private final static List&lt;Food&gt; foods = List.copyOf(EnumSet.allOf(Food.class));</span>
+<span class="fc" id="L15">    private final static List&lt;Hobby&gt; hobbies = List.copyOf(EnumSet.allOf(Hobby.class));</span>
+<span class="fc" id="L16">    private final static List&lt;Science&gt; sciences = List.copyOf(EnumSet.allOf(Science.class));</span>
+<span class="fc" id="L17">    private final static List&lt;Sports&gt; sports = List.copyOf(EnumSet.allOf(Sports.class));</span>
+
+    private final Participant participant;
+    private final List&lt;Category&gt; participantInterests;
+
+<span class="fc" id="L22">    public Session(Participant participant) {</span>
+<span class="fc bfc" id="L23" title="All 2 branches covered.">        if (participant == null) {</span>
+<span class="fc" id="L24">            System.err.println(&quot;ERROR: Participant is null in Session constructor&quot;);</span>
+<span class="fc" id="L25">            throw new IllegalArgumentException(&quot;Participant cannot be null&quot;);</span>
+        }
+<span class="fc" id="L27">        this.participant = participant;</span>
+<span class="fc" id="L28">        participantInterests = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L29">    }</span>
+    // Nämä valintabokseja varten
+    public void addParticipantInterest(Category interest) {
+<span class="fc" id="L32">        participantInterests.add(interest);</span>
+<span class="fc" id="L33">    }</span>
+
+    public void removeParticipantInterest(Category interest) {
+<span class="fc" id="L36">        participantInterests.remove(interest);</span>
+<span class="fc" id="L37">    }</span>
+
+    public static List&lt;Animal&gt; getAnimals() {
+<span class="fc" id="L40">        return animals;</span>
+    }
+
+    public static List&lt;Food&gt; getFoods() {
+<span class="fc" id="L44">        return foods;</span>
+    }
+
+    public static List&lt;Hobby&gt; getHobbies() {
+<span class="fc" id="L48">        return hobbies;</span>
+    }
+
+    public static List&lt;Science&gt; getSciences() {
+<span class="fc" id="L52">        return sciences;</span>
+    }
+
+    public static List&lt;Sports&gt; getSports() {
+<span class="fc" id="L56">        return sports;</span>
+    }
+    // Matcheria varten
+    public List&lt;Category&gt; getParticipantInterests() {
+<span class="fc" id="L60">        return participantInterests;</span>
+    }
+
+    public Participant getParticipant() {
+<span class="fc" id="L64">        return participant;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

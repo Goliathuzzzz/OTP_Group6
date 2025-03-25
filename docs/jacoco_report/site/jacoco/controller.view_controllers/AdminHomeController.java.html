@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AdminHomeController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">OT_Project</a> &gt; <a href="index.source.html" class="el_package">controller.view_controllers</a> &gt; <span class="el_source">AdminHomeController.java</span></div><h1>AdminHomeController.java</h1><pre class="source lang-java linenums">package controller.view_controllers;
+
+import controller.BaseController;
+import controller.MatchController;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.layout.VBox;
+import model.Match;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
+
+<span class="fc" id="L17">public class AdminHomeController extends BaseController implements Initializable {</span>
+
+<span class="fc" id="L19">    private MatchController matchController = new MatchController();</span>
+
+    @FXML
+    private VBox pairsContainer;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+<span class="fc" id="L26">        List&lt;Match&gt; matches = matchController.displayAllMatches();</span>
+<span class="fc" id="L27">        populateMatchList(matches);</span>
+<span class="fc" id="L28">    }</span>
+
+    private void populateMatchList(List&lt;Match&gt; matches) {
+<span class="fc" id="L31">        pairsContainer.getChildren().clear();</span>
+<span class="fc bfc" id="L32" title="All 2 branches covered.">        for (Match match : matches) {</span>
+<span class="fc" id="L33">            Node matchNode = createMatchItemNode(match);</span>
+<span class="pc bpc" id="L34" title="1 of 2 branches missed.">            if (matchNode != null) {</span>
+<span class="fc" id="L35">                pairsContainer.getChildren().add(matchNode);</span>
+            }
+<span class="fc" id="L37">        }</span>
+<span class="fc" id="L38">    }</span>
+
+    private Node createMatchItemNode(Match match) {
+        try {
+<span class="fc" id="L42">            FXMLLoader loader = new FXMLLoader(getClass().getResource(&quot;/fxml/pair_item.fxml&quot;));</span>
+<span class="fc" id="L43">            Node matchNode = loader.load();</span>
+<span class="fc" id="L44">            PairItemController controller = loader.getController();</span>
+<span class="fc" id="L45">            controller.setMatch(match, this::deleteMatch);</span>
+<span class="fc" id="L46">            matchNode.setUserData(controller);</span>
+<span class="fc" id="L47">            return matchNode;</span>
+<span class="nc" id="L48">        } catch (IOException e) {</span>
+<span class="nc" id="L49">            System.err.println(&quot;ERROR: Could not load pair item: &quot; + e.getMessage());</span>
+<span class="nc" id="L50">            return null;</span>
+        }
+    }
+
+    private void deleteMatch(Match match) {
+<span class="fc" id="L55">        matchController.deleteMatch(match);</span>
+<span class="fc" id="L56">        removeMatchFromList(match);</span>
+<span class="fc" id="L57">    }</span>
+
+    private void removeMatchFromList(Match match) {
+<span class="fc" id="L60">        pairsContainer.getChildren().stream()</span>
+<span class="fc" id="L61">                .filter(node -&gt; {</span>
+<span class="fc" id="L62">                    PairItemController controller = (PairItemController) node.getUserData();</span>
+<span class="pc bpc" id="L63" title="2 of 4 branches missed.">                    return controller != null &amp;&amp; controller.getMatch().equals(match);</span>
+                })
+<span class="fc" id="L65">                .findFirst().ifPresent(nodeToRemove -&gt; pairsContainer.getChildren().remove(nodeToRemove));</span>
+<span class="fc" id="L66">    }</span>
+
+    // testing purposes
+    public void setMatchController(MatchController matchController) {
+<span class="fc" id="L70">        this.matchController = matchController;</span>
+<span class="fc" id="L71">    }</span>
+
+    // testing purposes
+    public VBox getPairsContainer() {
+<span class="fc" id="L75">        return pairsContainer;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

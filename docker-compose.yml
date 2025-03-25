@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  mariadb:
+    image: mariadb:latest
+    container_name: mariadb
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: maailmanilmaa
+      MARIADB_DATABASE: tatskatytot
+      MARIADB_USER: appuser
+      MARIADB_PASSWORD: maailmanilmaa
+    ports:
+      - "3306:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    networks:
+      - app-network
+
+  javafx-app:
+    build: .
+    container_name: javafx-app
+    depends_on:
+      - mariadb
+    environment:
+      - DISPLAY=host.docker.internal:0.0
+      - DB_HOST=mariadb
+      - DB_PORT=3306
+      - DB_NAME=tatskatytot
+      - DB_USER=appuser
+      - DB_PASSWORD=maailmanilmaa
+    networks:
+      - app-network
+    entrypoint: ["/bin/bash", "-c", "sleep 30 && java --module-path /app/javafx-sdk-20.0.1/lib --add-modules javafx.controls,javafx.fxml -Dprism.order=sw -Djavafx.platform=x11 -jar /app/target/otp-group6.jar"]
+    stdin_open: true
+    tty: true
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mariadb_data:

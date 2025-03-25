@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AdminUsersController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">OT_Project</a> &gt; <a href="index.source.html" class="el_package">controller.view_controllers</a> &gt; <span class="el_source">AdminUsersController.java</span></div><h1>AdminUsersController.java</h1><pre class="source lang-java linenums">package controller.view_controllers;
+
+import controller.BaseController;
+import controller.UserController;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
+import model.User;
+import util.SceneNames;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
+
+<span class="fc" id="L20">public class AdminUsersController extends BaseController implements Initializable {</span>
+
+<span class="fc" id="L22">    private UserController userController = new UserController();</span>
+
+    private List&lt;User&gt; users;
+
+    @FXML
+    private GridPane usersGrid;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+<span class="fc" id="L31">        users = userController.displayAllUsers(); // fetch users from database</span>
+<span class="fc" id="L32">        populateUserGrid();</span>
+<span class="fc" id="L33">    }</span>
+
+    // populate the grid pane with user items
+    private void populateUserGrid() {
+<span class="fc" id="L37">        usersGrid.getChildren().clear();</span>
+
+<span class="fc" id="L39">        int columns = 2; // determine how many columns we want to have</span>
+<span class="fc" id="L40">        int row = 0;</span>
+<span class="fc" id="L41">        int column = 0;</span>
+
+<span class="fc bfc" id="L43" title="All 2 branches covered.">        for (User user : users) {</span>
+<span class="fc" id="L44">            Node userItemNode = createUserItemNode(user); // create a user item UI node</span>
+<span class="pc bpc" id="L45" title="1 of 2 branches missed.">            if (userItemNode != null) {</span>
+<span class="fc" id="L46">                usersGrid.add(userItemNode, column, row); // add the user item to the grid pane at the position</span>
+
+                // move to the next cell
+<span class="fc bfc" id="L49" title="All 2 branches covered.">                if (++column == columns) {</span>
+<span class="fc" id="L50">                    column = 0;</span>
+<span class="fc" id="L51">                    row++;</span>
+                }
+            }
+<span class="fc" id="L54">        }</span>
+<span class="fc" id="L55">    }</span>
+
+    // creates a user item node for the user
+    private Node createUserItemNode(User user) {
+        try {
+<span class="fc" id="L60">            FXMLLoader loader = new FXMLLoader(getClass().getResource(&quot;/fxml/user_item.fxml&quot;));</span>
+<span class="fc" id="L61">            Node userItemNode = loader.load();</span>
+
+            // get the controller for user and set the user
+<span class="fc" id="L64">            UserItemController controller = loader.getController();</span>
+<span class="fc" id="L65">            controller.setUser(user, this::handleUserDeleted);</span>
+
+            // store the controller in the user item node
+<span class="fc" id="L68">            userItemNode.setUserData(controller);</span>
+<span class="fc" id="L69">            return userItemNode;</span>
+<span class="nc" id="L70">        } catch (IOException e) {</span>
+<span class="nc" id="L71">            System.err.println(&quot;Error loading user item: &quot; + e.getMessage());</span>
+<span class="nc" id="L72">            return null;</span>
+        }
+    }
+
+    // calls the user controller to delete the user
+    private void handleUserDeleted(User user) {
+<span class="fc" id="L78">        userController.deleteUser(user);</span>
+<span class="fc" id="L79">        users.remove(user);</span>
+<span class="fc" id="L80">        removeUserFromGrid(user);</span>
+<span class="fc" id="L81">    }</span>
+
+    // remove the user from the UI grid
+    private void removeUserFromGrid(User user) {
+        // find the user item node that corresponds to the user
+<span class="fc" id="L86">        Node nodeToRemove = usersGrid.getChildren().stream().filter(node -&gt; {</span>
+<span class="fc" id="L87">            UserItemController controller = (UserItemController) node.getUserData();</span>
+            // check if the user in the controller matches the user we want to remove
+<span class="pc bpc" id="L89" title="2 of 4 branches missed.">            return controller != null &amp;&amp; controller.getUser().equals(user);</span>
+<span class="fc" id="L90">        }).findFirst().orElse(null);</span>
+        // remove the node from the grid and refresh the grid
+<span class="pc bpc" id="L92" title="1 of 2 branches missed.">        if (nodeToRemove != null) {</span>
+<span class="fc" id="L93">            usersGrid.getChildren().remove(nodeToRemove);</span>
+<span class="fc" id="L94">            refreshGrid();</span>
+        }
+<span class="fc" id="L96">    }</span>
+
+    // refresh the grid after a user has been removed to prevent empty spaces
+    private void refreshGrid() {
+<span class="fc" id="L100">        int columns = 2;</span>
+<span class="fc" id="L101">        int row = 0;</span>
+<span class="fc" id="L102">        int column = 0;</span>
+
+<span class="fc bfc" id="L104" title="All 2 branches covered.">        for (Node node : usersGrid.getChildren()) {</span>
+<span class="fc" id="L105">            GridPane.setColumnIndex(node, column);</span>
+<span class="fc" id="L106">            GridPane.setRowIndex(node, row);</span>
+<span class="fc bfc" id="L107" title="All 2 branches covered.">            if (++column == columns) {</span>
+<span class="fc" id="L108">                column = 0;</span>
+<span class="fc" id="L109">                row++;</span>
+            }
+<span class="fc" id="L111">        }</span>
+<span class="fc" id="L112">    }</span>
+
+    // For testing
+    public void setUserController(UserController userController) {
+<span class="fc" id="L116">        this.userController = userController;</span>
+<span class="fc" id="L117">    }</span>
+
+    // For testing
+    public GridPane getUsersGrid() {
+<span class="fc" id="L121">        return usersGrid;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

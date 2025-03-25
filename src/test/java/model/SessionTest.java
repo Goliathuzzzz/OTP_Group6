@@ -57,4 +57,9 @@ class SessionTest {
         assertEquals(2, session.getParticipantInterests().size());
     }
 
+    @Test
+    void nullParticipantGivesException() {
+        assertThrows(IllegalArgumentException.class, () -> new Session(null));
+    }
+
 }

@@ -14,6 +14,5 @@
             <property name="jakarta.persistence.sql-dialect" value="org.hibernate.dialect.MariaDBDialect"/>
             <property name="hibernate.show_sql" value="true" />
         </properties>
-
     </persistence-unit>
 </persistence>

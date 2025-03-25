@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GuestViewController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">OT_Project</a> &gt; <a href="index.source.html" class="el_package">controller.view_controllers</a> &gt; <span class="el_source">GuestViewController.java</span></div><h1>GuestViewController.java</h1><pre class="source lang-java linenums">package controller.view_controllers;
+
+import context.GUIContext;
+import controller.BaseController;
+import controller.GuestController;
+import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import model.Guest;
+import util.SceneNames;
+
+import java.util.Date;
+
+<span class="fc" id="L17">public class GuestViewController extends BaseController {</span>
+
+<span class="fc" id="L19">    GuestController gController = new GuestController();</span>
+
+    @FXML
+    private TextField phoneField;
+
+    @FXML
+    private Button continueButton;
+
+    @FXML
+    private ImageView backIcon1, homeIcon, profileIcon, backIcon;
+
+    @FXML
+    private void handleContinueClick() {
+<span class="fc" id="L32">        String phoneNumber = phoneField.getText();</span>
+<span class="fc bfc" id="L33" title="All 2 branches covered.">        if (phoneNumber.isEmpty()) {</span>
+<span class="fc" id="L34">            showAlert( Alert.AlertType.INFORMATION, &quot;syötä&quot;,&quot;syötä puhelinnumero.&quot;);</span>
+        }
+<span class="fc bfc" id="L36" title="All 2 branches covered.">        else if (!isValidPhone(phoneNumber)) {</span>
+<span class="fc" id="L37">            showAlert( Alert.AlertType.INFORMATION, &quot;virhe&quot;, &quot;puhelinnumero ei ole kelvollinen.&quot;);</span>
+        } else {
+<span class="fc" id="L39">            Guest guest = new Guest(phoneNumber, new Date());</span>
+<span class="fc" id="L40">            gController.registerGuest(guest);</span>
+<span class="fc" id="L41">            GUIContext.getInstance().setGuest(guest);</span>
+<span class="fc" id="L42">            switchScene(SceneNames.BEGIN_SESSION);</span>
+        }
+<span class="fc" id="L44">    }</span>
+
+    private boolean isValidPhone(String phone) {
+<span class="fc" id="L47">        return phone.matches(&quot;^[0-9]{10,15}$&quot;);</span>
+    }
+
+    public void setGuestViewController(GuestController guestController) {
+<span class="fc" id="L51">        this.gController = guestController;</span>
+<span class="fc" id="L52">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

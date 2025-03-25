@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GuestController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">OT_Project</a> &gt; <a href="index.source.html" class="el_package">controller</a> &gt; <span class="el_source">GuestController.java</span></div><h1>GuestController.java</h1><pre class="source lang-java linenums">package controller;
+import jakarta.persistence.EntityManager;
+import model.Guest;
+import service.GuestService;
+import java.util.List;
+
+// GUI KUTSUU CONTROLLERIA!
+public class GuestController {
+
+    private final GuestService guestService;
+
+<span class="fc" id="L12">    public GuestController() {</span>
+<span class="fc" id="L13">        this.guestService = new GuestService();</span>
+<span class="fc" id="L14">    }</span>
+
+    public void registerGuest(Guest guest) {
+<span class="fc" id="L17">        guestService.registerGuest(guest);</span>
+<span class="fc" id="L18">        System.out.println(&quot;Guest registered successfully&quot;);</span>
+<span class="fc" id="L19">    }</span>
+
+    public Guest displayGuest(int id) {
+<span class="fc" id="L22">        Guest guest = guestService.findGuestById(id);</span>
+<span class="fc bfc" id="L23" title="All 2 branches covered.">        if (guest != null) {</span>
+<span class="fc" id="L24">            System.out.println(&quot;Guest&quot; + guest.getId() + &quot;found! PhoneNumber: &quot; + guest.getPhoneNumber());</span>
+        }
+        else {
+<span class="fc" id="L27">            System.out.println(&quot;Guest not found&quot;);</span>
+        }
+<span class="fc" id="L29">        return guest;</span>
+    }
+
+    public List&lt;Guest&gt; displayAllGuests() {
+<span class="fc" id="L33">        List&lt;Guest&gt; guests = guestService.getAllGuests();</span>
+<span class="fc bfc" id="L34" title="All 2 branches covered.">        for (Guest guest : guests) {</span>
+<span class="fc" id="L35">            System.out.println(guest.getId() + &quot; - &quot; + guest.getPhoneNumber());</span>
+<span class="fc" id="L36">        }</span>
+<span class="fc" id="L37">        return guests;</span>
+    }
+
+    public void updateGuest(Guest guest) {
+<span class="fc" id="L41">        guestService.updateGuest(guest);</span>
+<span class="fc" id="L42">        System.out.println(&quot;Guest updated successfully!&quot;);</span>
+<span class="fc" id="L43">    }</span>
+
+    public void deleteGuest(Guest guest) {
+<span class="fc" id="L46">        guestService.deleteGuest(guest);</span>
+<span class="fc" id="L47">        System.out.println(&quot;Guest deleted successfully!&quot;);</span>
+<span class="fc" id="L48">    }</span>
+
+    public void deleteAll() {
+<span class="fc" id="L51">        guestService.deleteAllGuests();</span>
+<span class="fc" id="L52">        System.out.println(&quot;All guests deleted successfully&quot;);</span>
+<span class="fc" id="L53">    }</span>
+
+    // For tests
+    public void setEm(EntityManager em) {
+<span class="fc" id="L57">        guestService.setEm(em);</span>
+<span class="fc" id="L58">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

@@ -103,10 +103,12 @@ class SessionControllerTest extends ApplicationTest {
         Parent newRoot = stage.getScene().getRoot();
         System.out.println("New scene root id: " + newRoot.getId());
         verifyThat("#continueButton", Node::isVisible);
+        clickOn("#continueButton");
+        verifyThat("#optionsContainer", Node::isVisible);
     }
 
     @Test
-    void testSelectedInterestsAreSaved() {
+    void testSelectedInterestsAreSavedAndRemoved() {
         session = new Session(user);
         guiContext.setSession(session);
         Participant participant = session.getParticipant();
@@ -142,6 +144,12 @@ class SessionControllerTest extends ApplicationTest {
 
         assertNotNull(participant, "Participant should not be null.");
         assertTrue(participant.getInterests().contains(selectedInterest), "Participant should have selected interest.");
+
+        clickOn(selectedOption);
+        assertFalse(selectedOption.isSelected(), "Option should be unselected.");
+
+        assertFalse(session.getParticipantInterests().contains(selectedInterest), "Interest should be removed from session.");
+        assertFalse(participant.getInterests().contains(selectedInterest), "Interest should be removed from participant.");
     }
 
     @Test
@@ -223,4 +231,38 @@ class SessionControllerTest extends ApplicationTest {
         verifyThat("#readyButton", isVisible());
     }
 
+    @Test
+    void testMatching() {
+        matchController = mock(MatchController.class);
+        matcher = mock(Matcher.class);
+        sessionController.setMatchController(matchController);
+        sessionController.setMatcher(matcher);
+
+        session = new Session(user);
+        guiContext.setSession(session);
+        Participant participant = session.getParticipant();
+
+        assertNotNull(participant, "Participant should not be null.");
+
+        User match1 = new User("match1", "pass", "match1@example.com", "dummy", "1234567890", new Date());
+        User match2 = new User("match2", "pass", "match2@example.com", "dummy", "0987654321", new Date());
+
+        HashMap<User, Double> topMatches = new HashMap<>();
+        topMatches.put(match1, 95.5);
+        topMatches.put(match2, 89.3);
+
+        when(matcher.getTopMatches()).thenReturn(topMatches);
+
+        sessionController.matchParticipant();
+
+        verify(matchController, times(1)).matchParticipants(participant, match1, 95.5);
+        verify(matchController, times(1)).matchParticipants(participant, match2, 89.3);
+
+        List<Match> savedMatches = guiContext.getMatches();
+        assertNotNull(savedMatches, "Matches should not be null.");
+        assertEquals(2, savedMatches.size(), "There should be two matches.");
+
+        assertTrue(savedMatches.stream().anyMatch(m -> m.getParticipant1().equals(participant) && m.getParticipant2().equals(match1) && m.getCompatibility() == 95.5), "Match1 should be stored.");
+        assertTrue(savedMatches.stream().anyMatch(m -> m.getParticipant1().equals(participant) && m.getParticipant2().equals(match2) && m.getCompatibility() == 89.3), "Match2 should be stored.");
+    }
 }

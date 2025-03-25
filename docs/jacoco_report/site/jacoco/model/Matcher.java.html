@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Matcher.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">OT_Project</a> &gt; <a href="index.source.html" class="el_package">model</a> &gt; <span class="el_source">Matcher.java</span></div><h1>Matcher.java</h1><pre class="source lang-java linenums">package model;
+
+import controller.UserController;
+import model.categories.Category;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class Matcher {
+    private final Session session;
+    private UserController userController;
+    // Double arvo on yhteensopivuus-prosentti. Periaatteessa voi olla useampi paras match, niin tallennetaan hashmappiin
+    private final HashMap&lt;User, Double&gt; topMatches;
+
+<span class="fc" id="L18">    public Matcher(Session session) {</span>
+<span class="fc" id="L19">        this.session = session;</span>
+<span class="fc" id="L20">        userController = new UserController();</span>
+<span class="fc" id="L21">        topMatches = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L22">    }</span>
+
+    // Kutsu kun käyttäjä on vahvistanut valintansa GUIssa
+    public void matchParticipant() {
+        double compatibility;
+<span class="fc" id="L27">        double currentHighestCompatibility = 0;</span>
+        double maxPotential;
+        double increment;
+        List&lt;Category&gt; pMatchInterests;
+
+        // check if session participant is null
+<span class="fc" id="L33">        Participant toMatch = session.getParticipant();</span>
+<span class="fc bfc" id="L34" title="All 2 branches covered.">        if (toMatch == null) {</span>
+<span class="fc" id="L35">            System.err.println(&quot;ERROR: Session participant is null.&quot;);</span>
+<span class="fc" id="L36">            return;</span>
+        }
+
+        // check if there are any potential matches
+<span class="fc" id="L40">        List&lt;User&gt; potentialMatches = userController.displayAllUsers();</span>
+<span class="fc bfc" id="L41" title="All 2 branches covered.">        if (potentialMatches.isEmpty()) {</span>
+<span class="fc" id="L42">            System.err.println(&quot;ERROR: No potential matches found.&quot;);</span>
+<span class="fc" id="L43">            return;</span>
+        }
+
+        // check if session participant has any interests
+<span class="fc" id="L47">        List&lt;Category&gt; participantInterests = session.getParticipantInterests();</span>
+<span class="fc bfc" id="L48" title="All 2 branches covered.">        if (participantInterests.isEmpty()) {</span>
+<span class="fc" id="L49">            System.err.println(&quot;ERROR: Session participant has no interests.&quot;);</span>
+<span class="fc" id="L50">            return;</span>
+        }
+
+<span class="fc" id="L53">        System.out.println(&quot;DEBUG: Matching for participant &quot; + toMatch.getDisplayName());</span>
+<span class="fc" id="L54">        System.out.println(&quot;DEBUG: Participant interests: &quot; + participantInterests);</span>
+
+<span class="fc bfc" id="L56" title="All 2 branches covered.">        for (User u: potentialMatches) {</span>
+<span class="pc bpc" id="L57" title="1 of 2 branches missed.">            if (u.equals(toMatch)) continue; // exclude participant from matches</span>
+
+<span class="fc" id="L59">            System.out.println(&quot;DEBUG: Checking user: &quot; + u.getUserName());</span>
+
+<span class="fc" id="L61">            pMatchInterests = u.getInterests();</span>
+<span class="pc bpc" id="L62" title="1 of 2 branches missed.">            if (pMatchInterests.isEmpty()) continue; // skip if user has no interests</span>
+
+<span class="fc" id="L64">            compatibility = 0;</span>
+<span class="fc" id="L65">            maxPotential = 100;</span>
+<span class="fc" id="L66">            increment = (double) 100 / pMatchInterests.size();</span>
+
+<span class="fc bfc" id="L68" title="All 2 branches covered.">            for (Category interest: session.getParticipantInterests()) {</span>
+<span class="fc bfc" id="L69" title="All 2 branches covered.">                if (pMatchInterests.contains(interest)) {</span>
+<span class="fc" id="L70">                    compatibility += increment;</span>
+<span class="fc" id="L71">                    System.out.println(&quot;DEBUG: Match found for interest: &quot; + interest + &quot; -&gt; compatibility: &quot; + compatibility);</span>
+                }
+                else {
+<span class="fc" id="L74">                    maxPotential -= increment;</span>
+<span class="fc" id="L75">                    System.out.println(&quot;DEBUG: No match found for interest: &quot; + interest + &quot; -&gt; max potential: &quot; + maxPotential);</span>
+                }
+<span class="fc bfc" id="L77" title="All 2 branches covered.">                if (maxPotential &lt; currentHighestCompatibility) {</span>
+<span class="fc" id="L78">                    System.out.println(&quot;DEBUG: Skipping &quot; + u.getUserName() + &quot; due to low potential.&quot;);</span>
+<span class="fc" id="L79">                    break;</span>
+                }
+<span class="fc" id="L81">            }</span>
+<span class="fc" id="L82">            compatibility = roundToTwoDecimalPlaces(compatibility);</span>
+<span class="fc" id="L83">            System.out.println(&quot;DEBUG: Compatibility for &quot; + u.getUserName() + &quot;: &quot; + compatibility);</span>
+
+<span class="fc bfc" id="L85" title="All 2 branches covered.">            if (compatibility &gt; currentHighestCompatibility) {</span>
+<span class="fc" id="L86">                topMatches.clear();</span>
+<span class="fc" id="L87">                topMatches.put(u, compatibility);</span>
+<span class="fc" id="L88">                currentHighestCompatibility = compatibility;</span>
+<span class="fc" id="L89">                System.out.println(&quot;DEBUG: New highest compatibility: &quot; + compatibility);</span>
+<span class="fc bfc" id="L90" title="All 2 branches covered.">            } else if (compatibility == currentHighestCompatibility) {</span>
+<span class="fc" id="L91">                topMatches.put(u, compatibility);</span>
+<span class="fc" id="L92">                System.out.println(&quot;DEBUG: Added &quot; + u.getUserName() + &quot; to top matches.&quot;);</span>
+            }
+<span class="fc" id="L94">        }</span>
+<span class="fc bfc" id="L95" title="All 2 branches covered.">        if (currentHighestCompatibility == 0) {</span>
+<span class="fc" id="L96">            topMatches.clear();</span>
+<span class="fc" id="L97">            System.out.println(&quot;DEBUG: No matches found.&quot;);</span>
+        }
+<span class="fc bfc" id="L99" title="All 2 branches covered.">        if (topMatches.isEmpty()) {</span>
+<span class="fc" id="L100">            System.err.println(&quot;ERROR: No top matches found in Matcher matchParticipant()&quot;);</span>
+        }
+<span class="fc" id="L102">    }</span>
+
+    public Session getSession() {
+<span class="nc" id="L105">        return session;</span>
+    }
+
+    public HashMap&lt;User, Double&gt; getTopMatches() {
+<span class="fc" id="L109">        return topMatches;</span>
+    }
+
+    // For testing
+    public UserController getUserController() {
+<span class="fc" id="L114">        return userController;</span>
+    }
+
+    // For testing
+    public void setUserController(UserController userController) {
+<span class="fc" id="L119">        this.userController = userController;</span>
+<span class="fc" id="L120">    }</span>
+
+    private double roundToTwoDecimalPlaces(double value) {
+<span class="fc" id="L123">        BigDecimal bd = new BigDecimal(Double.toString(value));</span>
+<span class="fc" id="L124">        bd = bd.setScale(2, RoundingMode.HALF_UP);</span>
+<span class="fc" id="L125">        return bd.doubleValue();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
