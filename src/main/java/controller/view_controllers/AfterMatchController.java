@@ -30,8 +30,7 @@ public class AfterMatchController extends BaseController {
     private AnchorPane afterMatchPane;
 
     private final LocaleManager localeManager = LocaleManager.getInstance();
-
-    ResourceBundle bundle = localeManager.getBundle();
+    private final ResourceBundle bundle = localeManager.getBundle();
 
 
     @FXML
@@ -39,7 +38,7 @@ public class AfterMatchController extends BaseController {
         Platform.runLater(() -> {
             Stage stage = (Stage) afterMatchPane.getScene().getWindow();
             if (stage != null) {
-                stage.setTitle("outcome");
+                stage.setTitle(bundle.getString("outcome"));
             } else {
                 System.out.println("Stage is null in AfterMatchController initialize()");
             }
