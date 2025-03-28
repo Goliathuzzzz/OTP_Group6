@@ -4,16 +4,20 @@ import context.GUIContext;
 import context.LocaleManager;
 import controller.BaseController;
 import controller.UserController;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import model.User;
 import util.SceneNames;
 
 import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class LoginController extends BaseController {
 
@@ -33,12 +37,18 @@ public class LoginController extends BaseController {
     private Button loginButton;
 
     @FXML
+    private AnchorPane loginPane;
+
+    private final LocaleManager localeManager = LocaleManager.getInstance();
+    private final ResourceBundle bundle = localeManager.getBundle();
+
+    @FXML
     private void handleLogin() {
         String email = emailField.getText();
         String password = passwordField.getText();
 
         if (email.isEmpty() || password.isEmpty()) {
-            showAlert(Alert.AlertType.ERROR, "error_title", "fill_all_fields");
+            showAlert(Alert.AlertType.ERROR, bundle.getString("error_title"), bundle.getString("fill_all_fields"));
             return;
         }
         User user = uController.login(email, password);
@@ -46,18 +56,27 @@ public class LoginController extends BaseController {
             guiContext.setUser(user);
             switchScene(SceneNames.BEGIN_SESSION);
         } else {
-            showAlert(Alert.AlertType.ERROR, "error_title", "invalid_credentials");
+            showAlert(Alert.AlertType.ERROR, bundle.getString("error_title"), bundle.getString("invalid_credentials"));
         }
     }
 
     @FXML
     public void initialize() {
         handleLang();
+        Platform.runLater(() -> {
+            Stage stage = (Stage) loginPane.getScene().getWindow();
+            if (stage != null) {
+                stage.setTitle(bundle.getString("login_title"));
+            }
+            else {
+                System.err.println("Stage is null in LoginController initialize()");
+            }
+        });
     }
 
     @FXML
     private void handleForgotPassword() {
-        showAlert(Alert.AlertType.INFORMATION, "forgot_password_title", "forgot_password_instructions");
+        showAlert(Alert.AlertType.INFORMATION, bundle.getString("forgot_password_title"), bundle.getString("forgot_password_instructions"));
     }
 
     @FXML
@@ -74,9 +93,7 @@ public class LoginController extends BaseController {
     }
 
     private void handleLang() {
-        LocaleManager localeManager = LocaleManager.getInstance();
-        Locale locale = localeManager.getLocale();
-        if (locale.getLanguage().equals("ja")) {
+        if (localeManager.getLocale().getLanguage().equals("ja")) {
             or.setLayoutX(175);
             forgotPassword.setLayoutX(130);
         }
