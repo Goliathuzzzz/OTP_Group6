@@ -80,3 +80,10 @@
     -fx-scale-y: 1.1;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 6, 0, 0, 3);
 }
+
+.lang-label {
+    -fx-cursor: hand;
+    -fx-text-fill: #7E7E7E;
+    -fx-font-size: 22px;
+    -fx-font-family: "Hoefler Text";
+}

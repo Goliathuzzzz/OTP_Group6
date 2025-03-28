@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.layout.HBox?>
+<AnchorPane id="registrationPane" prefHeight="852" prefWidth="393"
+            stylesheets="@/css/language.css" xmlns="http://javafx.com/javafx/22"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.view_controllers.LanguageController">
+    <ImageView fitHeight="556" fitWidth="393">
+        <Image url="@/images/background.png"/>
+    </ImageView>
+    <Pane layoutY="80.0" prefHeight="772" prefWidth="393" styleClass="white-bg">
+        <HBox layoutX="39.0" layoutY="40.0" spacing="10" alignment="CENTER_LEFT">
+            <ImageView fitHeight="30" fitWidth="30"
+                       styleClass="" pickOnBounds="true">
+                <Image url="@/images/world.png"/>
+            </ImageView>
+            <Label styleClass="text-header" text="app language"/>
+        </HBox>
+        <Label layoutX="39.0" layoutY="130.0" styleClass="languages-label" text="all languages"/>
+        <!-- Finnish -->
+        <AnchorPane fx:id="toggleFinnish" layoutX="39" layoutY="170" prefWidth="315" prefHeight="63"
+                    styleClass="toggle-container">
+            <Rectangle arcWidth="20" arcHeight="20" width="315" height="63" styleClass="toggle-bg"/>
+            <Label layoutX="35" layoutY="18" text="finnish" styleClass="toggle-label"/>
+            <AnchorPane layoutX="228" layoutY="15" prefWidth="64" prefHeight="32" styleClass="toggle-switch">
+                <Circle fx:id="toggleCircle1" layoutX="18" layoutY="16" radius="12" styleClass="toggle-circle"/>
+            </AnchorPane>
+        </AnchorPane>
+        <!-- English -->
+        <AnchorPane fx:id="toggleEnglish" layoutX="39" layoutY="260" prefWidth="315" prefHeight="63"
+                    styleClass="toggle-container">
+            <Rectangle arcWidth="20" arcHeight="20" width="315" height="63" styleClass="toggle-bg"/>
+            <Label layoutX="35" layoutY="18" text="english" styleClass="toggle-label"/>
+            <AnchorPane layoutX="228" layoutY="15" prefWidth="64" prefHeight="32" styleClass="toggle-switch">
+                <Circle fx:id="toggleCircle2" layoutX="18" layoutY="16" radius="12" styleClass="toggle-circle"/>
+            </AnchorPane>
+        </AnchorPane>
+        <!-- Japanese -->
+        <AnchorPane fx:id="toggleJapanese" layoutX="39" layoutY="350" prefWidth="315" prefHeight="63"
+                    styleClass="toggle-container">
+            <Rectangle arcWidth="20" arcHeight="20" width="315" height="63" styleClass="toggle-bg"/>
+            <Label layoutX="35" layoutY="18" text="japanese" styleClass="toggle-label"/>
+            <AnchorPane layoutX="228" layoutY="15" prefWidth="64" prefHeight="32" styleClass="toggle-switch">
+                <Circle fx:id="toggleCircle3" layoutX="18" layoutY="16" radius="12" styleClass="toggle-circle"/>
+            </AnchorPane>
+        </AnchorPane>
+        <!-- Chinese -->
+        <AnchorPane fx:id="toggleChinese" layoutX="39" layoutY="440" prefWidth="315" prefHeight="63"
+                    styleClass="toggle-container">
+            <Rectangle arcWidth="20" arcHeight="20" width="315" height="63" styleClass="toggle-bg"/>
+            <Label layoutX="35" layoutY="18" text="mandarin chinese" styleClass="toggle-label"/>
+            <AnchorPane layoutX="228" layoutY="15" prefWidth="64" prefHeight="32" styleClass="toggle-switch">
+                <Circle fx:id="toggleCircle4" layoutX="18" layoutY="16" radius="12" styleClass="toggle-circle"/>
+            </AnchorPane>
+        </AnchorPane>
+        <ImageView fitHeight="38.0" fitWidth="34.0" layoutX="280.0" layoutY="580" pickOnBounds="true"
+                   preserveRatio="true">
+            <Image url="@/images/hearts.png"/>
+        </ImageView>
+        <Button fx:id="readyButton" layoutX="40" layoutY="640" prefHeight="46" prefWidth="313"
+                styleClass="submit-button" text="ready"/>
+    </Pane>
+</AnchorPane>

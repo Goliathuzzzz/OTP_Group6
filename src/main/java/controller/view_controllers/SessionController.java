@@ -106,6 +106,7 @@ public class SessionController extends BaseController {
             navigateToInterests(event, categoryString);
         }
     }
+
     private void navigateToInterests(MouseEvent event, String category) {
         switchScene("interest_selection", category); //passing category only for interest selection
         System.out.println("Navigated to category: " + category);
