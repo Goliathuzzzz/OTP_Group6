@@ -1,5 +1,6 @@
 package controller.view_controllers;
 
+import context.LocaleManager;
 import controller.BaseController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -8,7 +9,9 @@ import javafx.scene.shape.Circle;
 import util.SceneNames;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
+import java.util.ResourceBundle;
 
 public class LanguageController extends BaseController {
 
@@ -22,6 +25,7 @@ public class LanguageController extends BaseController {
     private AnchorPane toggleFinnish, toggleEnglish, toggleJapanese, toggleChinese;
 
     private final Map<AnchorPane, Circle> toggleMap = new HashMap<>();
+    private LocaleManager localeManager = LocaleManager.getInstance();
 
     @FXML
     public void initialize() {
@@ -52,19 +56,20 @@ public class LanguageController extends BaseController {
 
     private void setLanguageFromToggle(AnchorPane toggle) {
         if (toggle == toggleFinnish) {
-            setLanguage("finnish");
+            setLanguage(new Locale("fi", "FI"));
         } else if (toggle == toggleEnglish) {
-            setLanguage("english");
+            setLanguage(new Locale("en", "US"));
         } else if (toggle == toggleJapanese) {
-            setLanguage("japanese");
+            setLanguage(new Locale("ja", "JP"));
         } else if (toggle == toggleChinese) {
-            setLanguage("mandarin chinese");
+            setLanguage(new Locale("zh", "CN"));
         }
     }
 
-    //placeholder for now
-    public void setLanguage(String language) {
-        System.out.println("Language set to: " + language);
+    public void setLanguage(Locale locale) {
+        localeManager.setLocale(locale);
+        localeManager.setBundle(ResourceBundle.getBundle("Messages", locale));
+        System.out.println("DEBUG: Locale set to " + locale.getLanguage());
     }
 
     @FXML
