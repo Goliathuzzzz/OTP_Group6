@@ -1,6 +1,7 @@
 package controller.view_controllers;
 
 import context.GUIContext;
+import context.LocaleManager;
 import controller.BaseController;
 import javafx.animation.ScaleTransition;
 import javafx.application.Platform;
@@ -12,6 +13,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import util.SceneNames;
+
+import java.util.ResourceBundle;
 
 import static util.ProfilePictureUtil.getProfilePictureView;
 
@@ -37,6 +40,9 @@ public class MatchViewController extends BaseController {
     @FXML
     private AnchorPane matchPane;
 
+    private final LocaleManager localeManager = LocaleManager.getInstance();
+    private final ResourceBundle bundle = localeManager.getBundle();
+
     GUIContext context = GUIContext.getInstance();
 
     @FXML
@@ -46,12 +52,11 @@ public class MatchViewController extends BaseController {
         Platform.runLater(() -> {
             Stage stage = (Stage) matchPane.getScene().getWindow();
             if (stage != null) {
-                stage.setTitle("start");
+                stage.setTitle(bundle.getString("match"));
             } else {
                 System.out.println("Stage is null in MatchViewController initialize()");
             }
         });
-//        detailsButton.setOnMouseClicked(this::handleDetailsButtonClick);
     }
 
     private void loadProfileImages() {
@@ -79,6 +84,4 @@ public class MatchViewController extends BaseController {
         heartbeat.setAutoReverse(true);
         heartbeat.play();
     }
-
-
 }
