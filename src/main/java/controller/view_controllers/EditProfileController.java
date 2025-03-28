@@ -12,6 +12,7 @@ import javafx.scene.input.MouseEvent;
 import util.SceneNames;
 
 import static util.ProfilePictureUtil.getProfilePictureView;
+import static util.SceneNames.EDIT_PROFILE;
 
 public class EditProfileController extends BaseController {
 
@@ -22,7 +23,7 @@ public class EditProfileController extends BaseController {
     private ImageView profileImage, homeIcon, profileIcon, backIcon, helpIcon, backIcon1;
 
     @FXML
-    private Label nameLabel, emailLabel, phoneLabel;
+    private Label nameLabel, emailLabel, phoneLabel, routeToLang;
 
     @FXML
     private TextField nameField, emailField, phoneField;
@@ -36,6 +37,7 @@ public class EditProfileController extends BaseController {
 
             ImageView profileImageView = getProfilePictureView(guiContext.getId(), 120, 120);
             profileImage.setImage(profileImageView.getImage());
+            LanguageController.setPreviousScene(EDIT_PROFILE);
         } else {
             showAlert(Alert.AlertType.ERROR, "error_title", "no_user_data");
             System.err.println("ERROR: No logged in user data found");
@@ -81,5 +83,9 @@ public class EditProfileController extends BaseController {
     // For testing
     public void setUserController(UserController userController) {
         this.userController = userController;
+    }
+
+    public void routeToLang(MouseEvent event) {
+        switchScene(SceneNames.LANGUAGE);
     }
 }

@@ -23,7 +23,7 @@ public class ProfileController extends BaseController {
     private ImageView homeIcon, profileIcon, backIcon, editButton;
 
     @FXML
-    private Label nameLabel, emailLabel, phoneLabel;
+    private Label nameLabel, emailLabel, phoneLabel, langLabel;
 
     // default constructor for FXML loader
     public ProfileController() {
@@ -44,6 +44,7 @@ public class ProfileController extends BaseController {
             nameLabel.textProperty().bind(guiContext.getUserNameProperty());
             emailLabel.textProperty().bind(guiContext.getEmailProperty());
             phoneLabel.textProperty().bind(guiContext.getPhoneProperty());
+            //TODO: set language
         } else if (guiContext.isGuest()) {
             guiContext.setPhoneProperty(guiContext.getGuestPhoneNumber());
             phoneLabel.textProperty().bind(guiContext.getPhoneProperty());

@@ -27,6 +27,8 @@ public class LanguageController extends BaseController {
     private final Map<AnchorPane, Circle> toggleMap = new HashMap<>();
     private LocaleManager localeManager = LocaleManager.getInstance();
 
+    private static String previousScene;
+
     @FXML
     public void initialize() {
         toggleMap.put(toggleFinnish, toggleCircle1);
@@ -54,6 +56,11 @@ public class LanguageController extends BaseController {
         }
     }
 
+    public static void setPreviousScene(String scene) {
+        previousScene = scene;
+        System.out.println("DEBUG: previous scene set to " + previousScene);
+    }
+
     private void setLanguageFromToggle(AnchorPane toggle) {
         if (toggle == toggleFinnish) {
             setLanguage(new Locale("fi", "FI"));
@@ -74,6 +81,20 @@ public class LanguageController extends BaseController {
 
     @FXML
     private void handleReady() {
-        switchScene(SceneNames.OPTIONS);
+        System.out.println("DEBUG: previous scene is " + previousScene);
+        if (previousScene != null) {
+            switch (previousScene) {
+                case SceneNames.EDIT_PROFILE:
+                    switchScene(SceneNames.EDIT_PROFILE);
+                    break;
+                case SceneNames.WELCOME:
+                default:
+                    switchScene(SceneNames.OPTIONS);
+                    break;
+            }
+        } else {
+            //default routing if no previous scene is set
+            switchScene(SceneNames.OPTIONS);
+        }
     }
 }

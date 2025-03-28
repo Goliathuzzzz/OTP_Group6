@@ -17,6 +17,12 @@ public class WelcomeController extends BaseController {
         startPulsatingLogo();
     }
 
+    @FXML
+    private void handleClick() {
+        switchScene(SceneNames.LANGUAGE);
+        LanguageController.setPreviousScene(SceneNames.WELCOME);
+    }
+
     private void startPulsatingLogo() {
         ScaleTransition pulsate = new ScaleTransition(Duration.seconds(1), logo);
         pulsate.setByX(0.1);
@@ -24,10 +30,5 @@ public class WelcomeController extends BaseController {
         pulsate.setCycleCount(ScaleTransition.INDEFINITE);
         pulsate.setAutoReverse(true);
         pulsate.play();
-    }
-
-    @FXML
-    private void handleClick() {
-        switchScene(SceneNames.LANGUAGE);
     }
 }

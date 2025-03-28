@@ -20,6 +20,7 @@ public class GUIContext {
 
     @FXML
     private final StringProperty nameProperty, emailProperty, phoneProperty;
+    //TODO: add language property
 
     private GUIContext() {
         this.nameProperty = new SimpleStringProperty();
@@ -30,7 +31,6 @@ public class GUIContext {
     public static GUIContext getInstance() {
         if (instance == null) {
             instance = new GUIContext();
-
         }
         return instance;
     }
