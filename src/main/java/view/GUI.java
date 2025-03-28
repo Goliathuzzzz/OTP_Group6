@@ -22,12 +22,8 @@ public class GUI extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        // set locale here
-        localeManager.setLocale(new Locale("fi", "FI"));
-        ResourceBundle bundle = ResourceBundle.getBundle("Messages", localeManager.getLocale());
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(path));
-        fxmlLoader.setResources(bundle); // insert resource bundle into fxml
 
         Parent root = fxmlLoader.load();
 
@@ -36,7 +32,9 @@ public class GUI extends Application {
             baseController.setStage(stage);
         }
 
-        stage.setTitle(bundle.getString("welcome"));
+        localeManager.setLocale(new Locale("en", "US"));
+        localeManager.setBundle(ResourceBundle.getBundle("Messages", localeManager.getLocale()));
+        stage.setTitle(localeManager.getBundle().getString("welcome"));
 
         stage.setResizable(false);
         Scene scene = new Scene(root);
