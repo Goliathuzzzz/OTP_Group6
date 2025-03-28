@@ -1,6 +1,7 @@
 package controller.view_controllers;
 
 import context.GUIContext;
+import context.LocaleManager;
 import controller.BaseController;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -37,9 +38,6 @@ public class InterestSelectionController extends BaseController {
     private final List<RadioButton> allRadioButtons = new ArrayList<>();
     private final GUIContext context = GUIContext.getInstance();
     private Session session;
-
-    // hardcoded for testing
-    private final ResourceBundle bundle = ResourceBundle.getBundle("Messages", new Locale("zh", "CN"));
 
     private Participant getParticipant() {
         if (context.isUser()) {
@@ -113,15 +111,15 @@ public class InterestSelectionController extends BaseController {
         radioButton.setLayoutY(21);
         radioButton.getStyleClass().add("radio");
 
-        // get the localized name for the enum value from the resource bundle
         String labelName;
+        ResourceBundle bundle = LocaleManager.getInstance().getBundle();
         if (interest instanceof Enum<?>) {
-            // key is formed in the format "animal_kissa" "food_vegaani"
             String key = interest.getClass().getSimpleName().toLowerCase() + "_" + ((Enum<?>) interest).name().toLowerCase();
-            labelName = bundle.getString(key); // get the translation from the resource bundle
+            labelName = bundle.getString(key);
         } else {
             labelName = interest.toString();
         }
+
 
         System.out.println("localized name: " + labelName);
 
