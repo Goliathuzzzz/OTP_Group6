@@ -2,10 +2,12 @@ package controller.view_controllers;
 
 import context.LocaleManager;
 import controller.BaseController;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
 import util.SceneNames;
 
 import java.util.HashMap;
@@ -22,10 +24,11 @@ public class LanguageController extends BaseController {
     private Circle toggleCircle1, toggleCircle2, toggleCircle3, toggleCircle4;
 
     @FXML
-    private AnchorPane toggleFinnish, toggleEnglish, toggleJapanese, toggleChinese;
+    private AnchorPane toggleFinnish, toggleEnglish, toggleJapanese, toggleChinese, languagePane;
 
     private final Map<AnchorPane, Circle> toggleMap = new HashMap<>();
-    private LocaleManager localeManager = LocaleManager.getInstance();
+    private final LocaleManager localeManager = LocaleManager.getInstance();;
+    private final ResourceBundle bundle = localeManager.getBundle();
 
     private static String previousScene;
 
@@ -46,8 +49,16 @@ public class LanguageController extends BaseController {
                 setLanguageFromToggle(toggle);
             });
         }
-
         readyButton.setOnAction(event -> handleReady());
+
+        Platform.runLater(() -> {
+            Stage stage = (Stage) languagePane.getScene().getWindow();
+            if (stage != null) {
+                stage.setTitle(bundle.getString("language_selection"));
+            } else {
+                System.err.println("Stage is null in InterestSelectionController initialize()");
+            }
+        });
     }
 
     private void resetAllToggles() {
