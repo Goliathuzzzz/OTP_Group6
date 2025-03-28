@@ -48,17 +48,17 @@ class SessionControllerTest extends ApplicationTest {
     @Override
     public void start(Stage stage) throws Exception {
         this.stage = stage;
-        var fxmlLocation = getClass().getResource("/fxml/session.fxml");
+        URL fxmlLocation = getClass().getResource("/fxml/session.fxml");
         assertNotNull(fxmlLocation, "session.fxml file not found.");
-
-        FXMLLoader loader = getFxmlLoader(fxmlLocation);
+        ResourceBundle bundle = ResourceBundle.getBundle("Messages", Locale.US);
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(fxmlLocation);
+        loader.setResources(bundle);
         root = loader.load();
         sessionController = loader.getController();
-
         if (sessionController != null) {
             sessionController.setStage(stage);
         }
-
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
