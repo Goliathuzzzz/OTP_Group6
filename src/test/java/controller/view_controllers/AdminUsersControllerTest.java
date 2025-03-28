@@ -16,9 +16,7 @@ import org.mockito.Mockito;
 import org.testfx.framework.junit5.ApplicationTest;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.testfx.api.FxAssert.verifyThat;
@@ -37,10 +35,14 @@ class AdminUsersControllerTest extends ApplicationTest {
     public void start(Stage stage) throws Exception {
         when(userController.displayAllUsers()).thenReturn(testUsers);
         this.stage = stage;
+
         var fxmlLocation = getClass().getResource("/fxml/admin_users.fxml");
         assertNotNull(fxmlLocation, "admin_users.fxml file not found.");
 
+        ResourceBundle testBundle = ResourceBundle.getBundle("Messages", Locale.US);
         FXMLLoader loader = getFxmlLoader(fxmlLocation);
+        loader.setResources(testBundle);
+
         root = loader.load();
         adminUsersController = loader.getController();
 
@@ -52,6 +54,7 @@ class AdminUsersControllerTest extends ApplicationTest {
         stage.setScene(scene);
         stage.show();
     }
+
 
     private static FXMLLoader getFxmlLoader(URL fxmlLocation) {
         FXMLLoader loader = new FXMLLoader(fxmlLocation);
