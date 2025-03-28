@@ -52,12 +52,11 @@ public abstract class BaseController {
         try {
             System.out.println("DEBUG: Loading FXML from " + path);
 
-            Locale locale = localeManager.getLocale();
             ResourceBundle bundle;
             try {
-                bundle = ResourceBundle.getBundle("Messages", locale);
+                bundle = localeManager.getBundle();
             } catch (MissingResourceException e) {
-                System.err.println("ERROR: ResourceBundle not found for locale " + locale + ". Loading default locale.");
+                System.err.println("ERROR: ResourceBundle is invalid in BaseController.switchScene. Defaulting to en_US");
                 bundle = ResourceBundle.getBundle("Messages", new Locale("en", "US"));
             }
 
