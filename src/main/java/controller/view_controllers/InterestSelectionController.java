@@ -3,6 +3,7 @@ package controller.view_controllers;
 import context.GUIContext;
 import context.LocaleManager;
 import controller.BaseController;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
@@ -10,6 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import model.Participant;
 import model.Session;
 import model.categories.*;
@@ -38,6 +40,8 @@ public class InterestSelectionController extends BaseController {
     private final List<RadioButton> allRadioButtons = new ArrayList<>();
     private final GUIContext context = GUIContext.getInstance();
     private Session session;
+    private final LocaleManager localeManager = LocaleManager.getInstance();
+    private final ResourceBundle bundle = localeManager.getBundle();
 
     private Participant getParticipant() {
         if (context.isUser()) {
@@ -55,6 +59,14 @@ public class InterestSelectionController extends BaseController {
         if (session == null || session.getParticipant() == null) {
             System.err.println("ERROR: Session or participant is null in InterestSelectionController initialize()");
         }
+        Platform.runLater(() -> {
+            Stage stage = (Stage) interestSelectionPane.getScene().getWindow();
+            if (stage != null) {
+                stage.setTitle(bundle.getString("interest_selection"));
+            } else {
+                System.err.println("Stage is null in InterestSelectionController initialize()");
+            }
+        });
     }
 
     private static final List<String> CATEGORY_ORDER = List.of("animals", "food", "hobbies", "sports", "science");
@@ -112,7 +124,6 @@ public class InterestSelectionController extends BaseController {
         radioButton.getStyleClass().add("radio");
 
         String labelName;
-        ResourceBundle bundle = LocaleManager.getInstance().getBundle();
         if (interest instanceof Enum<?>) {
             String key = interest.getClass().getSimpleName().toLowerCase() + "_" + ((Enum<?>) interest).name().toLowerCase();
             labelName = bundle.getString(key);
