@@ -7,7 +7,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="852" prefWidth="393" styleClass="profile" stylesheets="@/css/profile.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.view_controllers.ProfileController">
+<AnchorPane prefHeight="852" prefWidth="393" styleClass="profile" stylesheets="@/css/profile.css"
+            xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.view_controllers.ProfileController" fx:id="profilePane">
     <Pane prefHeight="556" prefWidth="393" styleClass="tausta" />
     <Pane layoutY="196" prefHeight="656" prefWidth="393" styleClass="rectangle15">
         <Pane layoutY="569.0" prefHeight="87" prefWidth="393" styleClass="bottom-nav">
@@ -30,9 +32,9 @@
     </Pane>
     <Pane fx:id="profileImagePane" layoutX="97" layoutY="252" prefHeight="200" prefWidth="200" styleClass="frame4" />
     <VBox layoutX="39" layoutY="508" spacing="10">
-        <Label fx:id="nameLabel" prefWidth="188" styleClass="info-text" text="heta" />
-        <Label fx:id="emailLabel" prefWidth="188" styleClass="info-text" text="hetahar@metropolia.fi" />
-        <Label fx:id="phoneLabel" prefWidth="188" styleClass="info-text" text="0401234567" />
-      <Label fx:id="langLabel" prefWidth="188" styleClass="info-text" text="kieli" />
+        <Label fx:id="nameLabel" prefWidth="188" styleClass="info-text" text="#" />
+        <Label fx:id="emailLabel" prefWidth="188" styleClass="info-text" text="#" />
+        <Label fx:id="phoneLabel" prefWidth="188" styleClass="info-text" text="#" />
+      <Label fx:id="langLabel" prefWidth="188" styleClass="info-text" text="#" />
     </VBox>
 </AnchorPane>
