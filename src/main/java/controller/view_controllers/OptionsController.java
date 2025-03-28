@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 import util.SceneNames;
 
 import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class OptionsController extends BaseController {
 
@@ -19,13 +20,16 @@ public class OptionsController extends BaseController {
     @FXML
     private Label speedDating, or;
 
+    private final LocaleManager localeManager = LocaleManager.getInstance();
+    private final ResourceBundle bundle = localeManager.getBundle();
+
     @FXML
     public void initialize() {
         handleLang();
         Platform.runLater(() -> {
             Stage stage = (Stage) optionsPane.getScene().getWindow();
             if (stage != null) {
-                stage.setTitle("main_menu");
+                stage.setTitle(bundle.getString("main_menu"));
             }
         });
     }
