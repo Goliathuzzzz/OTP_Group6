@@ -10,6 +10,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -35,7 +38,8 @@ public class AdminProfileControllerTest extends ApplicationTest {
         var fxmlLocation = getClass().getResource("/fxml/admin_profile.fxml");
         assertNotNull(fxmlLocation, "admin_profile.fxml file not found.");
 
-        FXMLLoader loader = new FXMLLoader(fxmlLocation);
+        ResourceBundle testBundle = ResourceBundle.getBundle("Messages", Locale.US);
+        FXMLLoader loader = new FXMLLoader(fxmlLocation, testBundle);
         loader.setControllerFactory(param -> new AdminProfileController(guiContextMock));
 
         root = loader.load();
@@ -45,6 +49,7 @@ public class AdminProfileControllerTest extends ApplicationTest {
         stage.setScene(scene);
         stage.show();
     }
+
 
     @BeforeEach
     void setUp() {
