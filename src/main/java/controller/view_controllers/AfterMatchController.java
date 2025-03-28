@@ -1,6 +1,7 @@
 package controller.view_controllers;
 
 import context.GUIContext;
+import context.LocaleManager;
 import controller.BaseController;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -28,8 +29,9 @@ public class AfterMatchController extends BaseController {
     @FXML
     private AnchorPane afterMatchPane;
 
-    // hardcoded for testing
-    private final ResourceBundle bundle = ResourceBundle.getBundle("Messages", new Locale("ja", "JP"));
+    private final LocaleManager localeManager = LocaleManager.getInstance();
+
+    ResourceBundle bundle = localeManager.getBundle();
 
 
     @FXML
