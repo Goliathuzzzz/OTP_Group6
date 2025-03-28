@@ -1,6 +1,7 @@
 package controller.view_controllers;
 
 import context.GUIContext;
+import context.LocaleManager;
 import controller.BaseController;
 import javafx.animation.ScaleTransition;
 import javafx.application.Platform;
@@ -13,6 +14,9 @@ import javafx.util.Duration;
 import model.Participant;
 import model.Session;
 import util.SceneNames;
+import javafx.scene.control.Label;
+
+import java.util.Locale;
 
 public class BeginSessionController extends BaseController {
 
@@ -22,10 +26,14 @@ public class BeginSessionController extends BaseController {
     @FXML
     private AnchorPane beginSessionPane;
 
+    @FXML
+    private Label beginSession;
+
     private ScaleTransition heartbeat;
 
     @FXML
     public void initialize() {
+        handleLang();
         Platform.runLater(() -> {
             Stage stage = (Stage) beginSessionPane.getScene().getWindow();
             if (stage != null) {
@@ -66,6 +74,17 @@ public class BeginSessionController extends BaseController {
             switchScene(SceneNames.SESSION);
         } else {
             System.err.println("No user or guest found in GUIContext");
+        }
+    }
+
+    private void handleLang() {
+        LocaleManager localeManager = LocaleManager.getInstance();
+        Locale locale = localeManager.getLocale();
+        if (locale.getLanguage().equals("ja")) {
+            beginSession.setScaleX(0.8);
+            beginSession.setScaleY(0.8);
+            beginSession.setMinWidth(300);
+            beginSession.setLayoutX(-40);
         }
     }
 }

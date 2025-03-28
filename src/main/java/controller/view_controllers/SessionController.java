@@ -1,6 +1,7 @@
 package controller.view_controllers;
 
 import context.GUIContext;
+import context.LocaleManager;
 import controller.BaseController;
 import controller.MatchController;
 import javafx.application.Platform;
@@ -20,10 +21,7 @@ import model.*;
 import model.categories.Category;
 import util.SceneNames;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class SessionController extends BaseController {
 
@@ -52,7 +50,7 @@ public class SessionController extends BaseController {
     private AnchorPane sessionPane;
 
     @FXML
-    private Label animalLabel, foodLabel, hobbiesLabel, sportsLabel, scienceLabel;
+    private Label animalLabel, foodLabel, hobbiesLabel, sportsLabel, scienceLabel, sessionLabel;
 
     @FXML
     private void handleReady(ActionEvent event) {
@@ -68,6 +66,7 @@ public class SessionController extends BaseController {
 
     @FXML
     public void initialize() {
+        handleLang();
         // check if session is set
         if (session == null) {
             System.err.println("ERROR: Session is null in SessionController");
@@ -142,5 +141,14 @@ public class SessionController extends BaseController {
     // For testing
     public Matcher getMatcher() {
         return matcher;
+    }
+
+    private void handleLang() {
+        LocaleManager localeManager = LocaleManager.getInstance();
+        Locale locale = localeManager.getLocale();
+        if (locale.getLanguage().equals("ja")) {
+            sessionLabel.setScaleX(0.8);
+            sessionLabel.setScaleY(0.8);
+        }
     }
 }

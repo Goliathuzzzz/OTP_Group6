@@ -24,7 +24,7 @@
     <ImageView fx:id="bigHeart" fitHeight="278.0" fitWidth="352.0" layoutX="22.0" layoutY="255.0" onMouseClicked="#handleBeginSessionClick" pickOnBounds="true" preserveRatio="true">
         <Image url="@/images/big_heart.png" />
     </ImageView>
-    <Label layoutY="-1.0" onMouseClicked="#handleBeginSessionClick" styleClass="begin" text="%start_session" prefWidth="200.0"/>
+    <Label fx:id="beginSession" layoutY="-1.0" onMouseClicked="#handleBeginSessionClick" styleClass="begin" text="%start_session" />
     <ImageView fitHeight="31.0" fitWidth="28.0" layoutX="263.0" layoutY="511.0" onMouseClicked="#handleBeginSessionClick" pickOnBounds="true" preserveRatio="true">
         <Image url="@/images/hearts.png" />
     </ImageView>

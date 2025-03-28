@@ -34,7 +34,7 @@
                 <Image url="@/images/help_icon.png"/>
             </ImageView>
         </Pane>
-        <Label layoutX="38.0" layoutY="40.0" styleClass="tell" text="%introduce_self">
+        <Label fx:id="sessionLabel" layoutX="38.0" layoutY="40.0" styleClass="tell" text="%introduce_self">
             <font>
                 <Font size="40.0"/>
             </font>
