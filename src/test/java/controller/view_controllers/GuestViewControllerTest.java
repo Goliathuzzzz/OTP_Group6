@@ -12,6 +12,9 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
@@ -23,14 +26,16 @@ class GuestViewControllerTest extends ApplicationTest {
     private static GuestViewController guestViewController;
     private Parent root;
     private Stage stage;
+    ResourceBundle bundle = ResourceBundle.getBundle("Messages", Locale.US);
 
     @Override
     public void start(Stage stage) throws Exception {
         this.stage = stage;
         var fxmlLocation = getClass().getResource("/fxml/guest.fxml");
-        assertNotNull(fxmlLocation, "Guest.fxml file not found.");
+        assertNotNull(fxmlLocation, "guest.fxml file not found.");
 
-        FXMLLoader loader = new FXMLLoader(fxmlLocation);
+        FXMLLoader loader = new FXMLLoader(fxmlLocation, bundle);
+
         root = loader.load();
         guestViewController = loader.getController();
         guestViewController.setGuestViewController(guestController);
@@ -43,6 +48,7 @@ class GuestViewControllerTest extends ApplicationTest {
         stage.setScene(scene);
         stage.show();
     }
+
 
     @BeforeAll
     static void start() {
@@ -73,7 +79,7 @@ class GuestViewControllerTest extends ApplicationTest {
         assertNotNull(newRoot.lookup("#beginSessionPane"), "Begin Session scene should be loaded.");
         assertNotSame(newRoot, root, "Scene root should have changed after login.");
         assertTrue(stage.isShowing(), "Stage should still be showing after scene switch.");
-        assertEquals("aloita", stage.getTitle(), "Stage title should match after scene switch.");
+        assertEquals(bundle.getString("begin"), stage.getTitle(), "Stage title should match after scene switch.");
     }
 
     @Test
