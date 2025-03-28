@@ -1,12 +1,16 @@
 package controller.view_controllers;
 
+import context.LocaleManager;
 import controller.BaseController;
 import controller.MatchController;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import model.Match;
 
 import java.io.IOException;
@@ -21,10 +25,24 @@ public class AdminHomeController extends BaseController implements Initializable
     @FXML
     private VBox pairsContainer;
 
+    @FXML
+    private AnchorPane adminHomePane;
+
+    private final LocaleManager localeManager = LocaleManager.getInstance();
+    private final ResourceBundle bundle = localeManager.getBundle();
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         List<Match> matches = matchController.displayAllMatches();
         populateMatchList(matches);
+        Platform.runLater(() -> {
+            Stage stage = (Stage) adminHomePane.getScene().getWindow();
+            if (stage != null) {
+                stage.setTitle(bundle.getString("admin_users"));
+            } else {
+                System.out.println("Stage is null in AdminUsersController initialize()");
+            }
+        });
     }
 
     private void populateMatchList(List<Match> matches) {
