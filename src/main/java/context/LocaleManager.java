@@ -1,13 +1,16 @@
 package context;
 
 import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class LocaleManager {
     private static LocaleManager instance;
     private Locale locale;
+    private ResourceBundle bundle;
 
     private LocaleManager() {
         this.locale = new Locale("en", "US");
+        this.bundle = ResourceBundle.getBundle("Messages", locale);
     }
 
     public static LocaleManager getInstance() {
@@ -25,7 +28,16 @@ public class LocaleManager {
         this.locale = locale;
     }
 
-    public void resetLocale() {
+    public void resetLanguage() {
         this.locale = new Locale("en", "US");
+        this.bundle = ResourceBundle.getBundle("Messages", locale);
+    }
+
+    public ResourceBundle getBundle() {
+        return bundle;
+    }
+
+    public void setBundle(ResourceBundle bundle) {
+        this.bundle = bundle;
     }
 }
