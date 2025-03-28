@@ -14,7 +14,10 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.testfx.framework.junit5.ApplicationTest;
 
+import java.net.URL;
 import java.util.Date;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.testfx.api.FxAssert.verifyThat;
@@ -27,6 +30,7 @@ public class RegistrationControllerTest extends ApplicationTest {
     private static UserController userController;
     private Parent root;
     private Stage stage;
+    ResourceBundle bundle = ResourceBundle.getBundle("Messages", Locale.US);
 
     @BeforeAll
     static void starter() {
@@ -36,22 +40,20 @@ public class RegistrationControllerTest extends ApplicationTest {
     @Override
     public void start(Stage stage) throws Exception {
         this.stage = stage;
-        var fxmlLocation = getClass().getResource("/fxml/registration.fxml");
+        URL fxmlLocation = getClass().getResource("/fxml/registration.fxml");
         assertNotNull(fxmlLocation, "Registration.fxml file not found.");
-
-        FXMLLoader loader = new FXMLLoader(fxmlLocation);
+        FXMLLoader loader = new FXMLLoader(fxmlLocation, bundle);
         root = loader.load();
         controller = loader.getController();
         controller.setuController(userController);
-
         if (controller != null) {
             ((BaseController) controller).setStage(stage);
         }
-
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
+
 
     @BeforeEach
     void setUp() {
@@ -71,7 +73,7 @@ public class RegistrationControllerTest extends ApplicationTest {
         Parent newRoot = stage.getScene().getRoot();
         assertNotNull(newRoot.lookup("#beginSessionPane"), "Begin session scene should be loaded.");
         assertTrue(stage.isShowing(), "Stage should still be showing after scene switch.");
-        assertEquals("aloita", stage.getTitle(), "Stage title should be updated after registration.");
+        assertEquals(bundle.getString("begin"), stage.getTitle(), "Stage title should be updated after registration.");
     }
 
     @Test
@@ -139,6 +141,6 @@ public class RegistrationControllerTest extends ApplicationTest {
 
         Parent newRoot = stage.getScene().getRoot();
         assertNotNull(newRoot.lookup("#optionsPane"), "Options scene should be loaded after navigating back.");
-        assertEquals("päävalikko", stage.getTitle(), "Stage title should be updated after navigating back.");
+        assertEquals(bundle.getString("main_menu"), stage.getTitle(), "Stage title should be updated after navigating back.");
     }
 }
