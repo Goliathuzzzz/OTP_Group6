@@ -52,12 +52,15 @@ public class SessionController extends BaseController {
     @FXML
     private Label animalLabel, foodLabel, hobbiesLabel, sportsLabel, scienceLabel, sessionLabel;
 
+    private final LocaleManager localeManager = LocaleManager.getInstance();
+    private final ResourceBundle bundle = localeManager.getBundle();
+
     @FXML
     private void handleReady(ActionEvent event) {
         List<Category> selectedInterests = session.getParticipantInterests();
         if (selectedInterests.isEmpty()) {
             System.err.println("ERROR: No interests selected in SessionController handleReady()");
-            showAlert(Alert.AlertType.WARNING, "error", "choose_one_interest_alert");
+            showAlert(Alert.AlertType.WARNING, bundle.getString( "error"), bundle.getString("choose_one_interest_alert"));
             return;
         }
         matchParticipant();
@@ -88,6 +91,15 @@ public class SessionController extends BaseController {
         Platform.runLater(() -> {
             System.out.println("DEBUG: stage is " + (stage == null ? "NULL" : "SET"));
             Stage stage = (Stage) sessionPane.getScene().getWindow();
+        });
+
+        Platform.runLater(() -> {
+            Stage stage = (Stage) sessionPane.getScene().getWindow();
+            if (stage != null) {
+                stage.setTitle(bundle.getString("session"));
+            } else {
+                System.out.println("Stage is null in SessionController initialize()");
+            }
         });
     }
 
