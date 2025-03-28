@@ -8,7 +8,7 @@
 <AnchorPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="controller.view_controllers.UserItemController"
             prefWidth="150" prefHeight="40" styleClass="user-item">
-    <Label fx:id="userNameLabel" layoutX="10" layoutY="10" text="%user_name" styleClass="user-name"
+    <Label fx:id="userNameLabel" layoutX="10" layoutY="10" styleClass="user-name"
            onMouseClicked="#handleUserNameClick"/>
     <ImageView fx:id="deleteIcon" layoutX="110" layoutY="20" fitWidth="12" fitHeight="12"
                onMouseClicked="#handleDeleteClick" styleClass="delete-icon">

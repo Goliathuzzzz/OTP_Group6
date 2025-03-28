@@ -1,6 +1,7 @@
 package controller.view_controllers;
 
 import context.GUIContext;
+import context.LocaleManager;
 import controller.BaseController;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -110,8 +111,19 @@ public class InterestSelectionController extends BaseController {
         radioButton.setLayoutY(21);
         radioButton.getStyleClass().add("radio");
 
-        String labelName = interest.toString().replaceAll("_", " ");
-        Label label = new Label(labelName.toLowerCase());
+        String labelName;
+        ResourceBundle bundle = LocaleManager.getInstance().getBundle();
+        if (interest instanceof Enum<?>) {
+            String key = interest.getClass().getSimpleName().toLowerCase() + "_" + ((Enum<?>) interest).name().toLowerCase();
+            labelName = bundle.getString(key);
+        } else {
+            labelName = interest.toString();
+        }
+
+
+        System.out.println("localized name: " + labelName);
+
+        Label label = new Label(labelName);
         label.setLayoutX(80);
         label.setLayoutY(20);
         label.getStyleClass().add("option-text");
