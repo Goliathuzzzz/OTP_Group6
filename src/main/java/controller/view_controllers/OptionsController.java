@@ -1,11 +1,15 @@
 package controller.view_controllers;
 
+import context.LocaleManager;
 import controller.BaseController;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import util.SceneNames;
+
+import java.util.Locale;
 
 public class OptionsController extends BaseController {
 
@@ -13,7 +17,11 @@ public class OptionsController extends BaseController {
     private AnchorPane optionsPane;
 
     @FXML
+    private Label speedDating;
+
+    @FXML
     public void initialize() {
+        handleLang();
         Platform.runLater(() -> {
             Stage stage = (Stage) optionsPane.getScene().getWindow();
             if (stage != null) {
@@ -35,5 +43,13 @@ public class OptionsController extends BaseController {
     @FXML
     private void handleGuest() {
         switchScene(SceneNames.GUEST);
+    }
+
+    private void handleLang() {
+        LocaleManager localeManager = LocaleManager.getInstance();
+        Locale locale = localeManager.getLocale();
+        if (locale.getLanguage().equals("ja")) {
+            speedDating.setLayoutX(50);
+        }
     }
 }
