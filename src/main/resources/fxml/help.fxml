@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 
 <?import javafx.scene.layout.VBox?>
-<AnchorPane prefHeight="852.0" prefWidth="393.0" fx:id="matchPane" styleClass="edit-profile" stylesheets="@/css/match.css"
+<AnchorPane prefHeight="852.0" prefWidth="393.0" fx:id="helpPane" styleClass="edit-profile" stylesheets="@/css/match.css"
             xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="controller.view_controllers.HelpController">
     <Pane fx:id="paperGradient" layoutY="-2" prefHeight="854" prefWidth="392" styleClass="help-paper-gradient"/>
