@@ -17,6 +17,7 @@ import util.SceneNames;
 import javafx.scene.control.Label;
 
 import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class BeginSessionController extends BaseController {
 
@@ -31,18 +32,20 @@ public class BeginSessionController extends BaseController {
 
     private ScaleTransition heartbeat;
 
+    private final LocaleManager localeManager = LocaleManager.getInstance();
+    private final ResourceBundle bundle = localeManager.getBundle();
+
     @FXML
     public void initialize() {
         handleLang();
         Platform.runLater(() -> {
             Stage stage = (Stage) beginSessionPane.getScene().getWindow();
             if (stage != null) {
-                stage.setTitle("begin");
+                stage.setTitle(bundle.getString("begin"));
             } else {
                 System.out.println("Stage is null in BeginSessionController initialize()");
             }
         });
-
         setupHoverHeartbeat();
     }
 
@@ -78,9 +81,7 @@ public class BeginSessionController extends BaseController {
     }
 
     private void handleLang() {
-        LocaleManager localeManager = LocaleManager.getInstance();
-        Locale locale = localeManager.getLocale();
-        if (locale.getLanguage().equals("ja")) {
+        if (localeManager.getLocale().getLanguage().equals("ja")) {
             beginSession.setScaleX(0.8);
             beginSession.setScaleY(0.8);
             beginSession.setMinWidth(300);
