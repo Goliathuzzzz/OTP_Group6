@@ -1,13 +1,17 @@
 package controller.view_controllers;
 
+import context.LocaleManager;
 import controller.BaseController;
 import controller.UserController;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 import model.User;
 import util.SceneNames;
 
@@ -26,10 +30,24 @@ public class AdminUsersController extends BaseController implements Initializabl
     @FXML
     private GridPane usersGrid;
 
+    @FXML
+    private AnchorPane adminUsersPane;
+
+    private final LocaleManager localeManager = LocaleManager.getInstance();
+    private final ResourceBundle bundle = localeManager.getBundle();
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         users = userController.displayAllUsers(); // fetch users from database
         populateUserGrid();
+        Platform.runLater(() -> {
+            Stage stage = (Stage) adminUsersPane.getScene().getWindow();
+            if (stage != null) {
+                stage.setTitle(bundle.getString("admin_users"));
+            } else {
+                System.out.println("Stage is null in AdminUsersController initialize()");
+            }
+        });
     }
 
     // populate the grid pane with user items
