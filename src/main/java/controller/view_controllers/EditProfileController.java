@@ -1,15 +1,20 @@
 package controller.view_controllers;
 
 import context.GUIContext;
+import context.LocaleManager;
 import controller.BaseController;
 import controller.UserController;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import util.SceneNames;
+
+import java.util.ResourceBundle;
 
 import static util.ProfilePictureUtil.getProfilePictureView;
 import static util.SceneNames.EDIT_PROFILE;
@@ -28,6 +33,9 @@ public class EditProfileController extends BaseController {
     @FXML
     private TextField nameField, emailField, phoneField;
 
+    private final LocaleManager localeManager = LocaleManager.getInstance();
+    private final ResourceBundle bundle = localeManager.getBundle();
+
     @FXML
     private void initialize() {
         if (guiContext.isUser()) {
@@ -38,8 +46,17 @@ public class EditProfileController extends BaseController {
             ImageView profileImageView = getProfilePictureView(guiContext.getId(), 120, 120);
             profileImage.setImage(profileImageView.getImage());
             LanguageController.setPreviousScene(EDIT_PROFILE);
+
+            Platform.runLater(() -> {
+                Stage stage = (Stage) profileImage.getScene().getWindow();
+                if (stage != null) {
+                    stage.setTitle(bundle.getString("edit"));
+                } else {
+                    System.err.println("Stage is null in EditProfileController initialize()");
+                }
+            });
         } else {
-            showAlert(Alert.AlertType.ERROR, "error_title", "no_user_data");
+            showAlert(Alert.AlertType.ERROR, bundle.getString("error_title"), bundle.getString("no_user_data"));
             System.err.println("ERROR: No logged in user data found");
         }
     }
@@ -55,7 +72,7 @@ public class EditProfileController extends BaseController {
 
     @FXML
     public void handlePreviousClick(MouseEvent event) {
-        showAlert(Alert.AlertType.INFORMATION, "save_title", "changes_saved");
+        showAlert(Alert.AlertType.INFORMATION, bundle.getString("save_title"), bundle.getString("changes_saved"));
         saveChanges();
         switchScene(SceneNames.PROFILE);
     }
@@ -68,14 +85,14 @@ public class EditProfileController extends BaseController {
 
     @FXML
     public void handleProfileClick(MouseEvent event) {
-        showAlert(Alert.AlertType.INFORMATION, "save_title", "changes_saved");
+        showAlert(Alert.AlertType.INFORMATION, bundle.getString("save_title"), bundle.getString("changes_saved"));
         saveChanges();
         switchScene(SceneNames.PROFILE);
     }
 
     @FXML
     public void handleBackClick(MouseEvent event) {
-        showAlert(Alert.AlertType.INFORMATION, "save_title", "changes_saved");
+        showAlert(Alert.AlertType.INFORMATION, bundle.getString("save_title"), bundle.getString("changes_saved"));
         saveChanges();
         switchScene(SceneNames.OPTIONS);
     }
