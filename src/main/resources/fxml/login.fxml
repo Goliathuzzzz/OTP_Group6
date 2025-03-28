@@ -28,7 +28,7 @@
     <Button fx:id="loginButton" layoutX="39" layoutY="569.0" minHeight="-Infinity" onAction="#handleLogin"
             prefHeight="0.0" prefWidth="316" styleClass="login-button" text="%login"/>
     <Line endX="145" endY="662" startX="41" startY="662" styleClass="line"/>
-    <Label layoutX="183.0" layoutY="646.0" text="%or" textFill="#7e7e7e"/>
+    <Label fx:id="or" layoutX="183.0" layoutY="646.0" text="%or" textFill="#7e7e7e"/>
     <Line endX="353" endY="662" startX="249" startY="662" styleClass="line"/>
     <Label fx:id="newAccount" layoutX="148" layoutY="697" onMouseClicked="#handleNewAccount" styleClass="new-account"
            text="%create_account"/>

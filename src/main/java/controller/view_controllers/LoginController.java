@@ -1,6 +1,7 @@
 package controller.view_controllers;
 
 import context.GUIContext;
+import context.LocaleManager;
 import controller.BaseController;
 import controller.UserController;
 import javafx.fxml.FXML;
@@ -12,6 +13,8 @@ import javafx.scene.control.TextField;
 import model.User;
 import util.SceneNames;
 
+import java.util.Locale;
+
 public class LoginController extends BaseController {
 
     UserController uController = new UserController();
@@ -21,7 +24,7 @@ public class LoginController extends BaseController {
     private TextField emailField;
 
     @FXML
-    private Label newAccount, forgotPassword;
+    private Label newAccount, forgotPassword, or;
 
     @FXML
     private PasswordField passwordField;
@@ -48,6 +51,11 @@ public class LoginController extends BaseController {
     }
 
     @FXML
+    public void initialize() {
+        handleLang();
+    }
+
+    @FXML
     private void handleForgotPassword() {
         showAlert(Alert.AlertType.INFORMATION, "forgot_password_title", "forgot_password_instructions");
     }
@@ -63,6 +71,15 @@ public class LoginController extends BaseController {
 
     public void setUserController(UserController userController) {
         uController = userController;
+    }
+
+    private void handleLang() {
+        LocaleManager localeManager = LocaleManager.getInstance();
+        Locale locale = localeManager.getLocale();
+        if (locale.getLanguage().equals("ja")) {
+            or.setLayoutX(175);
+            forgotPassword.setLayoutX(130);
+        }
     }
 }
 

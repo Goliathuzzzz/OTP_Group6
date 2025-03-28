@@ -37,7 +37,7 @@
             <Insets left="20.0" />
         </padding>
     </Button>
-    <Label fx:id="tai" layoutX="184" layoutY="426" text="%or" />
+    <Label fx:id="or" layoutX="184" layoutY="426" text="%or" />
     <ImageView fitHeight="50.0" fitWidth="45.0" layoutX="289.0" layoutY="348.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@/images/stars.png" />
     </ImageView>

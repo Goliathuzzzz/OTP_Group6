@@ -17,7 +17,7 @@ public class OptionsController extends BaseController {
     private AnchorPane optionsPane;
 
     @FXML
-    private Label speedDating;
+    private Label speedDating, or;
 
     @FXML
     public void initialize() {
@@ -49,7 +49,8 @@ public class OptionsController extends BaseController {
         LocaleManager localeManager = LocaleManager.getInstance();
         Locale locale = localeManager.getLocale();
         if (locale.getLanguage().equals("ja")) {
-            speedDating.setLayoutX(50);
+            speedDating.setLayoutX(45);
+            or.setLayoutX(175);
         }
     }
 }
