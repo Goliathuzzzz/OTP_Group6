@@ -14,7 +14,7 @@
         <Image url="@/images/background.png" />
     </ImageView>
     <Pane fx:id="rectangle13" layoutY="283" prefHeight="569" prefWidth="393" />
-    <Label fx:id="speedDating" layoutX="105" layoutY="219" text="speed dating" />
+    <Label fx:id="speedDating" layoutX="105" layoutY="219" text="%speed_dating" />
     <ImageView fitHeight="210" fitWidth="214" layoutX="90" layoutY="18">
         <Image url="@/images/punainenlogo.png" />
     </ImageView>
