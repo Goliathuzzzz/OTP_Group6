@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import model.*;
 
 import java.util.List;
+import java.util.Optional;
 
 public class GUIContext {
     private static GUIContext instance;
@@ -17,10 +18,10 @@ public class GUIContext {
     private Session session;
     private Matcher matcher;
     private List<Match> matches;
+    private String language;
 
     @FXML
     private final StringProperty nameProperty, emailProperty, phoneProperty;
-    //TODO: add language property
 
     private GUIContext() {
         this.nameProperty = new SimpleStringProperty();
@@ -52,12 +53,20 @@ public class GUIContext {
     }
 
     public void setUserName(String name) {
-        user.setUserName(name);
+        Optional<LocalizedUser> localizedUser = user.getLocalization(language);
+        if (localizedUser.isPresent()) {
+            localizedUser.get().setUserName(name);
+        } else {
+            user.addLocalization(language, name);
+        }
         setUserNameProperty(name);
     }
 
     public String getUserName() {
-        return user.getUserName();
+        if (user.getLocalization(language).isPresent()) {
+            return user.getLocalization(language).get().getUserName();
+        }
+        return user.getAnyUserName();
     }
 
     public String getUserEmail() {
@@ -150,6 +159,14 @@ public class GUIContext {
 
     public void setMatch(Match match) {
         matches.add(match);
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
     }
 
     public int getId() {
