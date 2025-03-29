@@ -87,7 +87,7 @@ class EditProfileControllerTest extends ApplicationTest {
         name = "Marko";
         email = "marko@email.com";
         phone = "0500332331";
-        user = new User(name, "markopassword", email, "dummy", phone, new Date());
+        user = new User(name, "markopassword", email, "dummy", phone, new Date(), "en");
         context.setUser(user);
     }
 

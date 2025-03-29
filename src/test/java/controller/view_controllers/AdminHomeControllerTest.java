@@ -109,12 +109,12 @@ class AdminHomeControllerTest extends ApplicationTest {
 
     private static List<Match> seedTestMatches() {
         List<Match> testMatchesList = new ArrayList<>();
-        User userA = new User("PlayerA", "passA", "playerA@example.com", "user", "1234567890", new Date());
-        User userB = new User("PlayerB", "passB", "playerB@example.com", "user", "0987654321", new Date());
-        User userC = new User("PlayerC", "passC", "playerC@example.com", "user", "1122334455", new Date());
-        User userD = new User("PlayerD", "passD", "playerD@example.com", "user", "2233445566", new Date());
-        User userE = new User("PlayerE", "passE", "playerE@example.com", "user", "3344556677", new Date());
-        User userF = new User("PlayerF", "passF", "playerF@example.com", "user", "4455667788", new Date());
+        User userA = new User("PlayerA", "passA", "playerA@example.com", "user", "1234567890", new Date(), "en");
+        User userB = new User("PlayerB", "passB", "playerB@example.com", "user", "0987654321", new Date(), "en");
+        User userC = new User("PlayerC", "passC", "playerC@example.com", "user", "1122334455", new Date(), "en");
+        User userD = new User("PlayerD", "passD", "playerD@example.com", "user", "2233445566", new Date(), "en");
+        User userE = new User("PlayerE", "passE", "playerE@example.com", "user", "3344556677", new Date(), "en");
+        User userF = new User("PlayerF", "passF", "playerF@example.com", "user", "4455667788", new Date(), "en");
 
         testMatchesList.add(new Match(userA, userB, 75.5));
         testMatchesList.add(new Match(userC, userD, 82.3));

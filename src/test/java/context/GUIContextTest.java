@@ -22,7 +22,7 @@ class GUIContextTest {
         guiContext = GUIContext.getInstance();
         guiContext.logout();
 
-        testUser = new User("Alice", "password", "alice@example.com", "user", "1234567890", null);
+        testUser = new User("Alice", "password", "alice@example.com", "user", "1234567890", null, "en");
         testGuest = new Guest("9876543210", null);
         testSession = new Session(testUser);
         testMatcher = new Matcher(testSession);
@@ -47,7 +47,7 @@ class GUIContextTest {
 
     @Test
     void testSetAndGetAdminUser() {
-        User adminUser = new User("Admin", "adminpass", "admin@example.com", "admin", "9998887777", null);
+        User adminUser = new User("Admin", "adminpass", "admin@example.com", "admin", "9998887777", null, "en");
         guiContext.setUser(adminUser);
         assertTrue(guiContext.isAdmin(), "Admin flag should be true.");
     }
@@ -90,8 +90,8 @@ class GUIContextTest {
 
     @Test
     void testSetAndGetMatches() {
-        Match match1 = new Match(testUser, new User("Bob", "pass", "bob@example.com", "user", "1112223333", null), 90.5);
-        Match match2 = new Match(testUser, new User("Charlie", "pass", "charlie@example.com", "user", "4445556666", null), 85.2);
+        Match match1 = new Match(testUser, new User("Bob", "pass", "bob@example.com", "user", "1112223333", null, "en"), 90.5);
+        Match match2 = new Match(testUser, new User("Charlie", "pass", "charlie@example.com", "user", "4445556666", null, "en"), 85.2);
 
         testMatches.add(match1);
         testMatches.add(match2);
@@ -102,7 +102,7 @@ class GUIContextTest {
 
     @Test
     void testSetMatch() {
-        Match match = new Match(testUser, new User("David", "pass", "david@example.com", "user", "7778889999", null), 78.0);
+        Match match = new Match(testUser, new User("David", "pass", "david@example.com", "user", "7778889999", null, "en"), 78.0);
         guiContext.setMatches(new ArrayList<>());
         guiContext.setMatch(match);
 

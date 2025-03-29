@@ -83,7 +83,7 @@ class SessionControllerTest extends ApplicationTest {
     @BeforeAll
     static void start() {
         guiContext = GUIContext.getInstance();
-        user = new User("alicia", "password1", "alicia@example.com", "dummy", "1234567890",new Date());
+        user = new User("alicia", "password1", "alicia@example.com", "dummy", "1234567890",new Date(), "en");
         session = new Session(user);
         guiContext.setUser(user);
         guiContext.setSession(session);
@@ -244,8 +244,8 @@ class SessionControllerTest extends ApplicationTest {
 
         assertNotNull(participant, "Participant should not be null.");
 
-        User match1 = new User("match1", "pass", "match1@example.com", "dummy", "1234567890", new Date());
-        User match2 = new User("match2", "pass", "match2@example.com", "dummy", "0987654321", new Date());
+        User match1 = new User("match1", "pass", "match1@example.com", "dummy", "1234567890", new Date(), "en");
+        User match2 = new User("match2", "pass", "match2@example.com", "dummy", "0987654321", new Date(), "en");
 
         HashMap<User, Double> topMatches = new HashMap<>();
         topMatches.put(match1, 95.5);
