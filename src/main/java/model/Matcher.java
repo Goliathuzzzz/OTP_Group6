@@ -14,6 +14,7 @@ public class Matcher {
     private UserController userController;
     // Double arvo on yhteensopivuus-prosentti. Periaatteessa voi olla useampi paras match, niin tallennetaan hashmappiin
     private final HashMap<User, Double> topMatches;
+    private String debugUserName;
 
     public Matcher(Session session) {
         this.session = session;
@@ -56,7 +57,7 @@ public class Matcher {
         for (User u: potentialMatches) {
             if (u.equals(toMatch)) continue; // exclude participant from matches
 
-            System.out.println("DEBUG: Checking user: " + u.getUserName());
+            System.out.println("DEBUG: Checking user: " + u.getId());
 
             pMatchInterests = u.getInterests();
             if (pMatchInterests.isEmpty()) continue; // skip if user has no interests
@@ -75,12 +76,12 @@ public class Matcher {
                     System.out.println("DEBUG: No match found for interest: " + interest + " -> max potential: " + maxPotential);
                 }
                 if (maxPotential < currentHighestCompatibility) {
-                    System.out.println("DEBUG: Skipping " + u.getUserName() + " due to low potential.");
+                    System.out.println("DEBUG: Skipping " + u.getId() + " due to low potential.");
                     break;
                 }
             }
             compatibility = roundToTwoDecimalPlaces(compatibility);
-            System.out.println("DEBUG: Compatibility for " + u.getUserName() + ": " + compatibility);
+            System.out.println("DEBUG: Compatibility for " + u.getId() + ": " + compatibility);
 
             if (compatibility > currentHighestCompatibility) {
                 topMatches.clear();
@@ -89,7 +90,7 @@ public class Matcher {
                 System.out.println("DEBUG: New highest compatibility: " + compatibility);
             } else if (compatibility == currentHighestCompatibility) {
                 topMatches.put(u, compatibility);
-                System.out.println("DEBUG: Added " + u.getUserName() + " to top matches.");
+                System.out.println("DEBUG: Added " + u.getId() + " to top matches.");
             }
         }
         if (currentHighestCompatibility == 0) {
