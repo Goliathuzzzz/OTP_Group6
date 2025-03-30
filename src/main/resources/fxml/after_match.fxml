@@ -60,7 +60,7 @@
             <Font name="Hoefler Text" size="22.0"/>
         </font>
     </Label>
-    <Label fx:id="interestsLabel" layoutX="37" layoutY="653" styleClass="description">
+    <Label fx:id="interestsLabel" layoutX="37" layoutY="653" styleClass="description" maxWidth="330" wrapText="true">
         <font>
             <Font name="Hoefler Text" size="22.0"/>
         </font>
