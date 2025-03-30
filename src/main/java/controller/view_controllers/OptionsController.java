@@ -56,5 +56,9 @@ public class OptionsController extends BaseController {
             speedDating.setLayoutX(45);
             or.setLayoutX(175);
         }
+        else if (locale.getLanguage().equals("zh")) {
+            or.setLayoutX(190);
+            speedDating.setLayoutX(115);
+        }
     }
 }
