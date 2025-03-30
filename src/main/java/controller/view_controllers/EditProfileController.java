@@ -108,6 +108,9 @@ public class EditProfileController extends BaseController {
         else if (locale.getLanguage().equals("zh")) {
             routeToLang.setLayoutX(220);
         }
+        else if (locale.getLanguage().equals("en")) {
+            routeToLang.setLayoutX(160);
+        }
     }
 
     // For testing
