@@ -14,6 +14,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import util.SceneNames;
 
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 import static util.ProfilePictureUtil.getProfilePictureView;
@@ -38,6 +39,7 @@ public class EditProfileController extends BaseController {
 
     @FXML
     private void initialize() {
+        handleLang();
         if (guiContext.isUser()) {
             nameField.setText(guiContext.getUserName());
             emailField.setText(guiContext.getUserEmail());
@@ -95,6 +97,20 @@ public class EditProfileController extends BaseController {
         showAlert(Alert.AlertType.INFORMATION, bundle.getString("save_title"), bundle.getString("changes_saved"));
         saveChanges();
         switchScene(SceneNames.OPTIONS);
+    }
+
+    private void handleLang() {
+        LocaleManager localeManager = LocaleManager.getInstance();
+        Locale locale = localeManager.getLocale();
+        if (locale.getLanguage().equals("ja")) {
+            routeToLang.setLayoutX(200);
+        }
+        else if (locale.getLanguage().equals("zh")) {
+            routeToLang.setLayoutX(220);
+        }
+        else if (locale.getLanguage().equals("en")) {
+            routeToLang.setLayoutX(160);
+        }
     }
 
     // For testing

@@ -104,13 +104,13 @@ class AdminUsersControllerTest extends ApplicationTest {
 
     private static List<User> seedTestDB() {
         List<User> testUserList = new ArrayList<>();
-        User user1 = new User("Alice", "password1", "alice@example.com", "dummy", "1234567890",new Date());
+        User user1 = new User("Alice", "password1", "alice@example.com", "dummy", "1234567890",new Date(), "en");
 
-        User user2 = new User("Bob", "password2", "bob@example.com", "dummy", "0987654321",new Date());
+        User user2 = new User("Bob", "password2", "bob@example.com", "dummy", "0987654321",new Date(), "en");
 
-        User user3 = new User("Charlie", "password3", "charlie@example.com", "dummy", "1122334455", new Date());
+        User user3 = new User("Charlie", "password3", "charlie@example.com", "dummy", "1122334455", new Date(), "en");
 
-        User user4 = new User("Agatha", "password4", "agatha@example.com", "dummy", "23232323211", new Date());
+        User user4 = new User("Agatha", "password4", "agatha@example.com", "dummy", "23232323211", new Date(), "en");
 
         testUserList.add(user1);
         testUserList.add(user2);

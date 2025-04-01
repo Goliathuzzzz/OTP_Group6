@@ -7,9 +7,11 @@ public class LocaleManager {
     private static LocaleManager instance;
     private Locale locale;
     private ResourceBundle bundle;
+    private final GUIContext guiContext = GUIContext.getInstance();
 
     private LocaleManager() {
         this.locale = new Locale("en", "US");
+        guiContext.setLanguage(locale.getLanguage());
         this.bundle = ResourceBundle.getBundle("Messages", locale);
     }
 
@@ -26,10 +28,12 @@ public class LocaleManager {
 
     public void setLocale(Locale locale) {
         this.locale = locale;
+        guiContext.setLanguage(locale.getLanguage());
     }
 
     public void resetLanguage() {
         this.locale = new Locale("en", "US");
+        guiContext.setLanguage(locale.getLanguage());
         this.bundle = ResourceBundle.getBundle("Messages", locale);
     }
 

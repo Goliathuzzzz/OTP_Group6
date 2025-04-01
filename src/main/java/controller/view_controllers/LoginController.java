@@ -97,6 +97,14 @@ public class LoginController extends BaseController {
             or.setLayoutX(175);
             forgotPassword.setLayoutX(130);
         }
+        else if (localeManager.getLocale().getLanguage().equals("zh")) {
+            or.setLayoutX(185);
+            forgotPassword.setLayoutX(210);
+        }
+        else if (localeManager.getLocale().getLanguage().equals("en")) {
+            forgotPassword.setLayoutX(210);
+            newAccount.setLayoutX(195);
+        }
     }
 }
 

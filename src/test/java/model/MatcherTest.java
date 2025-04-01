@@ -94,7 +94,7 @@ class MatcherTest {
 
     private static List<User> seedTestDB() {
         List<User> testUserList = new ArrayList<>();
-        User user1 = new User("Alice", "password1", "alice@example.com", "dummy", "1234567890",new Date());
+        User user1 = new User("Alice", "password1", "alice@example.com", "dummy", "1234567890",new Date(), "en");
         user1.addAnimalInterest(Animal.HEVONEN);
         user1.addAnimalInterest(Animal.KOIRA);
         user1.addAnimalInterest(Animal.KISSA);
@@ -109,7 +109,7 @@ class MatcherTest {
         user1.addScienceInterest(Science.BIOLOGIA);
 
 
-        User user2 = new User("Bob", "password2", "bob@example.com", "dummy", "0987654321",new Date());
+        User user2 = new User("Bob", "password2", "bob@example.com", "dummy", "0987654321",new Date(), "en");
         user2.addFoodInterest(Food.KAIKKI_MENEE);
         user2.addHobbiesInterest(Hobby.INVESTOINTI);
         user2.addHobbiesInterest(Hobby.VIDEOPELIT);
@@ -118,7 +118,7 @@ class MatcherTest {
         user2.addSportsInterest(Sports.KAMPPAILULAJIT);
 
 
-        User user3 = new User("Charlie", "password3", "charlie@example.com", "dummy", "1122334455", new Date());
+        User user3 = new User("Charlie", "password3", "charlie@example.com", "dummy", "1122334455", new Date(), "en");
         user3.addAnimalInterest(Animal.KOIRA);
         user3.addFoodInterest(Food.VEGAANI);
         user3.addHobbiesInterest(Hobby.TÄHTIENTARKKAILU);
@@ -128,7 +128,7 @@ class MatcherTest {
         user3.addSportsInterest(Sports.PYÖRÄILY);
         user3.addSportsInterest(Sports.LENKKEILY);
 
-        User user4 = new User("Agatha", "password4", "agatha@example.com", "dummy", "23232323211", new Date());
+        User user4 = new User("Agatha", "password4", "agatha@example.com", "dummy", "23232323211", new Date(), "en");
         user4.addAnimalInterest(Animal.KISSA);
         user4.addFoodInterest(Food.KAIKKI_MENEE);
         user4.addHobbiesInterest(Hobby.NÄYTTELEMINEN);
@@ -185,7 +185,7 @@ class MatcherTest {
     @Test
     void matchParticipantWithUsersHavingNoInterestsTest() {
         List<User> usersWithNoInterests = new ArrayList<>();
-        User emptyUser = new User("NoInterestUser", "pass", "email@example.com", "dummy", "123", new Date());
+        User emptyUser = new User("NoInterestUser", "pass", "email@example.com", "dummy", "123", new Date(), "en");
         usersWithNoInterests.add(emptyUser);
 
         when(userController.displayAllUsers()).thenReturn(usersWithNoInterests);

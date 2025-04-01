@@ -23,11 +23,11 @@ class MatchControllerTest {
     static void init() {
         matchController = new MatchController();
         UserController userController = new UserController();
-        testUser = new User("Test2", "testpassword", "test@email.com", "test-subject", "123456789", new Date());
-        testUser2 = new User("Test2", "testpassword", "test@email.com", "test-subject", "123456789", new Date());
+        testUser = new User("Test2", "testpassword", "test@email.com", "test-subject", "123456789", new Date(), "en");
+        testUser2 = new User("Test2", "testpassword", "test@email.com", "test-subject", "123456789", new Date(), "en");
         userController.registerUser(testUser);
         userController.registerUser(testUser2);
-        testUser3 = new User("Test3", "testpassword", "test@email.com", "test-subject", "123456789", new Date());
+        testUser3 = new User("Test3", "testpassword", "test@email.com", "test-subject", "123456789", new Date(), "en");
         userController.registerUser(testUser3);
     }
     @BeforeEach

@@ -15,11 +15,11 @@
             </ImageView>
         </Pane>
         <Pane layoutX="39.0" layoutY="212.0" prefHeight="325.0" prefWidth="315.0" styleClass="group18">
-            <Label fx:id="nameLabel" prefHeight="22.0" prefWidth="87.0" styleClass="field-label" text="%name" />
+            <Label fx:id="nameLabel" prefHeight="22.0" prefWidth="250" styleClass="field-label" text="%name" />
             <TextField fx:id="nameField" layoutY="34.0" prefHeight="46.0" prefWidth="315.0" styleClass="input-field" />
-            <Label fx:id="emailLabel" layoutY="104.0" prefHeight="22.0" prefWidth="87.0" styleClass="field-label" text="%email" />
+            <Label fx:id="emailLabel" layoutY="104.0" prefHeight="22.0" prefWidth="250" styleClass="field-label" text="%email" />
             <TextField fx:id="emailField" layoutY="138.0" prefHeight="46.0" prefWidth="315.0" styleClass="input-field" />
-            <Label fx:id="phoneLabel" layoutY="208.0" prefHeight="22.0" prefWidth="173.0" styleClass="field-label" text="%phone_number" />
+            <Label fx:id="phoneLabel" layoutY="208.0" prefHeight="22.0" prefWidth="250" styleClass="field-label" text="%phone_number" />
             <TextField fx:id="phoneField" layoutY="242.0" prefHeight="46.0" prefWidth="315.0" styleClass="input-field" />
          <Label fx:id="routeToLang" onMouseClicked="#routeToLang" layoutX="130.0" layoutY="292.0" text="%change_lang" styleClass="lang-label" />
         </Pane>

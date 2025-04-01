@@ -19,7 +19,7 @@ public class Seeder {
         guestController.deleteAll();
         matchController.deleteAll();
 
-        User user1 = new User("alice", "password1", "alice@example.com", "dummy", "1234567890",new Date());
+        User user1 = new User("alice", "password1", "alice@example.com", "dummy", "1234567890",new Date(), "en");
         user1.addAnimalInterest(Animal.HEVONEN);
         user1.addAnimalInterest(Animal.KOIRA);
         user1.addAnimalInterest(Animal.KISSA);
@@ -34,7 +34,7 @@ public class Seeder {
         user1.addScienceInterest(Science.BIOLOGIA);
 
 
-        User user2 = new User("bob", "password2", "bob@example.com", "dummy", "0987654321",new Date());
+        User user2 = new User("bob", "password2", "bob@example.com", "dummy", "0987654321",new Date(), "fi");
         user2.addAnimalInterest(Animal.HIIRI);
         user2.addFoodInterest(Food.KAIKKI_MENEE);
         user2.addHobbiesInterest(Hobby.INVESTOINTI);
@@ -44,7 +44,7 @@ public class Seeder {
         user2.addSportsInterest(Sports.KAMPPAILULAJIT);
 
 
-        User user3 = new User("charlie", "password3", "charlie@example.com", "dummy", "1122334455", new Date());
+        User user3 = new User("charlie", "password3", "charlie@example.com", "dummy", "1122334455", new Date(), "ja");
         user3.addAnimalInterest(Animal.KOIRA);
         user3.addFoodInterest(Food.VEGAANI);
         user3.addHobbiesInterest(Hobby.TÄHTIENTARKKAILU);
@@ -54,7 +54,7 @@ public class Seeder {
         user3.addSportsInterest(Sports.PYÖRÄILY);
         user3.addSportsInterest(Sports.LENKKEILY);
 
-        User user4 = new User("agatha", "password4", "agatha@example.com", "dummy", "23232323211", new Date());
+        User user4 = new User("agatha", "password4", "agatha@example.com", "dummy", "23232323211", new Date(), "zh");
         user4.addAnimalInterest(Animal.KISSA);
         user4.addFoodInterest(Food.KAIKKI_MENEE);
         user4.addHobbiesInterest(Hobby.AKTIVISMI);
@@ -62,11 +62,10 @@ public class Seeder {
         user4.addScienceInterest(Science.KEMIA);
         user4.addSportsInterest(Sports.TENNIS);
 
-        User admin = new User("admin", "admin", "admin@admin.com", "admin", "1234567890", new Date());
+        User admin = new User("admin", "admin", "admin@admin.com", "admin", "1234567890", new Date(), "en");
 
         Guest guest1 = new Guest("1231321312312", new Date());
         guestController.registerGuest(guest1);
-
         userController.registerUser(user1);
         userController.registerUser(user2);
         userController.registerUser(user3);
