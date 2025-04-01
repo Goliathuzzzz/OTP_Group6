@@ -58,10 +58,13 @@ public class AfterMatchController extends BaseController {
             return;
         }
 
-        // temporary solution for and?
         String and = bundle.getString("and");
         Match match = matches.getLast();
-        matchParticipantsLabel.setText(match.getParticipant1().getDisplayName() + " " + and + " " + match.getParticipant2().getDisplayName());
+
+        String displayName1 = localizeGuestName(match.getParticipant1().getDisplayName());
+        String displayName2 = localizeGuestName(match.getParticipant2().getDisplayName());
+
+        matchParticipantsLabel.setText(displayName1 + " " + and + " " + displayName2);
         percentageLabel.setText(Math.round(match.getCompatibility()) + "%");
 
         List<Category> interests = MatchUtils.findCommonInterests(
@@ -84,5 +87,13 @@ public class AfterMatchController extends BaseController {
             interestsLabel.setText(sb.toString());
         }
 
+    }
+
+    private String localizeGuestName(String name) {
+        if (name.startsWith("vieras")) {
+            String localizedGuest = bundle.getString("guest");
+            return name.replaceFirst("vieras", localizedGuest);
+        }
+        return name;
     }
 }
