@@ -14,6 +14,20 @@
 
 ---
 
+## 🌍 Language Support
+
+**Qupids Speed Dating** supports multiple user interface languages for a more inclusive and localized experience:
+
+   - 🇺🇸 English (en-US)
+
+   - 🇫🇮 Finnish (fi-FI)
+
+   - 🇯🇵 Japanese (ja-JP)
+
+   - 🇨🇳 Chinese (zh-CN)
+
+---
+
 ## 🎯 Matchmaking Algorithm
 
 Qupids Speed Dating uses a compatibility based matchmaking algorithm to pair participants based on shared interests.
