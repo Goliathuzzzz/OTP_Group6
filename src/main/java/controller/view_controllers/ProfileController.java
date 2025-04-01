@@ -74,7 +74,7 @@ public class ProfileController extends BaseController {
         profileImagePane.getChildren().add(profileImageView);
 
         Locale currentLocale = localeManager.getLocale();
-        String languageDisplay = currentLocale.getDisplayLanguage(currentLocale);
+        String languageDisplay = currentLocale.getDisplayLanguage(currentLocale).toLowerCase();
         langLabel.setText(languageDisplay);
 
         Platform.runLater(() -> {
