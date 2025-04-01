@@ -51,9 +51,13 @@ public abstract class Participant {
         return id;
     }
 
-    // for admin match display
     public String getDisplayName() {
-        return "vieras" + id;
+        if (this instanceof User) {
+            return ((User) this).getAnyUserName();
+        } else if (this instanceof Guest) {
+            return "vieras" + id;
+        }
+        return "n/a";
     }
 
     public String getPhoneNumber() {
