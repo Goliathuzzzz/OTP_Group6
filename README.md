@@ -75,6 +75,38 @@ The application uses a compatibility based matchmaking algorithm to pair partici
 
 ---
 
+## 🗃️ Database Design
+
+The **Qupids Speed Dating** uses a relational database built with **MariaDB**, structured to support multilingual users, flexible interest tracking, and scalable matchmaking.
+
+### Key Aspects of the Database
+
+- **Participant**: The core entity, which includes both registered users and guests.
+- **User & Guest**: Separated using joined-table inheritance via JPA, inheriting common fields from the `participants` table.
+- **Interest**: Modeled as enums and linked to participants using categorized lists (e.g., hobbies, sports).
+- **Match**: Created dynamically between participants, storing compatibility scores and links to shared interests.
+- **Session**: Temporary state tracking the user’s current interest selection flow.
+
+This design ensures normalization, avoids redundancy, and supports multilingual data through proper character encoding (`utf8mb4`) in both schema and queries.
+
+---
+
+### Entity-Relationship Diagram
+
+> ![ER Diagram](./src/main/resources/sql/er-schema.png)
+
+This diagram shows all the entities `Participant`, `User`, `Guest`, `Match`, `LocalizedUser`, and their relationships.
+
+---
+
+### Relational Schema
+
+> ![Relational Schema](./src/main/resources/sql/relational-schema.png)
+
+The relational schema illustrates table structures, primary and foreign keys.
+
+---
+
 ## 🛂 Project Structure
 
 ```
