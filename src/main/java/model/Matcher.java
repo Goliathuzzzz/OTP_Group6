@@ -51,7 +51,7 @@ public class Matcher {
             return;
         }
 
-        System.out.println("DEBUG: Matching for participant " + toMatch.getDisplayName());
+        System.out.println("DEBUG: Matching for participant " + toMatch.getDisplayName("en"));
         System.out.println("DEBUG: Participant interests: " + participantInterests);
 
         for (User u: potentialMatches) {

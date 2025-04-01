@@ -61,8 +61,8 @@ public class AfterMatchController extends BaseController {
         String and = bundle.getString("and");
         Match match = matches.getLast();
 
-        String displayName1 = localizeGuestName(match.getParticipant1().getDisplayName());
-        String displayName2 = localizeGuestName(match.getParticipant2().getDisplayName());
+        String displayName1 = localizeGuestName(match.getParticipant1().getDisplayName(context.getLanguage()));
+        String displayName2 = localizeGuestName(match.getParticipant2().getDisplayName(context.getLanguage()));
 
         matchParticipantsLabel.setText(displayName1 + " " + and + " " + displayName2);
         percentageLabel.setText(Math.round(match.getCompatibility()) + "%");

@@ -110,6 +110,6 @@ class ParticipantTest {
 
     @Test
     void testGetDisplayName() {
-        assertEquals("vieras0", participant.getDisplayName(), "Display name should follow format 'vieras' + id.");
+        assertEquals("vieras0", participant.getDisplayName("en"), "Display name should follow format 'vieras' + id.");
     }
 }
