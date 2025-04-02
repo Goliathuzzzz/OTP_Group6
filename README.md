@@ -95,7 +95,7 @@ This design ensures normalization, avoids redundancy, and supports multilingual 
 
 > ![ER Diagram](./src/main/resources/sql/er-schema.png)
 
-This diagram shows all the entities `Participant`, `User`, `Guest`, `Match`, `LocalizedUser`, and their relationships.
+This diagram shows all the entities `Participant`, `User`, `Match`, `LocalizedUser`, and their relationships.
 
 ---
 
