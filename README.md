@@ -95,7 +95,7 @@ This design ensures normalization, avoids redundancy, and supports multilingual 
 
 > ![ER Diagram](./src/main/resources/sql/er-schema.png)
 
-This diagram shows all the entities `Participant`, `User`, `Guest`, `Match`, `LocalizedUser`, and their relationships.
+This diagram shows all the entities `Participant`, `User`, `Match`, `LocalizedUser`, and their relationships.
 
 ---
 
@@ -124,17 +124,17 @@ OTP_Group6/
 │   │   │   ├── util/          # Utility functions and helpers
 │   │   │   ├── view/          # JavaFX UI components
 │   │   │   └── Main           # Application entry point
-│   │   ├── resources/
-│   │   │   ├── css/           # Styling files
-│   │   │   ├── fxml/          # UI layouts
-│   │   │   ├── images/        # Image assets used in UI
-│   │   │   ├── META-INF/      # Persistence and metadata configurations
-│   │   │   ├── sql/           # Database initialization and scripts
-|   |   |   └── messages/      # Resource bundle for multilingual UI support
-|   |   |        ├── Messages_en_US.properties   # English
-|   |   │        ├── Messages_fi_FI.properties   # Finnish
-|   |   │        ├── Messages_ja_JP.properties   # Japanese
-|   |   │        └── Messages_zh_CN.properties   # Chinese
+│   │   └── resources/
+│   │       ├── css/           # Styling files
+│   │       ├── fxml/          # UI layouts
+│   │       ├── images/        # Image assets used in UI
+│   │       ├── META-INF/      # Persistence and metadata configurations
+│   │       ├── sql/           # Database initialization and scripts
+|   |       └── messages/      # Resource bundle for multilingual UI support
+|   |            ├── Messages_en_US.properties   # English
+|   |            ├── Messages_fi_FI.properties   # Finnish
+|   |            ├── Messages_ja_JP.properties   # Japanese
+|   |            └── Messages_zh_CN.properties   # Chinese
 │   └── test/                  # Unit tests
 ├── Dockerfile                 # Containerization
 ├── Jenkinsfile                # CI/CD automation pipeline
