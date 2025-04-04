@@ -23,7 +23,7 @@ public class UserController {
     public User displayUser(int id) {
         User user = userService.findUserById(id);
         if (user != null) {
-            System.out.println("User found: " + user.getUserName() + " (" + user.getEmail() + ")");
+            System.out.println("User found: " + user.getId() + " (" + user.getEmail() + ")");
         } else {
             System.out.println("User not found.");
         }
@@ -33,7 +33,7 @@ public class UserController {
     public List<User> displayAllUsers() {
         List<User> users = userService.getAllUsers();
         for (User user : users) {
-            System.out.println(user.getUserName() + " - " + user.getEmail());
+            System.out.println(user.getId() + " - " + user.getEmail());
         }
         return users;
     }

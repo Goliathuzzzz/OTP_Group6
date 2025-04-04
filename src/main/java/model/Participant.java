@@ -3,10 +3,7 @@ package model;
 import jakarta.persistence.*;
 import model.categories.*;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -51,9 +48,16 @@ public abstract class Participant {
         return id;
     }
 
-    // for admin match display
-    public String getDisplayName() {
-        return "vieras" + id;
+    public String getDisplayName(String language) {
+        if (this instanceof User) {
+            Optional<LocalizedUser> localizedUser = ((User) this).getLocalization(language);
+            if (localizedUser.isPresent()) {
+                return localizedUser.get().getUserName();
+            }
+            return ((User) this).getAnyUserName();
+        } else {
+            return "vieras" + id;
+        }
     }
 
     public String getPhoneNumber() {

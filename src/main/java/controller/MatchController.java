@@ -1,5 +1,6 @@
 package controller;
 
+import context.GUIContext;
 import jakarta.persistence.EntityManager;
 import model.Match;
 import model.Participant;
@@ -9,6 +10,7 @@ import java.util.List;
 public class MatchController {
 
     private final MatchService matchService;
+    private final GUIContext context = GUIContext.getInstance();
 
     public MatchController() {
         matchService = new MatchService();
@@ -22,7 +24,7 @@ public class MatchController {
     public Match displayMatch(int id) {
         Match match = matchService.findMatchById(id);
         if (match != null) {
-            System.out.println("Match found: " + match.getParticipant1().getDisplayName() + " + " + match.getParticipant2().getDisplayName());
+            System.out.println("Match found: " + match.getParticipant1().getDisplayName(context.getLanguage()) + " + " + match.getParticipant2().getDisplayName(context.getLanguage()));
         } else {
             System.out.println("Match not found");
         }
@@ -32,7 +34,7 @@ public class MatchController {
     public List<Match> displayAllMatches() {
         List<Match> matches = matchService.findAllMatches();
         for (Match m: matches) {
-            System.out.println(m.getParticipant1().getDisplayName() + " + " + m.getParticipant2().getDisplayName());
+            System.out.println(m.getParticipant1().getDisplayName(context.getLanguage()) + " + " + m.getParticipant2().getDisplayName(context.getLanguage()));
         }
         return matches;
     }
@@ -40,7 +42,7 @@ public class MatchController {
     public List<Match> displayAllByParticipant(Participant participant) {
         List<Match> matches = matchService.findByParticipant(participant);
         for (Match m: matches) {
-            System.out.println(m.getParticipant1().getDisplayName() + " + " + m.getParticipant2().getDisplayName());
+            System.out.println(m.getParticipant1().getDisplayName(context.getLanguage()) + " + " + m.getParticipant2().getDisplayName(context.getLanguage()));
         }
         return matches;
     }

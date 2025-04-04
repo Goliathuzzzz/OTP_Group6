@@ -16,21 +16,34 @@ import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.Start;
 
 import java.lang.reflect.Field;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 @ExtendWith(ApplicationExtension.class)
 class HelpControllerTest {
 
     private HelpController helpController;
+    private Stage stage;
 
     @Start
-    private void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/help.fxml"));
+    public void start(Stage stage) throws Exception {
+        this.stage = stage;
+
+        var fxmlLocation = getClass().getResource("/fxml/help.fxml");
+        assertNotNull(fxmlLocation, "help.fxml file not found.");
+
+        ResourceBundle bundle = ResourceBundle.getBundle("Messages", Locale.US); // use Messages.properties
+        FXMLLoader loader = new FXMLLoader(fxmlLocation, bundle);
+
         Parent root = loader.load();
         helpController = loader.getController();
+        assertNotNull(helpController, "HelpController should be initialized.");
 
-        stage.setScene(new Scene(root));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
         stage.show();
     }
+
 
 
     @Test

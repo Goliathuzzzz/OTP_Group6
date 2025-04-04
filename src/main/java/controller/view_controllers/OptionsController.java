@@ -52,9 +52,13 @@ public class OptionsController extends BaseController {
     private void handleLang() {
         LocaleManager localeManager = LocaleManager.getInstance();
         Locale locale = localeManager.getLocale();
-        if (locale.getLanguage().equals("ja")) {
+        if ("ja".equals(locale.getLanguage())) {
             speedDating.setLayoutX(45);
             or.setLayoutX(175);
+        }
+        else if ("zh".equals(locale.getLanguage())) {
+            or.setLayoutX(190);
+            speedDating.setLayoutX(115);
         }
     }
 }

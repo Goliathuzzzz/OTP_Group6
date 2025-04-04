@@ -1,5 +1,6 @@
 package controller.view_controllers;
 
+import context.GUIContext;
 import context.LocaleManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -24,11 +25,19 @@ public class UserItemController {
     private Consumer<User> onDelete;
     private final LocaleManager localeManager = LocaleManager.getInstance();
     private final ResourceBundle bundle = localeManager.getBundle();
+    private final GUIContext guiContext = GUIContext.getInstance();
 
     public void setUser(User user, Consumer<User> onDelete) {
         this.user = user;
         this.onDelete = onDelete;
-        userNameLabel.setText(user.getUserName());
+        String language = guiContext.getLanguage();
+        String userName;
+        if (user.getLocalization(language).isPresent()) {
+            userName = user.getLocalization(language).get().getUserName();
+        } else {
+            userName = user.getAnyUserName();
+        }
+        userNameLabel.setText(userName);
     }
 
     public User getUser() {
@@ -44,7 +53,7 @@ public class UserItemController {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(bundle.getString("click_name_alert"));
         alert.setHeaderText(null);
-        alert.setContentText(bundle.getString("click_name_confirmation") + user.getUserName());
+        alert.setContentText(bundle.getString("click_name_confirmation") + userNameLabel.getText());
         alert.showAndWait();
     }
 
@@ -57,7 +66,7 @@ public class UserItemController {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle(bundle.getString("user_removal_alert"));
         alert.setHeaderText(null);
-        alert.setContentText(bundle.getString("confirm_user_removal") + user.getUserName() + "?");
+        alert.setContentText(bundle.getString("confirm_user_removal") + userNameLabel.getText() + "?");
         alert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
                 deleteUser();

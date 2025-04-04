@@ -21,6 +21,7 @@ import java.util.ResourceBundle;
 public class RegistrationController extends BaseController {
 
     UserController uController = new UserController();
+    GUIContext guiContext = GUIContext.getInstance();
 
     @FXML
     private AnchorPane registrationPane;
@@ -81,7 +82,7 @@ public class RegistrationController extends BaseController {
             return;
         }
         String userName = email.substring(0, email.indexOf("@")).replace(".", " "); // can be improved
-        User user = new User(userName, password, email, "none", phone, new Date());
+        User user = new User(userName, password, email, "none", phone, new Date(), guiContext.getLanguage());
         uController.registerUser(user);
         GUIContext.getInstance().setUser(user);
         switchScene(SceneNames.BEGIN_SESSION);
@@ -93,7 +94,7 @@ public class RegistrationController extends BaseController {
     }
 
     private boolean isValidEmail(String email) {
-        return email.matches("^[A-Za-z0-9+_.-]+@(.+)$");
+        return email.matches("^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$");
     }
 
     private boolean isValidPhone(String phone) {

@@ -33,13 +33,13 @@ public abstract class BaseController {
     protected void switchScene(String destination, Object data) {
         GUIContext context = GUIContext.getInstance();
 
-        if (destination.equals(SceneNames.PROFILE)) {
+        if (SceneNames.PROFILE.equals(destination)) {
             destination = handleProfileSwitch(context, destination);
             if (destination == null) {
                 return;
             }
         }
-        if (destination.equals(SceneNames.OPTIONS)) {
+        if (SceneNames.OPTIONS.equals(destination)) {
             handleOptionsSwitch(context);
         }
 

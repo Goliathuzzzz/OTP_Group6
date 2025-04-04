@@ -54,10 +54,10 @@ public class GuestViewController extends BaseController {
     private void handleContinueClick() {
         String phoneNumber = phoneField.getText();
         if (phoneNumber.isEmpty()) {
-            showAlert( Alert.AlertType.INFORMATION, bundle.getString("input_title"),bundle.getString("enter_phone_prompt"));
+            showAlert(Alert.AlertType.INFORMATION, bundle.getString("input_title"), bundle.getString("enter_phone_prompt"));
         }
         else if (!isValidPhone(phoneNumber)) {
-            showAlert( Alert.AlertType.INFORMATION, bundle.getString("error_title"), bundle.getString("invalid_phone"));
+            showAlert(Alert.AlertType.INFORMATION, bundle.getString("error_title"), bundle.getString("invalid_phone"));
         } else {
             Guest guest = new Guest(phoneNumber, new Date());
             gController.registerGuest(guest);

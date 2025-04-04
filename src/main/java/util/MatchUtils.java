@@ -19,4 +19,7 @@ public class MatchUtils {
                 .map(s -> s.toLowerCase().replace("_", " "))
                 .collect(Collectors.joining(", "));
     }
+
+    private MatchUtils() {
+    }
 }

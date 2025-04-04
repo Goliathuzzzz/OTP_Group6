@@ -21,4 +21,7 @@ public class SceneNames {
     public static final String AFTER_MATCH = "after_match";
     public static final String HELP = "help";
     public static final String LANGUAGE = "language";
+
+    private SceneNames() {
+    }
 }

@@ -26,7 +26,7 @@ import java.util.*;
 public class SessionController extends BaseController {
 
     private final GUIContext context = GUIContext.getInstance();
-    private Session session = context.getSession();
+    private final Session session = context.getSession();
     private final Participant participant = session.getParticipant();
     private MatchController matchController = new MatchController();
     private Matcher matcher = new Matcher(session);
@@ -60,7 +60,7 @@ public class SessionController extends BaseController {
         List<Category> selectedInterests = session.getParticipantInterests();
         if (selectedInterests.isEmpty()) {
             System.err.println("ERROR: No interests selected in SessionController handleReady()");
-            showAlert(Alert.AlertType.WARNING, bundle.getString( "error"), bundle.getString("choose_one_interest_alert"));
+            showAlert(Alert.AlertType.WARNING, bundle.getString("error"), bundle.getString("choose_one_interest_alert"));
             return;
         }
         matchParticipant();
@@ -158,7 +158,7 @@ public class SessionController extends BaseController {
     private void handleLang() {
         LocaleManager localeManager = LocaleManager.getInstance();
         Locale locale = localeManager.getLocale();
-        if (locale.getLanguage().equals("ja")) {
+        if ("ja".equals(locale.getLanguage())) {
             sessionLabel.setScaleX(0.8);
             sessionLabel.setScaleY(0.8);
         }

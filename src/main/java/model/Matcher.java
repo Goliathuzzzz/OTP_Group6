@@ -14,6 +14,7 @@ public class Matcher {
     private UserController userController;
     // Double arvo on yhteensopivuus-prosentti. Periaatteessa voi olla useampi paras match, niin tallennetaan hashmappiin
     private final HashMap<User, Double> topMatches;
+    private String debugUserName;
 
     public Matcher(Session session) {
         this.session = session;
@@ -50,37 +51,40 @@ public class Matcher {
             return;
         }
 
-        System.out.println("DEBUG: Matching for participant " + toMatch.getDisplayName());
+        System.out.println("DEBUG: Matching for participant " + toMatch.getDisplayName("en"));
         System.out.println("DEBUG: Participant interests: " + participantInterests);
 
         for (User u: potentialMatches) {
-            if (u.equals(toMatch)) continue; // exclude participant from matches
+            if (u.equals(toMatch)) {
+                continue; // exclude participant from matches
 
-            System.out.println("DEBUG: Checking user: " + u.getUserName());
+            }
+            System.out.println("DEBUG: Checking user: " + u.getId());
 
             pMatchInterests = u.getInterests();
-            if (pMatchInterests.isEmpty()) continue; // skip if user has no interests
+            if (pMatchInterests.isEmpty()) {
+                continue; // skip if user has no interests
 
+            }
             compatibility = 0;
             maxPotential = 100;
             increment = (double) 100 / pMatchInterests.size();
 
-            for (Category interest: session.getParticipantInterests()) {
+            for (Category interest : session.getParticipantInterests()) {
                 if (pMatchInterests.contains(interest)) {
                     compatibility += increment;
                     System.out.println("DEBUG: Match found for interest: " + interest + " -> compatibility: " + compatibility);
-                }
-                else {
+                } else {
                     maxPotential -= increment;
                     System.out.println("DEBUG: No match found for interest: " + interest + " -> max potential: " + maxPotential);
                 }
                 if (maxPotential < currentHighestCompatibility) {
-                    System.out.println("DEBUG: Skipping " + u.getUserName() + " due to low potential.");
+                    System.out.println("DEBUG: Skipping " + u.getId() + " due to low potential.");
                     break;
                 }
             }
             compatibility = roundToTwoDecimalPlaces(compatibility);
-            System.out.println("DEBUG: Compatibility for " + u.getUserName() + ": " + compatibility);
+            System.out.println("DEBUG: Compatibility for " + u.getId() + ": " + compatibility);
 
             if (compatibility > currentHighestCompatibility) {
                 topMatches.clear();
@@ -89,7 +93,7 @@ public class Matcher {
                 System.out.println("DEBUG: New highest compatibility: " + compatibility);
             } else if (compatibility == currentHighestCompatibility) {
                 topMatches.put(u, compatibility);
-                System.out.println("DEBUG: Added " + u.getUserName() + " to top matches.");
+                System.out.println("DEBUG: Added " + u.getId() + " to top matches.");
             }
         }
         if (currentHighestCompatibility == 0) {

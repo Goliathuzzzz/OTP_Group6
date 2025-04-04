@@ -13,4 +13,7 @@ public class CategoryFilter {
                 .map(enumClass::cast)
                 .collect(Collectors.toList());
     }
+
+    private CategoryFilter() {
+    }
 }

@@ -3,6 +3,9 @@ package model;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Optional;
+import java.util.Set;
 
 /**
  * Where to add Column? Or relation?
@@ -13,8 +16,8 @@ import java.util.Date;
 @PrimaryKeyJoinColumn(name = "id")
 public class User extends Participant{
 
-    @Column(nullable = false)
-    private String userName;
+    @OneToMany(mappedBy = "users", cascade = CascadeType.ALL, orphanRemoval = true)
+    private final Set<LocalizedUser> localizations = new HashSet<>();
 
     @Column(nullable = false)
     private String password;
@@ -25,27 +28,34 @@ public class User extends Participant{
     @Column(nullable = false)
     private String role;
 
+    @Column
+    private String defaultLanguage;
+
     public User() {}
 
-    public User(String userName, String password, String email, String role, String phoneNumber, Date joinDate) {
+    public User(String userName, String password, String email, String role, String phoneNumber, Date joinDate, String defaultLanguage) {
         super(phoneNumber, joinDate);
-        this.userName = userName;
         this.password = password;
         this.email = email;
         this.role = role;
+        this.defaultLanguage = defaultLanguage;
+        addLocalization(defaultLanguage, userName);
     }
 
-    public String getUserName() {
-        return userName;
+    public void addLocalization(String language, String userName) {
+        //TODO: Role needs to be translated here before assigning
+        LocalizedUser localization = new LocalizedUser(language, userName, role);
+        localizations.add(localization);
+        localization.setUsers(this);
     }
 
-    @Override
-    public String getDisplayName() {
-        return getUserName();
+    public void removeLocalization(LocalizedUser localization) {
+        localizations.remove(localization);
+        localization.setUsers(null);
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public Optional<LocalizedUser> getLocalization(String language) {
+        return localizations.stream().filter(l -> l.getLanguage().equals(language)).findFirst();
     }
 
     public String getPassword() {
@@ -70,5 +80,20 @@ public class User extends Participant{
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public void setDefaultLanguage(String defaultLanguage) {
+        this.defaultLanguage = defaultLanguage;
+    }
+
+    public String getDefaultLanguage() {
+        return defaultLanguage;
+    }
+
+    public String getAnyUserName() {
+        if (localizations.stream().findFirst().isPresent()) {
+            return localizations.stream().findFirst().get().getUserName();
+        }
+        return "No name";
     }
 }

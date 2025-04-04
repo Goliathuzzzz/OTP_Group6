@@ -17,6 +17,8 @@ import org.testfx.framework.junit5.ApplicationTest;
 
 import java.net.URL;
 import java.util.Date;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
@@ -39,10 +41,14 @@ class EditProfileControllerTest extends ApplicationTest {
     @Override
     public void start(Stage stage) throws Exception {
         this.stage = stage;
+
         var fxmlLocation = getClass().getResource("/fxml/edit_profile.fxml");
         assertNotNull(fxmlLocation, "edit_profile.fxml file not found.");
 
+        ResourceBundle testBundle = ResourceBundle.getBundle("Messages", Locale.US);
         FXMLLoader loader = getFxmlLoader(fxmlLocation);
+        loader.setResources(testBundle);
+
         root = loader.load();
         editProfileController = loader.getController();
 
@@ -54,6 +60,7 @@ class EditProfileControllerTest extends ApplicationTest {
         stage.setScene(scene);
         stage.show();
     }
+
 
     private static FXMLLoader getFxmlLoader(URL fxmlLocation) {
         FXMLLoader loader = new FXMLLoader(fxmlLocation);
@@ -80,7 +87,7 @@ class EditProfileControllerTest extends ApplicationTest {
         name = "Marko";
         email = "marko@email.com";
         phone = "0500332331";
-        user = new User(name, "markopassword", email, "dummy", phone, new Date());
+        user = new User(name, "markopassword", email, "dummy", phone, new Date(), "en");
         context.setUser(user);
     }
 

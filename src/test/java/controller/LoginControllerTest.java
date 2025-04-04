@@ -14,7 +14,10 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.testfx.framework.junit5.ApplicationTest;
 
+import java.net.URL;
 import java.util.Date;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.testfx.api.FxAssert.verifyThat;
@@ -28,27 +31,26 @@ public class LoginControllerTest extends ApplicationTest {
     private static LoginController controller;
     private Parent root;
     private Stage stage;
+    ResourceBundle bundle = ResourceBundle.getBundle("Messages", Locale.US);
 
 
     @Override
     public void start(Stage stage) throws Exception {
         this.stage = stage;
-        var fxmlLocation = getClass().getResource("/fxml/login.fxml");
+        URL fxmlLocation = getClass().getResource("/fxml/login.fxml");
         assertNotNull(fxmlLocation, "Login.fxml file not found.");
-
-        FXMLLoader loader = new FXMLLoader(fxmlLocation);
+        FXMLLoader loader = new FXMLLoader(fxmlLocation, bundle);
         root = loader.load();
         controller = loader.getController();
         controller.setUserController(userController);
-
         if (controller != null) {
             ((BaseController) controller).setStage(stage);
         }
-
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
+
 
     @BeforeAll
     static void start() {
@@ -64,7 +66,7 @@ public class LoginControllerTest extends ApplicationTest {
     @Test
     void testValidLoginSwitchesScene() {
         verifyThat("#emailField", Node::isVisible);
-        User user = new User("alice", "password1", "alice@example.com", "dummy", "1234567890",new Date());
+        User user = new User("alice", "password1", "alice@example.com", "dummy", "1234567890", new Date(), "en");
         when(userController.login("alice@example.com", "password1")).thenReturn(user);
         clickOn("#emailField").write("alice@example.com");
         clickOn("#passwordField").write("password1");
@@ -76,7 +78,7 @@ public class LoginControllerTest extends ApplicationTest {
         assertNotNull(newRoot.lookup("#beginSessionPane"), "Begin Session scene should be loaded.");
         assertNotSame(newRoot, root, "Scene root should have changed after login.");
         assertTrue(stage.isShowing(), "Stage should still be showing after scene switch.");
-        assertEquals("aloita", stage.getTitle(), "Stage title should match after scene switch.");
+        assertEquals(bundle.getString("begin"), stage.getTitle(), "Stage title should match after scene switch.");
     }
 
     @Test
@@ -87,7 +89,7 @@ public class LoginControllerTest extends ApplicationTest {
         assertNotNull(newRoot.lookup("#registrationPane"), "Registration scene should be loaded.");
         assertNotSame(newRoot, root, "Scene root should have changed after clicking New Account.");
         assertTrue(stage.isShowing(), "Stage should still be showing after scene switch.");
-        assertEquals("rekisteröinti", stage.getTitle(), "Stage title should match after scene switch.");
+        assertEquals(bundle.getString("registration"), stage.getTitle(), "Stage title should match after scene switch.");
     }
 
     @Test
