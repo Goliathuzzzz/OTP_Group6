@@ -83,7 +83,7 @@ class SessionControllerTest extends ApplicationTest {
     @BeforeAll
     static void start() {
         guiContext = GUIContext.getInstance();
-        user = new User("alicia", "password1", "alicia@example.com", "dummy", "1234567890",new Date(), "en");
+        user = new User("alicia", "password1", "alicia@example.com", "dummy", "1234567890", new Date(), "en");
         session = new Session(user);
         guiContext.setUser(user);
         guiContext.setSession(session);

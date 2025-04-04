@@ -19,7 +19,7 @@ public class Seeder {
         guestController.deleteAll();
         matchController.deleteAll();
 
-        User user1 = new User("alice", "password1", "alice@example.com", "dummy", "1234567890",new Date(), "en");
+        User user1 = new User("alice", "password1", "alice@example.com", "dummy", "1234567890", new Date(), "en");
         user1.addAnimalInterest(Animal.HEVONEN);
         user1.addAnimalInterest(Animal.KOIRA);
         user1.addAnimalInterest(Animal.KISSA);
@@ -34,7 +34,7 @@ public class Seeder {
         user1.addScienceInterest(Science.BIOLOGIA);
 
 
-        User user2 = new User("bob", "password2", "bob@example.com", "dummy", "0987654321",new Date(), "fi");
+        User user2 = new User("bob", "password2", "bob@example.com", "dummy", "0987654321", new Date(), "fi");
         user2.addAnimalInterest(Animal.HIIRI);
         user2.addFoodInterest(Food.KAIKKI_MENEE);
         user2.addHobbiesInterest(Hobby.INVESTOINTI);

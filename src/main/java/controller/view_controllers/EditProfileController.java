@@ -102,13 +102,13 @@ public class EditProfileController extends BaseController {
     private void handleLang() {
         LocaleManager localeManager = LocaleManager.getInstance();
         Locale locale = localeManager.getLocale();
-        if (locale.getLanguage().equals("ja")) {
+        if ("ja".equals(locale.getLanguage())) {
             routeToLang.setLayoutX(200);
         }
-        else if (locale.getLanguage().equals("zh")) {
+        else if ("zh".equals(locale.getLanguage())) {
             routeToLang.setLayoutX(220);
         }
-        else if (locale.getLanguage().equals("en")) {
+        else if ("en".equals(locale.getLanguage())) {
             routeToLang.setLayoutX(160);
         }
     }

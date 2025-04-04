@@ -1,5 +1,6 @@
 package controller.view_controllers;
 
+import context.GUIContext;
 import context.LocaleManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -19,12 +20,13 @@ public class PairItemController {
     private Consumer<Match> onDelete;
     private final LocaleManager localeManager = LocaleManager.getInstance();
     private final ResourceBundle bundle = localeManager.getBundle();
+    private final GUIContext context = GUIContext.getInstance();
 
     public void setMatch(Match match, Consumer<Match> onDelete) {
         this.match = match;
         this.onDelete = onDelete;
-        nameLabel1.setText(match.getParticipant1().getDisplayName());
-        nameLabel2.setText(match.getParticipant2().getDisplayName());
+        nameLabel1.setText(match.getParticipant1().getDisplayName(context.getLanguage()));
+        nameLabel2.setText(match.getParticipant2().getDisplayName(context.getLanguage()));
     }
 
     public Match getMatch() {
@@ -41,8 +43,8 @@ public class PairItemController {
         alert.setHeaderText(null);
 
         String and = bundle.getString("and");
-        alert.setContentText(bundle.getString("confirm_match_removal") + match.getParticipant1().getDisplayName() + " " + and + " " +
-                match.getParticipant2().getDisplayName() + "?");
+        alert.setContentText(bundle.getString("confirm_match_removal") + match.getParticipant1().getDisplayName(context.getLanguage()) + " " + and + " "
+                + match.getParticipant2().getDisplayName(context.getLanguage()) + "?");
         alert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
                 deletePair();

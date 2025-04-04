@@ -11,10 +11,10 @@ import java.util.Optional;
 public class GUIContext {
     private static GUIContext instance;
     private User user;
-    private boolean isUser = false;
+    private boolean isUser;
     private Guest guest;
-    private boolean isGuest = false;
-    private boolean isAdmin = false;
+    private boolean isGuest;
+    private boolean isAdmin;
     private Session session;
     private Matcher matcher;
     private List<Match> matches;
@@ -39,7 +39,7 @@ public class GUIContext {
     public void setUser(User user) {
         this.user = user;
         isUser = true;
-        if (user.getRole().equals("admin")) {
+        if ("admin".equals(user.getRole())) {
             isAdmin = true;
         }
     }

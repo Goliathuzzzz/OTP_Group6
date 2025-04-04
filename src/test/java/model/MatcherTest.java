@@ -94,7 +94,7 @@ class MatcherTest {
 
     private static List<User> seedTestDB() {
         List<User> testUserList = new ArrayList<>();
-        User user1 = new User("Alice", "password1", "alice@example.com", "dummy", "1234567890",new Date(), "en");
+        User user1 = new User("Alice", "password1", "alice@example.com", "dummy", "1234567890", new Date(), "en");
         user1.addAnimalInterest(Animal.HEVONEN);
         user1.addAnimalInterest(Animal.KOIRA);
         user1.addAnimalInterest(Animal.KISSA);
@@ -109,7 +109,7 @@ class MatcherTest {
         user1.addScienceInterest(Science.BIOLOGIA);
 
 
-        User user2 = new User("Bob", "password2", "bob@example.com", "dummy", "0987654321",new Date(), "en");
+        User user2 = new User("Bob", "password2", "bob@example.com", "dummy", "0987654321", new Date(), "en");
         user2.addFoodInterest(Food.KAIKKI_MENEE);
         user2.addHobbiesInterest(Hobby.INVESTOINTI);
         user2.addHobbiesInterest(Hobby.VIDEOPELIT);

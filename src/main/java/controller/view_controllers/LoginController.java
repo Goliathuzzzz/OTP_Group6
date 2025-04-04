@@ -93,18 +93,17 @@ public class LoginController extends BaseController {
     }
 
     private void handleLang() {
-        if (localeManager.getLocale().getLanguage().equals("ja")) {
+        if ("ja".equals(localeManager.getLocale().getLanguage())) {
             or.setLayoutX(175);
             forgotPassword.setLayoutX(130);
         }
-        else if (localeManager.getLocale().getLanguage().equals("zh")) {
+        else if ("zh".equals(localeManager.getLocale().getLanguage())) {
             or.setLayoutX(185);
             forgotPassword.setLayoutX(210);
         }
-        else if (localeManager.getLocale().getLanguage().equals("en")) {
+        else if ("en".equals(localeManager.getLocale().getLanguage())) {
             forgotPassword.setLayoutX(210);
             newAccount.setLayoutX(195);
         }
     }
 }
-

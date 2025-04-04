@@ -1,5 +1,5 @@
 DROP DATABASE IF EXISTS tatskatytot;
-CREATE DATABASE tatskatytot;
+CREATE DATABASE tatskatytot CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 use tatskatytot;
 
 

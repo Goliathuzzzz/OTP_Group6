@@ -72,7 +72,7 @@ public class InterestSelectionController extends BaseController {
     private static final List<String> CATEGORY_ORDER = List.of("animals", "food", "hobbies", "sports", "science");
 
     private static final Map<String, List<? extends Category>> INTERESTS_MAP = Map.of(
-            "animals",Session.getAnimals(),
+            "animals", Session.getAnimals(),
             "food", Session.getFoods(),
             "hobbies", Session.getHobbies(),
             "sports", Session.getSports(),

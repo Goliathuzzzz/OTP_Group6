@@ -3,6 +3,9 @@ package controller.view_controllers;
 import context.LocaleManager;
 import controller.BaseController;
 import javafx.application.Platform;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
@@ -30,8 +33,8 @@ public class HelpController extends BaseController {
 
     @FXML
     public void initialize() {
-        vBox.setAlignment(javafx.geometry.Pos.CENTER);
-        vBox.setPadding(new javafx.geometry.Insets(0, 0, 50, 0));
+        vBox.setAlignment(Pos.CENTER);
+        vBox.setPadding(new Insets(0, 0, 50, 0));
         Platform.runLater(() -> {
             Stage stage = (Stage) helpPane.getScene().getWindow();
             if (stage != null) {

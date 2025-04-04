@@ -84,4 +84,3 @@ public class AdminProfileController extends BaseController {
         switchScene(SceneNames.EDIT_PROFILE);
     }
 }
-

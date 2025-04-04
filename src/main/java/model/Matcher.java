@@ -51,27 +51,30 @@ public class Matcher {
             return;
         }
 
-        System.out.println("DEBUG: Matching for participant " + toMatch.getDisplayName());
+        System.out.println("DEBUG: Matching for participant " + toMatch.getDisplayName("en"));
         System.out.println("DEBUG: Participant interests: " + participantInterests);
 
         for (User u: potentialMatches) {
-            if (u.equals(toMatch)) continue; // exclude participant from matches
+            if (u.equals(toMatch)) {
+                continue; // exclude participant from matches
 
+            }
             System.out.println("DEBUG: Checking user: " + u.getId());
 
             pMatchInterests = u.getInterests();
-            if (pMatchInterests.isEmpty()) continue; // skip if user has no interests
+            if (pMatchInterests.isEmpty()) {
+                continue; // skip if user has no interests
 
+            }
             compatibility = 0;
             maxPotential = 100;
             increment = (double) 100 / pMatchInterests.size();
 
-            for (Category interest: session.getParticipantInterests()) {
+            for (Category interest : session.getParticipantInterests()) {
                 if (pMatchInterests.contains(interest)) {
                     compatibility += increment;
                     System.out.println("DEBUG: Match found for interest: " + interest + " -> compatibility: " + compatibility);
-                }
-                else {
+                } else {
                     maxPotential -= increment;
                     System.out.println("DEBUG: No match found for interest: " + interest + " -> max potential: " + maxPotential);
                 }

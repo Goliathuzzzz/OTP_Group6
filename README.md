@@ -14,9 +14,23 @@
 
 ---
 
+## 🌍 Language Support
+
+**Qupids Speed Dating** supports multiple user interface languages for a more inclusive and localized experience:
+
+   - 🇺🇸 English (en-US)
+
+   - 🇫🇮 Finnish (fi-FI)
+
+   - 🇯🇵 Japanese (ja-JP)
+
+   - 🇨🇳 Chinese (zh-CN)
+
+---
+
 ## 🎯 Matchmaking Algorithm
 
-Qupids Speed Dating uses a compatibility based matchmaking algorithm to pair participants based on shared interests.
+The application uses a compatibility based matchmaking algorithm to pair participants based on shared interests.
 
 ### ⚙️ How It Works
 
@@ -61,6 +75,38 @@ Qupids Speed Dating uses a compatibility based matchmaking algorithm to pair par
 
 ---
 
+## 🗃️ Database Design
+
+The **Qupids Speed Dating** uses a relational database built with **MariaDB**, structured to support multilingual users, flexible interest tracking, and scalable matchmaking.
+
+### Key Aspects of the Database
+
+- **Participant**: The core entity, which includes both registered users and guests.
+- **User & Guest**: Separated using joined-table inheritance via JPA, inheriting common fields from the `participants` table.
+- **Interest**: Modeled as enums and linked to participants using categorized lists (e.g., hobbies, sports).
+- **Match**: Created dynamically between participants, storing compatibility scores and links to shared interests.
+- **Session**: Temporary state tracking the user’s current interest selection flow.
+
+This design ensures normalization, avoids redundancy, and supports multilingual data through proper character encoding (`utf8mb4`) in both schema and queries.
+
+---
+
+### Entity-Relationship Diagram
+
+> ![ER Diagram](./src/main/resources/sql/er-schema.png)
+
+This diagram shows all the entities `Participant`, `User`, `Match`, `LocalizedUser`, and their relationships.
+
+---
+
+### Relational Schema
+
+> ![Relational Schema](./src/main/resources/sql/relational-schema.png)
+
+The relational schema illustrates table structures, primary and foreign keys.
+
+---
+
 ## 🛂 Project Structure
 
 ```
@@ -77,18 +123,23 @@ OTP_Group6/
 │   │   │   ├── service/       # Business logic
 │   │   │   ├── util/          # Utility functions and helpers
 │   │   │   ├── view/          # JavaFX UI components
-│   │   │   ├── Main           # Application entry point
-│   │   ├── resources/
-│   │   │   ├── css/           # Styling files
-│   │   │   ├── fxml/          # UI layouts
-│   │   │   ├── images/        # Image assets used in UI
-│   │   │   ├── META-INF/      # Persistence and metadata configurations
-│   │   │   ├── sql/           # Database initialization and scripts
-│   ├── test/                  # Unit tests
+│   │   │   └── Main           # Application entry point
+│   │   └── resources/
+│   │       ├── css/           # Styling files
+│   │       ├── fxml/          # UI layouts
+│   │       ├── images/        # Image assets used in UI
+│   │       ├── META-INF/      # Persistence and metadata configurations
+│   │       ├── sql/           # Database initialization and scripts
+|   |       └── messages/      # Resource bundle for multilingual UI support
+|   |            ├── Messages_en_US.properties   # English
+|   |            ├── Messages_fi_FI.properties   # Finnish
+|   |            ├── Messages_ja_JP.properties   # Japanese
+|   |            └── Messages_zh_CN.properties   # Chinese
+│   └── test/                  # Unit tests
 ├── Dockerfile                 # Containerization
 ├── Jenkinsfile                # CI/CD automation pipeline
 ├── pom.xml                    # Maven configuration
-├── README.md                  # Project documentation
+└── README.md                  # Project documentation
 ```
 
 ---
