@@ -21,6 +21,7 @@ class GUIContextTest {
     void setUp() {
         guiContext = GUIContext.getInstance();
         guiContext.logout();
+        guiContext.setLanguage("en");
 
         testUser = new User("Alice", "password", "alice@example.com", "user", "1234567890", null, "en");
         testGuest = new Guest("9876543210", null);
