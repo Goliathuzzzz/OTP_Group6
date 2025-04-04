@@ -28,4 +28,7 @@ public class ProfilePictureUtil {
         imageView.setPreserveRatio(true);
         return imageView;
     }
+
+    private ProfilePictureUtil() {
+    }
 }

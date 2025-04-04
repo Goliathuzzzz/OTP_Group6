@@ -4,8 +4,8 @@ import jakarta.persistence.*;
 
 public class MariaDbJpaConnection {
 
-    private static EntityManagerFactory emf = null;
-    private static EntityManager em = null;
+    private static EntityManagerFactory emf;
+    private static EntityManager em;
 
     public static EntityManager getInstance() {
 
@@ -16,5 +16,8 @@ public class MariaDbJpaConnection {
             em = emf.createEntityManager();
         }
         return em;
+    }
+
+    private MariaDbJpaConnection() {
     }
 }

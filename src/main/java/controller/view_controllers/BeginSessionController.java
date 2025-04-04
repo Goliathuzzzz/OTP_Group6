@@ -81,7 +81,7 @@ public class BeginSessionController extends BaseController {
     }
 
     private void handleLang() {
-        if (localeManager.getLocale().getLanguage().equals("ja")) {
+        if ("ja".equals(localeManager.getLocale().getLanguage())) {
             beginSession.setScaleX(0.8);
             beginSession.setScaleY(0.8);
             beginSession.setMinWidth(300);

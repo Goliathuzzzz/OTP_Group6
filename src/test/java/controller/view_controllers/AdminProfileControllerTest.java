@@ -6,6 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+
+import javafx.beans.property.SimpleStringProperty;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
@@ -31,9 +33,9 @@ public class AdminProfileControllerTest extends ApplicationTest {
         when(guiContextMock.getUserEmail()).thenReturn("admin@example.com");
         when(guiContextMock.getUserPhoneNumber()).thenReturn("123-456-7890");
 
-        when(guiContextMock.getUserNameProperty()).thenReturn(new javafx.beans.property.SimpleStringProperty("Admin User"));
-        when(guiContextMock.getEmailProperty()).thenReturn(new javafx.beans.property.SimpleStringProperty("admin@example.com"));
-        when(guiContextMock.getPhoneProperty()).thenReturn(new javafx.beans.property.SimpleStringProperty("123-456-7890"));
+        when(guiContextMock.getUserNameProperty()).thenReturn(new SimpleStringProperty("Admin User"));
+        when(guiContextMock.getEmailProperty()).thenReturn(new SimpleStringProperty("admin@example.com"));
+        when(guiContextMock.getPhoneProperty()).thenReturn(new SimpleStringProperty("123-456-7890"));
 
         var fxmlLocation = getClass().getResource("/fxml/admin_profile.fxml");
         assertNotNull(fxmlLocation, "admin_profile.fxml file not found.");

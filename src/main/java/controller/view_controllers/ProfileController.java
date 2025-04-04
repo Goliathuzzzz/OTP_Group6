@@ -67,7 +67,7 @@ public class ProfileController extends BaseController {
             emailLabel.setManaged(false);
             editButton.setVisible(false);
         } else {
-            showAlert(Alert.AlertType.ERROR, bundle.getString( "error"), bundle.getString("user_details_not_found_alert"));
+            showAlert(Alert.AlertType.ERROR, bundle.getString("error"), bundle.getString("user_details_not_found_alert"));
             System.err.println("ERROR: No user or guest data found");
         }
         ImageView profileImageView = getProfilePictureView(guiContext.getId(), 200, 200);
@@ -92,4 +92,3 @@ public class ProfileController extends BaseController {
         switchScene(SceneNames.EDIT_PROFILE);
     }
 }
-

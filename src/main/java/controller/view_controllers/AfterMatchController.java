@@ -82,7 +82,9 @@ public class AfterMatchController extends BaseController {
                 // dynamically construct the localization key based on enum name
                 String key = interest.getClass().getSimpleName().toLowerCase() + "_" + ((Enum<?>) interest).name().toLowerCase();
                 sb.append(bundle.getString(key));
-                if (i < interests.size() - 1) sb.append(", ");
+                if (i < interests.size() - 1) {
+                    sb.append(", ");
+                }
             }
             interestsLabel.setText(sb.toString());
         }

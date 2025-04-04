@@ -66,7 +66,7 @@ public class LoginControllerTest extends ApplicationTest {
     @Test
     void testValidLoginSwitchesScene() {
         verifyThat("#emailField", Node::isVisible);
-        User user = new User("alice", "password1", "alice@example.com", "dummy", "1234567890",new Date(), "en");
+        User user = new User("alice", "password1", "alice@example.com", "dummy", "1234567890", new Date(), "en");
         when(userController.login("alice@example.com", "password1")).thenReturn(user);
         clickOn("#emailField").write("alice@example.com");
         clickOn("#passwordField").write("password1");

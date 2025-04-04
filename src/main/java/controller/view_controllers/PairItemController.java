@@ -43,8 +43,8 @@ public class PairItemController {
         alert.setHeaderText(null);
 
         String and = bundle.getString("and");
-        alert.setContentText(bundle.getString("confirm_match_removal") + match.getParticipant1().getDisplayName(context.getLanguage()) + " " + and + " " +
-                match.getParticipant2().getDisplayName(context.getLanguage()) + "?");
+        alert.setContentText(bundle.getString("confirm_match_removal") + match.getParticipant1().getDisplayName(context.getLanguage()) + " " + and + " "
+                + match.getParticipant2().getDisplayName(context.getLanguage()) + "?");
         alert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
                 deletePair();

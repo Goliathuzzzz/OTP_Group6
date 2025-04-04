@@ -64,7 +64,7 @@ class MatchControllerTest {
         match.setParticipant2(testUser2);
         matchController.updateMatch(match);
         assertEquals(0.7, matchController.displayAllByParticipant(testUser).get(0).getCompatibility());
-        assertEquals(testUser2,  matchController.displayAllByParticipant(testUser).get(0).getParticipant2());
+        assertEquals(testUser2, matchController.displayAllByParticipant(testUser).get(0).getParticipant2());
     }
 
     @Test
