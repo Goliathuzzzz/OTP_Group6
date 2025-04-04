@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PMDPlugin">
+    <option name="customRuleSets">
+      <list>
+        <option value="category/java/bestpractices.xml" />
+        <option value="category/java/errorprone.xml" />
+        <option value="category/java/performance.xml" />
+      </list>
+    </option>
+    <option name="optionKeyToValue">
+      <map>
+        <entry key="Statistics URL" value="" />
+        <entry key="Target JDK" value="23-preview" />
+        <entry key="Threads" value="16" />
+      </map>
+    </option>
+    <option name="skipTestSources" value="false" />
+  </component>
+</project>
