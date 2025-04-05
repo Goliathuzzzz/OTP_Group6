@@ -15,7 +15,7 @@ public class LocaleManager {
         this.bundle = ResourceBundle.getBundle("Messages", locale);
     }
 
-    public static LocaleManager getInstance() {
+    public synchronized static LocaleManager getInstance() {
         if (instance == null) {
             instance = new LocaleManager();
         }
