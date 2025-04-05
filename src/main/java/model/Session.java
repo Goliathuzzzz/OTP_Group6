@@ -8,7 +8,7 @@ import java.util.List;
 
 // Tarvitseeko edes laittaa tietokantaan?
 // On nyt se tapahtuma jossa valitaan kiinnostuksenkohteet näytöltä
-public class Session {
+public final class Session {
     // Jotta kategoriat saadaan viewhun
     private final static List<Animal> animals = List.copyOf(EnumSet.allOf(Animal.class));
     private final static List<Food> foods = List.copyOf(EnumSet.allOf(Food.class));
