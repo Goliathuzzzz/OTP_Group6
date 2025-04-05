@@ -22,4 +22,6 @@
 
 <!-- Running in terminal (after installing PMD):
 pmd check -d ./src/main/java -R src/main/resources/xml/ruleset.xml -f text
+OR predefined bestpractices sets:
+pmd check -d ./src/main/java -R category/java/bestpractices.xml -f text
 -->
