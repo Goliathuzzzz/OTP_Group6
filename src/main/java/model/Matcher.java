@@ -14,7 +14,6 @@ public class Matcher {
     private UserController userController;
     // Double arvo on yhteensopivuus-prosentti. Periaatteessa voi olla useampi paras match, niin tallennetaan hashmappiin
     private final HashMap<User, Double> topMatches;
-    private String debugUserName;
 
     public Matcher(Session session) {
         this.session = session;
