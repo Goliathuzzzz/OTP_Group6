@@ -11,10 +11,10 @@ import java.util.Optional;
 public class GUIContext {
     private static GUIContext instance;
     private User user;
-    private boolean isUser;
+    private volatile boolean isUser;
     private Guest guest;
-    private boolean isGuest;
-    private boolean isAdmin;
+    private volatile boolean isGuest;
+    private volatile boolean isAdmin;
     private Session session;
     private Matcher matcher;
     private List<Match> matches;
@@ -29,7 +29,7 @@ public class GUIContext {
         this.phoneProperty = new SimpleStringProperty();
     }
 
-    public static GUIContext getInstance() {
+    public synchronized static GUIContext getInstance() {
         if (instance == null) {
             instance = new GUIContext();
         }
