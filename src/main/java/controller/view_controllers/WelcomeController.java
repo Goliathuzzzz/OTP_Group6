@@ -9,6 +9,7 @@ import util.SceneNames;
 
 public class WelcomeController extends BaseController {
 
+    @FXML
     public ImageView logo;
 
     @FXML
