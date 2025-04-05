@@ -60,7 +60,7 @@ public abstract class BaseController {
                 bundle = ResourceBundle.getBundle("Messages", new Locale("en", "US"));
             }
 
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(path));
+            FXMLLoader fxmlLoader = new FXMLLoader(BaseController.class.getResource(path));
             fxmlLoader.setResources(bundle);
 
             Parent root = fxmlLoader.load();
@@ -81,6 +81,7 @@ public abstract class BaseController {
                         case "hobbies" -> interestController.loadInterests("hobbies");
                         case "science" -> interestController.loadInterests("science");
                         case "sports" -> interestController.loadInterests("sports");
+                        default -> throw new IllegalArgumentException("Unexpected category: " + category);
                     }
                 }
             }
