@@ -1,10 +1,13 @@
 package model;
 
+import context.LocaleManager;
 import jakarta.persistence.*;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.Optional;
+import java.util.ResourceBundle;
 import java.util.Set;
 
 /**
@@ -43,8 +46,9 @@ public class User extends Participant{
     }
 
     public void addLocalization(String language, String userName) {
-        //TODO: Role needs to be translated here before assigning
-        LocalizedUser localization = new LocalizedUser(language, userName, role);
+        LocaleManager lb = LocaleManager.getInstance();
+        ResourceBundle resourceBundle = lb.getBundle();
+        LocalizedUser localization = new LocalizedUser(language, userName, resourceBundle.getString(role));
         localizations.add(localization);
         localization.setUsers(this);
     }
