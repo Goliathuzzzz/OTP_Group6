@@ -82,7 +82,7 @@ public class RegistrationController extends BaseController {
             return;
         }
         String userName = email.substring(0, email.indexOf("@")).replace(".", " "); // can be improved
-        User user = new User(userName, password, email, "none", phone, new Date(), guiContext.getLanguage());
+        User user = new User(userName, password, email, "user", phone, new Date(), guiContext.getLanguage());
         uController.registerUser(user);
         GUIContext.getInstance().setUser(user);
         switchScene(SceneNames.BEGIN_SESSION);
