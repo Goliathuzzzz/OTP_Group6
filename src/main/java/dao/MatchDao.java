@@ -31,7 +31,7 @@ public class MatchDao implements IDao<Match> {
 
     public List<Match> findByParticipant(Participant participant) {
         return em.createQuery(
-                        "SELECT m FROM Match m WHERE m.participant1 = :participant OR m.participant2 = :participant",
+                "SELECT m FROM Match m WHERE m.participant1 = :participant OR m.participant2 = :participant",
                         Match.class)
                 .setParameter("participant", participant)
                 .getResultList();

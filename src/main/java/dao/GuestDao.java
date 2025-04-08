@@ -42,7 +42,7 @@ public class GuestDao implements IDao<Guest> {
             em.getTransaction().begin();
             // delete all matches where the guest is a participant
             em.createQuery(
-                            "DELETE FROM Match m WHERE m.participant1 = :guest OR m.participant2 = :guest")
+                    "DELETE FROM Match m WHERE m.participant1 = :guest OR m.participant2 = :guest")
                     .setParameter("guest", object)
                     .executeUpdate();
             em.remove(em.contains(object) ? object : em.merge(object));
