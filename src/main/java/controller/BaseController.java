@@ -43,10 +43,10 @@ public abstract class BaseController {
             handleOptionsSwitch(context);
         }
 
-        loadFXML(destination, data);
+        loadFxml(destination, data);
     }
 
-    private void loadFXML(String destination, Object data) {
+    private void loadFxml(String destination, Object data) {
         String path = "/fxml/" + destination + ".fxml";
 
         try {
@@ -57,8 +57,10 @@ public abstract class BaseController {
                 bundle = localeManager.getBundle();
             } catch (MissingResourceException e) {
                 System.err.println(
-                        "ERROR: ResourceBundle is invalid in BaseController.switchScene. Defaulting to en_US");
-                bundle = ResourceBundle.getBundle("Messages", new Locale("en", "US"));
+                        "ERROR: ResourceBundle is invalid in BaseController.switchScene. " +
+                                "Defaulting to en_US");
+                bundle = ResourceBundle.getBundle("Messages",
+                        new Locale("en", "US"));
             }
 
             FXMLLoader fxmlLoader = new FXMLLoader(BaseController.class.getResource(path));
@@ -73,32 +75,39 @@ public abstract class BaseController {
                 logError("Controller is null in BaseController.switchScene");
             }
 
-            if (data != null &&
-                    controller instanceof InterestSelectionController interestController) {
-                if (data instanceof String category) {
-                    interestController.setCategory(category);
-                    switch (category) {
-                        case "animals" -> interestController.loadInterests("animals");
-                        case "food" -> interestController.loadInterests("food");
-                        case "hobbies" -> interestController.loadInterests("hobbies");
-                        case "science" -> interestController.loadInterests("science");
-                        case "sports" -> interestController.loadInterests("sports");
-                        default -> throw new IllegalArgumentException(
-                                "Unexpected category: " + category);
-                    }
-                }
-            }
-
-            if (this.stage != null) {
-                this.stage.setScene(new Scene(root));
-                this.stage.show();
-            } else {
-                logError("Stage is null in BaseController.switchScene");
-            }
+            setData(controller, data);
+            setScene(root);
 
         } catch (IOException e) {
             logError("Failed to load FXML: " + e.getMessage());
             showAlert(Alert.AlertType.ERROR, "error_title", "cannot_load_view");
+        }
+    }
+
+    private void setScene(Parent root) {
+        if (this.stage != null) {
+            this.stage.setScene(new Scene(root));
+            this.stage.show();
+        } else {
+            logError("Stage is null in BaseController.switchScene");
+        }
+    }
+
+    private void setData(BaseController controller, Object data) {
+        if (data != null &&
+                controller instanceof InterestSelectionController interestController) {
+            if (data instanceof String category) {
+                interestController.setCategory(category);
+                switch (category) {
+                    case "animals" -> interestController.loadInterests("animals");
+                    case "food" -> interestController.loadInterests("food");
+                    case "hobbies" -> interestController.loadInterests("hobbies");
+                    case "science" -> interestController.loadInterests("science");
+                    case "sports" -> interestController.loadInterests("sports");
+                    default -> throw new IllegalArgumentException(
+                            "Unexpected category: " + category);
+                }
+            }
         }
     }
 
