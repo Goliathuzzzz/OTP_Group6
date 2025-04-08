@@ -5,6 +5,7 @@ import context.LocaleManager;
 import controller.BaseController;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
@@ -129,8 +130,8 @@ public class InterestSelectionController extends BaseController {
 
         String labelName;
         if (interest instanceof Enum<?>) {
-            String key = interest.getClass().getSimpleName().toLowerCase() + "_" +
-                    ((Enum<?>) interest).name().toLowerCase();
+            String key = interest.getClass().getSimpleName().toLowerCase(Locale.ROOT) + "_"
+                    + ((Enum<?>) interest).name().toLowerCase(Locale.ROOT);
             labelName = bundle.getString(key);
         } else {
             labelName = interest.toString();
