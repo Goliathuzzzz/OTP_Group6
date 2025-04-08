@@ -1,6 +1,7 @@
 package dao;
 
 import datasource.MariaDbJpaConnection;
+import exception.DaoException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import java.util.List;
@@ -10,14 +11,16 @@ import model.User;
 public class UserDao implements IDao<User> {
     private EntityManager em = MariaDbJpaConnection.getInstance();
 
-    public void persist(User object) {
+    public void persist(User object) throws DaoException {
         try {
             em.getTransaction().begin();
             em.persist(object);
             em.getTransaction().commit();
         } catch (Exception e) {
-            em.getTransaction().rollback();
-            throw new RuntimeException("Error saving user", e);
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            throw new DaoException("Error saving user", e);
         }
     }
 
@@ -47,19 +50,21 @@ public class UserDao implements IDao<User> {
                 .getResultList();
     }
 
-    public void update(User object) {
+    public void update(User object) throws DaoException {
         try {
             em.getTransaction().begin();
             em.merge(object);
             em.getTransaction().commit();
         } catch (Exception e) {
-            em.getTransaction().rollback();
-            throw new RuntimeException("Error updating user", e);
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            throw new DaoException("Error updating user", e);
         }
     }
 
 
-    public void delete(User object) {
+    public void delete(User object) throws DaoException {
         try {
             em.getTransaction().begin();
             // delete all matches where the user is a participant
@@ -70,12 +75,14 @@ public class UserDao implements IDao<User> {
             em.remove(em.contains(object) ? object : em.merge(object));
             em.getTransaction().commit();
         } catch (Exception e) {
-            em.getTransaction().rollback();
-            throw new RuntimeException("Error deleting user", e);
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            throw new DaoException("Error deleting user", e);
         }
     }
 
-    public void deleteAll() {
+    public void deleteAll() throws DaoException {
         List<User> usersToDelete = findAll();
         for (User user : usersToDelete) {
             delete(user);

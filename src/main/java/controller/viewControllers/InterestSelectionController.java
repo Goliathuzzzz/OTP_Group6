@@ -5,15 +5,13 @@ import context.LocaleManager;
 import controller.BaseController;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -44,12 +42,6 @@ public class InterestSelectionController extends BaseController {
     private final GuiContext context = GuiContext.getInstance();
     private final LocaleManager localeManager = LocaleManager.getInstance();
     private final ResourceBundle bundle = localeManager.getBundle();
-    @FXML
-    private ScrollPane scrollContainer;
-    @FXML
-    private Button continueButton;
-    @FXML
-    private ImageView goBack, homeIcon, profileIcon, backIcon, helpIcon;
     @FXML
     private VBox optionsContainer; //holds dynamically generated options
     @FXML
@@ -153,9 +145,9 @@ public class InterestSelectionController extends BaseController {
     private Label createLabel(Category interest) {
         String labelName;
         if (interest instanceof Enum<?>) {
-            String key = interest.getClass().getSimpleName().toLowerCase()
+            String key = interest.getClass().getSimpleName().toLowerCase(Locale.ROOT)
                     + "_"
-                    + ((Enum<?>) interest).name().toLowerCase();
+                    + ((Enum<?>) interest).name().toLowerCase(Locale.ROOT);
             labelName = bundle.getString(key);
         } else {
             labelName = interest.toString();
@@ -173,10 +165,6 @@ public class InterestSelectionController extends BaseController {
     public void setCategory(String category) {
         this.currentCategory = category;
         System.out.println("Current category set to: " + category);
-    }
-
-    public List<Category> getSelectedInterests() {
-        return session.getParticipantInterests();
     }
 
     public void loadInterests(String category) {

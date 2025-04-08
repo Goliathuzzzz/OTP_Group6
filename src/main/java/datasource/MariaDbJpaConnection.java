@@ -6,8 +6,8 @@ import jakarta.persistence.Persistence;
 
 public class MariaDbJpaConnection {
 
-    private static EntityManagerFactory emf;
-    private static EntityManager em;
+    private static volatile EntityManagerFactory emf;
+    private static volatile EntityManager em;
 
     private MariaDbJpaConnection() {
     }
@@ -15,10 +15,14 @@ public class MariaDbJpaConnection {
     public static EntityManager getInstance() {
 
         if (em == null) {
-            if (emf == null) {
-                emf = Persistence.createEntityManagerFactory("TatskatytotMariaDbUnit");
+            synchronized (MariaDbJpaConnection.class) {
+                if (em == null) {
+                    if (emf == null) {
+                        emf = Persistence.createEntityManagerFactory("TatskatytotMariaDbUnit");
+                    }
+                    em = emf.createEntityManager();
+                }
             }
-            em = emf.createEntityManager();
         }
         return em;
     }

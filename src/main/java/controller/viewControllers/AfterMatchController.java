@@ -4,11 +4,11 @@ import context.GuiContext;
 import context.LocaleManager;
 import controller.BaseController;
 import java.util.List;
+import java.util.Locale;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.Match;
@@ -20,8 +20,6 @@ public class AfterMatchController extends BaseController {
 
     private final LocaleManager localeManager = LocaleManager.getInstance();
     private final ResourceBundle bundle = localeManager.getBundle();
-    @FXML
-    private ImageView homeIcon, profileIcon, backIcon;
     @FXML
     private Label percentageLabel, matchParticipantsLabel, interestsLabel;
     @FXML
@@ -83,9 +81,9 @@ public class AfterMatchController extends BaseController {
             for (int i = 0; i < interests.size(); i++) {
                 Category interest = interests.get(i);
                 // dynamically construct the localization key based on enum name
-                String key = interest.getClass().getSimpleName().toLowerCase()
+                String key = interest.getClass().getSimpleName().toLowerCase(Locale.ROOT)
                         + "_"
-                        + ((Enum<?>) interest).name().toLowerCase();
+                        + ((Enum<?>) interest).name().toLowerCase(Locale.ROOT);
                 sb.append(bundle.getString(key));
                 if (i < interests.size() - 1) {
                     sb.append(", ");

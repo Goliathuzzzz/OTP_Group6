@@ -1,6 +1,7 @@
 package service;
 
 import dao.GuestDao;
+import exception.DaoException;
 import jakarta.persistence.EntityManager;
 import java.util.List;
 import model.Guest;
@@ -14,7 +15,11 @@ public class GuestService {
     }
 
     public void registerGuest(Guest guest) {
-        guestDao.persist(guest);
+        try {
+            guestDao.persist(guest);
+        } catch (DaoException e) {
+            System.out.println("Error registering guest: " + e.getMessage());
+        }
     }
 
     public Guest findGuestById(int id) {
@@ -30,11 +35,19 @@ public class GuestService {
     }
 
     public void deleteGuest(Guest guest) {
-        guestDao.delete(guest);
+        try {
+            guestDao.delete(guest);
+        } catch (DaoException e) {
+            System.out.println("Error deleting guest: " + e.getMessage());
+        }
     }
 
     public void deleteAllGuests() {
-        guestDao.deleteAll();
+        try {
+            guestDao.deleteAll();
+        } catch (DaoException e) {
+            System.out.println("Error deleting all guests: " + e.getMessage());
+        }
     }
 
     // For tests

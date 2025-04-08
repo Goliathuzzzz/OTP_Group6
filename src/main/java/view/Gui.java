@@ -11,15 +11,10 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import util.SceneNames;
+import java.util.Objects;
 
 public class Gui extends Application {
     private static final String path = "/fxml/" + SceneNames.WELCOME + ".fxml";
-    // placeholder title
-    private static final String TITLE =
-            " \uD835\uDCC9\uD835\uDCB6\uD835\uDCC9\uD835\uDCC8\uD835\uDCC0\uD835\uDCB6\uD835\uDCC9"
-                    + "\uD835\uDCCE\uD835\uDCC9ö\uD835\uDCC9 "
-                    + "\uD835\uDCC8\uD835\uDCC5\uD835\uDC52\uD835\uDC52\uD835\uDCB9 \uD835"
-                    + "\uDCB9\uD835\uDCB6\uD835\uDCC9\uD835\uDCBE\uD835\uDCC3\uD835\uDC54";
     LocaleManager localeManager = LocaleManager.getInstance();
 
     @Override
@@ -42,8 +37,8 @@ public class Gui extends Application {
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root);
 
-        stage.getIcons()
-                .add(new Image(getClass().getResourceAsStream("/images/cherries.png")));
+        stage.getIcons().add(new Image(Objects.requireNonNull(getClass()
+                .getResourceAsStream("/images/cherries.png"))));
         scene.getRoot().setStyle("-fx-font-family: 'HoeflerText'");
         stage.setScene(scene);
         stage.show();
