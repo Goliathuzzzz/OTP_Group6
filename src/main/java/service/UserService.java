@@ -1,6 +1,7 @@
 package service;
 
 import dao.UserDao;
+import exception.DaoException;
 import jakarta.persistence.EntityManager;
 import model.User;
 import java.util.List;
@@ -15,7 +16,11 @@ public class UserService { //"good practice", handles the business logic
     }
 
     public void registerUser(User user) {
-        userDao.persist(user);
+        try {
+            userDao.persist(user);
+        } catch (DaoException e) {
+            System.out.println("Error registering user: " + e.getMessage());
+        }
     }
 
     public User findUserById(int id) {
@@ -27,14 +32,28 @@ public class UserService { //"good practice", handles the business logic
     }
 
     public void updateUser(User user) {
-        userDao.update(user);
+        try {
+            userDao.update(user);
+        } catch (DaoException e) {
+            System.out.println("Error updating user: " + e.getMessage());
+        }
     }
 
     public void deleteUser(User user) {
-        userDao.delete(user);
+        try {
+            userDao.delete(user);
+        } catch (Exception e) {
+            System.out.println("Error deleting user: " + e.getMessage());
+        }
     }
 
-    public void deleteAllUsers() {userDao.deleteAll();}
+    public void deleteAllUsers() {
+        try {
+            userDao.deleteAll();
+        } catch (Exception e) {
+            System.out.println("Error deleting all users: " + e.getMessage());
+        }
+    }
 
     // For setting up test db
     public void setUserDaoEm(EntityManager em) {

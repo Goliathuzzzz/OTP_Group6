@@ -1,6 +1,7 @@
 package service;
 
 import dao.MatchDao;
+import exception.DaoException;
 import jakarta.persistence.EntityManager;
 import model.Match;
 import model.Participant;
@@ -15,7 +16,11 @@ public class MatchService {
     }
 
     public void addMatch(Match match) {
-        dao.persist(match);
+        try {
+            dao.persist(match);
+        } catch (DaoException e) {
+            System.out.println("Error saving match: " + e.getMessage());
+        }
     }
 
     public Match findMatchById(int id) {
@@ -31,15 +36,27 @@ public class MatchService {
     }
 
     public void updateMatch(Match match) {
-        dao.update(match);
+        try {
+            dao.update(match);
+        } catch (DaoException e) {
+            System.out.println("Error updating match: " + e.getMessage());
+        }
     }
 
     public void deleteMatch(Match match) {
-        dao.delete(match);
+        try {
+            dao.delete(match);
+        } catch (DaoException e) {
+            System.out.println("Error deleting match: " + e.getMessage());
+        }
     }
 
     public void deleteAllMatches() {
-        dao.deleteAll();
+        try {
+            dao.deleteAll();
+        } catch (DaoException e) {
+            System.out.println("Error deleting all matches: " + e.getMessage());
+        }
     }
 
     // For tests

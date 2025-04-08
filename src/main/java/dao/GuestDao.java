@@ -1,6 +1,7 @@
 package dao;
 
 import datasource.MariaDbJpaConnection;
+import exception.DaoException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import model.Guest;
@@ -11,14 +12,16 @@ import java.util.List;
 public class GuestDao implements IDao<Guest> {
     private EntityManager em = MariaDbJpaConnection.getInstance();
 
-    public void persist(Guest object) {
+    public void persist(Guest object) throws DaoException {
         try {
             em.getTransaction().begin();
             em.persist(object);
             em.getTransaction().commit();
         } catch (Exception e) {
-            em.getTransaction().rollback();
-            throw new RuntimeException("Error saving guest", e);
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            throw new DaoException("Error saving guest", e);
         }
     }
 
@@ -40,7 +43,7 @@ public class GuestDao implements IDao<Guest> {
     }
 
 
-    public void delete(Guest object) {
+    public void delete(Guest object) throws DaoException {
         try {
             em.getTransaction().begin();
             // delete all matches where the guest is a participant
@@ -50,12 +53,14 @@ public class GuestDao implements IDao<Guest> {
             em.remove(em.contains(object) ? object : em.merge(object));
             em.getTransaction().commit();
         } catch (Exception e) {
-            em.getTransaction().rollback();
-            throw new RuntimeException("Error deleting guest", e);
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            throw new DaoException("Error deleting guest", e);
         }
     }
 
-    public void deleteAll() {
+    public void deleteAll() throws DaoException {
         List<Guest> guestsToDelete = findAll();
         for (Guest guest: guestsToDelete) {
             delete(guest);

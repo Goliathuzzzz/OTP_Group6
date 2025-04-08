@@ -1,6 +1,7 @@
 package dao;
 
 import datasource.MariaDbJpaConnection;
+import exception.DaoException;
 import jakarta.persistence.EntityManager;
 import model.Match;
 import model.Participant;
@@ -10,14 +11,16 @@ import java.util.List;
 public class MatchDao implements IDao<Match> {
     private EntityManager em = MariaDbJpaConnection.getInstance();
 
-    public void persist(Match object) {
+    public void persist(Match object) throws DaoException {
         try {
             em.getTransaction().begin();
             em.persist(object);
             em.getTransaction().commit();
         } catch (Exception e) {
-            em.getTransaction().rollback();
-            throw new RuntimeException("Error saving match", e);
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            throw new DaoException("Error saving match", e);
         }
     }
 
@@ -36,30 +39,34 @@ public class MatchDao implements IDao<Match> {
                 .getResultList();
     }
 
-    public void update(Match object) {
+    public void update(Match object) throws DaoException {
         try {
             em.getTransaction().begin();
             em.merge(object);
             em.getTransaction().commit();
         } catch (Exception e) {
-            em.getTransaction().rollback();
-            throw new RuntimeException("Error updating match", e);
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            throw new DaoException("Error updating match", e);
         }
     }
 
 
-    public void delete(Match object) {
+    public void delete(Match object) throws DaoException {
         try {
             em.getTransaction().begin();
             em.remove(object);
             em.getTransaction().commit();
         } catch (Exception e) {
-            em.getTransaction().rollback();
-            throw new RuntimeException("Error deleting match", e);
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            throw new DaoException("Error deleting match", e);
         }
     }
 
-    public void deleteAll() {
+    public void deleteAll() throws DaoException {
         List<Match> matchesToDelete = findAll();
         for (Match m: matchesToDelete) {
             delete(m);
