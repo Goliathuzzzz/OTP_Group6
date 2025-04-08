@@ -1,4 +1,4 @@
-package controller.view_controllers;
+package controller.viewControllers;
 
 import static util.ProfilePictureUtil.getProfilePictureView;
 import static util.SceneNames.EDIT_PROFILE;

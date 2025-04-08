@@ -1,4 +1,4 @@
-package controller.view_controllers;
+package controller.viewControllers;
 
 import controller.BaseController;
 import javafx.animation.ScaleTransition;

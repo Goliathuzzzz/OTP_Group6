@@ -1,4 +1,4 @@
-package controller.view_controllers;
+package controller.viewControllers;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -6,6 +6,8 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import context.GuiContext;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,9 +18,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
 
-public class ProfileControllerTest extends ApplicationTest {
+public class AdminProfileControllerTest extends ApplicationTest {
 
-    private ProfileController profileController;
+    private AdminProfileController adminProfileController;
     private GuiContext guiContextMock;
     private Parent root;
 
@@ -27,34 +29,36 @@ public class ProfileControllerTest extends ApplicationTest {
         guiContextMock = mock(GuiContext.class);
 
         when(guiContextMock.isUser()).thenReturn(true);
-        when(guiContextMock.getUserName()).thenReturn("Test User");
-        when(guiContextMock.getUserEmail()).thenReturn("test@example.com");
-        when(guiContextMock.getUserPhoneNumber()).thenReturn("987-654-3210");
+        when(guiContextMock.getUserName()).thenReturn("Admin User");
+        when(guiContextMock.getUserEmail()).thenReturn("admin@example.com");
+        when(guiContextMock.getUserPhoneNumber()).thenReturn("123-456-7890");
 
         when(guiContextMock.getUserNameProperty()).thenReturn(
-                new SimpleStringProperty("Test User"));
+                new SimpleStringProperty("Admin User"));
         when(guiContextMock.getEmailProperty()).thenReturn(
-                new SimpleStringProperty("test@example.com"));
+                new SimpleStringProperty("admin@example.com"));
         when(guiContextMock.getPhoneProperty()).thenReturn(
-                new SimpleStringProperty("987-654-3210"));
+                new SimpleStringProperty("123-456-7890"));
 
-        var fxmlLocation = getClass().getResource("/fxml/profile.fxml");
-        assertNotNull(fxmlLocation, "profile.fxml file not found.");
+        var fxmlLocation = getClass().getResource("/fxml/admin_profile.fxml");
+        assertNotNull(fxmlLocation, "admin_profile.fxml file not found.");
 
-        FXMLLoader loader = new FXMLLoader(fxmlLocation);
-        loader.setControllerFactory(param -> new ProfileController(guiContextMock));
+        ResourceBundle testBundle = ResourceBundle.getBundle("Messages", Locale.US);
+        FXMLLoader loader = new FXMLLoader(fxmlLocation, testBundle);
+        loader.setControllerFactory(param -> new AdminProfileController(guiContextMock));
 
         root = loader.load();
-        profileController = loader.getController();
+        adminProfileController = loader.getController();
 
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
+
     @BeforeEach
     void setUp() {
-        assertNotNull(profileController, "Controller should be initialized");
+        assertNotNull(adminProfileController, "Controller should be initialized");
     }
 
     @Test
@@ -67,9 +71,9 @@ public class ProfileControllerTest extends ApplicationTest {
         assertNotNull(emailLabel, "Email label should exist");
         assertNotNull(phoneLabel, "Phone label should exist");
 
-        assertEquals("Test User", nameLabel.getText(), "Name label should match user name");
-        assertEquals("test@example.com", emailLabel.getText(),
+        assertEquals("Admin User", nameLabel.getText(), "Name label should match user name");
+        assertEquals("admin@example.com", emailLabel.getText(),
                 "Email label should match user email");
-        assertEquals("987-654-3210", phoneLabel.getText(), "Phone label should match user phone");
+        assertEquals("123-456-7890", phoneLabel.getText(), "Phone label should match user phone");
     }
 }

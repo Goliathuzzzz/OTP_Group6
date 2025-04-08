@@ -8,7 +8,7 @@ import static org.mockito.Mockito.when;
 import static org.testfx.api.FxAssert.verifyThat;
 import static org.testfx.util.NodeQueryUtils.isVisible;
 
-import controller.view_controllers.LoginController;
+import controller.viewControllers.LoginController;
 import java.net.URL;
 import java.util.Date;
 import java.util.Locale;

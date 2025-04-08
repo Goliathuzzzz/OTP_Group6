@@ -1,4 +1,4 @@
-package controller.view_controllers;
+package controller.viewControllers;
 
 import context.LocaleManager;
 import controller.BaseController;

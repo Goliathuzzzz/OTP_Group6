@@ -5,7 +5,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1"
-            fx:controller="controller.view_controllers.UserItemController"
+            fx:controller="controller.viewControllers.UserItemController"
             prefWidth="150" prefHeight="40" styleClass="user-item">
     <Label fx:id="userNameLabel" layoutX="10" layoutY="10" styleClass="user-name"
            onMouseClicked="#handleUserNameClick"/>

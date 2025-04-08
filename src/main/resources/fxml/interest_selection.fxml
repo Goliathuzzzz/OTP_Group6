@@ -11,7 +11,7 @@
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="interestSelectionPane" prefHeight="852" prefWidth="393"
             styleClass="edit-profile"
             stylesheets="@/css/interest_selection.css" xmlns="http://javafx.com/javafx/23.0.1"
-            fx:controller="controller.view_controllers.InterestSelectionController">
+            fx:controller="controller.viewControllers.InterestSelectionController">
     <Pane prefHeight="556" prefWidth="393" styleClass="tausta"/>
     <Pane layoutY="95.0" prefHeight="757.0" prefWidth="393" styleClass="rectangle15"/>
 

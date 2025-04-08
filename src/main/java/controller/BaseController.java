@@ -2,7 +2,7 @@ package controller;
 
 import context.GuiContext;
 import context.LocaleManager;
-import controller.view_controllers.InterestSelectionController;
+import controller.viewControllers.InterestSelectionController;
 import java.io.IOException;
 import java.util.Locale;
 import java.util.MissingResourceException;

@@ -7,7 +7,7 @@ import static org.mockito.Mockito.when;
 import static org.testfx.api.FxAssert.verifyThat;
 import static org.testfx.util.NodeQueryUtils.isVisible;
 
-import controller.view_controllers.RegistrationController;
+import controller.viewControllers.RegistrationController;
 import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;

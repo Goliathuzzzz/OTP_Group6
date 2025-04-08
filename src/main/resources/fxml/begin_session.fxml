@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" id="beginSessionPane" fx:id="beginSessionPane" prefHeight="852.0"
             prefWidth="393.0" styleClass="edit-profile" stylesheets="@/css/begin_session.css"
-            xmlns="http://javafx.com/javafx/23.0.1" fx:controller="controller.view_controllers.BeginSessionController">
+            xmlns="http://javafx.com/javafx/23.0.1" fx:controller="controller.viewControllers.BeginSessionController">
     <Pane layoutY="765" prefHeight="87" prefWidth="393" styleClass="bottom-nav">
         <ImageView fx:id="homeIcon" fitHeight="45.0" fitWidth="42.0" layoutX="45" layoutY="23.0"
                    onMouseClicked="#handleHomeClick" pickOnBounds="true" preserveRatio="true">
