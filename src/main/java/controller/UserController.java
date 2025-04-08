@@ -1,10 +1,10 @@
 package controller;
 
 import jakarta.persistence.EntityManager;
-import model.User;
-import service.UserService;
 import java.util.List;
 import java.util.Optional;
+import model.User;
+import service.UserService;
 
 // GUI KUTSUU CONTROLLERIA!
 public class UserController {
@@ -52,6 +52,7 @@ public class UserController {
         userService.deleteAllUsers();
         System.out.println("All users deleted successfully");
     }
+
     // For setting up test db
     public void setEm(EntityManager em) {
         userService.setUserDaoEm(em);

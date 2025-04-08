@@ -1,40 +1,34 @@
 package controller.view_controllers;
 
+import static util.ProfilePictureUtil.getProfilePictureView;
+
 import context.GUIContext;
 import context.LocaleManager;
 import controller.BaseController;
+import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import util.SceneNames;
 
-import java.util.ResourceBundle;
-
-import static util.ProfilePictureUtil.getProfilePictureView;
-
 public class AdminProfileController extends BaseController {
-
-    private GUIContext guiContext = GUIContext.getInstance();
-
-    @FXML
-    private Pane bottomNavPane, profileImagePane;
-
-    @FXML
-    private ImageView homeIcon, profileIcon, backIcon, editButton, helpIcon;
-
-    @FXML
-    private Label nameLabel, emailLabel, phoneLabel;
-
-    @FXML
-    private AnchorPane adminProfilePane;
 
     private final LocaleManager localeManager = LocaleManager.getInstance();
     private final ResourceBundle bundle = localeManager.getBundle();
+    private GUIContext guiContext = GUIContext.getInstance();
+    @FXML
+    private Pane bottomNavPane, profileImagePane;
+    @FXML
+    private ImageView homeIcon, profileIcon, backIcon, editButton, helpIcon;
+    @FXML
+    private Label nameLabel, emailLabel, phoneLabel;
+    @FXML
+    private AnchorPane adminProfilePane;
 
     // default constructor for FXML loader
     public AdminProfileController() {

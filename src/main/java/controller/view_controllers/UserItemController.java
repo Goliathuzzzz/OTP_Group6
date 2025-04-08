@@ -2,6 +2,8 @@ package controller.view_controllers;
 
 import context.GUIContext;
 import context.LocaleManager;
+import java.util.ResourceBundle;
+import java.util.function.Consumer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -10,22 +12,17 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import model.User;
 
-import java.util.ResourceBundle;
-import java.util.function.Consumer;
-
 public class UserItemController {
 
-    @FXML
-    public ImageView deleteIcon;
-
-    @FXML
-    private Label userNameLabel;
-
-    private User user;
-    private Consumer<User> onDelete;
     private final LocaleManager localeManager = LocaleManager.getInstance();
     private final ResourceBundle bundle = localeManager.getBundle();
     private final GUIContext guiContext = GUIContext.getInstance();
+    @FXML
+    public ImageView deleteIcon;
+    @FXML
+    private Label userNameLabel;
+    private User user;
+    private Consumer<User> onDelete;
 
     public void setUser(User user, Consumer<User> onDelete) {
         this.user = user;
@@ -66,7 +63,8 @@ public class UserItemController {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle(bundle.getString("user_removal_alert"));
         alert.setHeaderText(null);
-        alert.setContentText(bundle.getString("confirm_user_removal") + userNameLabel.getText() + "?");
+        alert.setContentText(
+                bundle.getString("confirm_user_removal") + userNameLabel.getText() + "?");
         alert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
                 deleteUser();

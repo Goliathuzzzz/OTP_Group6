@@ -1,36 +1,34 @@
 package controller;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.when;
+import static org.testfx.api.FxAssert.verifyThat;
+import static org.testfx.util.NodeQueryUtils.isVisible;
+
 import controller.view_controllers.RegistrationController;
-import jakarta.persistence.Persistence;
+import java.net.URL;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import model.User;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.testfx.framework.junit5.ApplicationTest;
 
-import java.net.URL;
-import java.util.Date;
-import java.util.Locale;
-import java.util.ResourceBundle;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.testfx.api.FxAssert.verifyThat;
-import static org.testfx.util.NodeQueryUtils.isVisible;
-import static org.mockito.Mockito.*;
-
 public class RegistrationControllerTest extends ApplicationTest {
 
-    private RegistrationController controller;
     private static UserController userController;
+    ResourceBundle bundle = ResourceBundle.getBundle("Messages", Locale.US);
+    private RegistrationController controller;
     private Parent root;
     private Stage stage;
-    ResourceBundle bundle = ResourceBundle.getBundle("Messages", Locale.US);
 
     @BeforeAll
     static void starter() {
@@ -73,7 +71,8 @@ public class RegistrationControllerTest extends ApplicationTest {
         Parent newRoot = stage.getScene().getRoot();
         assertNotNull(newRoot.lookup("#beginSessionPane"), "Begin session scene should be loaded.");
         assertTrue(stage.isShowing(), "Stage should still be showing after scene switch.");
-        assertEquals(bundle.getString("begin"), stage.getTitle(), "Stage title should be updated after registration.");
+        assertEquals(bundle.getString("begin"), stage.getTitle(),
+                "Stage title should be updated after registration.");
     }
 
     @Test
@@ -140,7 +139,9 @@ public class RegistrationControllerTest extends ApplicationTest {
         clickOn(backIcon);
 
         Parent newRoot = stage.getScene().getRoot();
-        assertNotNull(newRoot.lookup("#optionsPane"), "Options scene should be loaded after navigating back.");
-        assertEquals(bundle.getString("main_menu"), stage.getTitle(), "Stage title should be updated after navigating back.");
+        assertNotNull(newRoot.lookup("#optionsPane"),
+                "Options scene should be loaded after navigating back.");
+        assertEquals(bundle.getString("main_menu"), stage.getTitle(),
+                "Stage title should be updated after navigating back.");
     }
 }

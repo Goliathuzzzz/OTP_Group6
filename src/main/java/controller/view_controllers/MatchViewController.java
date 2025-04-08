@@ -1,8 +1,11 @@
 package controller.view_controllers;
 
+import static util.ProfilePictureUtil.getProfilePictureView;
+
 import context.GUIContext;
 import context.LocaleManager;
 import controller.BaseController;
+import java.util.ResourceBundle;
 import javafx.animation.ScaleTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -14,36 +17,26 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import util.SceneNames;
 
-import java.util.ResourceBundle;
-
-import static util.ProfilePictureUtil.getProfilePictureView;
-
 public class MatchViewController extends BaseController {
 
+    private final LocaleManager localeManager = LocaleManager.getInstance();
+    private final ResourceBundle bundle = localeManager.getBundle();
+    GUIContext context = GUIContext.getInstance();
     @FXML
     private ImageView matchHeart;
-
     @FXML
     private ImageView placeholderProfile1;
-
     @FXML
     private ImageView placeholderProfile2;
-
     @FXML
     private Button detailsButton;
+    @FXML
+    private AnchorPane matchPane;
 
     @FXML
     private void handleDetailsButtonClick(MouseEvent event) {
         switchScene(SceneNames.AFTER_MATCH);
     }
-
-    @FXML
-    private AnchorPane matchPane;
-
-    private final LocaleManager localeManager = LocaleManager.getInstance();
-    private final ResourceBundle bundle = localeManager.getBundle();
-
-    GUIContext context = GUIContext.getInstance();
 
     @FXML
     public void initialize() {

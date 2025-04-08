@@ -2,10 +2,10 @@ package controller;
 
 import context.GUIContext;
 import jakarta.persistence.EntityManager;
+import java.util.List;
 import model.Match;
 import model.Participant;
 import service.MatchService;
-import java.util.List;
 
 public class MatchController {
 
@@ -16,7 +16,8 @@ public class MatchController {
         matchService = new MatchService();
     }
 
-    public void matchParticipants(Participant participant1, Participant participant2, double compatibility) {
+    public void matchParticipants(Participant participant1, Participant participant2,
+                                  double compatibility) {
         matchService.addMatch(new Match(participant1, participant2, compatibility));
         System.out.println("Participants matched successfully");
     }
@@ -24,7 +25,9 @@ public class MatchController {
     public Match displayMatch(int id) {
         Match match = matchService.findMatchById(id);
         if (match != null) {
-            System.out.println("Match found: " + match.getParticipant1().getDisplayName(context.getLanguage()) + " + " + match.getParticipant2().getDisplayName(context.getLanguage()));
+            System.out.println("Match found: " +
+                    match.getParticipant1().getDisplayName(context.getLanguage()) + " + " +
+                    match.getParticipant2().getDisplayName(context.getLanguage()));
         } else {
             System.out.println("Match not found");
         }
@@ -33,16 +36,18 @@ public class MatchController {
 
     public List<Match> displayAllMatches() {
         List<Match> matches = matchService.findAllMatches();
-        for (Match m: matches) {
-            System.out.println(m.getParticipant1().getDisplayName(context.getLanguage()) + " + " + m.getParticipant2().getDisplayName(context.getLanguage()));
+        for (Match m : matches) {
+            System.out.println(m.getParticipant1().getDisplayName(context.getLanguage()) + " + " +
+                    m.getParticipant2().getDisplayName(context.getLanguage()));
         }
         return matches;
     }
 
     public List<Match> displayAllByParticipant(Participant participant) {
         List<Match> matches = matchService.findByParticipant(participant);
-        for (Match m: matches) {
-            System.out.println(m.getParticipant1().getDisplayName(context.getLanguage()) + " + " + m.getParticipant2().getDisplayName(context.getLanguage()));
+        for (Match m : matches) {
+            System.out.println(m.getParticipant1().getDisplayName(context.getLanguage()) + " + " +
+                    m.getParticipant2().getDisplayName(context.getLanguage()));
         }
         return matches;
     }

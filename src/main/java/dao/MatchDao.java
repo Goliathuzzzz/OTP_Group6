@@ -2,10 +2,9 @@ package dao;
 
 import datasource.MariaDbJpaConnection;
 import jakarta.persistence.EntityManager;
+import java.util.List;
 import model.Match;
 import model.Participant;
-
-import java.util.List;
 
 public class MatchDao implements IDao<Match> {
     private EntityManager em = MariaDbJpaConnection.getInstance();
@@ -31,7 +30,9 @@ public class MatchDao implements IDao<Match> {
     }
 
     public List<Match> findByParticipant(Participant participant) {
-        return em.createQuery("SELECT m FROM Match m WHERE m.participant1 = :participant OR m.participant2 = :participant", Match.class)
+        return em.createQuery(
+                        "SELECT m FROM Match m WHERE m.participant1 = :participant OR m.participant2 = :participant",
+                        Match.class)
                 .setParameter("participant", participant)
                 .getResultList();
     }
@@ -61,7 +62,7 @@ public class MatchDao implements IDao<Match> {
 
     public void deleteAll() {
         List<Match> matchesToDelete = findAll();
-        for (Match m: matchesToDelete) {
+        for (Match m : matchesToDelete) {
             delete(m);
         }
         System.out.println("Deleted all matches");

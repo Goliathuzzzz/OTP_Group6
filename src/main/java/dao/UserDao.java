@@ -3,10 +3,9 @@ package dao;
 import datasource.MariaDbJpaConnection;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
-import model.User;
-
 import java.util.List;
 import java.util.Optional;
+import model.User;
 
 public class UserDao implements IDao<User> {
     private EntityManager em = MariaDbJpaConnection.getInstance();
@@ -27,13 +26,16 @@ public class UserDao implements IDao<User> {
     }
 
     public boolean existsByEmail(String email) {
-        TypedQuery<User> query = em.createQuery("SELECT u FROM User u WHERE u.email = :email", User.class);
+        TypedQuery<User> query =
+                em.createQuery("SELECT u FROM User u WHERE u.email = :email", User.class);
         query.setParameter("email", email);
         return !query.getResultList().isEmpty();
     }
 
     public Optional<User> findByEmailAndPassword(String email, String password) {
-        TypedQuery<User> query = em.createQuery("SELECT u FROM User u WHERE u.email = :email AND u.password = :password", User.class);
+        TypedQuery<User> query = em.createQuery(
+                "SELECT u FROM User u WHERE u.email = :email AND u.password = :password",
+                User.class);
         query.setParameter("email", email);
         query.setParameter("password", password);
         return query.getResultStream().findFirst();
@@ -41,7 +43,8 @@ public class UserDao implements IDao<User> {
 
     // Find all users except admin
     public List<User> findAll() {
-        return em.createQuery("SELECT u FROM User u WHERE u.role <> 'admin'", User.class).getResultList();
+        return em.createQuery("SELECT u FROM User u WHERE u.role <> 'admin'", User.class)
+                .getResultList();
     }
 
     public void update(User object) {
@@ -60,7 +63,8 @@ public class UserDao implements IDao<User> {
         try {
             em.getTransaction().begin();
             // delete all matches where the user is a participant
-            em.createQuery("DELETE FROM Match m WHERE m.participant1 = :user OR m.participant2 = :user")
+            em.createQuery(
+                            "DELETE FROM Match m WHERE m.participant1 = :user OR m.participant2 = :user")
                     .setParameter("user", object)
                     .executeUpdate();
             em.remove(em.contains(object) ? object : em.merge(object));
@@ -73,7 +77,7 @@ public class UserDao implements IDao<User> {
 
     public void deleteAll() {
         List<User> usersToDelete = findAll();
-        for (User user: usersToDelete) {
+        for (User user : usersToDelete) {
             delete(user);
         }
         System.out.println("Deleted all users");

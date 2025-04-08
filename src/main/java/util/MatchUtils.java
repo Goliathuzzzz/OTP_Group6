@@ -1,11 +1,14 @@
 package util;
 
-import model.categories.Category;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import model.categories.Category;
 
 public class MatchUtils {
+    private MatchUtils() {
+    }
+
     public static List<Category> findCommonInterests(List<Category> list1, List<Category> list2) {
         System.out.println("DEBUG: Finding common interests between " + list1 + " and " + list2);
         List<Category> commonInterests = new ArrayList<>(list1);
@@ -18,8 +21,5 @@ public class MatchUtils {
                 .map(Category::toString)
                 .map(s -> s.toLowerCase().replace("_", " "))
                 .collect(Collectors.joining(", "));
-    }
-
-    private MatchUtils() {
     }
 }

@@ -3,9 +3,11 @@ package controller.view_controllers;
 import context.GUIContext;
 import context.LocaleManager;
 import controller.BaseController;
+import java.util.ResourceBundle;
 import javafx.animation.ScaleTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -14,26 +16,18 @@ import javafx.util.Duration;
 import model.Participant;
 import model.Session;
 import util.SceneNames;
-import javafx.scene.control.Label;
-
-import java.util.Locale;
-import java.util.ResourceBundle;
 
 public class BeginSessionController extends BaseController {
 
-    @FXML
-    private ImageView homeIcon, profileIcon, backIcon, bigHeart;
-
-    @FXML
-    private AnchorPane beginSessionPane;
-
-    @FXML
-    private Label beginSession;
-
-    private ScaleTransition heartbeat;
-
     private final LocaleManager localeManager = LocaleManager.getInstance();
     private final ResourceBundle bundle = localeManager.getBundle();
+    @FXML
+    private ImageView homeIcon, profileIcon, backIcon, bigHeart;
+    @FXML
+    private AnchorPane beginSessionPane;
+    @FXML
+    private Label beginSession;
+    private ScaleTransition heartbeat;
 
     @FXML
     public void initialize() {

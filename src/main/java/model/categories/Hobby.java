@@ -1,6 +1,6 @@
 package model.categories;
 
-public enum Hobby implements Category{
+public enum Hobby implements Category {
     TV_SARJAT,
     VIDEOPELIT,
     TÄHTIENTARKKAILU,

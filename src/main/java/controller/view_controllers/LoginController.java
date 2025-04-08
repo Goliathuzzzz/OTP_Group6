@@ -4,6 +4,7 @@ import context.GUIContext;
 import context.LocaleManager;
 import controller.BaseController;
 import controller.UserController;
+import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -16,31 +17,22 @@ import javafx.stage.Stage;
 import model.User;
 import util.SceneNames;
 
-import java.util.Locale;
-import java.util.ResourceBundle;
-
 public class LoginController extends BaseController {
-
-    UserController uController = new UserController();
-    GUIContext guiContext = GUIContext.getInstance();
-
-    @FXML
-    private TextField emailField;
-
-    @FXML
-    private Label newAccount, forgotPassword, or;
-
-    @FXML
-    private PasswordField passwordField;
-
-    @FXML
-    private Button loginButton;
-
-    @FXML
-    private AnchorPane loginPane;
 
     private final LocaleManager localeManager = LocaleManager.getInstance();
     private final ResourceBundle bundle = localeManager.getBundle();
+    UserController uController = new UserController();
+    GUIContext guiContext = GUIContext.getInstance();
+    @FXML
+    private TextField emailField;
+    @FXML
+    private Label newAccount, forgotPassword, or;
+    @FXML
+    private PasswordField passwordField;
+    @FXML
+    private Button loginButton;
+    @FXML
+    private AnchorPane loginPane;
 
     @FXML
     private void handleLogin() {
@@ -48,7 +40,8 @@ public class LoginController extends BaseController {
         String password = passwordField.getText();
 
         if (email.isEmpty() || password.isEmpty()) {
-            showAlert(Alert.AlertType.ERROR, bundle.getString("error_title"), bundle.getString("fill_all_fields"));
+            showAlert(Alert.AlertType.ERROR, bundle.getString("error_title"),
+                    bundle.getString("fill_all_fields"));
             return;
         }
         User user = uController.login(email, password);
@@ -56,7 +49,8 @@ public class LoginController extends BaseController {
             guiContext.setUser(user);
             switchScene(SceneNames.BEGIN_SESSION);
         } else {
-            showAlert(Alert.AlertType.ERROR, bundle.getString("error_title"), bundle.getString("invalid_credentials"));
+            showAlert(Alert.AlertType.ERROR, bundle.getString("error_title"),
+                    bundle.getString("invalid_credentials"));
         }
     }
 
@@ -67,8 +61,7 @@ public class LoginController extends BaseController {
             Stage stage = (Stage) loginPane.getScene().getWindow();
             if (stage != null) {
                 stage.setTitle(bundle.getString("login_title"));
-            }
-            else {
+            } else {
                 System.err.println("Stage is null in LoginController initialize()");
             }
         });
@@ -76,7 +69,8 @@ public class LoginController extends BaseController {
 
     @FXML
     private void handleForgotPassword() {
-        showAlert(Alert.AlertType.INFORMATION, bundle.getString("forgot_password_title"), bundle.getString("forgot_password_instructions"));
+        showAlert(Alert.AlertType.INFORMATION, bundle.getString("forgot_password_title"),
+                bundle.getString("forgot_password_instructions"));
     }
 
     @FXML
@@ -96,12 +90,10 @@ public class LoginController extends BaseController {
         if ("ja".equals(localeManager.getLocale().getLanguage())) {
             or.setLayoutX(175);
             forgotPassword.setLayoutX(130);
-        }
-        else if ("zh".equals(localeManager.getLocale().getLanguage())) {
+        } else if ("zh".equals(localeManager.getLocale().getLanguage())) {
             or.setLayoutX(185);
             forgotPassword.setLayoutX(210);
-        }
-        else if ("en".equals(localeManager.getLocale().getLanguage())) {
+        } else if ("en".equals(localeManager.getLocale().getLanguage())) {
             forgotPassword.setLayoutX(210);
             newAccount.setLayoutX(195);
         }

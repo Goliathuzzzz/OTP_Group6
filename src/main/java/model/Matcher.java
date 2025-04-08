@@ -1,19 +1,17 @@
 package model;
 
 import controller.UserController;
-import model.categories.Category;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import model.categories.Category;
 
 public class Matcher {
     private final Session session;
-    private UserController userController;
     // Double arvo on yhteensopivuus-prosentti. Periaatteessa voi olla useampi paras match, niin tallennetaan hashmappiin
     private final HashMap<User, Double> topMatches;
+    private UserController userController;
 
     public Matcher(Session session) {
         this.session = session;
@@ -53,7 +51,7 @@ public class Matcher {
         System.out.println("DEBUG: Matching for participant " + toMatch.getDisplayName("en"));
         System.out.println("DEBUG: Participant interests: " + participantInterests);
 
-        for (User u: potentialMatches) {
+        for (User u : potentialMatches) {
             if (u.equals(toMatch)) {
                 continue; // exclude participant from matches
 
@@ -72,10 +70,13 @@ public class Matcher {
             for (Category interest : session.getParticipantInterests()) {
                 if (pMatchInterests.contains(interest)) {
                     compatibility += increment;
-                    System.out.println("DEBUG: Match found for interest: " + interest + " -> compatibility: " + compatibility);
+                    System.out.println(
+                            "DEBUG: Match found for interest: " + interest + " -> compatibility: " +
+                                    compatibility);
                 } else {
                     maxPotential -= increment;
-                    System.out.println("DEBUG: No match found for interest: " + interest + " -> max potential: " + maxPotential);
+                    System.out.println("DEBUG: No match found for interest: " + interest +
+                            " -> max potential: " + maxPotential);
                 }
                 if (maxPotential < currentHighestCompatibility) {
                     System.out.println("DEBUG: Skipping " + u.getId() + " due to low potential.");

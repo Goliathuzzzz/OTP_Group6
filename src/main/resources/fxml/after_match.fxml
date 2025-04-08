@@ -5,10 +5,10 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-
 <?import javafx.scene.text.Font?>
-<AnchorPane prefHeight="852" prefWidth="393" fx:id="afterMatchPane" styleClass="edit-profile" stylesheets="@/css/after_match.css"
-            xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="852" prefWidth="393" fx:id="afterMatchPane"
+            styleClass="edit-profile"
+            stylesheets="@/css/after_match.css" xmlns="http://javafx.com/javafx/23.0.1"
             fx:controller="controller.view_controllers.AfterMatchController">
 
     <!-- Background Image -->
@@ -45,7 +45,7 @@
     </ImageView>
     <Label fx:id="percentageLabel" layoutY="-1.0" styleClass="begin" text="%match_percentage"/>
     <ImageView fitHeight="31.0" fitWidth="28.0" layoutX="263.0" layoutY="540.0" pickOnBounds="true"
-               preserveRatio="true" >
+               preserveRatio="true">
         <Image url="@/images/hearts.png"/>
     </ImageView>
 

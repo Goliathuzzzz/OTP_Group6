@@ -1,23 +1,25 @@
 package datasource;
 
-import jakarta.persistence.*;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 
 public class MariaDbJpaConnection {
 
     private static EntityManagerFactory emf;
     private static EntityManager em;
 
+    private MariaDbJpaConnection() {
+    }
+
     public static EntityManager getInstance() {
 
-        if (em==null) {
-            if (emf==null) {
+        if (em == null) {
+            if (emf == null) {
                 emf = Persistence.createEntityManagerFactory("TatskatytotMariaDbUnit");
             }
             em = emf.createEntityManager();
         }
         return em;
-    }
-
-    private MariaDbJpaConnection() {
     }
 }

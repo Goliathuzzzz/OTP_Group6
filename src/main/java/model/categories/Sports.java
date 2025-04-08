@@ -1,6 +1,6 @@
 package model.categories;
 
-public enum Sports implements Category{
+public enum Sports implements Category {
     LENKKEILY,
     PYÖRÄILY,
     UIMINEN,

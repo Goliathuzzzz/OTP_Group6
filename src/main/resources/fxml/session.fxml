@@ -8,9 +8,8 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-
-<AnchorPane prefHeight="852" prefWidth="393" fx:id="sessionPane" styleClass="profile" stylesheets="@/css/session.css"
-            xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="852" prefWidth="393" fx:id="sessionPane" styleClass="profile"
+            stylesheets="@/css/session.css" xmlns="http://javafx.com/javafx/23.0.1"
             fx:controller="controller.view_controllers.SessionController">
     <Pane prefHeight="556" prefWidth="393" styleClass="tausta"/>
     <Pane layoutY="95.0" prefHeight="757.0" prefWidth="393" styleClass="rectangle15">
@@ -48,35 +47,40 @@
         <VBox fx:id="interestsContainer" layoutX="38" layoutY="238" spacing="10">
             <Pane styleClass="interest-group" fx:id="animals">
                 <Pane styleClass="rectangle-20"/>
-                <Label fx:id="animalLabel" layoutX="48" layoutY="7" styleClass="interest-label" text="%animals" textAlignment="CENTER"/>
+                <Label fx:id="animalLabel" layoutX="48" layoutY="7" styleClass="interest-label" text="%animals"
+                       textAlignment="CENTER"/>
                 <ImageView fitHeight="22" fitWidth="22" layoutX="10" layoutY="7">
                     <Image url="@/images/paw_icon.png"/>
                 </ImageView>
             </Pane>
             <Pane styleClass="interest-group" fx:id="food">
                 <Pane styleClass="rectangle-21"/>
-                <Label fx:id="foodLabel" layoutX="48" layoutY="7" styleClass="interest-label" text="%food" textAlignment="CENTER"/>
+                <Label fx:id="foodLabel" layoutX="48" layoutY="7" styleClass="interest-label" text="%food"
+                       textAlignment="CENTER"/>
                 <ImageView fitHeight="22" fitWidth="22" layoutX="10" layoutY="7">
                     <Image url="@/images/food_icon.png"/>
                 </ImageView>
             </Pane>
             <Pane styleClass="interest-group" fx:id="hobbies">
                 <Pane styleClass="rectangle-22"/>
-                <Label fx:id="hobbiesLabel" layoutX="48" layoutY="7" styleClass="interest-label" text="%hobbies" textAlignment="CENTER"/>
+                <Label fx:id="hobbiesLabel" layoutX="48" layoutY="7" styleClass="interest-label" text="%hobbies"
+                       textAlignment="CENTER"/>
                 <ImageView fitHeight="22" fitWidth="22" layoutX="10" layoutY="7">
                     <Image url="@/images/hobby_icon.png"/>
                 </ImageView>
             </Pane>
             <Pane styleClass="interest-group" fx:id="sports">
                 <Pane styleClass="rectangle-24"/>
-                <Label fx:id="sportsLabel" layoutX="48" layoutY="7" styleClass="interest-label" text="%sports" textAlignment="CENTER"/>
+                <Label fx:id="sportsLabel" layoutX="48" layoutY="7" styleClass="interest-label" text="%sports"
+                       textAlignment="CENTER"/>
                 <ImageView fitHeight="22" fitWidth="22" layoutX="10" layoutY="7">
                     <Image url="@/images/sports_icon.png"/>
                 </ImageView>
             </Pane>
             <Pane styleClass="interest-group" fx:id="science">
                 <Pane styleClass="rectangle-23"/>
-                <Label fx:id="scienceLabel" layoutX="48" layoutY="7" styleClass="interest-label" text="%science" textAlignment="CENTER"/>
+                <Label fx:id="scienceLabel" layoutX="48" layoutY="7" styleClass="interest-label" text="%science"
+                       textAlignment="CENTER"/>
                 <ImageView fitHeight="22" fitWidth="22" layoutX="10" layoutY="7">
                     <Image url="@/images/science_icon.png"/>
                 </ImageView>

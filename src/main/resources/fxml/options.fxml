@@ -8,43 +8,50 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Line?>
-
-<AnchorPane fx:id="optionsPane" id="optionsPane" prefHeight="852" prefWidth="393" stylesheets="@/css/options.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.view_controllers.OptionsController">
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="optionsPane" id="optionsPane" prefHeight="852" prefWidth="393"
+            stylesheets="@/css/options.css" xmlns="http://javafx.com/javafx/22"
+            fx:controller="controller.view_controllers.OptionsController">
     <ImageView fitHeight="556" fitWidth="393">
-        <Image url="@/images/background.png" />
+        <Image url="@/images/background.png"/>
     </ImageView>
-    <Pane fx:id="rectangle13" layoutY="283" prefHeight="569" prefWidth="393" />
-    <Label fx:id="speedDating" layoutX="105" layoutY="219" text="%speed_dating" />
+    <Pane fx:id="rectangle13" layoutY="283" prefHeight="569" prefWidth="393"/>
+    <Label fx:id="speedDating" layoutX="105" layoutY="219" text="%speed_dating"/>
     <ImageView fitHeight="210" fitWidth="214" layoutX="90" layoutY="18">
-        <Image url="@/images/punainenlogo.png" />
+        <Image url="@/images/punainenlogo.png"/>
     </ImageView>
     <Pane layoutX="39" layoutY="339" prefHeight="283" prefWidth="315">
-        <Line endX="116.5" layoutX="198.0" layoutY="100.0" stroke="#7e7e7e" />
-        <Line endX="116.5" layoutX="1.0" layoutY="100.0" stroke="#7e7e7e" />
+        <Line endX="116.5" layoutX="198.0" layoutY="100.0" stroke="#7e7e7e"/>
+        <Line endX="116.5" layoutX="1.0" layoutY="100.0" stroke="#7e7e7e"/>
     </Pane>
-    <Button fx:id="loginButton" layoutX="39" layoutY="339" onAction="#handleLogin" prefHeight="63" prefWidth="315" text="%login">
+    <Button fx:id="loginButton" layoutX="39" layoutY="339" onAction="#handleLogin" prefHeight="63" prefWidth="315"
+            text="%login">
         <padding>
-            <Insets left="20.0" />
+            <Insets left="20.0"/>
         </padding>
     </Button>
-    <Button fx:id="newUserButton" layoutX="39" layoutY="472" onAction="#handleNewUser" prefHeight="63" prefWidth="315" text="%register">
+    <Button fx:id="newUserButton" layoutX="39" layoutY="472" onAction="#handleNewUser" prefHeight="63" prefWidth="315"
+            text="%register">
         <padding>
-            <Insets left="20.0" />
+            <Insets left="20.0"/>
         </padding>
     </Button>
-    <Button fx:id="guestButton" layoutX="39" layoutY="559" onAction="#handleGuest" prefHeight="63" prefWidth="315" text="%continue_as_guest">
+    <Button fx:id="guestButton" layoutX="39" layoutY="559" onAction="#handleGuest" prefHeight="63" prefWidth="315"
+            text="%continue_as_guest">
         <padding>
-            <Insets left="20.0" />
+            <Insets left="20.0"/>
         </padding>
     </Button>
-    <Label fx:id="or" layoutX="184" layoutY="426" text="%or" />
-    <ImageView fitHeight="50.0" fitWidth="45.0" layoutX="289.0" layoutY="348.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@/images/stars.png" />
+    <Label fx:id="or" layoutX="184" layoutY="426" text="%or"/>
+    <ImageView fitHeight="50.0" fitWidth="45.0" layoutX="289.0" layoutY="348.0" pickOnBounds="true"
+               preserveRatio="true">
+        <Image url="@/images/stars.png"/>
     </ImageView>
-    <ImageView fitHeight="37.0" fitWidth="45.0" layoutX="290.0" layoutY="486.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@/images/heart.png" />
+    <ImageView fitHeight="37.0" fitWidth="45.0" layoutX="290.0" layoutY="486.0" pickOnBounds="true"
+               preserveRatio="true">
+        <Image url="@/images/heart.png"/>
     </ImageView>
-    <ImageView fitHeight="18.0" fitWidth="45.0" layoutX="289.0" layoutY="582.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@/images/glasses.png" />
+    <ImageView fitHeight="18.0" fitWidth="45.0" layoutX="289.0" layoutY="582.0" pickOnBounds="true"
+               preserveRatio="true">
+        <Image url="@/images/glasses.png"/>
     </ImageView>
 </AnchorPane>

@@ -1,6 +1,18 @@
 package controller;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotSame;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.when;
+import static org.testfx.api.FxAssert.verifyThat;
+import static org.testfx.util.NodeQueryUtils.isVisible;
+
 import controller.view_controllers.LoginController;
+import java.net.URL;
+import java.util.Date;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -10,29 +22,22 @@ import model.User;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.testfx.framework.junit5.ApplicationTest;
-
-import java.net.URL;
-import java.util.Date;
-import java.util.Locale;
-import java.util.ResourceBundle;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.testfx.api.FxAssert.verifyThat;
-import static org.testfx.util.NodeQueryUtils.isVisible;
-import static org.mockito.Mockito.*;
 
 public class LoginControllerTest extends ApplicationTest {
 
 
     private static UserController userController;
     private static LoginController controller;
+    ResourceBundle bundle = ResourceBundle.getBundle("Messages", Locale.US);
     private Parent root;
     private Stage stage;
-    ResourceBundle bundle = ResourceBundle.getBundle("Messages", Locale.US);
 
+    @BeforeAll
+    static void start() {
+        userController = Mockito.mock(UserController.class);
+    }
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -51,12 +56,6 @@ public class LoginControllerTest extends ApplicationTest {
         stage.show();
     }
 
-
-    @BeforeAll
-    static void start() {
-        userController = Mockito.mock(UserController.class);
-    }
-
     @BeforeEach
     void setUp() {
         assertNotNull(controller, "Controller should be initialized");
@@ -66,7 +65,8 @@ public class LoginControllerTest extends ApplicationTest {
     @Test
     void testValidLoginSwitchesScene() {
         verifyThat("#emailField", Node::isVisible);
-        User user = new User("alice", "password1", "alice@example.com", "dummy", "1234567890", new Date(), "en");
+        User user = new User("alice", "password1", "alice@example.com", "dummy", "1234567890",
+                new Date(), "en");
         when(userController.login("alice@example.com", "password1")).thenReturn(user);
         clickOn("#emailField").write("alice@example.com");
         clickOn("#passwordField").write("password1");
@@ -78,7 +78,8 @@ public class LoginControllerTest extends ApplicationTest {
         assertNotNull(newRoot.lookup("#beginSessionPane"), "Begin Session scene should be loaded.");
         assertNotSame(newRoot, root, "Scene root should have changed after login.");
         assertTrue(stage.isShowing(), "Stage should still be showing after scene switch.");
-        assertEquals(bundle.getString("begin"), stage.getTitle(), "Stage title should match after scene switch.");
+        assertEquals(bundle.getString("begin"), stage.getTitle(),
+                "Stage title should match after scene switch.");
     }
 
     @Test
@@ -89,7 +90,8 @@ public class LoginControllerTest extends ApplicationTest {
         assertNotNull(newRoot.lookup("#registrationPane"), "Registration scene should be loaded.");
         assertNotSame(newRoot, root, "Scene root should have changed after clicking New Account.");
         assertTrue(stage.isShowing(), "Stage should still be showing after scene switch.");
-        assertEquals(bundle.getString("registration"), stage.getTitle(), "Stage title should match after scene switch.");
+        assertEquals(bundle.getString("registration"), stage.getTitle(),
+                "Stage title should match after scene switch.");
     }
 
     @Test

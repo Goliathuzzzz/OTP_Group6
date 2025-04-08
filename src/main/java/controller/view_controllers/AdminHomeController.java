@@ -3,6 +3,10 @@ package controller.view_controllers;
 import context.LocaleManager;
 import controller.BaseController;
 import controller.MatchController;
+import java.io.IOException;
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,23 +17,15 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.Match;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.List;
-import java.util.ResourceBundle;
-
 public class AdminHomeController extends BaseController implements Initializable {
-
-    private MatchController matchController = new MatchController();
-
-    @FXML
-    private VBox pairsContainer;
-
-    @FXML
-    private AnchorPane adminHomePane;
 
     private final LocaleManager localeManager = LocaleManager.getInstance();
     private final ResourceBundle bundle = localeManager.getBundle();
+    private MatchController matchController = new MatchController();
+    @FXML
+    private VBox pairsContainer;
+    @FXML
+    private AnchorPane adminHomePane;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -80,7 +76,8 @@ public class AdminHomeController extends BaseController implements Initializable
                     PairItemController controller = (PairItemController) node.getUserData();
                     return controller != null && controller.getMatch().equals(match);
                 })
-                .findFirst().ifPresent(nodeToRemove -> pairsContainer.getChildren().remove(nodeToRemove));
+                .findFirst()
+                .ifPresent(nodeToRemove -> pairsContainer.getChildren().remove(nodeToRemove));
     }
 
     // testing purposes

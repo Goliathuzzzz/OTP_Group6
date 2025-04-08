@@ -2,6 +2,8 @@ package controller.view_controllers;
 
 import context.LocaleManager;
 import controller.BaseController;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -9,19 +11,14 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import util.SceneNames;
 
-import java.util.Locale;
-import java.util.ResourceBundle;
-
 public class OptionsController extends BaseController {
-
-    @FXML
-    private AnchorPane optionsPane;
-
-    @FXML
-    private Label speedDating, or;
 
     private final LocaleManager localeManager = LocaleManager.getInstance();
     private final ResourceBundle bundle = localeManager.getBundle();
+    @FXML
+    private AnchorPane optionsPane;
+    @FXML
+    private Label speedDating, or;
 
     @FXML
     public void initialize() {
@@ -55,8 +52,7 @@ public class OptionsController extends BaseController {
         if ("ja".equals(locale.getLanguage())) {
             speedDating.setLayoutX(45);
             or.setLayoutX(175);
-        }
-        else if ("zh".equals(locale.getLanguage())) {
+        } else if ("zh".equals(locale.getLanguage())) {
             or.setLayoutX(190);
             speedDating.setLayoutX(115);
         }

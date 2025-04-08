@@ -1,12 +1,20 @@
 package context;
 
-import model.*;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
+import model.Guest;
+import model.Match;
+import model.Matcher;
+import model.Session;
+import model.User;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 class GUIContextTest {
 
@@ -23,7 +31,8 @@ class GUIContextTest {
         guiContext.logout();
         guiContext.setLanguage("en");
 
-        testUser = new User("Alice", "password", "alice@example.com", "user", "1234567890", null, "en");
+        testUser = new User("Alice", "password", "alice@example.com", "user", "1234567890", null,
+                "en");
         testGuest = new Guest("9876543210", null);
         testSession = new Session(testUser);
         testMatcher = new Matcher(testSession);
@@ -48,7 +57,9 @@ class GUIContextTest {
 
     @Test
     void testSetAndGetAdminUser() {
-        User adminUser = new User("Admin", "adminpass", "admin@example.com", "admin", "9998887777", null, "en");
+        User adminUser =
+                new User("Admin", "adminpass", "admin@example.com", "admin", "9998887777", null,
+                        "en");
         guiContext.setUser(adminUser);
         assertTrue(guiContext.isAdmin(), "Admin flag should be true.");
     }
@@ -91,8 +102,11 @@ class GUIContextTest {
 
     @Test
     void testSetAndGetMatches() {
-        Match match1 = new Match(testUser, new User("Bob", "pass", "bob@example.com", "user", "1112223333", null, "en"), 90.5);
-        Match match2 = new Match(testUser, new User("Charlie", "pass", "charlie@example.com", "user", "4445556666", null, "en"), 85.2);
+        Match match1 = new Match(testUser,
+                new User("Bob", "pass", "bob@example.com", "user", "1112223333", null, "en"), 90.5);
+        Match match2 = new Match(testUser,
+                new User("Charlie", "pass", "charlie@example.com", "user", "4445556666", null,
+                        "en"), 85.2);
 
         testMatches.add(match1);
         testMatches.add(match2);
@@ -103,12 +117,15 @@ class GUIContextTest {
 
     @Test
     void testSetMatch() {
-        Match match = new Match(testUser, new User("David", "pass", "david@example.com", "user", "7778889999", null, "en"), 78.0);
+        Match match = new Match(testUser,
+                new User("David", "pass", "david@example.com", "user", "7778889999", null, "en"),
+                78.0);
         guiContext.setMatches(new ArrayList<>());
         guiContext.setMatch(match);
 
         assertEquals(1, guiContext.getMatches().size(), "Match should be added.");
-        assertEquals(match, guiContext.getMatches().getFirst(), "Added match should be retrieved correctly.");
+        assertEquals(match, guiContext.getMatches().getFirst(),
+                "Added match should be retrieved correctly.");
     }
 
     @Test
@@ -131,7 +148,8 @@ class GUIContextTest {
         assertFalse(guiContext.isGuest(), "isGuest should be false after logout.");
         assertFalse(guiContext.isAdmin(), "isAdmin should be false after logout.");
 
-        assertEquals("", guiContext.getUserNameProperty().get(), "UserNameProperty should be cleared.");
+        assertEquals("", guiContext.getUserNameProperty().get(),
+                "UserNameProperty should be cleared.");
         assertEquals("", guiContext.getEmailProperty().get(), "EmailProperty should be cleared.");
         assertEquals("", guiContext.getPhoneProperty().get(), "PhoneProperty should be cleared.");
     }
@@ -140,15 +158,18 @@ class GUIContextTest {
     void testGetId() {
         guiContext.setUser(testUser);
         assertTrue(testUser.getId() >= 0, "User ID should be 0 or a positive number.");
-        assertEquals(testUser.getId(), guiContext.getId(), "getId() should return the correct user ID.");
+        assertEquals(testUser.getId(), guiContext.getId(),
+                "getId() should return the correct user ID.");
         guiContext.logout();
 
         guiContext.setGuest(testGuest);
 
         assertTrue(testGuest.getId() >= 0, "Guest ID should be 0 or a positive number.");
-        assertEquals(testGuest.getId(), guiContext.getId(), "getId() should return the correct guest ID.");
+        assertEquals(testGuest.getId(), guiContext.getId(),
+                "getId() should return the correct guest ID.");
         guiContext.logout();
 
-        assertEquals(-1, guiContext.getId(), "getId() should return -1 when no user or guest data is found.");
+        assertEquals(-1, guiContext.getId(),
+                "getId() should return -1 when no user or guest data is found.");
     }
 }

@@ -2,10 +2,9 @@ package service;
 
 import dao.MatchDao;
 import jakarta.persistence.EntityManager;
+import java.util.List;
 import model.Match;
 import model.Participant;
-
-import java.util.List;
 
 public class MatchService {
     private final MatchDao dao;

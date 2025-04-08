@@ -3,35 +3,29 @@ package controller.view_controllers;
 import context.GUIContext;
 import context.LocaleManager;
 import controller.BaseController;
+import java.util.List;
+import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.scene.control.Label;
 import model.Match;
 import model.categories.Category;
 import util.MatchUtils;
-import java.util.List;
-import java.util.Locale;
-import java.util.ResourceBundle;
 
 
 public class AfterMatchController extends BaseController {
 
-    @FXML
-    private ImageView homeIcon, profileIcon, backIcon;
-
-    @FXML
-    private Label percentageLabel, matchParticipantsLabel, interestsLabel;
-
-    @FXML
-    private AnchorPane afterMatchPane;
-
     private final LocaleManager localeManager = LocaleManager.getInstance();
     private final ResourceBundle bundle = localeManager.getBundle();
-
+    @FXML
+    private ImageView homeIcon, profileIcon, backIcon;
+    @FXML
+    private Label percentageLabel, matchParticipantsLabel, interestsLabel;
+    @FXML
+    private AnchorPane afterMatchPane;
 
     @FXML
     public void initialize() {
@@ -61,8 +55,10 @@ public class AfterMatchController extends BaseController {
         String and = bundle.getString("and");
         Match match = matches.getLast();
 
-        String displayName1 = localizeGuestName(match.getParticipant1().getDisplayName(context.getLanguage()));
-        String displayName2 = localizeGuestName(match.getParticipant2().getDisplayName(context.getLanguage()));
+        String displayName1 =
+                localizeGuestName(match.getParticipant1().getDisplayName(context.getLanguage()));
+        String displayName2 =
+                localizeGuestName(match.getParticipant2().getDisplayName(context.getLanguage()));
 
         matchParticipantsLabel.setText(displayName1 + " " + and + " " + displayName2);
         percentageLabel.setText(Math.round(match.getCompatibility()) + "%");
@@ -80,7 +76,8 @@ public class AfterMatchController extends BaseController {
             for (int i = 0; i < interests.size(); i++) {
                 Category interest = interests.get(i);
                 // dynamically construct the localization key based on enum name
-                String key = interest.getClass().getSimpleName().toLowerCase() + "_" + ((Enum<?>) interest).name().toLowerCase();
+                String key = interest.getClass().getSimpleName().toLowerCase() + "_" +
+                        ((Enum<?>) interest).name().toLowerCase();
                 sb.append(bundle.getString(key));
                 if (i < interests.size() - 1) {
                     sb.append(", ");

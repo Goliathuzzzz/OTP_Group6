@@ -6,9 +6,9 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-
-<AnchorPane prefHeight="852.0" prefWidth="393.0" fx:id="matchPane" styleClass="edit-profile" stylesheets="@/css/match.css"
-            xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="852.0" prefWidth="393.0" fx:id="matchPane"
+            styleClass="edit-profile"
+            stylesheets="@/css/match.css" xmlns="http://javafx.com/javafx/23.0.1"
             fx:controller="controller.view_controllers.MatchViewController">
     <Pane fx:id="paperGradient" layoutY="-2" prefHeight="854" prefWidth="392" styleClass="paper-gradient"/>
     <Pane fx:id="paperTexture" prefHeight="852.0" prefWidth="393.0" styleClass="paper-texture">
@@ -22,7 +22,8 @@
                    pickOnBounds="true"
                    preserveRatio="true">
         </ImageView>
-        <ImageView fx:id="matchHeart" fitHeight="78.0" fitWidth="78.0" layoutX="127.0" layoutY="387.0" pickOnBounds="true"
+        <ImageView fx:id="matchHeart" fitHeight="78.0" fitWidth="78.0" layoutX="127.0" layoutY="387.0"
+                   pickOnBounds="true"
                    preserveRatio="true" styleClass="match-heart">
             <Image url="@../images/match_heart.png"/>
         </ImageView>
@@ -30,7 +31,8 @@
                    preserveRatio="true">
             <Image url="@../images/match_hearts.png"/>
         </ImageView>
-        <Button fx:id="detailsButton" layoutX="40.0" layoutY="660" mnemonicParsing="false" styleClass="tiedot" text="%more_details" onMouseClicked="#handleDetailsButtonClick"/>
+        <Button fx:id="detailsButton" layoutX="40.0" layoutY="660" mnemonicParsing="false" styleClass="tiedot"
+                text="%more_details" onMouseClicked="#handleDetailsButtonClick"/>
     </Pane>
     <Pane layoutY="765.0" prefHeight="87" prefWidth="393" styleClass="bottom-nav">
         <ImageView fx:id="homeIcon" fitHeight="45.0" fitWidth="42.0" layoutX="45" layoutY="23.0"

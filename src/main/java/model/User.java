@@ -1,11 +1,14 @@
 package model;
 
 import context.LocaleManager;
-import jakarta.persistence.*;
-
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.PrimaryKeyJoinColumn;
+import jakarta.persistence.Table;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.Locale;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.Set;
@@ -17,7 +20,7 @@ import java.util.Set;
 @Entity
 @Table(name = "users")
 @PrimaryKeyJoinColumn(name = "id")
-public class User extends Participant{
+public class User extends Participant {
 
     @OneToMany(mappedBy = "users", cascade = CascadeType.ALL, orphanRemoval = true)
     private final Set<LocalizedUser> localizations = new HashSet<>();
@@ -34,9 +37,11 @@ public class User extends Participant{
     @Column
     private String defaultLanguage;
 
-    public User() {}
+    public User() {
+    }
 
-    public User(String userName, String password, String email, String role, String phoneNumber, Date joinDate, String defaultLanguage) {
+    public User(String userName, String password, String email, String role, String phoneNumber,
+                Date joinDate, String defaultLanguage) {
         super(phoneNumber, joinDate);
         this.password = password;
         this.email = email;
@@ -48,7 +53,8 @@ public class User extends Participant{
     public void addLocalization(String language, String userName) {
         LocaleManager lb = LocaleManager.getInstance();
         ResourceBundle resourceBundle = lb.getBundle();
-        LocalizedUser localization = new LocalizedUser(language, userName, resourceBundle.getString(role));
+        LocalizedUser localization =
+                new LocalizedUser(language, userName, resourceBundle.getString(role));
         localizations.add(localization);
         localization.setUsers(this);
     }
@@ -86,12 +92,12 @@ public class User extends Participant{
         this.role = role;
     }
 
-    public void setDefaultLanguage(String defaultLanguage) {
-        this.defaultLanguage = defaultLanguage;
-    }
-
     public String getDefaultLanguage() {
         return defaultLanguage;
+    }
+
+    public void setDefaultLanguage(String defaultLanguage) {
+        this.defaultLanguage = defaultLanguage;
     }
 
     public String getAnyUserName() {

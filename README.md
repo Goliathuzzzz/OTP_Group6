@@ -1,6 +1,8 @@
 # Qupids - Speed Dating
 
-**Qupids Speed Dating** is a locally hosted mock implementation of an automated speed dating system. It enhances event management by automating participant enrollment, interest selection, matchmaking, and match display, reducing the inefficiencies of manual speed dating events.
+**Qupids Speed Dating** is a locally hosted mock implementation of an automated speed dating system. It enhances event
+management by automating participant enrollment, interest selection, matchmaking, and match display, reducing the
+inefficiencies of manual speed dating events.
 
 ---
 
@@ -18,13 +20,13 @@
 
 **Qupids Speed Dating** supports multiple user interface languages for a more inclusive and localized experience:
 
-   - 🇺🇸 English (en-US)
+- 🇺🇸 English (en-US)
 
-   - 🇫🇮 Finnish (fi-FI)
+- 🇫🇮 Finnish (fi-FI)
 
-   - 🇯🇵 Japanese (ja-JP)
+- 🇯🇵 Japanese (ja-JP)
 
-   - 🇨🇳 Chinese (zh-CN)
+- 🇨🇳 Chinese (zh-CN)
 
 ---
 
@@ -35,15 +37,18 @@ The application uses a compatibility based matchmaking algorithm to pair partici
 ### ⚙️ How It Works
 
 #### Interest Based Matching
+
 - Each participant selects their interests before the session starts.
 - The system retrieves a list of all potential matches from the database.
 
 #### Compatibility Scoring
+
 - A compatibility score 0-100% is calculated based on shared interests.
 - Each shared interest increases compatibility, while unmatched interests reduce the maximum potential score.
 - If a user has more interests, the score is evenly distributed across them.
 
 #### Finding the Best Match
+
 - The system identifies the highest compatibility match for each participant.
 - If multiple users have the same compatibility score, they are both considered top matches.
 - The algorithm excludes the participant themselves and skips low potential matches early for efficiency.
@@ -77,17 +82,20 @@ The application uses a compatibility based matchmaking algorithm to pair partici
 
 ## 🗃️ Database Design
 
-The **Qupids Speed Dating** uses a relational database built with **MariaDB**, structured to support multilingual users, flexible interest tracking, and scalable matchmaking.
+The **Qupids Speed Dating** uses a relational database built with **MariaDB**, structured to support multilingual users,
+flexible interest tracking, and scalable matchmaking.
 
 ### Key Aspects of the Database
 
 - **Participant**: The core entity, which includes both registered users and guests.
-- **User & Guest**: Separated using joined-table inheritance via JPA, inheriting common fields from the `participants` table.
+- **User & Guest**: Separated using joined-table inheritance via JPA, inheriting common fields from the `participants`
+  table.
 - **Interest**: Modeled as enums and linked to participants using categorized lists (e.g., hobbies, sports).
 - **Match**: Created dynamically between participants, storing compatibility scores and links to shared interests.
 - **Session**: Temporary state tracking the user’s current interest selection flow.
 
-This design ensures normalization, avoids redundancy, and supports multilingual data through proper character encoding (`utf8mb4`) in both schema and queries.
+This design ensures normalization, avoids redundancy, and supports multilingual data through proper character encoding (
+`utf8mb4`) in both schema and queries.
 
 ---
 
@@ -156,12 +164,14 @@ Ensure you have the following installed:
 - [Docker](https://www.docker.com/)
 
 > 🪟 **Note for Windows/macOS users:**  
-> If you're running the application via Docker locally, it uses a GUI (JavaFX), therefore you need an X server installed to display the interface. We recommend [**VcXsrv**](https://vcxsrv.com/) on Windows.  
+> If you're running the application via Docker locally, it uses a GUI (JavaFX), therefore you need an X server installed
+> to display the interface. We recommend [**VcXsrv**](https://vcxsrv.com/) on Windows.
 >
 > - After installing VcXsrv, launch it with:
->   - `Disable access control` enabled  
+    >
+- `Disable access control` enabled
 >   - `Multiple windows` or `One large window`
-> 
+>
 > Without this, the GUI may not launch correctly from inside the Docker container.
 
 ### Setup
@@ -190,23 +200,23 @@ Ensure you have the following installed:
 ## 🛠 Usage
 
 1. **Start the App**
-   - Launch the application to access the main menu.
+    - Launch the application to access the main menu.
 
 2. **Sign In / Register**
-   - Choose to log in, create a new user, or continue as a guest.
-   - If registering, fill in your email, phone number, and password.
+    - Choose to log in, create a new user, or continue as a guest.
+    - If registering, fill in your email, phone number, and password.
 
 3. **Begin a Session**
-   - Click on **"aloita sessio"** (start session) to enter matchmaking.
+    - Click on **"aloita sessio"** (start session) to enter matchmaking.
 
 4. **Select Your Interests**
-   - Choose from available categories such as hobbies, food, or science.
+    - Choose from available categories such as hobbies, food, or science.
 
 5. **Match Found**
-   - The system pairs you with a potential match based on shared interests.
+    - The system pairs you with a potential match based on shared interests.
 
 6. **View Match Details**
-   - See your compatibility percentage and common interests with your match.
+    - See your compatibility percentage and common interests with your match.
 
 ---
 
@@ -224,10 +234,10 @@ Generate a JaCoCo test coverage report:
 mvn jacoco:report
 ```
 
-> **Testing Overview**  
-> - Mockito – Used for mocking services and dependencies in unit tests.  
-> - JaCoCo – Ensures code coverage analysis.  
-> - TestFX – Simulates user interactions for GUI testing. 
+> **Testing Overview**
+> - Mockito – Used for mocking services and dependencies in unit tests.
+> - JaCoCo – Ensures code coverage analysis.
+> - TestFX – Simulates user interactions for GUI testing.
 
 ---
 

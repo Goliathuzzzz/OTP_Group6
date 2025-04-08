@@ -1,9 +1,14 @@
 package controller.view_controllers;
 
+import static util.ProfilePictureUtil.getProfilePictureView;
+import static util.SceneNames.EDIT_PROFILE;
+
 import context.GUIContext;
 import context.LocaleManager;
 import controller.BaseController;
 import controller.UserController;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -14,28 +19,18 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import util.SceneNames;
 
-import java.util.Locale;
-import java.util.ResourceBundle;
-
-import static util.ProfilePictureUtil.getProfilePictureView;
-import static util.SceneNames.EDIT_PROFILE;
-
 public class EditProfileController extends BaseController {
 
-    private UserController userController = new UserController();
     private final GUIContext guiContext = GUIContext.getInstance();
-
-    @FXML
-    private ImageView profileImage, homeIcon, profileIcon, backIcon, helpIcon, backIcon1;
-
-    @FXML
-    private Label nameLabel, emailLabel, phoneLabel, routeToLang;
-
-    @FXML
-    private TextField nameField, emailField, phoneField;
-
     private final LocaleManager localeManager = LocaleManager.getInstance();
     private final ResourceBundle bundle = localeManager.getBundle();
+    private UserController userController = new UserController();
+    @FXML
+    private ImageView profileImage, homeIcon, profileIcon, backIcon, helpIcon, backIcon1;
+    @FXML
+    private Label nameLabel, emailLabel, phoneLabel, routeToLang;
+    @FXML
+    private TextField nameField, emailField, phoneField;
 
     @FXML
     private void initialize() {
@@ -58,7 +53,8 @@ public class EditProfileController extends BaseController {
                 }
             });
         } else {
-            showAlert(Alert.AlertType.ERROR, bundle.getString("error_title"), bundle.getString("no_user_data"));
+            showAlert(Alert.AlertType.ERROR, bundle.getString("error_title"),
+                    bundle.getString("no_user_data"));
             System.err.println("ERROR: No logged in user data found");
         }
     }
@@ -74,7 +70,8 @@ public class EditProfileController extends BaseController {
 
     @FXML
     public void handlePreviousClick(MouseEvent event) {
-        showAlert(Alert.AlertType.INFORMATION, bundle.getString("save_title"), bundle.getString("changes_saved"));
+        showAlert(Alert.AlertType.INFORMATION, bundle.getString("save_title"),
+                bundle.getString("changes_saved"));
         saveChanges();
         switchScene(SceneNames.PROFILE);
     }
@@ -87,14 +84,16 @@ public class EditProfileController extends BaseController {
 
     @FXML
     public void handleProfileClick(MouseEvent event) {
-        showAlert(Alert.AlertType.INFORMATION, bundle.getString("save_title"), bundle.getString("changes_saved"));
+        showAlert(Alert.AlertType.INFORMATION, bundle.getString("save_title"),
+                bundle.getString("changes_saved"));
         saveChanges();
         switchScene(SceneNames.PROFILE);
     }
 
     @FXML
     public void handleBackClick(MouseEvent event) {
-        showAlert(Alert.AlertType.INFORMATION, bundle.getString("save_title"), bundle.getString("changes_saved"));
+        showAlert(Alert.AlertType.INFORMATION, bundle.getString("save_title"),
+                bundle.getString("changes_saved"));
         saveChanges();
         switchScene(SceneNames.OPTIONS);
     }
@@ -104,11 +103,9 @@ public class EditProfileController extends BaseController {
         Locale locale = localeManager.getLocale();
         if ("ja".equals(locale.getLanguage())) {
             routeToLang.setLayoutX(200);
-        }
-        else if ("zh".equals(locale.getLanguage())) {
+        } else if ("zh".equals(locale.getLanguage())) {
             routeToLang.setLayoutX(220);
-        }
-        else if ("en".equals(locale.getLanguage())) {
+        } else if ("en".equals(locale.getLanguage())) {
             routeToLang.setLayoutX(160);
         }
     }

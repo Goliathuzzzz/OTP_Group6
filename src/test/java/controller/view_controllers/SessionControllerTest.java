@@ -1,68 +1,56 @@
 package controller.view_controllers;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import static org.testfx.api.FxAssert.verifyThat;
+import static org.testfx.util.NodeQueryUtils.isVisible;
+
 import context.GUIContext;
 import controller.MatchController;
-
 import controller.UserController;
+import java.net.URL;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.RadioButton;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
-import model.*;
-import model.categories.*;
+import model.Match;
+import model.Matcher;
+import model.Participant;
+import model.Session;
+import model.User;
+import model.categories.Category;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.testfx.framework.junit5.ApplicationTest;
-
-import java.net.URL;
-import java.util.*;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.testfx.api.FxAssert.verifyThat;
-import static org.testfx.util.NodeQueryUtils.isVisible;
-import static org.mockito.Mockito.*;
 
 class SessionControllerTest extends ApplicationTest {
 
     private static SessionController sessionController;
     private static GUIContext guiContext;
-    private Parent root;
-    private Stage stage;
     private static Session session;
     private static MatchController matchController;
     private static UserController userController;
     private static Matcher matcher;
     private static User user;
     private static List<User> userList;
-
-    @Override
-    public void start(Stage stage) throws Exception {
-        this.stage = stage;
-        URL fxmlLocation = getClass().getResource("/fxml/session.fxml");
-        assertNotNull(fxmlLocation, "session.fxml file not found.");
-        ResourceBundle bundle = ResourceBundle.getBundle("Messages", Locale.US);
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(fxmlLocation);
-        loader.setResources(bundle);
-        root = loader.load();
-        sessionController = loader.getController();
-        if (sessionController != null) {
-            sessionController.setStage(stage);
-        }
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
+    private Parent root;
+    private Stage stage;
 
     private static FXMLLoader getFxmlLoader(URL fxmlLocation) {
         FXMLLoader loader = new FXMLLoader(fxmlLocation);
@@ -83,10 +71,30 @@ class SessionControllerTest extends ApplicationTest {
     @BeforeAll
     static void start() {
         guiContext = GUIContext.getInstance();
-        user = new User("alicia", "password1", "alicia@example.com", "dummy", "1234567890", new Date(), "en");
+        user = new User("alicia", "password1", "alicia@example.com", "dummy", "1234567890",
+                new Date(), "en");
         session = new Session(user);
         guiContext.setUser(user);
         guiContext.setSession(session);
+    }
+
+    @Override
+    public void start(Stage stage) throws Exception {
+        this.stage = stage;
+        URL fxmlLocation = getClass().getResource("/fxml/session.fxml");
+        assertNotNull(fxmlLocation, "session.fxml file not found.");
+        ResourceBundle bundle = ResourceBundle.getBundle("Messages", Locale.US);
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(fxmlLocation);
+        loader.setResources(bundle);
+        root = loader.load();
+        sessionController = loader.getController();
+        if (sessionController != null) {
+            sessionController.setStage(stage);
+        }
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     @BeforeEach
@@ -119,7 +127,8 @@ class SessionControllerTest extends ApplicationTest {
         verifyThat("#interestsContainer", isVisible());
 
         VBox interestsContainer = lookup("#interestsContainer").query();
-        assertFalse(interestsContainer.getChildren().isEmpty(), "There should be available interests to select.");
+        assertFalse(interestsContainer.getChildren().isEmpty(),
+                "There should be available interests to select.");
 
         Node selectedCategory = interestsContainer.getChildren().getFirst();
         clickOn(selectedCategory);
@@ -127,29 +136,35 @@ class SessionControllerTest extends ApplicationTest {
         verifyThat("#optionsContainer", isVisible());
 
         VBox optionsContainer = lookup("#optionsContainer").query();
-        assertFalse(optionsContainer.getChildren().isEmpty(), "There should be available options to select.");
+        assertFalse(optionsContainer.getChildren().isEmpty(),
+                "There should be available options to select.");
 
         Pane firstOptionPane = (Pane) optionsContainer.getChildren().getFirst();
         RadioButton selectedOption = (RadioButton) firstOptionPane.getChildren().stream()
                 .filter(node -> node instanceof RadioButton)
                 .findFirst()
-                .orElseThrow(() -> new IllegalStateException("No radio buttons found in options pane."));
+                .orElseThrow(
+                        () -> new IllegalStateException("No radio buttons found in options pane."));
         clickOn(selectedOption);
         assertTrue(selectedOption.isSelected(), "Option should be selected.");
 
-        assertFalse(session.getParticipantInterests().isEmpty(), "There should be selected interests.");
+        assertFalse(session.getParticipantInterests().isEmpty(),
+                "There should be selected interests.");
 
         Category selectedInterest = session.getParticipantInterests().getFirst();
         System.out.println("Selected interest: " + selectedInterest);
 
         assertNotNull(participant, "Participant should not be null.");
-        assertTrue(participant.getInterests().contains(selectedInterest), "Participant should have selected interest.");
+        assertTrue(participant.getInterests().contains(selectedInterest),
+                "Participant should have selected interest.");
 
         clickOn(selectedOption);
         assertFalse(selectedOption.isSelected(), "Option should be unselected.");
 
-        assertFalse(session.getParticipantInterests().contains(selectedInterest), "Interest should be removed from session.");
-        assertFalse(participant.getInterests().contains(selectedInterest), "Interest should be removed from participant.");
+        assertFalse(session.getParticipantInterests().contains(selectedInterest),
+                "Interest should be removed from session.");
+        assertFalse(participant.getInterests().contains(selectedInterest),
+                "Interest should be removed from participant.");
     }
 
     @Test
@@ -244,8 +259,12 @@ class SessionControllerTest extends ApplicationTest {
 
         assertNotNull(participant, "Participant should not be null.");
 
-        User match1 = new User("match1", "pass", "match1@example.com", "dummy", "1234567890", new Date(), "en");
-        User match2 = new User("match2", "pass", "match2@example.com", "dummy", "0987654321", new Date(), "en");
+        User match1 =
+                new User("match1", "pass", "match1@example.com", "dummy", "1234567890", new Date(),
+                        "en");
+        User match2 =
+                new User("match2", "pass", "match2@example.com", "dummy", "0987654321", new Date(),
+                        "en");
 
         HashMap<User, Double> topMatches = new HashMap<>();
         topMatches.put(match1, 95.5);
@@ -262,7 +281,11 @@ class SessionControllerTest extends ApplicationTest {
         assertNotNull(savedMatches, "Matches should not be null.");
         assertEquals(2, savedMatches.size(), "There should be two matches.");
 
-        assertTrue(savedMatches.stream().anyMatch(m -> m.getParticipant1().equals(participant) && m.getParticipant2().equals(match1) && m.getCompatibility() == 95.5), "Match1 should be stored.");
-        assertTrue(savedMatches.stream().anyMatch(m -> m.getParticipant1().equals(participant) && m.getParticipant2().equals(match2) && m.getCompatibility() == 89.3), "Match2 should be stored.");
+        assertTrue(savedMatches.stream().anyMatch(m -> m.getParticipant1().equals(participant) &&
+                        m.getParticipant2().equals(match1) && m.getCompatibility() == 95.5),
+                "Match1 should be stored.");
+        assertTrue(savedMatches.stream().anyMatch(m -> m.getParticipant1().equals(participant) &&
+                        m.getParticipant2().equals(match2) && m.getCompatibility() == 89.3),
+                "Match2 should be stored.");
     }
 }

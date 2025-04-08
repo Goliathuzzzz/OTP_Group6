@@ -8,10 +8,9 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-
-<AnchorPane fx:id="registrationPane" id="registrationPane" prefHeight="852" prefWidth="393"
-            stylesheets="@/css/registration.css" xmlns="http://javafx.com/javafx/22"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.view_controllers.RegistrationController">
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="registrationPane" id="registrationPane" prefHeight="852"
+            prefWidth="393" stylesheets="@/css/registration.css"
+            xmlns="http://javafx.com/javafx/22" fx:controller="controller.view_controllers.RegistrationController">
     <ImageView fitHeight="556" fitWidth="393">
         <Image url="@/images/background.png"/>
     </ImageView>

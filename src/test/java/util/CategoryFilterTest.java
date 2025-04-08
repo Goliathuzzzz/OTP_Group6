@@ -1,19 +1,15 @@
 package util;
 
-import model.categories.Category;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.mock;
 
 import java.util.Arrays;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import model.categories.Category;
+import org.junit.jupiter.api.Test;
 
 class CategoryFilterTest {
-
-    private enum TestCategory implements Category {
-        KAMPPAILULAJIT, MEDITOINTI, TÄHTITIEDE
-    }
 
     @Test
     void testFilterEnums_WithMatchingEnums() {
@@ -46,5 +42,9 @@ class CategoryFilterTest {
         List<TestCategory> filtered = CategoryFilter.filterEnums(categories, TestCategory.class);
 
         assertTrue(filtered.isEmpty());
+    }
+
+    private enum TestCategory implements Category {
+        KAMPPAILULAJIT, MEDITOINTI, TÄHTITIEDE
     }
 }

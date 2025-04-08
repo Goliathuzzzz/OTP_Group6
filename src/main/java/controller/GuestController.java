@@ -1,8 +1,9 @@
 package controller;
+
 import jakarta.persistence.EntityManager;
+import java.util.List;
 import model.Guest;
 import service.GuestService;
-import java.util.List;
 
 // GUI KUTSUU CONTROLLERIA!
 public class GuestController {
@@ -21,9 +22,9 @@ public class GuestController {
     public Guest displayGuest(int id) {
         Guest guest = guestService.findGuestById(id);
         if (guest != null) {
-            System.out.println("Guest" + guest.getId() + "found! PhoneNumber: " + guest.getPhoneNumber());
-        }
-        else {
+            System.out.println(
+                    "Guest" + guest.getId() + "found! PhoneNumber: " + guest.getPhoneNumber());
+        } else {
             System.out.println("Guest not found");
         }
         return guest;

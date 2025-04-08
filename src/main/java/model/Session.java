@@ -1,10 +1,14 @@
 package model;
 
-import model.categories.*;
-
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
+import model.categories.Animal;
+import model.categories.Category;
+import model.categories.Food;
+import model.categories.Hobby;
+import model.categories.Science;
+import model.categories.Sports;
 
 // Tarvitseeko edes laittaa tietokantaan?
 // On nyt se tapahtuma jossa valitaan kiinnostuksenkohteet näytöltä
@@ -27,14 +31,6 @@ public final class Session {
         this.participant = participant;
         participantInterests = new ArrayList<>();
     }
-    // Nämä valintabokseja varten
-    public void addParticipantInterest(Category interest) {
-        participantInterests.add(interest);
-    }
-
-    public void removeParticipantInterest(Category interest) {
-        participantInterests.remove(interest);
-    }
 
     public static List<Animal> getAnimals() {
         return animals;
@@ -55,6 +51,16 @@ public final class Session {
     public static List<Sports> getSports() {
         return sports;
     }
+
+    // Nämä valintabokseja varten
+    public void addParticipantInterest(Category interest) {
+        participantInterests.add(interest);
+    }
+
+    public void removeParticipantInterest(Category interest) {
+        participantInterests.remove(interest);
+    }
+
     // Matcheria varten
     public List<Category> getParticipantInterests() {
         return participantInterests;

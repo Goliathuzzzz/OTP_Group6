@@ -9,9 +9,8 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
-
-<AnchorPane prefHeight="852" prefWidth="393" styleClass="profile" stylesheets="@/css/admin_users.css"
-            xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="852" prefWidth="393" styleClass="profile"
+            stylesheets="@/css/admin_users.css" xmlns="http://javafx.com/javafx/23.0.1"
             fx:controller="controller.view_controllers.AdminUsersController" fx:id="adminUsersPane">
     <Pane prefHeight="556" prefWidth="393" styleClass="tausta"/>
     <Pane layoutY="95.0" prefHeight="757.0" prefWidth="393" styleClass="rectangle15">

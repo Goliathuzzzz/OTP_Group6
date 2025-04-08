@@ -1,32 +1,37 @@
 package controller.view_controllers;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotSame;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.testfx.api.FxAssert.verifyThat;
+import static org.testfx.util.NodeQueryUtils.isVisible;
+
 import controller.BaseController;
 import controller.GuestController;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.mockito.Mockito;
-import org.testfx.framework.junit5.ApplicationTest;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.Locale;
-import java.util.ResourceBundle;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.verify;
-import static org.testfx.api.FxAssert.verifyThat;
-import static org.testfx.util.NodeQueryUtils.isVisible;
+import org.mockito.Mockito;
+import org.testfx.framework.junit5.ApplicationTest;
 
 class GuestViewControllerTest extends ApplicationTest {
     private static GuestController guestController;
     private static GuestViewController guestViewController;
+    ResourceBundle bundle = ResourceBundle.getBundle("Messages", Locale.US);
     private Parent root;
     private Stage stage;
-    ResourceBundle bundle = ResourceBundle.getBundle("Messages", Locale.US);
+
+    @BeforeAll
+    static void start() {
+        guestController = Mockito.mock(GuestController.class);
+    }
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -47,12 +52,6 @@ class GuestViewControllerTest extends ApplicationTest {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-    }
-
-
-    @BeforeAll
-    static void start() {
-        guestController = Mockito.mock(GuestController.class);
     }
 
     @BeforeEach
@@ -79,7 +78,8 @@ class GuestViewControllerTest extends ApplicationTest {
         assertNotNull(newRoot.lookup("#beginSessionPane"), "Begin Session scene should be loaded.");
         assertNotSame(newRoot, root, "Scene root should have changed after login.");
         assertTrue(stage.isShowing(), "Stage should still be showing after scene switch.");
-        assertEquals(bundle.getString("begin"), stage.getTitle(), "Stage title should match after scene switch.");
+        assertEquals(bundle.getString("begin"), stage.getTitle(),
+                "Stage title should match after scene switch.");
     }
 
     @Test

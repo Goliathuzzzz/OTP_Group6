@@ -2,9 +2,8 @@ package service;
 
 import dao.GuestDao;
 import jakarta.persistence.EntityManager;
-import model.Guest;
-
 import java.util.List;
+import model.Guest;
 
 public class GuestService {
 

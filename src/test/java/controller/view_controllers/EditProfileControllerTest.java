@@ -1,7 +1,16 @@
 package controller.view_controllers;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.testfx.api.FxAssert.verifyThat;
+import static org.testfx.util.NodeQueryUtils.hasText;
+import static org.testfx.util.NodeQueryUtils.isVisible;
+
 import context.GUIContext;
 import controller.UserController;
+import java.net.URL;
+import java.util.Date;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -15,17 +24,6 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.testfx.framework.junit5.ApplicationTest;
 
-import java.net.URL;
-import java.util.Date;
-import java.util.Locale;
-import java.util.ResourceBundle;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
-import static org.testfx.api.FxAssert.verifyThat;
-import static org.testfx.util.NodeQueryUtils.hasText;
-import static org.testfx.util.NodeQueryUtils.isVisible;
-
 class EditProfileControllerTest extends ApplicationTest {
 
     private static UserController userController;
@@ -37,30 +35,6 @@ class EditProfileControllerTest extends ApplicationTest {
     private static String phone;
     private Parent root;
     private Stage stage;
-
-    @Override
-    public void start(Stage stage) throws Exception {
-        this.stage = stage;
-
-        var fxmlLocation = getClass().getResource("/fxml/edit_profile.fxml");
-        assertNotNull(fxmlLocation, "edit_profile.fxml file not found.");
-
-        ResourceBundle testBundle = ResourceBundle.getBundle("Messages", Locale.US);
-        FXMLLoader loader = getFxmlLoader(fxmlLocation);
-        loader.setResources(testBundle);
-
-        root = loader.load();
-        editProfileController = loader.getController();
-
-        if (editProfileController != null) {
-            editProfileController.setStage(stage);
-        }
-
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
 
     private static FXMLLoader getFxmlLoader(URL fxmlLocation) {
         FXMLLoader loader = new FXMLLoader(fxmlLocation);
@@ -89,6 +63,29 @@ class EditProfileControllerTest extends ApplicationTest {
         phone = "0500332331";
         user = new User(name, "markopassword", email, "dummy", phone, new Date(), "en");
         context.setUser(user);
+    }
+
+    @Override
+    public void start(Stage stage) throws Exception {
+        this.stage = stage;
+
+        var fxmlLocation = getClass().getResource("/fxml/edit_profile.fxml");
+        assertNotNull(fxmlLocation, "edit_profile.fxml file not found.");
+
+        ResourceBundle testBundle = ResourceBundle.getBundle("Messages", Locale.US);
+        FXMLLoader loader = getFxmlLoader(fxmlLocation);
+        loader.setResources(testBundle);
+
+        root = loader.load();
+        editProfileController = loader.getController();
+
+        if (editProfileController != null) {
+            editProfileController.setStage(stage);
+        }
+
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     @BeforeEach

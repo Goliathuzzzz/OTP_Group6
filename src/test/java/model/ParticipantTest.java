@@ -1,13 +1,20 @@
 package model;
 
-import model.categories.*;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
+import model.categories.Animal;
+import model.categories.Category;
+import model.categories.Food;
+import model.categories.Hobby;
+import model.categories.Science;
+import model.categories.Sports;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 class ParticipantTest {
 
@@ -27,7 +34,8 @@ class ParticipantTest {
 
     @Test
     void testGetPhoneNumber() {
-        assertEquals("123456789", participant.getPhoneNumber(), "Phone number should match the provided value.");
+        assertEquals("123456789", participant.getPhoneNumber(),
+                "Phone number should match the provided value.");
     }
 
     @Test
@@ -62,7 +70,8 @@ class ParticipantTest {
         expectedInterests.add(Science.TÄHTITIEDE);
         expectedInterests.add(Sports.UIMINEN);
 
-        assertEquals(expectedInterests, participant.getInterests(), "All added interests should be present.");
+        assertEquals(expectedInterests, participant.getInterests(),
+                "All added interests should be present.");
     }
 
     @Test
@@ -81,35 +90,41 @@ class ParticipantTest {
     @Test
     void testAddAnimalInterest() {
         participant.addAnimalInterest(Animal.KISSA);
-        assertTrue(participant.getAnimalInterests().contains(Animal.KISSA), "Animal interest should be added.");
+        assertTrue(participant.getAnimalInterests().contains(Animal.KISSA),
+                "Animal interest should be added.");
     }
 
     @Test
     void testAddFoodInterest() {
         participant.addFoodInterest(Food.KAIKKI_MENEE);
-        assertTrue(participant.getFoodInterests().contains(Food.KAIKKI_MENEE), "Food interest should be added.");
+        assertTrue(participant.getFoodInterests().contains(Food.KAIKKI_MENEE),
+                "Food interest should be added.");
     }
 
     @Test
     void testAddScienceInterest() {
         participant.addScienceInterest(Science.TÄHTITIEDE);
-        assertTrue(participant.getScienceInterests().contains(Science.TÄHTITIEDE), "Science interest should be added.");
+        assertTrue(participant.getScienceInterests().contains(Science.TÄHTITIEDE),
+                "Science interest should be added.");
     }
 
     @Test
     void testAddHobbyInterest() {
         participant.addHobbiesInterest(Hobby.TV_SARJAT);
-        assertTrue(participant.getHobbiesInterests().contains(Hobby.TV_SARJAT), "Hobby interest should be added.");
+        assertTrue(participant.getHobbiesInterests().contains(Hobby.TV_SARJAT),
+                "Hobby interest should be added.");
     }
 
     @Test
     void testAddSportsInterest() {
         participant.addSportsInterest(Sports.UIMINEN);
-        assertTrue(participant.getSportsInterests().contains(Sports.UIMINEN), "Sports interest should be added.");
+        assertTrue(participant.getSportsInterests().contains(Sports.UIMINEN),
+                "Sports interest should be added.");
     }
 
     @Test
     void testGetDisplayName() {
-        assertEquals("vieras0", participant.getDisplayName("en"), "Display name should follow format 'vieras' + id.");
+        assertEquals("vieras0", participant.getDisplayName("en"),
+                "Display name should follow format 'vieras' + id.");
     }
 }

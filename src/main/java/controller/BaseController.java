@@ -3,6 +3,10 @@ package controller;
 import context.GUIContext;
 import context.LocaleManager;
 import controller.view_controllers.InterestSelectionController;
+import java.io.IOException;
+import java.util.Locale;
+import java.util.MissingResourceException;
+import java.util.ResourceBundle;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -10,17 +14,13 @@ import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import util.SceneNames;
-import java.io.IOException;
-import java.util.Locale;
-import java.util.MissingResourceException;
-import java.util.ResourceBundle;
 
 // Common methods for all controllers which interact with the GUI
 public abstract class BaseController {
 
+    protected Stage stage;
     GuestController guestController = new GuestController();
     LocaleManager localeManager = LocaleManager.getInstance();
-    protected Stage stage;
 
     public void setStage(Stage stage) {
         this.stage = stage;
@@ -56,7 +56,8 @@ public abstract class BaseController {
             try {
                 bundle = localeManager.getBundle();
             } catch (MissingResourceException e) {
-                System.err.println("ERROR: ResourceBundle is invalid in BaseController.switchScene. Defaulting to en_US");
+                System.err.println(
+                        "ERROR: ResourceBundle is invalid in BaseController.switchScene. Defaulting to en_US");
                 bundle = ResourceBundle.getBundle("Messages", new Locale("en", "US"));
             }
 
@@ -72,7 +73,8 @@ public abstract class BaseController {
                 logError("Controller is null in BaseController.switchScene");
             }
 
-            if (data != null && controller instanceof InterestSelectionController interestController) {
+            if (data != null &&
+                    controller instanceof InterestSelectionController interestController) {
                 if (data instanceof String category) {
                     interestController.setCategory(category);
                     switch (category) {
@@ -81,7 +83,8 @@ public abstract class BaseController {
                         case "hobbies" -> interestController.loadInterests("hobbies");
                         case "science" -> interestController.loadInterests("science");
                         case "sports" -> interestController.loadInterests("sports");
-                        default -> throw new IllegalArgumentException("Unexpected category: " + category);
+                        default -> throw new IllegalArgumentException(
+                                "Unexpected category: " + category);
                     }
                 }
             }

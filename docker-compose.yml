@@ -32,7 +32,7 @@ services:
       - DB_PASSWORD=maailmanilmaa
     networks:
       - app-network
-    entrypoint: ["/bin/bash", "-c", "sleep 30 && java --module-path /app/javafx-sdk-20.0.1/lib --add-modules javafx.controls,javafx.fxml -Dprism.order=sw -Djavafx.platform=x11 -jar /app/target/otp-group6.jar"]
+    entrypoint: [ "/bin/bash", "-c", "sleep 30 && java --module-path /app/javafx-sdk-20.0.1/lib --add-modules javafx.controls,javafx.fxml -Dprism.order=sw -Djavafx.platform=x11 -jar /app/target/otp-group6.jar" ]
     stdin_open: true
     tty: true
 

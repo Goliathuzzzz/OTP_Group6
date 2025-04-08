@@ -1,16 +1,14 @@
 package controller;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.Persistence;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import java.util.Date;
 import model.Match;
 import model.User;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.Date;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class MatchControllerTest {
 
@@ -23,13 +21,17 @@ class MatchControllerTest {
     static void init() {
         matchController = new MatchController();
         UserController userController = new UserController();
-        testUser = new User("Test2", "testpassword", "test@email.com", "test-subject", "123456789", new Date(), "en");
-        testUser2 = new User("Test2", "testpassword", "test@email.com", "test-subject", "123456789", new Date(), "en");
+        testUser = new User("Test2", "testpassword", "test@email.com", "test-subject", "123456789",
+                new Date(), "en");
+        testUser2 = new User("Test2", "testpassword", "test@email.com", "test-subject", "123456789",
+                new Date(), "en");
         userController.registerUser(testUser);
         userController.registerUser(testUser2);
-        testUser3 = new User("Test3", "testpassword", "test@email.com", "test-subject", "123456789", new Date(), "en");
+        testUser3 = new User("Test3", "testpassword", "test@email.com", "test-subject", "123456789",
+                new Date(), "en");
         userController.registerUser(testUser3);
     }
+
     @BeforeEach
     void setUp() {
         matchController.deleteAll();
@@ -63,8 +65,10 @@ class MatchControllerTest {
         match.setCompatibility(0.7);
         match.setParticipant2(testUser2);
         matchController.updateMatch(match);
-        assertEquals(0.7, matchController.displayAllByParticipant(testUser).get(0).getCompatibility());
-        assertEquals(testUser2, matchController.displayAllByParticipant(testUser).get(0).getParticipant2());
+        assertEquals(0.7,
+                matchController.displayAllByParticipant(testUser).get(0).getCompatibility());
+        assertEquals(testUser2,
+                matchController.displayAllByParticipant(testUser).get(0).getParticipant2());
     }
 
     @Test

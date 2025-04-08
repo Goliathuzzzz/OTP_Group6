@@ -2,11 +2,8 @@ package dao;
 
 import datasource.MariaDbJpaConnection;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.TypedQuery;
-import model.Guest;
-
-import java.util.Date;
 import java.util.List;
+import model.Guest;
 
 public class GuestDao implements IDao<Guest> {
     private EntityManager em = MariaDbJpaConnection.getInstance();
@@ -44,7 +41,8 @@ public class GuestDao implements IDao<Guest> {
         try {
             em.getTransaction().begin();
             // delete all matches where the guest is a participant
-            em.createQuery("DELETE FROM Match m WHERE m.participant1 = :guest OR m.participant2 = :guest")
+            em.createQuery(
+                            "DELETE FROM Match m WHERE m.participant1 = :guest OR m.participant2 = :guest")
                     .setParameter("guest", object)
                     .executeUpdate();
             em.remove(em.contains(object) ? object : em.merge(object));
@@ -57,7 +55,7 @@ public class GuestDao implements IDao<Guest> {
 
     public void deleteAll() {
         List<Guest> guestsToDelete = findAll();
-        for (Guest guest: guestsToDelete) {
+        for (Guest guest : guestsToDelete) {
             delete(guest);
         }
         System.out.println("All guests deleted");

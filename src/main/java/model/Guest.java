@@ -1,7 +1,10 @@
 package model;
 
-import jakarta.persistence.*;
-
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.PrimaryKeyJoinColumn;
+import jakarta.persistence.Table;
 import java.util.Date;
 import java.util.Set;
 
@@ -12,7 +15,7 @@ import java.util.Set;
 @Entity
 @Table(name = "guests")
 @PrimaryKeyJoinColumn(name = "id")
-public class Guest extends Participant{
+public class Guest extends Participant {
 
     @OneToMany(mappedBy = "participant1", cascade = CascadeType.ALL)
     private Set<Match> matchesAsFirst;
@@ -24,5 +27,6 @@ public class Guest extends Participant{
         super(phoneNumber, joinDate);
     }
 
-    public Guest() {}
+    public Guest() {
+    }
 }

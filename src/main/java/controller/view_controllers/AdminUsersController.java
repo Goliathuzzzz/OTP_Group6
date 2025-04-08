@@ -3,38 +3,30 @@ package controller.view_controllers;
 import context.LocaleManager;
 import controller.BaseController;
 import controller.UserController;
+import java.io.IOException;
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import model.User;
-import util.SceneNames;
-
-import java.io.IOException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
 
 public class AdminUsersController extends BaseController implements Initializable {
 
-    private UserController userController = new UserController();
-
-    private List<User> users;
-
-    @FXML
-    private GridPane usersGrid;
-
-    @FXML
-    private AnchorPane adminUsersPane;
-
     private final LocaleManager localeManager = LocaleManager.getInstance();
     private final ResourceBundle bundle = localeManager.getBundle();
+    private UserController userController = new UserController();
+    private List<User> users;
+    @FXML
+    private GridPane usersGrid;
+    @FXML
+    private AnchorPane adminUsersPane;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -61,7 +53,8 @@ public class AdminUsersController extends BaseController implements Initializabl
         for (User user : users) {
             Node userItemNode = createUserItemNode(user); // create a user item UI node
             if (userItemNode != null) {
-                usersGrid.add(userItemNode, column, row); // add the user item to the grid pane at the position
+                usersGrid.add(userItemNode, column,
+                        row); // add the user item to the grid pane at the position
 
                 // move to the next cell
                 if (++column == columns) {

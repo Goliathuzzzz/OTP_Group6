@@ -4,63 +4,64 @@ import context.GUIContext;
 import context.LocaleManager;
 import controller.BaseController;
 import controller.MatchController;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.ResourceBundle;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.image.ImageView;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.Node;
-import javafx.event.ActionEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import model.*;
+import model.Match;
+import model.Matcher;
+import model.Participant;
+import model.Session;
+import model.User;
 import model.categories.Category;
 import util.SceneNames;
-
-import java.util.*;
 
 public class SessionController extends BaseController {
 
     private final GUIContext context = GUIContext.getInstance();
     private final Session session = context.getSession();
     private final Participant participant = session.getParticipant();
-    private MatchController matchController = new MatchController();
     private Matcher matcher = new Matcher(session);
-
-    @FXML
-    private Button readyButton;
-
-    @FXML
-    private Pane animals, food, hobbies, sports, science;
-
-    @FXML
-    private ImageView homeIcon, profileIcon, backIcon;
-
-    @FXML
-    private VBox interestsContainer;
-
-    @FXML
-    private Label titleLabel, subtitleLabel;
-
-    @FXML
-    private AnchorPane sessionPane;
-
-    @FXML
-    private Label animalLabel, foodLabel, hobbiesLabel, sportsLabel, scienceLabel, sessionLabel;
-
     private final LocaleManager localeManager = LocaleManager.getInstance();
     private final ResourceBundle bundle = localeManager.getBundle();
+    private MatchController matchController = new MatchController();
+    @FXML
+    private Button readyButton;
+    @FXML
+    private Pane animals, food, hobbies, sports, science;
+    @FXML
+    private ImageView homeIcon, profileIcon, backIcon;
+    @FXML
+    private VBox interestsContainer;
+    @FXML
+    private Label titleLabel, subtitleLabel;
+    @FXML
+    private AnchorPane sessionPane;
+    @FXML
+    private Label animalLabel, foodLabel, hobbiesLabel, sportsLabel, scienceLabel, sessionLabel;
 
     @FXML
     private void handleReady(ActionEvent event) {
         List<Category> selectedInterests = session.getParticipantInterests();
         if (selectedInterests.isEmpty()) {
             System.err.println("ERROR: No interests selected in SessionController handleReady()");
-            showAlert(Alert.AlertType.WARNING, bundle.getString("error"), bundle.getString("choose_one_interest_alert"));
+            showAlert(Alert.AlertType.WARNING, bundle.getString("error"),
+                    bundle.getString("choose_one_interest_alert"));
             return;
         }
         matchParticipant();
@@ -129,11 +130,12 @@ public class SessionController extends BaseController {
         HashMap<User, Double> topMatches = matcher.getTopMatches();
 
         if (topMatches.isEmpty()) {
-            System.err.println("ERROR: No top matches found in SessionController matchParticipant()");
+            System.err.println(
+                    "ERROR: No top matches found in SessionController matchParticipant()");
             return;
         }
 
-        for (Map.Entry<User, Double> entry: topMatches.entrySet()) {
+        for (Map.Entry<User, Double> entry : topMatches.entrySet()) {
             matchController.matchParticipants(participant, entry.getKey(), entry.getValue());
             matches.add(new Match(participant, entry.getKey(), entry.getValue()));
         }
@@ -146,13 +148,13 @@ public class SessionController extends BaseController {
     }
 
     // For testing
-    public void setMatcher(Matcher matcher) {
-        this.matcher = matcher;
+    public Matcher getMatcher() {
+        return matcher;
     }
 
     // For testing
-    public Matcher getMatcher() {
-        return matcher;
+    public void setMatcher(Matcher matcher) {
+        this.matcher = matcher;
     }
 
     private void handleLang() {

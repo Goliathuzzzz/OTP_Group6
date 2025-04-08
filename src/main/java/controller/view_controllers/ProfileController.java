@@ -1,42 +1,36 @@
 package controller.view_controllers;
 
+import static util.ProfilePictureUtil.getProfilePictureView;
+
 import context.GUIContext;
 import context.LocaleManager;
 import controller.BaseController;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.control.Alert;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import util.SceneNames;
 
-import java.util.Locale;
-import java.util.ResourceBundle;
-
-import static util.ProfilePictureUtil.getProfilePictureView;
-
 public class ProfileController extends BaseController {
-
-    private GUIContext guiContext = GUIContext.getInstance();
-
-    @FXML
-    private Pane bottomNavPane, profileImagePane;
-
-    @FXML
-    private ImageView homeIcon, profileIcon, backIcon, editButton;
-
-    @FXML
-    private Label nameLabel, emailLabel, phoneLabel, langLabel;
-
-    @FXML
-    private AnchorPane profilePane;
 
     private final LocaleManager localeManager = LocaleManager.getInstance();
     private final ResourceBundle bundle = localeManager.getBundle();
+    private GUIContext guiContext = GUIContext.getInstance();
+    @FXML
+    private Pane bottomNavPane, profileImagePane;
+    @FXML
+    private ImageView homeIcon, profileIcon, backIcon, editButton;
+    @FXML
+    private Label nameLabel, emailLabel, phoneLabel, langLabel;
+    @FXML
+    private AnchorPane profilePane;
 
     // default constructor for FXML loader
     public ProfileController() {
@@ -67,7 +61,8 @@ public class ProfileController extends BaseController {
             emailLabel.setManaged(false);
             editButton.setVisible(false);
         } else {
-            showAlert(Alert.AlertType.ERROR, bundle.getString("error"), bundle.getString("user_details_not_found_alert"));
+            showAlert(Alert.AlertType.ERROR, bundle.getString("error"),
+                    bundle.getString("user_details_not_found_alert"));
             System.err.println("ERROR: No user or guest data found");
         }
         ImageView profileImageView = getProfilePictureView(guiContext.getId(), 200, 200);

@@ -5,5 +5,5 @@ use tatskatytot;
 
 DROP USER IF EXISTS 'appuser'@'localhost';
 CREATE USER 'appuser'@'localhost' IDENTIFIED by 'maailmanilmaa';
-GRANT SELECT,INSERT,UPDATE,ALTER,DELETE ON tatskatytot.* TO 'appuser'@'localhost';
+GRANT SELECT, INSERT, UPDATE, ALTER, DELETE ON tatskatytot.* TO 'appuser'@'localhost';
 GRANT CREATE, DROP ON tatskatytot.* TO 'appuser'@'localhost';

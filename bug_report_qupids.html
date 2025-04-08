@@ -1,1413 +1,1614 @@
-
 <!DOCTYPE html
-  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-   <head>
-      <meta charset="UTF-8"/>
-      <title>SpotBugs Report</title>
-      <style type="text/css">
-		.tablerow0 {
-			background: #EEEEEE;
-		}
+<head>
+    <meta charset="UTF-8"/>
+    <title>SpotBugs Report</title>
+    <style type="text/css">
+        .tablerow0 {
+            background: #EEEEEE;
+        }
 
-		.tablerow1 {
-			background: white;
-		}
+        .tablerow1 {
+            background: white;
+        }
 
-		.detailrow0 {
-			background: #EEEEEE;
-		}
+        .detailrow0 {
+            background: #EEEEEE;
+        }
 
-		.detailrow1 {
-			background: white;
-		}
+        .detailrow1 {
+            background: white;
+        }
 
-		.tableheader {
-			background: #b9b9fe;
-			font-size: larger;
-		}
+        .tableheader {
+            background: #b9b9fe;
+            font-size: larger;
+        }
 
-		.tablerow0:hover, .tablerow1:hover {
-			background: #aaffaa;
-		}
+        .tablerow0:hover, .tablerow1:hover {
+            background: #aaffaa;
+        }
 
-		.priority-1 {
-				color: red;
-				font-weight: bold;
-		}
-		.priority-2 {
-				color: orange;
-				font-weight: bold;
-		}
-		.priority-3 {
-				color: green;
-				font-weight: bold;
-		}
-		.priority-4 {
-				color: blue;
-				font-weight: bold;
-		}
-		</style>
-      <script type="text/javascript">
-			function toggleRow(elid) {
-				if (document.getElementById) {
-					element = document.getElementById(elid);
-					if (element) {
-						if (element.style.display == 'none') {
-							element.style.display = 'block';
-							//window.status = 'Toggle on!';
-						} else {
-							element.style.display = 'none';
-							//window.status = 'Toggle off!';
-						}
-					}
-				}
-			}
-		</script>
-   </head>
-   <body>
-      <h1>
-         <a href="https://spotbugs.github.io/">SpotBugs</a> Report</h1>
-      <h2>Project Information</h2>
-      <p>Project: 
-		OT_Project</p>
-      <p>SpotBugs version: 4.9.3</p>
-      <p>Code analyzed:</p>
-      <ul>
-         <li>C:\Users\Poila\IdeaProjects\OTP_Group6\target\classes</li>
-      </ul>
-      <p>
-         <br/>
-         <br/>
-      </p>
-      <h2>Metrics</h2>
-      <p>0 lines of code analyzed,
-	in 0 classes, 
-	in 7 packages.</p>
-      <table width="500" cellpadding="5" cellspacing="2">
-         <tr class="tableheader">
-            <th align="left">Metric</th>
-            <th align="right">Total</th>
-            <th align="right">Density*</th>
-         </tr>
-         <tr class="tablerow0">
-            <td>High Priority Warnings</td>
-            <td align="right">1</td>
-            <td align="right">0.00</td>
-         </tr>
-         <tr class="tablerow1">
-            <td>Medium Priority Warnings</td>
-            <td align="right">76</td>
-            <td align="right">0.00</td>
-         </tr>
-         <tr class="$totalClass">
-            <td>
-               <b>Total Warnings</b>
-            </td>
-            <td align="right">
-               <b>77</b>
-            </td>
-            <td align="right">
-               <b>0.00</b>
-            </td>
-         </tr>
-      </table>
-      <p>
-         <i>(* Defects per Thousand lines of non-commenting source statements)</i>
-      </p>
-      <p>
-         <br/>
-         <br/>
-      </p>
-      <h2>Contents</h2>
-      <ul>
-         <li>
+        .priority-1 {
+            color: red;
+            font-weight: bold;
+        }
+
+        .priority-2 {
+            color: orange;
+            font-weight: bold;
+        }
+
+        .priority-3 {
+            color: green;
+            font-weight: bold;
+        }
+
+        .priority-4 {
+            color: blue;
+            font-weight: bold;
+        }
+    </style>
+    <script type="text/javascript">
+        function toggleRow(elid) {
+            if (document.getElementById) {
+                element = document.getElementById(elid);
+                if (element) {
+                    if (element.style.display == 'none') {
+                        element.style.display = 'block';
+                        //window.status = 'Toggle on!';
+                    } else {
+                        element.style.display = 'none';
+                        //window.status = 'Toggle off!';
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<h1>
+    <a href="https://spotbugs.github.io/">SpotBugs</a> Report</h1>
+<h2>Project Information</h2>
+<p>Project:
+    OT_Project</p>
+<p>SpotBugs version: 4.9.3</p>
+<p>Code analyzed:</p>
+<ul>
+    <li>C:\Users\Poila\IdeaProjects\OTP_Group6\target\classes</li>
+</ul>
+<p>
+    <br/>
+    <br/>
+</p>
+<h2>Metrics</h2>
+<p>0 lines of code analyzed,
+    in 0 classes,
+    in 7 packages.</p>
+<table cellpadding="5" cellspacing="2" width="500">
+    <tr class="tableheader">
+        <th align="left">Metric</th>
+        <th align="right">Total</th>
+        <th align="right">Density*</th>
+    </tr>
+    <tr class="tablerow0">
+        <td>High Priority Warnings</td>
+        <td align="right">1</td>
+        <td align="right">0.00</td>
+    </tr>
+    <tr class="tablerow1">
+        <td>Medium Priority Warnings</td>
+        <td align="right">76</td>
+        <td align="right">0.00</td>
+    </tr>
+    <tr class="$totalClass">
+        <td>
+            <b>Total Warnings</b>
+        </td>
+        <td align="right">
+            <b>77</b>
+        </td>
+        <td align="right">
+            <b>0.00</b>
+        </td>
+    </tr>
+</table>
+<p>
+    <i>(* Defects per Thousand lines of non-commenting source statements)</i>
+</p>
+<p>
+    <br/>
+    <br/>
+</p>
+<h2>Contents</h2>
+<ul>
+    <li>
+        <a href="#Warnings_BAD_PRACTICE">Bad practice Warnings</a>
+    </li>
+    <li>
+        <a href="#Warnings_CORRECTNESS">Correctness Warnings</a>
+    </li>
+    <li>
+        <a href="#Warnings_MALICIOUS_CODE">Malicious code vulnerability Warnings</a>
+    </li>
+    <li>
+        <a href="#Warnings_PERFORMANCE">Performance Warnings</a>
+    </li>
+    <li>
+        <a href="#Warnings_STYLE">Dodgy code Warnings</a>
+    </li>
+    <li>
+        <a href="#Details">Details</a>
+    </li>
+</ul>
+<h1>Summary</h1>
+<table cellpadding="5" cellspacing="2" width="500">
+    <tr class="tableheader">
+        <th align="left">Warning Type</th>
+        <th align="right">Number</th>
+    </tr>
+    <tr class="tablerow0">
+        <td>
             <a href="#Warnings_BAD_PRACTICE">Bad practice Warnings</a>
-         </li>
-         <li>
+        </td>
+        <td align="right">2</td>
+    </tr>
+    <tr class="tablerow1">
+        <td>
             <a href="#Warnings_CORRECTNESS">Correctness Warnings</a>
-         </li>
-         <li>
+        </td>
+        <td align="right">2</td>
+    </tr>
+    <tr class="tablerow0">
+        <td>
             <a href="#Warnings_MALICIOUS_CODE">Malicious code vulnerability Warnings</a>
-         </li>
-         <li>
+        </td>
+        <td align="right">70</td>
+    </tr>
+    <tr class="tablerow1">
+        <td>
             <a href="#Warnings_PERFORMANCE">Performance Warnings</a>
-         </li>
-         <li>
+        </td>
+        <td align="right">1</td>
+    </tr>
+    <tr class="tablerow0">
+        <td>
             <a href="#Warnings_STYLE">Dodgy code Warnings</a>
-         </li>
-         <li>
-            <a href="#Details">Details</a>
-         </li>
-      </ul>
-      <h1>Summary</h1>
-      <table width="500" cellpadding="5" cellspacing="2">
-         <tr class="tableheader">
-            <th align="left">Warning Type</th>
-            <th align="right">Number</th>
-         </tr>
-         <tr class="tablerow0">
-            <td>
-               <a href="#Warnings_BAD_PRACTICE">Bad practice Warnings</a>
-            </td>
-            <td align="right">2</td>
-         </tr>
-         <tr class="tablerow1">
-            <td>
-               <a href="#Warnings_CORRECTNESS">Correctness Warnings</a>
-            </td>
-            <td align="right">2</td>
-         </tr>
-         <tr class="tablerow0">
-            <td>
-               <a href="#Warnings_MALICIOUS_CODE">Malicious code vulnerability Warnings</a>
-            </td>
-            <td align="right">70</td>
-         </tr>
-         <tr class="tablerow1">
-            <td>
-               <a href="#Warnings_PERFORMANCE">Performance Warnings</a>
-            </td>
-            <td align="right">1</td>
-         </tr>
-         <tr class="tablerow0">
-            <td>
-               <a href="#Warnings_STYLE">Dodgy code Warnings</a>
-            </td>
-            <td align="right">2</td>
-         </tr>
-         <tr class="tablerow1">
-            <td>
-               <b>Total</b>
-            </td>
-            <td align="right">
-               <b>77</b>
-            </td>
-         </tr>
-      </table>
-      <h1>Warnings</h1>
-      <p>Click on a warning row to see full context information.</p>
-      <h2>
-         <a name="Warnings_BAD_PRACTICE">Bad practice Warnings</a>
-      </h2>
-      <table class="warningtable" width="100%" cellspacing="0">
-         <tr class="tableheader">
-            <th align="left">Code</th>
-            <th align="left">Warning</th>
-         </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e1232');">
-            <td>
-               <span class="priority-2">CT</span>
-            </td>
-            <td>Exception thrown in class Session at new Session(Participant) will leave the constructor. The object under construction remains partially initialized and may be vulnerable to Finalizer attacks.</td>
-         </tr>
-         <tr class="detailrow1">
-            <td/>
-            <td>
-               <p id="d1e1232" style="display: none;">
-                  <a href="#CT_CONSTRUCTOR_THROW">Bug type CT_CONSTRUCTOR_THROW (click for details)</a>
-                  <br/>In class model.Session<br/>In method new model.Session(Participant)<br/>At Session.java:[line 25]<br/>At Session.java:[line 25]</p>
-            </td>
-         </tr>
-         <tr class="tablerow0" onclick="toggleRow('d1e370');">
-            <td>
-               <span class="priority-1">UI</span>
-            </td>
-            <td>Usage of GetResource may be unsafe if class is extended</td>
-         </tr>
-         <tr class="detailrow0">
-            <td/>
-            <td>
-               <p id="d1e370" style="display: none;">
-                  <a href="#UI_INHERITANCE_UNSAFE_GETRESOURCE">Bug type UI_INHERITANCE_UNSAFE_GETRESOURCE (click for details)</a>
-                  <br/>In class controller.BaseController<br/>In method controller.BaseController.loadFXML(String, Object)<br/>At BaseController.java:[line 63]</p>
-            </td>
-         </tr>
-      </table>
-      <h2>
-         <a name="Warnings_CORRECTNESS">Correctness Warnings</a>
-      </h2>
-      <table class="warningtable" width="100%" cellspacing="0">
-         <tr class="tableheader">
-            <th align="left">Code</th>
-            <th align="left">Warning</th>
-         </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e265');">
-            <td>
-               <span class="priority-2">SING</span>
-            </td>
-            <td>Instance-getter method of class using singleton design pattern (GUIContext) is not synchronized.</td>
-         </tr>
-         <tr class="detailrow1">
-            <td/>
-            <td>
-               <p id="d1e265" style="display: none;">
-                  <a href="#SING_SINGLETON_GETTER_NOT_SYNCHRONIZED">Bug type SING_SINGLETON_GETTER_NOT_SYNCHRONIZED (click for details)</a>
-                  <br/>In class context.GUIContext<br/>In method context.GUIContext.getInstance()<br/>At GUIContext.java:[lines 33-36]</p>
-            </td>
-         </tr>
-         <tr class="tablerow0" onclick="toggleRow('d1e327');">
-            <td>
-               <span class="priority-2">SING</span>
-            </td>
-            <td>Instance-getter method of class using singleton design pattern (LocaleManager) is not synchronized.</td>
-         </tr>
-         <tr class="detailrow0">
-            <td/>
-            <td>
-               <p id="d1e327" style="display: none;">
-                  <a href="#SING_SINGLETON_GETTER_NOT_SYNCHRONIZED">Bug type SING_SINGLETON_GETTER_NOT_SYNCHRONIZED (click for details)</a>
-                  <br/>In class context.LocaleManager<br/>In method context.LocaleManager.getInstance()<br/>At LocaleManager.java:[lines 19-22]</p>
-            </td>
-         </tr>
-      </table>
-      <h2>
-         <a name="Warnings_MALICIOUS_CODE">Malicious code vulnerability Warnings</a>
-      </h2>
-      <table class="warningtable" width="100%" cellspacing="0">
-         <tr class="tableheader">
-            <th align="left">Code</th>
-            <th align="left">Warning</th>
-         </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e30');">
-            <td>
-               <span class="priority-2">EI</span>
-            </td>
-            <td>getEmailProperty() may expose internal representation by returning GUIContext.emailProperty</td>
-         </tr>
-         <tr class="detailrow1">
-            <td/>
-            <td>
-               <p id="d1e30" style="display: none;">
-                  <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
-                  <br/>In class context.GUIContext<br/>In method context.GUIContext.getEmailProperty()<br/>Field context.GUIContext.emailProperty<br/>At GUIContext.java:[line 99]</p>
-            </td>
-         </tr>
-         <tr class="tablerow0" onclick="toggleRow('d1e46');">
-            <td>
-               <span class="priority-2">EI</span>
-            </td>
-            <td>getGuest() may expose internal representation by returning GUIContext.guest</td>
-         </tr>
-         <tr class="detailrow0">
-            <td/>
-            <td>
-               <p id="d1e46" style="display: none;">
-                  <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
-                  <br/>In class context.GUIContext<br/>In method context.GUIContext.getGuest()<br/>Field context.GUIContext.guest<br/>At GUIContext.java:[line 125]</p>
-            </td>
-         </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e62');">
-            <td>
-               <span class="priority-2">EI</span>
-            </td>
-            <td>getMatcher() may expose internal representation by returning GUIContext.matcher</td>
-         </tr>
-         <tr class="detailrow1">
-            <td/>
-            <td>
-               <p id="d1e62" style="display: none;">
-                  <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
-                  <br/>In class context.GUIContext<br/>In method context.GUIContext.getMatcher()<br/>Field context.GUIContext.matcher<br/>At GUIContext.java:[line 145]</p>
-            </td>
-         </tr>
-         <tr class="tablerow0" onclick="toggleRow('d1e78');">
-            <td>
-               <span class="priority-2">EI</span>
-            </td>
-            <td>getMatches() may expose internal representation by returning GUIContext.matches</td>
-         </tr>
-         <tr class="detailrow0">
-            <td/>
-            <td>
-               <p id="d1e78" style="display: none;">
-                  <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
-                  <br/>In class context.GUIContext<br/>In method context.GUIContext.getMatches()<br/>Field context.GUIContext.matches<br/>At GUIContext.java:[line 153]</p>
-            </td>
-         </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e94');">
-            <td>
-               <span class="priority-2">EI</span>
-            </td>
-            <td>getPhoneProperty() may expose internal representation by returning GUIContext.phoneProperty</td>
-         </tr>
-         <tr class="detailrow1">
-            <td/>
-            <td>
-               <p id="d1e94" style="display: none;">
-                  <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
-                  <br/>In class context.GUIContext<br/>In method context.GUIContext.getPhoneProperty()<br/>Field context.GUIContext.phoneProperty<br/>At GUIContext.java:[line 107]</p>
-            </td>
-         </tr>
-         <tr class="tablerow0" onclick="toggleRow('d1e110');">
-            <td>
-               <span class="priority-2">EI</span>
-            </td>
-            <td>getSession() may expose internal representation by returning GUIContext.session</td>
-         </tr>
-         <tr class="detailrow0">
-            <td/>
-            <td>
-               <p id="d1e110" style="display: none;">
-                  <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
-                  <br/>In class context.GUIContext<br/>In method context.GUIContext.getSession()<br/>Field context.GUIContext.session<br/>At GUIContext.java:[line 141]</p>
-            </td>
-         </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e126');">
-            <td>
-               <span class="priority-2">EI</span>
-            </td>
-            <td>getUser() may expose internal representation by returning GUIContext.user</td>
-         </tr>
-         <tr class="detailrow1">
-            <td/>
-            <td>
-               <p id="d1e126" style="display: none;">
-                  <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
-                  <br/>In class context.GUIContext<br/>In method context.GUIContext.getUser()<br/>Field context.GUIContext.user<br/>At GUIContext.java:[line 48]</p>
-            </td>
-         </tr>
-         <tr class="tablerow0" onclick="toggleRow('d1e142');">
-            <td>
-               <span class="priority-2">EI</span>
-            </td>
-            <td>getUserNameProperty() may expose internal representation by returning GUIContext.nameProperty</td>
-         </tr>
-         <tr class="detailrow0">
-            <td/>
-            <td>
-               <p id="d1e142" style="display: none;">
-                  <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
-                  <br/>In class context.GUIContext<br/>In method context.GUIContext.getUserNameProperty()<br/>Field context.GUIContext.nameProperty<br/>At GUIContext.java:[line 91]</p>
-            </td>
-         </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e277');">
-            <td>
-               <span class="priority-2">EI</span>
-            </td>
-            <td>getBundle() may expose internal representation by returning LocaleManager.bundle</td>
-         </tr>
-         <tr class="detailrow1">
-            <td/>
-            <td>
-               <p id="d1e277" style="display: none;">
-                  <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
-                  <br/>In class context.LocaleManager<br/>In method context.LocaleManager.getBundle()<br/>Field context.LocaleManager.bundle<br/>At LocaleManager.java:[line 41]</p>
-            </td>
-         </tr>
-         <tr class="tablerow0" onclick="toggleRow('d1e382');">
-            <td>
-               <span class="priority-2">EI</span>
-            </td>
-            <td>getPairsContainer() may expose internal representation by returning AdminHomeController.pairsContainer</td>
-         </tr>
-         <tr class="detailrow0">
-            <td/>
-            <td>
-               <p id="d1e382" style="display: none;">
-                  <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
-                  <br/>In class controller.view_controllers.AdminHomeController<br/>In method controller.view_controllers.AdminHomeController.getPairsContainer()<br/>Field controller.view_controllers.AdminHomeController.pairsContainer<br/>At AdminHomeController.java:[line 93]</p>
-            </td>
-         </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e434');">
-            <td>
-               <span class="priority-2">EI</span>
-            </td>
-            <td>getUsersGrid() may expose internal representation by returning AdminUsersController.usersGrid</td>
-         </tr>
-         <tr class="detailrow1">
-            <td/>
-            <td>
-               <p id="d1e434" style="display: none;">
-                  <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
-                  <br/>In class controller.view_controllers.AdminUsersController<br/>In method controller.view_controllers.AdminUsersController.getUsersGrid()<br/>Field controller.view_controllers.AdminUsersController.usersGrid<br/>At AdminUsersController.java:[line 139]</p>
-            </td>
-         </tr>
-         <tr class="tablerow0" onclick="toggleRow('d1e504');">
-            <td>
-               <span class="priority-2">EI</span>
-            </td>
-            <td>getUController() may expose internal representation by returning LoginController.uController</td>
-         </tr>
-         <tr class="detailrow0">
-            <td/>
-            <td>
-               <p id="d1e504" style="display: none;">
-                  <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
-                  <br/>In class controller.view_controllers.LoginController<br/>In method controller.view_controllers.LoginController.getUController()<br/>Field controller.view_controllers.LoginController.uController<br/>At LoginController.java:[line 88]</p>
-            </td>
-         </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e538');">
-            <td>
-               <span class="priority-2">EI</span>
-            </td>
-            <td>getMatch() may expose internal representation by returning PairItemController.match</td>
-         </tr>
-         <tr class="detailrow1">
-            <td/>
-            <td>
-               <p id="d1e538" style="display: none;">
-                  <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
-                  <br/>In class controller.view_controllers.PairItemController<br/>In method controller.view_controllers.PairItemController.getMatch()<br/>Field controller.view_controllers.PairItemController.match<br/>At PairItemController.java:[line 33]</p>
-            </td>
-         </tr>
-         <tr class="tablerow0" onclick="toggleRow('d1e591');">
-            <td>
-               <span class="priority-2">EI</span>
-            </td>
-            <td>getUController() may expose internal representation by returning RegistrationController.uController</td>
-         </tr>
-         <tr class="detailrow0">
-            <td/>
-            <td>
-               <p id="d1e591" style="display: none;">
-                  <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
-                  <br/>In class controller.view_controllers.RegistrationController<br/>In method controller.view_controllers.RegistrationController.getUController()<br/>Field controller.view_controllers.RegistrationController.uController<br/>At RegistrationController.java:[line 105]</p>
-            </td>
-         </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e625');">
-            <td>
-               <span class="priority-2">EI</span>
-            </td>
-            <td>getMatcher() may expose internal representation by returning SessionController.matcher</td>
-         </tr>
-         <tr class="detailrow1">
-            <td/>
-            <td>
-               <p id="d1e625" style="display: none;">
-                  <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
-                  <br/>In class controller.view_controllers.SessionController<br/>In method controller.view_controllers.SessionController.getMatcher()<br/>Field controller.view_controllers.SessionController.matcher<br/>At SessionController.java:[line 155]</p>
-            </td>
-         </tr>
-         <tr class="tablerow0" onclick="toggleRow('d1e677');">
-            <td>
-               <span class="priority-2">EI</span>
-            </td>
-            <td>getUser() may expose internal representation by returning UserItemController.user</td>
-         </tr>
-         <tr class="detailrow0">
-            <td/>
-            <td>
-               <p id="d1e677" style="display: none;">
-                  <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
-                  <br/>In class controller.view_controllers.UserItemController<br/>In method controller.view_controllers.UserItemController.getUser()<br/>Field controller.view_controllers.UserItemController.user<br/>At UserItemController.java:[line 44]</p>
-            </td>
-         </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e795');">
-            <td>
-               <span class="priority-2">EI</span>
-            </td>
-            <td>getUser() may expose internal representation by returning LocalizedUser.users</td>
-         </tr>
-         <tr class="detailrow1">
-            <td/>
-            <td>
-               <p id="d1e795" style="display: none;">
-                  <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
-                  <br/>In class model.LocalizedUser<br/>In method model.LocalizedUser.getUser()<br/>Field model.LocalizedUser.users<br/>At LocalizedUser.java:[line 34]</p>
-            </td>
-         </tr>
-         <tr class="tablerow0" onclick="toggleRow('d1e829');">
-            <td>
-               <span class="priority-2">EI</span>
-            </td>
-            <td>getParticipant1() may expose internal representation by returning Match.participant1</td>
-         </tr>
-         <tr class="detailrow0">
-            <td/>
-            <td>
-               <p id="d1e829" style="display: none;">
-                  <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
-                  <br/>In class model.Match<br/>In method model.Match.getParticipant1()<br/>Field model.Match.participant1<br/>At Match.java:[line 39]</p>
-            </td>
-         </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e845');">
-            <td>
-               <span class="priority-2">EI</span>
-            </td>
-            <td>getParticipant2() may expose internal representation by returning Match.participant2</td>
-         </tr>
-         <tr class="detailrow1">
-            <td/>
-            <td>
-               <p id="d1e845" style="display: none;">
-                  <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
-                  <br/>In class model.Match<br/>In method model.Match.getParticipant2()<br/>Field model.Match.participant2<br/>At Match.java:[line 47]</p>
-            </td>
-         </tr>
-         <tr class="tablerow0" onclick="toggleRow('d1e934');">
-            <td>
-               <span class="priority-2">EI</span>
-            </td>
-            <td>getSession() may expose internal representation by returning Matcher.session</td>
-         </tr>
-         <tr class="detailrow0">
-            <td/>
-            <td>
-               <p id="d1e934" style="display: none;">
-                  <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
-                  <br/>In class model.Matcher<br/>In method model.Matcher.getSession()<br/>Field model.Matcher.session<br/>At Matcher.java:[line 106]</p>
-            </td>
-         </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e950');">
-            <td>
-               <span class="priority-2">EI</span>
-            </td>
-            <td>getTopMatches() may expose internal representation by returning Matcher.topMatches</td>
-         </tr>
-         <tr class="detailrow1">
-            <td/>
-            <td>
-               <p id="d1e950" style="display: none;">
-                  <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
-                  <br/>In class model.Matcher<br/>In method model.Matcher.getTopMatches()<br/>Field model.Matcher.topMatches<br/>At Matcher.java:[line 110]</p>
-            </td>
-         </tr>
-         <tr class="tablerow0" onclick="toggleRow('d1e966');">
-            <td>
-               <span class="priority-2">EI</span>
-            </td>
-            <td>getUserController() may expose internal representation by returning Matcher.userController</td>
-         </tr>
-         <tr class="detailrow0">
-            <td/>
-            <td>
-               <p id="d1e966" style="display: none;">
-                  <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
-                  <br/>In class model.Matcher<br/>In method model.Matcher.getUserController()<br/>Field model.Matcher.userController<br/>At Matcher.java:[line 115]</p>
-            </td>
-         </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e1031');">
-            <td>
-               <span class="priority-2">EI</span>
-            </td>
-            <td>getAnimalInterests() may expose internal representation by returning Participant.animalInterests</td>
-         </tr>
-         <tr class="detailrow1">
-            <td/>
-            <td>
-               <p id="d1e1031" style="display: none;">
-                  <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
-                  <br/>In class model.Participant<br/>In method model.Participant.getAnimalInterests()<br/>Field model.Participant.animalInterests<br/>At Participant.java:[line 96]</p>
-            </td>
-         </tr>
-         <tr class="tablerow0" onclick="toggleRow('d1e1047');">
-            <td>
-               <span class="priority-2">EI</span>
-            </td>
-            <td>getFoodInterests() may expose internal representation by returning Participant.foodInterests</td>
-         </tr>
-         <tr class="detailrow0">
-            <td/>
-            <td>
-               <p id="d1e1047" style="display: none;">
-                  <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
-                  <br/>In class model.Participant<br/>In method model.Participant.getFoodInterests()<br/>Field model.Participant.foodInterests<br/>At Participant.java:[line 100]</p>
-            </td>
-         </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e1063');">
-            <td>
-               <span class="priority-2">EI</span>
-            </td>
-            <td>getHobbiesInterests() may expose internal representation by returning Participant.hobbyInterests</td>
-         </tr>
-         <tr class="detailrow1">
-            <td/>
-            <td>
-               <p id="d1e1063" style="display: none;">
-                  <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
-                  <br/>In class model.Participant<br/>In method model.Participant.getHobbiesInterests()<br/>Field model.Participant.hobbyInterests<br/>At Participant.java:[line 104]</p>
-            </td>
-         </tr>
-         <tr class="tablerow0" onclick="toggleRow('d1e1079');">
-            <td>
-               <span class="priority-2">EI</span>
-            </td>
-            <td>getJoinDate() may expose internal representation by returning Participant.joinDate</td>
-         </tr>
-         <tr class="detailrow0">
-            <td/>
-            <td>
-               <p id="d1e1079" style="display: none;">
-                  <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
-                  <br/>In class model.Participant<br/>In method model.Participant.getJoinDate()<br/>Field model.Participant.joinDate<br/>At Participant.java:[line 72]</p>
-            </td>
-         </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e1095');">
-            <td>
-               <span class="priority-2">EI</span>
-            </td>
-            <td>getMatchesAsFirst() may expose internal representation by returning Participant.matchesAsFirst</td>
-         </tr>
-         <tr class="detailrow1">
-            <td/>
-            <td>
-               <p id="d1e1095" style="display: none;">
-                  <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
-                  <br/>In class model.Participant<br/>In method model.Participant.getMatchesAsFirst()<br/>Field model.Participant.matchesAsFirst<br/>At Participant.java:[line 80]</p>
-            </td>
-         </tr>
-         <tr class="tablerow0" onclick="toggleRow('d1e1112');">
-            <td>
-               <span class="priority-2">EI</span>
-            </td>
-            <td>getMatchesAsSecond() may expose internal representation by returning Participant.matchesAsSecond</td>
-         </tr>
-         <tr class="detailrow0">
-            <td/>
-            <td>
-               <p id="d1e1112" style="display: none;">
-                  <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
-                  <br/>In class model.Participant<br/>In method model.Participant.getMatchesAsSecond()<br/>Field model.Participant.matchesAsSecond<br/>At Participant.java:[line 88]</p>
-            </td>
-         </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e1128');">
-            <td>
-               <span class="priority-2">EI</span>
-            </td>
-            <td>getScienceInterests() may expose internal representation by returning Participant.scienceInterests</td>
-         </tr>
-         <tr class="detailrow1">
-            <td/>
-            <td>
-               <p id="d1e1128" style="display: none;">
-                  <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
-                  <br/>In class model.Participant<br/>In method model.Participant.getScienceInterests()<br/>Field model.Participant.scienceInterests<br/>At Participant.java:[line 108]</p>
-            </td>
-         </tr>
-         <tr class="tablerow0" onclick="toggleRow('d1e1144');">
-            <td>
-               <span class="priority-2">EI</span>
-            </td>
-            <td>getSportsInterests() may expose internal representation by returning Participant.sportsInterests</td>
-         </tr>
-         <tr class="detailrow0">
-            <td/>
-            <td>
-               <p id="d1e1144" style="display: none;">
-                  <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
-                  <br/>In class model.Participant<br/>In method model.Participant.getSportsInterests()<br/>Field model.Participant.sportsInterests<br/>At Participant.java:[line 112]</p>
-            </td>
-         </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e1246');">
-            <td>
-               <span class="priority-2">EI</span>
-            </td>
-            <td>getParticipant() may expose internal representation by returning Session.participant</td>
-         </tr>
-         <tr class="detailrow1">
-            <td/>
-            <td>
-               <p id="d1e1246" style="display: none;">
-                  <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
-                  <br/>In class model.Session<br/>In method model.Session.getParticipant()<br/>Field model.Session.participant<br/>At Session.java:[line 64]</p>
-            </td>
-         </tr>
-         <tr class="tablerow0" onclick="toggleRow('d1e1262');">
-            <td>
-               <span class="priority-2">EI</span>
-            </td>
-            <td>getParticipantInterests() may expose internal representation by returning Session.participantInterests</td>
-         </tr>
-         <tr class="detailrow0">
-            <td/>
-            <td>
-               <p id="d1e1262" style="display: none;">
-                  <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
-                  <br/>In class model.Session<br/>In method model.Session.getParticipantInterests()<br/>Field model.Session.participantInterests<br/>At Session.java:[line 60]</p>
-            </td>
-         </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e158');">
-            <td>
-               <span class="priority-2">EI2</span>
-            </td>
-            <td>setGuest(Guest) may expose internal representation by storing an externally mutable object into GUIContext.guest</td>
-         </tr>
-         <tr class="detailrow1">
-            <td/>
-            <td>
-               <p id="d1e158" style="display: none;">
-                  <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
-                  <br/>In class context.GUIContext<br/>In method context.GUIContext.setGuest(Guest)<br/>Field context.GUIContext.guest<br/>Local variable named guest<br/>At GUIContext.java:[line 120]</p>
-            </td>
-         </tr>
-         <tr class="tablerow0" onclick="toggleRow('d1e176');">
-            <td>
-               <span class="priority-2">EI2</span>
-            </td>
-            <td>setMatcher(Matcher) may expose internal representation by storing an externally mutable object into GUIContext.matcher</td>
-         </tr>
-         <tr class="detailrow0">
-            <td/>
-            <td>
-               <p id="d1e176" style="display: none;">
-                  <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
-                  <br/>In class context.GUIContext<br/>In method context.GUIContext.setMatcher(Matcher)<br/>Field context.GUIContext.matcher<br/>Local variable named matcher<br/>At GUIContext.java:[line 149]</p>
-            </td>
-         </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e195');">
-            <td>
-               <span class="priority-2">EI2</span>
-            </td>
-            <td>setMatches(List) may expose internal representation by storing an externally mutable object into GUIContext.matches</td>
-         </tr>
-         <tr class="detailrow1">
-            <td/>
-            <td>
-               <p id="d1e195" style="display: none;">
-                  <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
-                  <br/>In class context.GUIContext<br/>In method context.GUIContext.setMatches(List)<br/>Field context.GUIContext.matches<br/>Local variable named matches<br/>At GUIContext.java:[line 157]</p>
-            </td>
-         </tr>
-         <tr class="tablerow0" onclick="toggleRow('d1e213');">
-            <td>
-               <span class="priority-2">EI2</span>
-            </td>
-            <td>setSession(Session) may expose internal representation by storing an externally mutable object into GUIContext.session</td>
-         </tr>
-         <tr class="detailrow0">
-            <td/>
-            <td>
-               <p id="d1e213" style="display: none;">
-                  <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
-                  <br/>In class context.GUIContext<br/>In method context.GUIContext.setSession(Session)<br/>Field context.GUIContext.session<br/>Local variable named session<br/>At GUIContext.java:[line 115]</p>
-            </td>
-         </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e231');">
-            <td>
-               <span class="priority-2">EI2</span>
-            </td>
-            <td>setUser(User) may expose internal representation by storing an externally mutable object into GUIContext.user</td>
-         </tr>
-         <tr class="detailrow1">
-            <td/>
-            <td>
-               <p id="d1e231" style="display: none;">
-                  <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
-                  <br/>In class context.GUIContext<br/>In method context.GUIContext.setUser(User)<br/>Field context.GUIContext.user<br/>Local variable named user<br/>At GUIContext.java:[line 40]</p>
-            </td>
-         </tr>
-         <tr class="tablerow0" onclick="toggleRow('d1e293');">
-            <td>
-               <span class="priority-2">EI2</span>
-            </td>
-            <td>setBundle(ResourceBundle) may expose internal representation by storing an externally mutable object into LocaleManager.bundle</td>
-         </tr>
-         <tr class="detailrow0">
-            <td/>
-            <td>
-               <p id="d1e293" style="display: none;">
-                  <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
-                  <br/>In class context.LocaleManager<br/>In method context.LocaleManager.setBundle(ResourceBundle)<br/>Field context.LocaleManager.bundle<br/>Local variable named bundle<br/>At LocaleManager.java:[line 45]</p>
-            </td>
-         </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e339');">
-            <td>
-               <span class="priority-2">EI2</span>
-            </td>
-            <td>setStage(Stage) may expose internal representation by storing an externally mutable object into BaseController.stage</td>
-         </tr>
-         <tr class="detailrow1">
-            <td/>
-            <td>
-               <p id="d1e339" style="display: none;">
-                  <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
-                  <br/>In class controller.BaseController<br/>In method controller.BaseController.setStage(Stage)<br/>Field controller.BaseController.stage<br/>Local variable named stage<br/>At BaseController.java:[line 26]</p>
-            </td>
-         </tr>
-         <tr class="tablerow0" onclick="toggleRow('d1e398');">
-            <td>
-               <span class="priority-2">EI2</span>
-            </td>
-            <td>setMatchController(MatchController) may expose internal representation by storing an externally mutable object into AdminHomeController.matchController</td>
-         </tr>
-         <tr class="detailrow0">
-            <td/>
-            <td>
-               <p id="d1e398" style="display: none;">
-                  <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
-                  <br/>In class controller.view_controllers.AdminHomeController<br/>In method controller.view_controllers.AdminHomeController.setMatchController(MatchController)<br/>Field controller.view_controllers.AdminHomeController.matchController<br/>Local variable named matchController<br/>At AdminHomeController.java:[line 88]</p>
-            </td>
-         </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e416');">
-            <td>
-               <span class="priority-2">EI2</span>
-            </td>
-            <td>new AdminProfileController(GUIContext) may expose internal representation by storing an externally mutable object into AdminProfileController.guiContext</td>
-         </tr>
-         <tr class="detailrow1">
-            <td/>
-            <td>
-               <p id="d1e416" style="display: none;">
-                  <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
-                  <br/>In class controller.view_controllers.AdminProfileController<br/>In method new controller.view_controllers.AdminProfileController(GUIContext)<br/>Field controller.view_controllers.AdminProfileController.guiContext<br/>Local variable named guiContext<br/>At AdminProfileController.java:[line 46]</p>
-            </td>
-         </tr>
-         <tr class="tablerow0" onclick="toggleRow('d1e450');">
-            <td>
-               <span class="priority-2">EI2</span>
-            </td>
-            <td>setUserController(UserController) may expose internal representation by storing an externally mutable object into AdminUsersController.userController</td>
-         </tr>
-         <tr class="detailrow0">
-            <td/>
-            <td>
-               <p id="d1e450" style="display: none;">
-                  <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
-                  <br/>In class controller.view_controllers.AdminUsersController<br/>In method controller.view_controllers.AdminUsersController.setUserController(UserController)<br/>Field controller.view_controllers.AdminUsersController.userController<br/>Local variable named userController<br/>At AdminUsersController.java:[line 134]</p>
-            </td>
-         </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e468');">
-            <td>
-               <span class="priority-2">EI2</span>
-            </td>
-            <td>setUserController(UserController) may expose internal representation by storing an externally mutable object into EditProfileController.userController</td>
-         </tr>
-         <tr class="detailrow1">
-            <td/>
-            <td>
-               <p id="d1e468" style="display: none;">
-                  <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
-                  <br/>In class controller.view_controllers.EditProfileController<br/>In method controller.view_controllers.EditProfileController.setUserController(UserController)<br/>Field controller.view_controllers.EditProfileController.userController<br/>Local variable named userController<br/>At EditProfileController.java:[line 118]</p>
-            </td>
-         </tr>
-         <tr class="tablerow0" onclick="toggleRow('d1e486');">
-            <td>
-               <span class="priority-2">EI2</span>
-            </td>
-            <td>setGuestViewController(GuestController) may expose internal representation by storing an externally mutable object into GuestViewController.gController</td>
-         </tr>
-         <tr class="detailrow0">
-            <td/>
-            <td>
-               <p id="d1e486" style="display: none;">
-                  <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
-                  <br/>In class controller.view_controllers.GuestViewController<br/>In method controller.view_controllers.GuestViewController.setGuestViewController(GuestController)<br/>Field controller.view_controllers.GuestViewController.gController<br/>Local variable named guestController<br/>At GuestViewController.java:[line 74]</p>
-            </td>
-         </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e520');">
-            <td>
-               <span class="priority-2">EI2</span>
-            </td>
-            <td>setUserController(UserController) may expose internal representation by storing an externally mutable object into LoginController.uController</td>
-         </tr>
-         <tr class="detailrow1">
-            <td/>
-            <td>
-               <p id="d1e520" style="display: none;">
-                  <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
-                  <br/>In class controller.view_controllers.LoginController<br/>In method controller.view_controllers.LoginController.setUserController(UserController)<br/>Field controller.view_controllers.LoginController.uController<br/>Local variable named userController<br/>At LoginController.java:[line 92]</p>
-            </td>
-         </tr>
-         <tr class="tablerow0" onclick="toggleRow('d1e555');">
-            <td>
-               <span class="priority-2">EI2</span>
-            </td>
-            <td>setMatch(Match, Consumer) may expose internal representation by storing an externally mutable object into PairItemController.match</td>
-         </tr>
-         <tr class="detailrow0">
-            <td/>
-            <td>
-               <p id="d1e555" style="display: none;">
-                  <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
-                  <br/>In class controller.view_controllers.PairItemController<br/>In method controller.view_controllers.PairItemController.setMatch(Match, Consumer)<br/>Field controller.view_controllers.PairItemController.match<br/>Local variable named match<br/>At PairItemController.java:[line 26]</p>
-            </td>
-         </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e573');">
-            <td>
-               <span class="priority-2">EI2</span>
-            </td>
-            <td>new ProfileController(GUIContext) may expose internal representation by storing an externally mutable object into ProfileController.guiContext</td>
-         </tr>
-         <tr class="detailrow1">
-            <td/>
-            <td>
-               <p id="d1e573" style="display: none;">
-                  <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
-                  <br/>In class controller.view_controllers.ProfileController<br/>In method new controller.view_controllers.ProfileController(GUIContext)<br/>Field controller.view_controllers.ProfileController.guiContext<br/>Local variable named guiContext<br/>At ProfileController.java:[line 48]</p>
-            </td>
-         </tr>
-         <tr class="tablerow0" onclick="toggleRow('d1e607');">
-            <td>
-               <span class="priority-2">EI2</span>
-            </td>
-            <td>setuController(UserController) may expose internal representation by storing an externally mutable object into RegistrationController.uController</td>
-         </tr>
-         <tr class="detailrow0">
-            <td/>
-            <td>
-               <p id="d1e607" style="display: none;">
-                  <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
-                  <br/>In class controller.view_controllers.RegistrationController<br/>In method controller.view_controllers.RegistrationController.setuController(UserController)<br/>Field controller.view_controllers.RegistrationController.uController<br/>Local variable named uController<br/>At RegistrationController.java:[line 109]</p>
-            </td>
-         </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e641');">
-            <td>
-               <span class="priority-2">EI2</span>
-            </td>
-            <td>setMatchController(MatchController) may expose internal representation by storing an externally mutable object into SessionController.matchController</td>
-         </tr>
-         <tr class="detailrow1">
-            <td/>
-            <td>
-               <p id="d1e641" style="display: none;">
-                  <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
-                  <br/>In class controller.view_controllers.SessionController<br/>In method controller.view_controllers.SessionController.setMatchController(MatchController)<br/>Field controller.view_controllers.SessionController.matchController<br/>Local variable named matchController<br/>At SessionController.java:[line 145]</p>
-            </td>
-         </tr>
-         <tr class="tablerow0" onclick="toggleRow('d1e659');">
-            <td>
-               <span class="priority-2">EI2</span>
-            </td>
-            <td>setMatcher(Matcher) may expose internal representation by storing an externally mutable object into SessionController.matcher</td>
-         </tr>
-         <tr class="detailrow0">
-            <td/>
-            <td>
-               <p id="d1e659" style="display: none;">
-                  <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
-                  <br/>In class controller.view_controllers.SessionController<br/>In method controller.view_controllers.SessionController.setMatcher(Matcher)<br/>Field controller.view_controllers.SessionController.matcher<br/>Local variable named matcher<br/>At SessionController.java:[line 150]</p>
-            </td>
-         </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e693');">
-            <td>
-               <span class="priority-2">EI2</span>
-            </td>
-            <td>setUser(User, Consumer) may expose internal representation by storing an externally mutable object into UserItemController.user</td>
-         </tr>
-         <tr class="detailrow1">
-            <td/>
-            <td>
-               <p id="d1e693" style="display: none;">
-                  <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
-                  <br/>In class controller.view_controllers.UserItemController<br/>In method controller.view_controllers.UserItemController.setUser(User, Consumer)<br/>Field controller.view_controllers.UserItemController.user<br/>Local variable named user<br/>At UserItemController.java:[line 31]</p>
-            </td>
-         </tr>
-         <tr class="tablerow0" onclick="toggleRow('d1e724');">
-            <td>
-               <span class="priority-2">EI2</span>
-            </td>
-            <td>setEm(EntityManager) may expose internal representation by storing an externally mutable object into GuestDao.em</td>
-         </tr>
-         <tr class="detailrow0">
-            <td/>
-            <td>
-               <p id="d1e724" style="display: none;">
-                  <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
-                  <br/>In class dao.GuestDao<br/>In method dao.GuestDao.setEm(EntityManager)<br/>Field dao.GuestDao.em<br/>Local variable named em<br/>At GuestDao.java:[line 68]</p>
-            </td>
-         </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e743');">
-            <td>
-               <span class="priority-2">EI2</span>
-            </td>
-            <td>setEm(EntityManager) may expose internal representation by storing an externally mutable object into MatchDao.em</td>
-         </tr>
-         <tr class="detailrow1">
-            <td/>
-            <td>
-               <p id="d1e743" style="display: none;">
-                  <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
-                  <br/>In class dao.MatchDao<br/>In method dao.MatchDao.setEm(EntityManager)<br/>Field dao.MatchDao.em<br/>Local variable named em<br/>At MatchDao.java:[line 72]</p>
-            </td>
-         </tr>
-         <tr class="tablerow0" onclick="toggleRow('d1e761');">
-            <td>
-               <span class="priority-2">EI2</span>
-            </td>
-            <td>setEm(EntityManager) may expose internal representation by storing an externally mutable object into UserDao.em</td>
-         </tr>
-         <tr class="detailrow0">
-            <td/>
-            <td>
-               <p id="d1e761" style="display: none;">
-                  <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
-                  <br/>In class dao.UserDao<br/>In method dao.UserDao.setEm(EntityManager)<br/>Field dao.UserDao.em<br/>Local variable named em<br/>At UserDao.java:[line 84]</p>
-            </td>
-         </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e811');">
-            <td>
-               <span class="priority-2">EI2</span>
-            </td>
-            <td>setUsers(User) may expose internal representation by storing an externally mutable object into LocalizedUser.users</td>
-         </tr>
-         <tr class="detailrow1">
-            <td/>
-            <td>
-               <p id="d1e811" style="display: none;">
-                  <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
-                  <br/>In class model.LocalizedUser<br/>In method model.LocalizedUser.setUsers(User)<br/>Field model.LocalizedUser.users<br/>Local variable named users<br/>At LocalizedUser.java:[line 38]</p>
-            </td>
-         </tr>
-         <tr class="tablerow0" onclick="toggleRow('d1e861');">
-            <td>
-               <span class="priority-2">EI2</span>
-            </td>
-            <td>new Match(Participant, Participant, double) may expose internal representation by storing an externally mutable object into Match.participant1</td>
-         </tr>
-         <tr class="detailrow0">
-            <td/>
-            <td>
-               <p id="d1e861" style="display: none;">
-                  <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
-                  <br/>In class model.Match<br/>In method new model.Match(Participant, Participant, double)<br/>Field model.Match.participant1<br/>Local variable named participant1<br/>At Match.java:[line 27]</p>
-            </td>
-         </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e879');">
-            <td>
-               <span class="priority-2">EI2</span>
-            </td>
-            <td>new Match(Participant, Participant, double) may expose internal representation by storing an externally mutable object into Match.participant2</td>
-         </tr>
-         <tr class="detailrow1">
-            <td/>
-            <td>
-               <p id="d1e879" style="display: none;">
-                  <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
-                  <br/>In class model.Match<br/>In method new model.Match(Participant, Participant, double)<br/>Field model.Match.participant2<br/>Local variable named participant2<br/>At Match.java:[line 28]</p>
-            </td>
-         </tr>
-         <tr class="tablerow0" onclick="toggleRow('d1e897');">
-            <td>
-               <span class="priority-2">EI2</span>
-            </td>
-            <td>setParticipant1(Participant) may expose internal representation by storing an externally mutable object into Match.participant1</td>
-         </tr>
-         <tr class="detailrow0">
-            <td/>
-            <td>
-               <p id="d1e897" style="display: none;">
-                  <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
-                  <br/>In class model.Match<br/>In method model.Match.setParticipant1(Participant)<br/>Field model.Match.participant1<br/>Local variable named participant1<br/>At Match.java:[line 43]</p>
-            </td>
-         </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e915');">
-            <td>
-               <span class="priority-2">EI2</span>
-            </td>
-            <td>setParticipant2(Participant) may expose internal representation by storing an externally mutable object into Match.participant2</td>
-         </tr>
-         <tr class="detailrow1">
-            <td/>
-            <td>
-               <p id="d1e915" style="display: none;">
-                  <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
-                  <br/>In class model.Match<br/>In method model.Match.setParticipant2(Participant)<br/>Field model.Match.participant2<br/>Local variable named participant2<br/>At Match.java:[line 51]</p>
-            </td>
-         </tr>
-         <tr class="tablerow0" onclick="toggleRow('d1e982');">
-            <td>
-               <span class="priority-2">EI2</span>
-            </td>
-            <td>new Matcher(Session) may expose internal representation by storing an externally mutable object into Matcher.session</td>
-         </tr>
-         <tr class="detailrow0">
-            <td/>
-            <td>
-               <p id="d1e982" style="display: none;">
-                  <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
-                  <br/>In class model.Matcher<br/>In method new model.Matcher(Session)<br/>Field model.Matcher.session<br/>Local variable named session<br/>At Matcher.java:[line 20]</p>
-            </td>
-         </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e1000');">
-            <td>
-               <span class="priority-2">EI2</span>
-            </td>
-            <td>setUserController(UserController) may expose internal representation by storing an externally mutable object into Matcher.userController</td>
-         </tr>
-         <tr class="detailrow1">
-            <td/>
-            <td>
-               <p id="d1e1000" style="display: none;">
-                  <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
-                  <br/>In class model.Matcher<br/>In method model.Matcher.setUserController(UserController)<br/>Field model.Matcher.userController<br/>Local variable named userController<br/>At Matcher.java:[line 120]</p>
-            </td>
-         </tr>
-         <tr class="tablerow0" onclick="toggleRow('d1e1160');">
-            <td>
-               <span class="priority-2">EI2</span>
-            </td>
-            <td>new Participant(String, Date) may expose internal representation by storing an externally mutable object into Participant.joinDate</td>
-         </tr>
-         <tr class="detailrow0">
-            <td/>
-            <td>
-               <p id="d1e1160" style="display: none;">
-                  <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
-                  <br/>In class model.Participant<br/>In method new model.Participant(String, Date)<br/>Field model.Participant.joinDate<br/>Local variable named joinDate<br/>At Participant.java:[line 44]</p>
-            </td>
-         </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e1178');">
-            <td>
-               <span class="priority-2">EI2</span>
-            </td>
-            <td>setJoinDate(Date) may expose internal representation by storing an externally mutable object into Participant.joinDate</td>
-         </tr>
-         <tr class="detailrow1">
-            <td/>
-            <td>
-               <p id="d1e1178" style="display: none;">
-                  <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
-                  <br/>In class model.Participant<br/>In method model.Participant.setJoinDate(Date)<br/>Field model.Participant.joinDate<br/>Local variable named joinDate<br/>At Participant.java:[line 76]</p>
-            </td>
-         </tr>
-         <tr class="tablerow0" onclick="toggleRow('d1e1196');">
-            <td>
-               <span class="priority-2">EI2</span>
-            </td>
-            <td>setMatchesAsFirst(Set) may expose internal representation by storing an externally mutable object into Participant.matchesAsFirst</td>
-         </tr>
-         <tr class="detailrow0">
-            <td/>
-            <td>
-               <p id="d1e1196" style="display: none;">
-                  <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
-                  <br/>In class model.Participant<br/>In method model.Participant.setMatchesAsFirst(Set)<br/>Field model.Participant.matchesAsFirst<br/>Local variable named matchesAsFirst<br/>At Participant.java:[line 84]</p>
-            </td>
-         </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e1214');">
-            <td>
-               <span class="priority-2">EI2</span>
-            </td>
-            <td>setMatchesAsSecond(Set) may expose internal representation by storing an externally mutable object into Participant.matchesAsSecond</td>
-         </tr>
-         <tr class="detailrow1">
-            <td/>
-            <td>
-               <p id="d1e1214" style="display: none;">
-                  <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
-                  <br/>In class model.Participant<br/>In method model.Participant.setMatchesAsSecond(Set)<br/>Field model.Participant.matchesAsSecond<br/>Local variable named matchesAsSecond<br/>At Participant.java:[line 92]</p>
-            </td>
-         </tr>
-         <tr class="tablerow0" onclick="toggleRow('d1e1278');">
-            <td>
-               <span class="priority-2">EI2</span>
-            </td>
-            <td>new Session(Participant) may expose internal representation by storing an externally mutable object into Session.participant</td>
-         </tr>
-         <tr class="detailrow0">
-            <td/>
-            <td>
-               <p id="d1e1278" style="display: none;">
-                  <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
-                  <br/>In class model.Session<br/>In method new model.Session(Participant)<br/>Field model.Session.participant<br/>Local variable named participant<br/>At Session.java:[line 27]</p>
-            </td>
-         </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e249');">
-            <td>
-               <span class="priority-2">MS</span>
-            </td>
-            <td>Public static getInstance() may expose internal representation by returning GUIContext.instance</td>
-         </tr>
-         <tr class="detailrow1">
-            <td/>
-            <td>
-               <p id="d1e249" style="display: none;">
-                  <a href="#MS_EXPOSE_REP">Bug type MS_EXPOSE_REP (click for details)</a>
-                  <br/>In class context.GUIContext<br/>In method context.GUIContext.getInstance()<br/>Field context.GUIContext.instance<br/>At GUIContext.java:[line 36]</p>
-            </td>
-         </tr>
-         <tr class="tablerow0" onclick="toggleRow('d1e311');">
-            <td>
-               <span class="priority-2">MS</span>
-            </td>
-            <td>Public static getInstance() may expose internal representation by returning LocaleManager.instance</td>
-         </tr>
-         <tr class="detailrow0">
-            <td/>
-            <td>
-               <p id="d1e311" style="display: none;">
-                  <a href="#MS_EXPOSE_REP">Bug type MS_EXPOSE_REP (click for details)</a>
-                  <br/>In class context.LocaleManager<br/>In method context.LocaleManager.getInstance()<br/>Field context.LocaleManager.instance<br/>At LocaleManager.java:[line 22]</p>
-            </td>
-         </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e779');">
-            <td>
-               <span class="priority-2">MS</span>
-            </td>
-            <td>Public static getInstance() may expose internal representation by returning MariaDbJpaConnection.em</td>
-         </tr>
-         <tr class="detailrow1">
-            <td/>
-            <td>
-               <p id="d1e779" style="display: none;">
-                  <a href="#MS_EXPOSE_REP">Bug type MS_EXPOSE_REP (click for details)</a>
-                  <br/>In class datasource.MariaDbJpaConnection<br/>In method datasource.MariaDbJpaConnection.getInstance()<br/>Field datasource.MariaDbJpaConnection.em<br/>At MariaDbJpaConnection.java:[line 18]</p>
-            </td>
-         </tr>
-         <tr class="tablerow0" onclick="toggleRow('d1e1297');">
-            <td>
-               <span class="priority-2">MS</span>
-            </td>
-            <td>ProfilePictureUtil.PROFILE_PICTURES should be package protected</td>
-         </tr>
-         <tr class="detailrow0">
-            <td/>
-            <td>
-               <p id="d1e1297" style="display: none;">
-                  <a href="#MS_PKGPROTECT">Bug type MS_PKGPROTECT (click for details)</a>
-                  <br/>In class util.ProfilePictureUtil<br/>Field util.ProfilePictureUtil.PROFILE_PICTURES<br/>At ProfilePictureUtil.java:[line 8]</p>
-            </td>
-         </tr>
-      </table>
-      <h2>
-         <a name="Warnings_PERFORMANCE">Performance Warnings</a>
-      </h2>
-      <table class="warningtable" width="100%" cellspacing="0">
-         <tr class="tableheader">
-            <th align="left">Code</th>
-            <th align="left">Warning</th>
-         </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e1018');">
-            <td>
-               <span class="priority-2">UuF</span>
-            </td>
-            <td>Unused field: Matcher.debugUserName</td>
-         </tr>
-         <tr class="detailrow1">
-            <td/>
-            <td>
-               <p id="d1e1018" style="display: none;">
-                  <a href="#UUF_UNUSED_FIELD">Bug type UUF_UNUSED_FIELD (click for details)</a>
-                  <br/>In class model.Matcher<br/>Field model.Matcher.debugUserName<br/>In Matcher.java</p>
-            </td>
-         </tr>
-      </table>
-      <h2>
-         <a name="Warnings_STYLE">Dodgy code Warnings</a>
-      </h2>
-      <table class="warningtable" width="100%" cellspacing="0">
-         <tr class="tableheader">
-            <th align="left">Code</th>
-            <th align="left">Warning</th>
-         </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e357');">
-            <td>
-               <span class="priority-2">SF</span>
-            </td>
-            <td>Switch statement found where default case is missing</td>
-         </tr>
-         <tr class="detailrow1">
-            <td/>
-            <td>
-               <p id="d1e357" style="display: none;">
-                  <a href="#SF_SWITCH_NO_DEFAULT">Bug type SF_SWITCH_NO_DEFAULT (click for details)</a>
-                  <br/>In class controller.BaseController<br/>In method controller.BaseController.loadFXML(String, Object)<br/>At BaseController.java:[lines 78-83]</p>
-            </td>
-         </tr>
-         <tr class="tablerow0" onclick="toggleRow('d1e711');">
-            <td>
-               <span class="priority-2">UwF</span>
-            </td>
-            <td>Unwritten public or protected field: WelcomeController.logo</td>
-         </tr>
-         <tr class="detailrow0">
-            <td/>
-            <td>
-               <p id="d1e711" style="display: none;">
-                  <a href="#UWF_UNWRITTEN_PUBLIC_OR_PROTECTED_FIELD">Bug type UWF_UNWRITTEN_PUBLIC_OR_PROTECTED_FIELD (click for details)</a>
-                  <br/>In class controller.view_controllers.WelcomeController<br/>Field controller.view_controllers.WelcomeController.logo<br/>At WelcomeController.java:[line 27]</p>
-            </td>
-         </tr>
-      </table>
-      <h1>
-         <a name="Details">Details</a>
-      </h1>
-      <h2>
-         <a name="CT_CONSTRUCTOR_THROW">CT_CONSTRUCTOR_THROW: Be wary of letting constructors throw exceptions.</a>
-      </h2>
-      
-            <p>Classes that throw exceptions in their constructors are vulnerable to Finalizer attacks</p>
-
-            <p>A finalizer attack can be prevented, by declaring the class final, using an empty finalizer declared as final, or by a clever use of a private constructor.</p>
-
-            <p>See <a href="https://wiki.sei.cmu.edu/confluence/display/java/OBJ11-J.+Be+wary+of+letting+constructors+throw+exceptions"><code>SEI CERT Rule OBJ-11</code></a>
-            for more information.
+        </td>
+        <td align="right">2</td>
+    </tr>
+    <tr class="tablerow1">
+        <td>
+            <b>Total</b>
+        </td>
+        <td align="right">
+            <b>77</b>
+        </td>
+    </tr>
+</table>
+<h1>Warnings</h1>
+<p>Click on a warning row to see full context information.</p>
+<h2>
+    <a name="Warnings_BAD_PRACTICE">Bad practice Warnings</a>
+</h2>
+<table cellspacing="0" class="warningtable" width="100%">
+    <tr class="tableheader">
+        <th align="left">Code</th>
+        <th align="left">Warning</th>
+    </tr>
+    <tr class="tablerow1" onclick="toggleRow('d1e1232');">
+        <td>
+            <span class="priority-2">CT</span>
+        </td>
+        <td>Exception thrown in class Session at new Session(Participant) will leave the constructor. The object under
+            construction remains partially initialized and may be vulnerable to Finalizer attacks.
+        </td>
+    </tr>
+    <tr class="detailrow1">
+        <td/>
+        <td>
+            <p id="d1e1232" style="display: none;">
+                <a href="#CT_CONSTRUCTOR_THROW">Bug type CT_CONSTRUCTOR_THROW (click for details)</a>
+                <br/>In class model.Session<br/>In method new model.Session(Participant)<br/>At Session.java:[line
+                25]<br/>At Session.java:[line 25]</p>
+        </td>
+    </tr>
+    <tr class="tablerow0" onclick="toggleRow('d1e370');">
+        <td>
+            <span class="priority-1">UI</span>
+        </td>
+        <td>Usage of GetResource may be unsafe if class is extended</td>
+    </tr>
+    <tr class="detailrow0">
+        <td/>
+        <td>
+            <p id="d1e370" style="display: none;">
+                <a href="#UI_INHERITANCE_UNSAFE_GETRESOURCE">Bug type UI_INHERITANCE_UNSAFE_GETRESOURCE (click for
+                    details)</a>
+                <br/>In class controller.BaseController<br/>In method controller.BaseController.loadFXML(String, Object)<br/>At
+                BaseController.java:[line 63]</p>
+        </td>
+    </tr>
+</table>
+<h2>
+    <a name="Warnings_CORRECTNESS">Correctness Warnings</a>
+</h2>
+<table cellspacing="0" class="warningtable" width="100%">
+    <tr class="tableheader">
+        <th align="left">Code</th>
+        <th align="left">Warning</th>
+    </tr>
+    <tr class="tablerow1" onclick="toggleRow('d1e265');">
+        <td>
+            <span class="priority-2">SING</span>
+        </td>
+        <td>Instance-getter method of class using singleton design pattern (GUIContext) is not synchronized.</td>
+    </tr>
+    <tr class="detailrow1">
+        <td/>
+        <td>
+            <p id="d1e265" style="display: none;">
+                <a href="#SING_SINGLETON_GETTER_NOT_SYNCHRONIZED">Bug type SING_SINGLETON_GETTER_NOT_SYNCHRONIZED (click
+                    for details)</a>
+                <br/>In class context.GUIContext<br/>In method context.GUIContext.getInstance()<br/>At
+                GUIContext.java:[lines 33-36]</p>
+        </td>
+    </tr>
+    <tr class="tablerow0" onclick="toggleRow('d1e327');">
+        <td>
+            <span class="priority-2">SING</span>
+        </td>
+        <td>Instance-getter method of class using singleton design pattern (LocaleManager) is not synchronized.</td>
+    </tr>
+    <tr class="detailrow0">
+        <td/>
+        <td>
+            <p id="d1e327" style="display: none;">
+                <a href="#SING_SINGLETON_GETTER_NOT_SYNCHRONIZED">Bug type SING_SINGLETON_GETTER_NOT_SYNCHRONIZED (click
+                    for details)</a>
+                <br/>In class context.LocaleManager<br/>In method context.LocaleManager.getInstance()<br/>At
+                LocaleManager.java:[lines 19-22]</p>
+        </td>
+    </tr>
+</table>
+<h2>
+    <a name="Warnings_MALICIOUS_CODE">Malicious code vulnerability Warnings</a>
+</h2>
+<table cellspacing="0" class="warningtable" width="100%">
+    <tr class="tableheader">
+        <th align="left">Code</th>
+        <th align="left">Warning</th>
+    </tr>
+    <tr class="tablerow1" onclick="toggleRow('d1e30');">
+        <td>
+            <span class="priority-2">EI</span>
+        </td>
+        <td>getEmailProperty() may expose internal representation by returning GUIContext.emailProperty</td>
+    </tr>
+    <tr class="detailrow1">
+        <td/>
+        <td>
+            <p id="d1e30" style="display: none;">
+                <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+                <br/>In class context.GUIContext<br/>In method context.GUIContext.getEmailProperty()<br/>Field
+                context.GUIContext.emailProperty<br/>At GUIContext.java:[line 99]</p>
+        </td>
+    </tr>
+    <tr class="tablerow0" onclick="toggleRow('d1e46');">
+        <td>
+            <span class="priority-2">EI</span>
+        </td>
+        <td>getGuest() may expose internal representation by returning GUIContext.guest</td>
+    </tr>
+    <tr class="detailrow0">
+        <td/>
+        <td>
+            <p id="d1e46" style="display: none;">
+                <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+                <br/>In class context.GUIContext<br/>In method context.GUIContext.getGuest()<br/>Field
+                context.GUIContext.guest<br/>At GUIContext.java:[line 125]</p>
+        </td>
+    </tr>
+    <tr class="tablerow1" onclick="toggleRow('d1e62');">
+        <td>
+            <span class="priority-2">EI</span>
+        </td>
+        <td>getMatcher() may expose internal representation by returning GUIContext.matcher</td>
+    </tr>
+    <tr class="detailrow1">
+        <td/>
+        <td>
+            <p id="d1e62" style="display: none;">
+                <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+                <br/>In class context.GUIContext<br/>In method context.GUIContext.getMatcher()<br/>Field
+                context.GUIContext.matcher<br/>At GUIContext.java:[line 145]</p>
+        </td>
+    </tr>
+    <tr class="tablerow0" onclick="toggleRow('d1e78');">
+        <td>
+            <span class="priority-2">EI</span>
+        </td>
+        <td>getMatches() may expose internal representation by returning GUIContext.matches</td>
+    </tr>
+    <tr class="detailrow0">
+        <td/>
+        <td>
+            <p id="d1e78" style="display: none;">
+                <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+                <br/>In class context.GUIContext<br/>In method context.GUIContext.getMatches()<br/>Field
+                context.GUIContext.matches<br/>At GUIContext.java:[line 153]</p>
+        </td>
+    </tr>
+    <tr class="tablerow1" onclick="toggleRow('d1e94');">
+        <td>
+            <span class="priority-2">EI</span>
+        </td>
+        <td>getPhoneProperty() may expose internal representation by returning GUIContext.phoneProperty</td>
+    </tr>
+    <tr class="detailrow1">
+        <td/>
+        <td>
+            <p id="d1e94" style="display: none;">
+                <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+                <br/>In class context.GUIContext<br/>In method context.GUIContext.getPhoneProperty()<br/>Field
+                context.GUIContext.phoneProperty<br/>At GUIContext.java:[line 107]</p>
+        </td>
+    </tr>
+    <tr class="tablerow0" onclick="toggleRow('d1e110');">
+        <td>
+            <span class="priority-2">EI</span>
+        </td>
+        <td>getSession() may expose internal representation by returning GUIContext.session</td>
+    </tr>
+    <tr class="detailrow0">
+        <td/>
+        <td>
+            <p id="d1e110" style="display: none;">
+                <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+                <br/>In class context.GUIContext<br/>In method context.GUIContext.getSession()<br/>Field
+                context.GUIContext.session<br/>At GUIContext.java:[line 141]</p>
+        </td>
+    </tr>
+    <tr class="tablerow1" onclick="toggleRow('d1e126');">
+        <td>
+            <span class="priority-2">EI</span>
+        </td>
+        <td>getUser() may expose internal representation by returning GUIContext.user</td>
+    </tr>
+    <tr class="detailrow1">
+        <td/>
+        <td>
+            <p id="d1e126" style="display: none;">
+                <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+                <br/>In class context.GUIContext<br/>In method context.GUIContext.getUser()<br/>Field
+                context.GUIContext.user<br/>At GUIContext.java:[line 48]</p>
+        </td>
+    </tr>
+    <tr class="tablerow0" onclick="toggleRow('d1e142');">
+        <td>
+            <span class="priority-2">EI</span>
+        </td>
+        <td>getUserNameProperty() may expose internal representation by returning GUIContext.nameProperty</td>
+    </tr>
+    <tr class="detailrow0">
+        <td/>
+        <td>
+            <p id="d1e142" style="display: none;">
+                <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+                <br/>In class context.GUIContext<br/>In method context.GUIContext.getUserNameProperty()<br/>Field
+                context.GUIContext.nameProperty<br/>At GUIContext.java:[line 91]</p>
+        </td>
+    </tr>
+    <tr class="tablerow1" onclick="toggleRow('d1e277');">
+        <td>
+            <span class="priority-2">EI</span>
+        </td>
+        <td>getBundle() may expose internal representation by returning LocaleManager.bundle</td>
+    </tr>
+    <tr class="detailrow1">
+        <td/>
+        <td>
+            <p id="d1e277" style="display: none;">
+                <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+                <br/>In class context.LocaleManager<br/>In method context.LocaleManager.getBundle()<br/>Field
+                context.LocaleManager.bundle<br/>At LocaleManager.java:[line 41]</p>
+        </td>
+    </tr>
+    <tr class="tablerow0" onclick="toggleRow('d1e382');">
+        <td>
+            <span class="priority-2">EI</span>
+        </td>
+        <td>getPairsContainer() may expose internal representation by returning AdminHomeController.pairsContainer</td>
+    </tr>
+    <tr class="detailrow0">
+        <td/>
+        <td>
+            <p id="d1e382" style="display: none;">
+                <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+                <br/>In class controller.view_controllers.AdminHomeController<br/>In method
+                controller.view_controllers.AdminHomeController.getPairsContainer()<br/>Field
+                controller.view_controllers.AdminHomeController.pairsContainer<br/>At AdminHomeController.java:[line 93]
             </p>
-            
-    <h2>
-         <a name="EI_EXPOSE_REP">EI_EXPOSE_REP: May expose internal representation by returning reference to mutable object</a>
-      </h2>
+        </td>
+    </tr>
+    <tr class="tablerow1" onclick="toggleRow('d1e434');">
+        <td>
+            <span class="priority-2">EI</span>
+        </td>
+        <td>getUsersGrid() may expose internal representation by returning AdminUsersController.usersGrid</td>
+    </tr>
+    <tr class="detailrow1">
+        <td/>
+        <td>
+            <p id="d1e434" style="display: none;">
+                <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+                <br/>In class controller.view_controllers.AdminUsersController<br/>In method
+                controller.view_controllers.AdminUsersController.getUsersGrid()<br/>Field
+                controller.view_controllers.AdminUsersController.usersGrid<br/>At AdminUsersController.java:[line 139]
+            </p>
+        </td>
+    </tr>
+    <tr class="tablerow0" onclick="toggleRow('d1e504');">
+        <td>
+            <span class="priority-2">EI</span>
+        </td>
+        <td>getUController() may expose internal representation by returning LoginController.uController</td>
+    </tr>
+    <tr class="detailrow0">
+        <td/>
+        <td>
+            <p id="d1e504" style="display: none;">
+                <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+                <br/>In class controller.view_controllers.LoginController<br/>In method
+                controller.view_controllers.LoginController.getUController()<br/>Field
+                controller.view_controllers.LoginController.uController<br/>At LoginController.java:[line 88]</p>
+        </td>
+    </tr>
+    <tr class="tablerow1" onclick="toggleRow('d1e538');">
+        <td>
+            <span class="priority-2">EI</span>
+        </td>
+        <td>getMatch() may expose internal representation by returning PairItemController.match</td>
+    </tr>
+    <tr class="detailrow1">
+        <td/>
+        <td>
+            <p id="d1e538" style="display: none;">
+                <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+                <br/>In class controller.view_controllers.PairItemController<br/>In method
+                controller.view_controllers.PairItemController.getMatch()<br/>Field
+                controller.view_controllers.PairItemController.match<br/>At PairItemController.java:[line 33]</p>
+        </td>
+    </tr>
+    <tr class="tablerow0" onclick="toggleRow('d1e591');">
+        <td>
+            <span class="priority-2">EI</span>
+        </td>
+        <td>getUController() may expose internal representation by returning RegistrationController.uController</td>
+    </tr>
+    <tr class="detailrow0">
+        <td/>
+        <td>
+            <p id="d1e591" style="display: none;">
+                <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+                <br/>In class controller.view_controllers.RegistrationController<br/>In method
+                controller.view_controllers.RegistrationController.getUController()<br/>Field
+                controller.view_controllers.RegistrationController.uController<br/>At RegistrationController.java:[line
+                105]</p>
+        </td>
+    </tr>
+    <tr class="tablerow1" onclick="toggleRow('d1e625');">
+        <td>
+            <span class="priority-2">EI</span>
+        </td>
+        <td>getMatcher() may expose internal representation by returning SessionController.matcher</td>
+    </tr>
+    <tr class="detailrow1">
+        <td/>
+        <td>
+            <p id="d1e625" style="display: none;">
+                <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+                <br/>In class controller.view_controllers.SessionController<br/>In method
+                controller.view_controllers.SessionController.getMatcher()<br/>Field
+                controller.view_controllers.SessionController.matcher<br/>At SessionController.java:[line 155]</p>
+        </td>
+    </tr>
+    <tr class="tablerow0" onclick="toggleRow('d1e677');">
+        <td>
+            <span class="priority-2">EI</span>
+        </td>
+        <td>getUser() may expose internal representation by returning UserItemController.user</td>
+    </tr>
+    <tr class="detailrow0">
+        <td/>
+        <td>
+            <p id="d1e677" style="display: none;">
+                <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+                <br/>In class controller.view_controllers.UserItemController<br/>In method
+                controller.view_controllers.UserItemController.getUser()<br/>Field
+                controller.view_controllers.UserItemController.user<br/>At UserItemController.java:[line 44]</p>
+        </td>
+    </tr>
+    <tr class="tablerow1" onclick="toggleRow('d1e795');">
+        <td>
+            <span class="priority-2">EI</span>
+        </td>
+        <td>getUser() may expose internal representation by returning LocalizedUser.users</td>
+    </tr>
+    <tr class="detailrow1">
+        <td/>
+        <td>
+            <p id="d1e795" style="display: none;">
+                <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+                <br/>In class model.LocalizedUser<br/>In method model.LocalizedUser.getUser()<br/>Field
+                model.LocalizedUser.users<br/>At LocalizedUser.java:[line 34]</p>
+        </td>
+    </tr>
+    <tr class="tablerow0" onclick="toggleRow('d1e829');">
+        <td>
+            <span class="priority-2">EI</span>
+        </td>
+        <td>getParticipant1() may expose internal representation by returning Match.participant1</td>
+    </tr>
+    <tr class="detailrow0">
+        <td/>
+        <td>
+            <p id="d1e829" style="display: none;">
+                <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+                <br/>In class model.Match<br/>In method model.Match.getParticipant1()<br/>Field model.Match.participant1<br/>At
+                Match.java:[line 39]</p>
+        </td>
+    </tr>
+    <tr class="tablerow1" onclick="toggleRow('d1e845');">
+        <td>
+            <span class="priority-2">EI</span>
+        </td>
+        <td>getParticipant2() may expose internal representation by returning Match.participant2</td>
+    </tr>
+    <tr class="detailrow1">
+        <td/>
+        <td>
+            <p id="d1e845" style="display: none;">
+                <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+                <br/>In class model.Match<br/>In method model.Match.getParticipant2()<br/>Field model.Match.participant2<br/>At
+                Match.java:[line 47]</p>
+        </td>
+    </tr>
+    <tr class="tablerow0" onclick="toggleRow('d1e934');">
+        <td>
+            <span class="priority-2">EI</span>
+        </td>
+        <td>getSession() may expose internal representation by returning Matcher.session</td>
+    </tr>
+    <tr class="detailrow0">
+        <td/>
+        <td>
+            <p id="d1e934" style="display: none;">
+                <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+                <br/>In class model.Matcher<br/>In method model.Matcher.getSession()<br/>Field
+                model.Matcher.session<br/>At Matcher.java:[line 106]</p>
+        </td>
+    </tr>
+    <tr class="tablerow1" onclick="toggleRow('d1e950');">
+        <td>
+            <span class="priority-2">EI</span>
+        </td>
+        <td>getTopMatches() may expose internal representation by returning Matcher.topMatches</td>
+    </tr>
+    <tr class="detailrow1">
+        <td/>
+        <td>
+            <p id="d1e950" style="display: none;">
+                <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+                <br/>In class model.Matcher<br/>In method model.Matcher.getTopMatches()<br/>Field
+                model.Matcher.topMatches<br/>At Matcher.java:[line 110]</p>
+        </td>
+    </tr>
+    <tr class="tablerow0" onclick="toggleRow('d1e966');">
+        <td>
+            <span class="priority-2">EI</span>
+        </td>
+        <td>getUserController() may expose internal representation by returning Matcher.userController</td>
+    </tr>
+    <tr class="detailrow0">
+        <td/>
+        <td>
+            <p id="d1e966" style="display: none;">
+                <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+                <br/>In class model.Matcher<br/>In method model.Matcher.getUserController()<br/>Field
+                model.Matcher.userController<br/>At Matcher.java:[line 115]</p>
+        </td>
+    </tr>
+    <tr class="tablerow1" onclick="toggleRow('d1e1031');">
+        <td>
+            <span class="priority-2">EI</span>
+        </td>
+        <td>getAnimalInterests() may expose internal representation by returning Participant.animalInterests</td>
+    </tr>
+    <tr class="detailrow1">
+        <td/>
+        <td>
+            <p id="d1e1031" style="display: none;">
+                <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+                <br/>In class model.Participant<br/>In method model.Participant.getAnimalInterests()<br/>Field
+                model.Participant.animalInterests<br/>At Participant.java:[line 96]</p>
+        </td>
+    </tr>
+    <tr class="tablerow0" onclick="toggleRow('d1e1047');">
+        <td>
+            <span class="priority-2">EI</span>
+        </td>
+        <td>getFoodInterests() may expose internal representation by returning Participant.foodInterests</td>
+    </tr>
+    <tr class="detailrow0">
+        <td/>
+        <td>
+            <p id="d1e1047" style="display: none;">
+                <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+                <br/>In class model.Participant<br/>In method model.Participant.getFoodInterests()<br/>Field
+                model.Participant.foodInterests<br/>At Participant.java:[line 100]</p>
+        </td>
+    </tr>
+    <tr class="tablerow1" onclick="toggleRow('d1e1063');">
+        <td>
+            <span class="priority-2">EI</span>
+        </td>
+        <td>getHobbiesInterests() may expose internal representation by returning Participant.hobbyInterests</td>
+    </tr>
+    <tr class="detailrow1">
+        <td/>
+        <td>
+            <p id="d1e1063" style="display: none;">
+                <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+                <br/>In class model.Participant<br/>In method model.Participant.getHobbiesInterests()<br/>Field
+                model.Participant.hobbyInterests<br/>At Participant.java:[line 104]</p>
+        </td>
+    </tr>
+    <tr class="tablerow0" onclick="toggleRow('d1e1079');">
+        <td>
+            <span class="priority-2">EI</span>
+        </td>
+        <td>getJoinDate() may expose internal representation by returning Participant.joinDate</td>
+    </tr>
+    <tr class="detailrow0">
+        <td/>
+        <td>
+            <p id="d1e1079" style="display: none;">
+                <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+                <br/>In class model.Participant<br/>In method model.Participant.getJoinDate()<br/>Field
+                model.Participant.joinDate<br/>At Participant.java:[line 72]</p>
+        </td>
+    </tr>
+    <tr class="tablerow1" onclick="toggleRow('d1e1095');">
+        <td>
+            <span class="priority-2">EI</span>
+        </td>
+        <td>getMatchesAsFirst() may expose internal representation by returning Participant.matchesAsFirst</td>
+    </tr>
+    <tr class="detailrow1">
+        <td/>
+        <td>
+            <p id="d1e1095" style="display: none;">
+                <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+                <br/>In class model.Participant<br/>In method model.Participant.getMatchesAsFirst()<br/>Field
+                model.Participant.matchesAsFirst<br/>At Participant.java:[line 80]</p>
+        </td>
+    </tr>
+    <tr class="tablerow0" onclick="toggleRow('d1e1112');">
+        <td>
+            <span class="priority-2">EI</span>
+        </td>
+        <td>getMatchesAsSecond() may expose internal representation by returning Participant.matchesAsSecond</td>
+    </tr>
+    <tr class="detailrow0">
+        <td/>
+        <td>
+            <p id="d1e1112" style="display: none;">
+                <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+                <br/>In class model.Participant<br/>In method model.Participant.getMatchesAsSecond()<br/>Field
+                model.Participant.matchesAsSecond<br/>At Participant.java:[line 88]</p>
+        </td>
+    </tr>
+    <tr class="tablerow1" onclick="toggleRow('d1e1128');">
+        <td>
+            <span class="priority-2">EI</span>
+        </td>
+        <td>getScienceInterests() may expose internal representation by returning Participant.scienceInterests</td>
+    </tr>
+    <tr class="detailrow1">
+        <td/>
+        <td>
+            <p id="d1e1128" style="display: none;">
+                <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+                <br/>In class model.Participant<br/>In method model.Participant.getScienceInterests()<br/>Field
+                model.Participant.scienceInterests<br/>At Participant.java:[line 108]</p>
+        </td>
+    </tr>
+    <tr class="tablerow0" onclick="toggleRow('d1e1144');">
+        <td>
+            <span class="priority-2">EI</span>
+        </td>
+        <td>getSportsInterests() may expose internal representation by returning Participant.sportsInterests</td>
+    </tr>
+    <tr class="detailrow0">
+        <td/>
+        <td>
+            <p id="d1e1144" style="display: none;">
+                <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+                <br/>In class model.Participant<br/>In method model.Participant.getSportsInterests()<br/>Field
+                model.Participant.sportsInterests<br/>At Participant.java:[line 112]</p>
+        </td>
+    </tr>
+    <tr class="tablerow1" onclick="toggleRow('d1e1246');">
+        <td>
+            <span class="priority-2">EI</span>
+        </td>
+        <td>getParticipant() may expose internal representation by returning Session.participant</td>
+    </tr>
+    <tr class="detailrow1">
+        <td/>
+        <td>
+            <p id="d1e1246" style="display: none;">
+                <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+                <br/>In class model.Session<br/>In method model.Session.getParticipant()<br/>Field
+                model.Session.participant<br/>At Session.java:[line 64]</p>
+        </td>
+    </tr>
+    <tr class="tablerow0" onclick="toggleRow('d1e1262');">
+        <td>
+            <span class="priority-2">EI</span>
+        </td>
+        <td>getParticipantInterests() may expose internal representation by returning Session.participantInterests</td>
+    </tr>
+    <tr class="detailrow0">
+        <td/>
+        <td>
+            <p id="d1e1262" style="display: none;">
+                <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+                <br/>In class model.Session<br/>In method model.Session.getParticipantInterests()<br/>Field
+                model.Session.participantInterests<br/>At Session.java:[line 60]</p>
+        </td>
+    </tr>
+    <tr class="tablerow1" onclick="toggleRow('d1e158');">
+        <td>
+            <span class="priority-2">EI2</span>
+        </td>
+        <td>setGuest(Guest) may expose internal representation by storing an externally mutable object into
+            GUIContext.guest
+        </td>
+    </tr>
+    <tr class="detailrow1">
+        <td/>
+        <td>
+            <p id="d1e158" style="display: none;">
+                <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+                <br/>In class context.GUIContext<br/>In method context.GUIContext.setGuest(Guest)<br/>Field
+                context.GUIContext.guest<br/>Local variable named guest<br/>At GUIContext.java:[line 120]</p>
+        </td>
+    </tr>
+    <tr class="tablerow0" onclick="toggleRow('d1e176');">
+        <td>
+            <span class="priority-2">EI2</span>
+        </td>
+        <td>setMatcher(Matcher) may expose internal representation by storing an externally mutable object into
+            GUIContext.matcher
+        </td>
+    </tr>
+    <tr class="detailrow0">
+        <td/>
+        <td>
+            <p id="d1e176" style="display: none;">
+                <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+                <br/>In class context.GUIContext<br/>In method context.GUIContext.setMatcher(Matcher)<br/>Field
+                context.GUIContext.matcher<br/>Local variable named matcher<br/>At GUIContext.java:[line 149]</p>
+        </td>
+    </tr>
+    <tr class="tablerow1" onclick="toggleRow('d1e195');">
+        <td>
+            <span class="priority-2">EI2</span>
+        </td>
+        <td>setMatches(List) may expose internal representation by storing an externally mutable object into
+            GUIContext.matches
+        </td>
+    </tr>
+    <tr class="detailrow1">
+        <td/>
+        <td>
+            <p id="d1e195" style="display: none;">
+                <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+                <br/>In class context.GUIContext<br/>In method context.GUIContext.setMatches(List)<br/>Field
+                context.GUIContext.matches<br/>Local variable named matches<br/>At GUIContext.java:[line 157]</p>
+        </td>
+    </tr>
+    <tr class="tablerow0" onclick="toggleRow('d1e213');">
+        <td>
+            <span class="priority-2">EI2</span>
+        </td>
+        <td>setSession(Session) may expose internal representation by storing an externally mutable object into
+            GUIContext.session
+        </td>
+    </tr>
+    <tr class="detailrow0">
+        <td/>
+        <td>
+            <p id="d1e213" style="display: none;">
+                <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+                <br/>In class context.GUIContext<br/>In method context.GUIContext.setSession(Session)<br/>Field
+                context.GUIContext.session<br/>Local variable named session<br/>At GUIContext.java:[line 115]</p>
+        </td>
+    </tr>
+    <tr class="tablerow1" onclick="toggleRow('d1e231');">
+        <td>
+            <span class="priority-2">EI2</span>
+        </td>
+        <td>setUser(User) may expose internal representation by storing an externally mutable object into
+            GUIContext.user
+        </td>
+    </tr>
+    <tr class="detailrow1">
+        <td/>
+        <td>
+            <p id="d1e231" style="display: none;">
+                <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+                <br/>In class context.GUIContext<br/>In method context.GUIContext.setUser(User)<br/>Field
+                context.GUIContext.user<br/>Local variable named user<br/>At GUIContext.java:[line 40]</p>
+        </td>
+    </tr>
+    <tr class="tablerow0" onclick="toggleRow('d1e293');">
+        <td>
+            <span class="priority-2">EI2</span>
+        </td>
+        <td>setBundle(ResourceBundle) may expose internal representation by storing an externally mutable object into
+            LocaleManager.bundle
+        </td>
+    </tr>
+    <tr class="detailrow0">
+        <td/>
+        <td>
+            <p id="d1e293" style="display: none;">
+                <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+                <br/>In class context.LocaleManager<br/>In method context.LocaleManager.setBundle(ResourceBundle)<br/>Field
+                context.LocaleManager.bundle<br/>Local variable named bundle<br/>At LocaleManager.java:[line 45]</p>
+        </td>
+    </tr>
+    <tr class="tablerow1" onclick="toggleRow('d1e339');">
+        <td>
+            <span class="priority-2">EI2</span>
+        </td>
+        <td>setStage(Stage) may expose internal representation by storing an externally mutable object into
+            BaseController.stage
+        </td>
+    </tr>
+    <tr class="detailrow1">
+        <td/>
+        <td>
+            <p id="d1e339" style="display: none;">
+                <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+                <br/>In class controller.BaseController<br/>In method controller.BaseController.setStage(Stage)<br/>Field
+                controller.BaseController.stage<br/>Local variable named stage<br/>At BaseController.java:[line 26]</p>
+        </td>
+    </tr>
+    <tr class="tablerow0" onclick="toggleRow('d1e398');">
+        <td>
+            <span class="priority-2">EI2</span>
+        </td>
+        <td>setMatchController(MatchController) may expose internal representation by storing an externally mutable
+            object into AdminHomeController.matchController
+        </td>
+    </tr>
+    <tr class="detailrow0">
+        <td/>
+        <td>
+            <p id="d1e398" style="display: none;">
+                <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+                <br/>In class controller.view_controllers.AdminHomeController<br/>In method
+                controller.view_controllers.AdminHomeController.setMatchController(MatchController)<br/>Field
+                controller.view_controllers.AdminHomeController.matchController<br/>Local variable named matchController<br/>At
+                AdminHomeController.java:[line 88]</p>
+        </td>
+    </tr>
+    <tr class="tablerow1" onclick="toggleRow('d1e416');">
+        <td>
+            <span class="priority-2">EI2</span>
+        </td>
+        <td>new AdminProfileController(GUIContext) may expose internal representation by storing an externally mutable
+            object into AdminProfileController.guiContext
+        </td>
+    </tr>
+    <tr class="detailrow1">
+        <td/>
+        <td>
+            <p id="d1e416" style="display: none;">
+                <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+                <br/>In class controller.view_controllers.AdminProfileController<br/>In method new
+                controller.view_controllers.AdminProfileController(GUIContext)<br/>Field
+                controller.view_controllers.AdminProfileController.guiContext<br/>Local variable named guiContext<br/>At
+                AdminProfileController.java:[line 46]</p>
+        </td>
+    </tr>
+    <tr class="tablerow0" onclick="toggleRow('d1e450');">
+        <td>
+            <span class="priority-2">EI2</span>
+        </td>
+        <td>setUserController(UserController) may expose internal representation by storing an externally mutable object
+            into AdminUsersController.userController
+        </td>
+    </tr>
+    <tr class="detailrow0">
+        <td/>
+        <td>
+            <p id="d1e450" style="display: none;">
+                <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+                <br/>In class controller.view_controllers.AdminUsersController<br/>In method
+                controller.view_controllers.AdminUsersController.setUserController(UserController)<br/>Field
+                controller.view_controllers.AdminUsersController.userController<br/>Local variable named
+                userController<br/>At AdminUsersController.java:[line 134]</p>
+        </td>
+    </tr>
+    <tr class="tablerow1" onclick="toggleRow('d1e468');">
+        <td>
+            <span class="priority-2">EI2</span>
+        </td>
+        <td>setUserController(UserController) may expose internal representation by storing an externally mutable object
+            into EditProfileController.userController
+        </td>
+    </tr>
+    <tr class="detailrow1">
+        <td/>
+        <td>
+            <p id="d1e468" style="display: none;">
+                <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+                <br/>In class controller.view_controllers.EditProfileController<br/>In method
+                controller.view_controllers.EditProfileController.setUserController(UserController)<br/>Field
+                controller.view_controllers.EditProfileController.userController<br/>Local variable named userController<br/>At
+                EditProfileController.java:[line 118]</p>
+        </td>
+    </tr>
+    <tr class="tablerow0" onclick="toggleRow('d1e486');">
+        <td>
+            <span class="priority-2">EI2</span>
+        </td>
+        <td>setGuestViewController(GuestController) may expose internal representation by storing an externally mutable
+            object into GuestViewController.gController
+        </td>
+    </tr>
+    <tr class="detailrow0">
+        <td/>
+        <td>
+            <p id="d1e486" style="display: none;">
+                <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+                <br/>In class controller.view_controllers.GuestViewController<br/>In method
+                controller.view_controllers.GuestViewController.setGuestViewController(GuestController)<br/>Field
+                controller.view_controllers.GuestViewController.gController<br/>Local variable named
+                guestController<br/>At GuestViewController.java:[line 74]</p>
+        </td>
+    </tr>
+    <tr class="tablerow1" onclick="toggleRow('d1e520');">
+        <td>
+            <span class="priority-2">EI2</span>
+        </td>
+        <td>setUserController(UserController) may expose internal representation by storing an externally mutable object
+            into LoginController.uController
+        </td>
+    </tr>
+    <tr class="detailrow1">
+        <td/>
+        <td>
+            <p id="d1e520" style="display: none;">
+                <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+                <br/>In class controller.view_controllers.LoginController<br/>In method
+                controller.view_controllers.LoginController.setUserController(UserController)<br/>Field
+                controller.view_controllers.LoginController.uController<br/>Local variable named userController<br/>At
+                LoginController.java:[line 92]</p>
+        </td>
+    </tr>
+    <tr class="tablerow0" onclick="toggleRow('d1e555');">
+        <td>
+            <span class="priority-2">EI2</span>
+        </td>
+        <td>setMatch(Match, Consumer) may expose internal representation by storing an externally mutable object into
+            PairItemController.match
+        </td>
+    </tr>
+    <tr class="detailrow0">
+        <td/>
+        <td>
+            <p id="d1e555" style="display: none;">
+                <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+                <br/>In class controller.view_controllers.PairItemController<br/>In method
+                controller.view_controllers.PairItemController.setMatch(Match, Consumer)<br/>Field
+                controller.view_controllers.PairItemController.match<br/>Local variable named match<br/>At
+                PairItemController.java:[line 26]</p>
+        </td>
+    </tr>
+    <tr class="tablerow1" onclick="toggleRow('d1e573');">
+        <td>
+            <span class="priority-2">EI2</span>
+        </td>
+        <td>new ProfileController(GUIContext) may expose internal representation by storing an externally mutable object
+            into ProfileController.guiContext
+        </td>
+    </tr>
+    <tr class="detailrow1">
+        <td/>
+        <td>
+            <p id="d1e573" style="display: none;">
+                <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+                <br/>In class controller.view_controllers.ProfileController<br/>In method new
+                controller.view_controllers.ProfileController(GUIContext)<br/>Field
+                controller.view_controllers.ProfileController.guiContext<br/>Local variable named guiContext<br/>At
+                ProfileController.java:[line 48]</p>
+        </td>
+    </tr>
+    <tr class="tablerow0" onclick="toggleRow('d1e607');">
+        <td>
+            <span class="priority-2">EI2</span>
+        </td>
+        <td>setuController(UserController) may expose internal representation by storing an externally mutable object
+            into RegistrationController.uController
+        </td>
+    </tr>
+    <tr class="detailrow0">
+        <td/>
+        <td>
+            <p id="d1e607" style="display: none;">
+                <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+                <br/>In class controller.view_controllers.RegistrationController<br/>In method
+                controller.view_controllers.RegistrationController.setuController(UserController)<br/>Field
+                controller.view_controllers.RegistrationController.uController<br/>Local variable named uController<br/>At
+                RegistrationController.java:[line 109]</p>
+        </td>
+    </tr>
+    <tr class="tablerow1" onclick="toggleRow('d1e641');">
+        <td>
+            <span class="priority-2">EI2</span>
+        </td>
+        <td>setMatchController(MatchController) may expose internal representation by storing an externally mutable
+            object into SessionController.matchController
+        </td>
+    </tr>
+    <tr class="detailrow1">
+        <td/>
+        <td>
+            <p id="d1e641" style="display: none;">
+                <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+                <br/>In class controller.view_controllers.SessionController<br/>In method
+                controller.view_controllers.SessionController.setMatchController(MatchController)<br/>Field
+                controller.view_controllers.SessionController.matchController<br/>Local variable named
+                matchController<br/>At SessionController.java:[line 145]</p>
+        </td>
+    </tr>
+    <tr class="tablerow0" onclick="toggleRow('d1e659');">
+        <td>
+            <span class="priority-2">EI2</span>
+        </td>
+        <td>setMatcher(Matcher) may expose internal representation by storing an externally mutable object into
+            SessionController.matcher
+        </td>
+    </tr>
+    <tr class="detailrow0">
+        <td/>
+        <td>
+            <p id="d1e659" style="display: none;">
+                <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+                <br/>In class controller.view_controllers.SessionController<br/>In method
+                controller.view_controllers.SessionController.setMatcher(Matcher)<br/>Field
+                controller.view_controllers.SessionController.matcher<br/>Local variable named matcher<br/>At
+                SessionController.java:[line 150]</p>
+        </td>
+    </tr>
+    <tr class="tablerow1" onclick="toggleRow('d1e693');">
+        <td>
+            <span class="priority-2">EI2</span>
+        </td>
+        <td>setUser(User, Consumer) may expose internal representation by storing an externally mutable object into
+            UserItemController.user
+        </td>
+    </tr>
+    <tr class="detailrow1">
+        <td/>
+        <td>
+            <p id="d1e693" style="display: none;">
+                <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+                <br/>In class controller.view_controllers.UserItemController<br/>In method
+                controller.view_controllers.UserItemController.setUser(User, Consumer)<br/>Field
+                controller.view_controllers.UserItemController.user<br/>Local variable named user<br/>At
+                UserItemController.java:[line 31]</p>
+        </td>
+    </tr>
+    <tr class="tablerow0" onclick="toggleRow('d1e724');">
+        <td>
+            <span class="priority-2">EI2</span>
+        </td>
+        <td>setEm(EntityManager) may expose internal representation by storing an externally mutable object into
+            GuestDao.em
+        </td>
+    </tr>
+    <tr class="detailrow0">
+        <td/>
+        <td>
+            <p id="d1e724" style="display: none;">
+                <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+                <br/>In class dao.GuestDao<br/>In method dao.GuestDao.setEm(EntityManager)<br/>Field
+                dao.GuestDao.em<br/>Local variable named em<br/>At GuestDao.java:[line 68]</p>
+        </td>
+    </tr>
+    <tr class="tablerow1" onclick="toggleRow('d1e743');">
+        <td>
+            <span class="priority-2">EI2</span>
+        </td>
+        <td>setEm(EntityManager) may expose internal representation by storing an externally mutable object into
+            MatchDao.em
+        </td>
+    </tr>
+    <tr class="detailrow1">
+        <td/>
+        <td>
+            <p id="d1e743" style="display: none;">
+                <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+                <br/>In class dao.MatchDao<br/>In method dao.MatchDao.setEm(EntityManager)<br/>Field
+                dao.MatchDao.em<br/>Local variable named em<br/>At MatchDao.java:[line 72]</p>
+        </td>
+    </tr>
+    <tr class="tablerow0" onclick="toggleRow('d1e761');">
+        <td>
+            <span class="priority-2">EI2</span>
+        </td>
+        <td>setEm(EntityManager) may expose internal representation by storing an externally mutable object into
+            UserDao.em
+        </td>
+    </tr>
+    <tr class="detailrow0">
+        <td/>
+        <td>
+            <p id="d1e761" style="display: none;">
+                <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+                <br/>In class dao.UserDao<br/>In method dao.UserDao.setEm(EntityManager)<br/>Field dao.UserDao.em<br/>Local
+                variable named em<br/>At UserDao.java:[line 84]</p>
+        </td>
+    </tr>
+    <tr class="tablerow1" onclick="toggleRow('d1e811');">
+        <td>
+            <span class="priority-2">EI2</span>
+        </td>
+        <td>setUsers(User) may expose internal representation by storing an externally mutable object into
+            LocalizedUser.users
+        </td>
+    </tr>
+    <tr class="detailrow1">
+        <td/>
+        <td>
+            <p id="d1e811" style="display: none;">
+                <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+                <br/>In class model.LocalizedUser<br/>In method model.LocalizedUser.setUsers(User)<br/>Field
+                model.LocalizedUser.users<br/>Local variable named users<br/>At LocalizedUser.java:[line 38]</p>
+        </td>
+    </tr>
+    <tr class="tablerow0" onclick="toggleRow('d1e861');">
+        <td>
+            <span class="priority-2">EI2</span>
+        </td>
+        <td>new Match(Participant, Participant, double) may expose internal representation by storing an externally
+            mutable object into Match.participant1
+        </td>
+    </tr>
+    <tr class="detailrow0">
+        <td/>
+        <td>
+            <p id="d1e861" style="display: none;">
+                <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+                <br/>In class model.Match<br/>In method new model.Match(Participant, Participant, double)<br/>Field
+                model.Match.participant1<br/>Local variable named participant1<br/>At Match.java:[line 27]</p>
+        </td>
+    </tr>
+    <tr class="tablerow1" onclick="toggleRow('d1e879');">
+        <td>
+            <span class="priority-2">EI2</span>
+        </td>
+        <td>new Match(Participant, Participant, double) may expose internal representation by storing an externally
+            mutable object into Match.participant2
+        </td>
+    </tr>
+    <tr class="detailrow1">
+        <td/>
+        <td>
+            <p id="d1e879" style="display: none;">
+                <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+                <br/>In class model.Match<br/>In method new model.Match(Participant, Participant, double)<br/>Field
+                model.Match.participant2<br/>Local variable named participant2<br/>At Match.java:[line 28]</p>
+        </td>
+    </tr>
+    <tr class="tablerow0" onclick="toggleRow('d1e897');">
+        <td>
+            <span class="priority-2">EI2</span>
+        </td>
+        <td>setParticipant1(Participant) may expose internal representation by storing an externally mutable object into
+            Match.participant1
+        </td>
+    </tr>
+    <tr class="detailrow0">
+        <td/>
+        <td>
+            <p id="d1e897" style="display: none;">
+                <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+                <br/>In class model.Match<br/>In method model.Match.setParticipant1(Participant)<br/>Field
+                model.Match.participant1<br/>Local variable named participant1<br/>At Match.java:[line 43]</p>
+        </td>
+    </tr>
+    <tr class="tablerow1" onclick="toggleRow('d1e915');">
+        <td>
+            <span class="priority-2">EI2</span>
+        </td>
+        <td>setParticipant2(Participant) may expose internal representation by storing an externally mutable object into
+            Match.participant2
+        </td>
+    </tr>
+    <tr class="detailrow1">
+        <td/>
+        <td>
+            <p id="d1e915" style="display: none;">
+                <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+                <br/>In class model.Match<br/>In method model.Match.setParticipant2(Participant)<br/>Field
+                model.Match.participant2<br/>Local variable named participant2<br/>At Match.java:[line 51]</p>
+        </td>
+    </tr>
+    <tr class="tablerow0" onclick="toggleRow('d1e982');">
+        <td>
+            <span class="priority-2">EI2</span>
+        </td>
+        <td>new Matcher(Session) may expose internal representation by storing an externally mutable object into
+            Matcher.session
+        </td>
+    </tr>
+    <tr class="detailrow0">
+        <td/>
+        <td>
+            <p id="d1e982" style="display: none;">
+                <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+                <br/>In class model.Matcher<br/>In method new model.Matcher(Session)<br/>Field
+                model.Matcher.session<br/>Local variable named session<br/>At Matcher.java:[line 20]</p>
+        </td>
+    </tr>
+    <tr class="tablerow1" onclick="toggleRow('d1e1000');">
+        <td>
+            <span class="priority-2">EI2</span>
+        </td>
+        <td>setUserController(UserController) may expose internal representation by storing an externally mutable object
+            into Matcher.userController
+        </td>
+    </tr>
+    <tr class="detailrow1">
+        <td/>
+        <td>
+            <p id="d1e1000" style="display: none;">
+                <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+                <br/>In class model.Matcher<br/>In method model.Matcher.setUserController(UserController)<br/>Field
+                model.Matcher.userController<br/>Local variable named userController<br/>At Matcher.java:[line 120]</p>
+        </td>
+    </tr>
+    <tr class="tablerow0" onclick="toggleRow('d1e1160');">
+        <td>
+            <span class="priority-2">EI2</span>
+        </td>
+        <td>new Participant(String, Date) may expose internal representation by storing an externally mutable object
+            into Participant.joinDate
+        </td>
+    </tr>
+    <tr class="detailrow0">
+        <td/>
+        <td>
+            <p id="d1e1160" style="display: none;">
+                <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+                <br/>In class model.Participant<br/>In method new model.Participant(String, Date)<br/>Field
+                model.Participant.joinDate<br/>Local variable named joinDate<br/>At Participant.java:[line 44]</p>
+        </td>
+    </tr>
+    <tr class="tablerow1" onclick="toggleRow('d1e1178');">
+        <td>
+            <span class="priority-2">EI2</span>
+        </td>
+        <td>setJoinDate(Date) may expose internal representation by storing an externally mutable object into
+            Participant.joinDate
+        </td>
+    </tr>
+    <tr class="detailrow1">
+        <td/>
+        <td>
+            <p id="d1e1178" style="display: none;">
+                <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+                <br/>In class model.Participant<br/>In method model.Participant.setJoinDate(Date)<br/>Field
+                model.Participant.joinDate<br/>Local variable named joinDate<br/>At Participant.java:[line 76]</p>
+        </td>
+    </tr>
+    <tr class="tablerow0" onclick="toggleRow('d1e1196');">
+        <td>
+            <span class="priority-2">EI2</span>
+        </td>
+        <td>setMatchesAsFirst(Set) may expose internal representation by storing an externally mutable object into
+            Participant.matchesAsFirst
+        </td>
+    </tr>
+    <tr class="detailrow0">
+        <td/>
+        <td>
+            <p id="d1e1196" style="display: none;">
+                <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+                <br/>In class model.Participant<br/>In method model.Participant.setMatchesAsFirst(Set)<br/>Field
+                model.Participant.matchesAsFirst<br/>Local variable named matchesAsFirst<br/>At Participant.java:[line
+                84]</p>
+        </td>
+    </tr>
+    <tr class="tablerow1" onclick="toggleRow('d1e1214');">
+        <td>
+            <span class="priority-2">EI2</span>
+        </td>
+        <td>setMatchesAsSecond(Set) may expose internal representation by storing an externally mutable object into
+            Participant.matchesAsSecond
+        </td>
+    </tr>
+    <tr class="detailrow1">
+        <td/>
+        <td>
+            <p id="d1e1214" style="display: none;">
+                <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+                <br/>In class model.Participant<br/>In method model.Participant.setMatchesAsSecond(Set)<br/>Field
+                model.Participant.matchesAsSecond<br/>Local variable named matchesAsSecond<br/>At Participant.java:[line
+                92]</p>
+        </td>
+    </tr>
+    <tr class="tablerow0" onclick="toggleRow('d1e1278');">
+        <td>
+            <span class="priority-2">EI2</span>
+        </td>
+        <td>new Session(Participant) may expose internal representation by storing an externally mutable object into
+            Session.participant
+        </td>
+    </tr>
+    <tr class="detailrow0">
+        <td/>
+        <td>
+            <p id="d1e1278" style="display: none;">
+                <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+                <br/>In class model.Session<br/>In method new model.Session(Participant)<br/>Field
+                model.Session.participant<br/>Local variable named participant<br/>At Session.java:[line 27]</p>
+        </td>
+    </tr>
+    <tr class="tablerow1" onclick="toggleRow('d1e249');">
+        <td>
+            <span class="priority-2">MS</span>
+        </td>
+        <td>Public static getInstance() may expose internal representation by returning GUIContext.instance</td>
+    </tr>
+    <tr class="detailrow1">
+        <td/>
+        <td>
+            <p id="d1e249" style="display: none;">
+                <a href="#MS_EXPOSE_REP">Bug type MS_EXPOSE_REP (click for details)</a>
+                <br/>In class context.GUIContext<br/>In method context.GUIContext.getInstance()<br/>Field
+                context.GUIContext.instance<br/>At GUIContext.java:[line 36]</p>
+        </td>
+    </tr>
+    <tr class="tablerow0" onclick="toggleRow('d1e311');">
+        <td>
+            <span class="priority-2">MS</span>
+        </td>
+        <td>Public static getInstance() may expose internal representation by returning LocaleManager.instance</td>
+    </tr>
+    <tr class="detailrow0">
+        <td/>
+        <td>
+            <p id="d1e311" style="display: none;">
+                <a href="#MS_EXPOSE_REP">Bug type MS_EXPOSE_REP (click for details)</a>
+                <br/>In class context.LocaleManager<br/>In method context.LocaleManager.getInstance()<br/>Field
+                context.LocaleManager.instance<br/>At LocaleManager.java:[line 22]</p>
+        </td>
+    </tr>
+    <tr class="tablerow1" onclick="toggleRow('d1e779');">
+        <td>
+            <span class="priority-2">MS</span>
+        </td>
+        <td>Public static getInstance() may expose internal representation by returning MariaDbJpaConnection.em</td>
+    </tr>
+    <tr class="detailrow1">
+        <td/>
+        <td>
+            <p id="d1e779" style="display: none;">
+                <a href="#MS_EXPOSE_REP">Bug type MS_EXPOSE_REP (click for details)</a>
+                <br/>In class datasource.MariaDbJpaConnection<br/>In method
+                datasource.MariaDbJpaConnection.getInstance()<br/>Field datasource.MariaDbJpaConnection.em<br/>At
+                MariaDbJpaConnection.java:[line 18]</p>
+        </td>
+    </tr>
+    <tr class="tablerow0" onclick="toggleRow('d1e1297');">
+        <td>
+            <span class="priority-2">MS</span>
+        </td>
+        <td>ProfilePictureUtil.PROFILE_PICTURES should be package protected</td>
+    </tr>
+    <tr class="detailrow0">
+        <td/>
+        <td>
+            <p id="d1e1297" style="display: none;">
+                <a href="#MS_PKGPROTECT">Bug type MS_PKGPROTECT (click for details)</a>
+                <br/>In class util.ProfilePictureUtil<br/>Field util.ProfilePictureUtil.PROFILE_PICTURES<br/>At
+                ProfilePictureUtil.java:[line 8]</p>
+        </td>
+    </tr>
+</table>
+<h2>
+    <a name="Warnings_PERFORMANCE">Performance Warnings</a>
+</h2>
+<table cellspacing="0" class="warningtable" width="100%">
+    <tr class="tableheader">
+        <th align="left">Code</th>
+        <th align="left">Warning</th>
+    </tr>
+    <tr class="tablerow1" onclick="toggleRow('d1e1018');">
+        <td>
+            <span class="priority-2">UuF</span>
+        </td>
+        <td>Unused field: Matcher.debugUserName</td>
+    </tr>
+    <tr class="detailrow1">
+        <td/>
+        <td>
+            <p id="d1e1018" style="display: none;">
+                <a href="#UUF_UNUSED_FIELD">Bug type UUF_UNUSED_FIELD (click for details)</a>
+                <br/>In class model.Matcher<br/>Field model.Matcher.debugUserName<br/>In Matcher.java</p>
+        </td>
+    </tr>
+</table>
+<h2>
+    <a name="Warnings_STYLE">Dodgy code Warnings</a>
+</h2>
+<table cellspacing="0" class="warningtable" width="100%">
+    <tr class="tableheader">
+        <th align="left">Code</th>
+        <th align="left">Warning</th>
+    </tr>
+    <tr class="tablerow1" onclick="toggleRow('d1e357');">
+        <td>
+            <span class="priority-2">SF</span>
+        </td>
+        <td>Switch statement found where default case is missing</td>
+    </tr>
+    <tr class="detailrow1">
+        <td/>
+        <td>
+            <p id="d1e357" style="display: none;">
+                <a href="#SF_SWITCH_NO_DEFAULT">Bug type SF_SWITCH_NO_DEFAULT (click for details)</a>
+                <br/>In class controller.BaseController<br/>In method controller.BaseController.loadFXML(String, Object)<br/>At
+                BaseController.java:[lines 78-83]</p>
+        </td>
+    </tr>
+    <tr class="tablerow0" onclick="toggleRow('d1e711');">
+        <td>
+            <span class="priority-2">UwF</span>
+        </td>
+        <td>Unwritten public or protected field: WelcomeController.logo</td>
+    </tr>
+    <tr class="detailrow0">
+        <td/>
+        <td>
+            <p id="d1e711" style="display: none;">
+                <a href="#UWF_UNWRITTEN_PUBLIC_OR_PROTECTED_FIELD">Bug type UWF_UNWRITTEN_PUBLIC_OR_PROTECTED_FIELD
+                    (click for details)</a>
+                <br/>In class controller.view_controllers.WelcomeController<br/>Field
+                controller.view_controllers.WelcomeController.logo<br/>At WelcomeController.java:[line 27]</p>
+        </td>
+    </tr>
+</table>
+<h1>
+    <a name="Details">Details</a>
+</h1>
+<h2>
+    <a name="CT_CONSTRUCTOR_THROW">CT_CONSTRUCTOR_THROW: Be wary of letting constructors throw exceptions.</a>
+</h2>
 
-  <p> Returning a reference to a mutable object value stored in one of the object's fields
-  exposes the internal representation of the object.&nbsp;
-   If instances
-   are accessed by untrusted code, and unchecked changes to
-   the mutable object would compromise security or other
-   important properties, you will need to do something different.
-  Returning a new copy of the object is better approach in many situations.</p>
+<p>Classes that throw exceptions in their constructors are vulnerable to Finalizer attacks</p>
 
-    <h2>
-         <a name="EI_EXPOSE_REP2">EI_EXPOSE_REP2: May expose internal representation by incorporating reference to mutable object</a>
-      </h2>
+<p>A finalizer attack can be prevented, by declaring the class final, using an empty finalizer declared as final, or by
+    a clever use of a private constructor.</p>
 
-  <p> This code stores a reference to an externally mutable object into the
-  internal representation of the object.&nbsp;
-   If instances
-   are accessed by untrusted code, and unchecked changes to
-   the mutable object would compromise security or other
-   important properties, you will need to do something different.
-  Storing a copy of the object is better approach in many situations.</p>
+<p>See <a
+        href="https://wiki.sei.cmu.edu/confluence/display/java/OBJ11-J.+Be+wary+of+letting+constructors+throw+exceptions"><code>SEI
+    CERT Rule OBJ-11</code></a>
+    for more information.
+</p>
 
-    <h2>
-         <a name="MS_PKGPROTECT">MS_PKGPROTECT: Field should be package protected</a>
-      </h2>
+<h2>
+    <a name="EI_EXPOSE_REP">EI_EXPOSE_REP: May expose internal representation by returning reference to mutable
+        object</a>
+</h2>
 
-  <p> A mutable static field could be changed by malicious code or
-   by accident.
-   The field could be made package protected to avoid
-   this vulnerability.</p>
+<p> Returning a reference to a mutable object value stored in one of the object's fields
+    exposes the internal representation of the object.&nbsp;
+    If instances
+    are accessed by untrusted code, and unchecked changes to
+    the mutable object would compromise security or other
+    important properties, you will need to do something different.
+    Returning a new copy of the object is better approach in many situations.</p>
 
-    <h2>
-         <a name="MS_EXPOSE_REP">MS_EXPOSE_REP: Public static method may expose internal representation by returning a mutable object or array</a>
-      </h2>
+<h2>
+    <a name="EI_EXPOSE_REP2">EI_EXPOSE_REP2: May expose internal representation by incorporating reference to mutable
+        object</a>
+</h2>
 
-  <p> A public static method returns a reference to a mutable object or
-   an array that is part of the static state of the class.
-   Any code that calls this method can freely modify
-   the underlying array.
-   One fix is to return a copy of the array.</p>
+<p> This code stores a reference to an externally mutable object into the
+    internal representation of the object.&nbsp;
+    If instances
+    are accessed by untrusted code, and unchecked changes to
+    the mutable object would compromise security or other
+    important properties, you will need to do something different.
+    Storing a copy of the object is better approach in many situations.</p>
 
-    <h2>
-         <a name="SF_SWITCH_NO_DEFAULT">SF_SWITCH_NO_DEFAULT: Switch statement found where default case is missing</a>
-      </h2>
+<h2>
+    <a name="MS_PKGPROTECT">MS_PKGPROTECT: Field should be package protected</a>
+</h2>
 
-  <p> This method contains a switch statement where default case is missing.
-  Usually you need to provide a default case.</p>
-  <p>Because the analysis only looks at the generated bytecode, this warning can be incorrect triggered if
-the default case is at the end of the switch statement and the switch statement doesn't contain break statements for other
-cases.
+<p> A mutable static field could be changed by malicious code or
+    by accident.
+    The field could be made package protected to avoid
+    this vulnerability.</p>
 
-    <h2>
-         <a name="SING_SINGLETON_GETTER_NOT_SYNCHRONIZED">SING_SINGLETON_GETTER_NOT_SYNCHRONIZED: Instance-getter method of class using singleton design pattern is not synchronized.</a>
-      </h2>
-      
-        <p>
-        Instance-getter method of class using singleton design pattern is not synchronized. When this method is invoked by two or more threads simultaneously,
-        multiple instantiation of a singleton class becomes possible.<br><br>
+<h2>
+    <a name="MS_EXPOSE_REP">MS_EXPOSE_REP: Public static method may expose internal representation by returning a
+        mutable object or array</a>
+</h2>
 
-        <a href="https://wiki.sei.cmu.edu/confluence/display/java/MSC07-J.+Prevent+multiple+instantiations+of+singleton+objects">SEI CERT MSC07-J</a> rule
-        </p>
-    <h2>
-         <a name="UI_INHERITANCE_UNSAFE_GETRESOURCE">UI_INHERITANCE_UNSAFE_GETRESOURCE: Usage of GetResource may be unsafe if class is extended</a>
-      </h2>
+<p> A public static method returns a reference to a mutable object or
+    an array that is part of the static state of the class.
+    Any code that calls this method can freely modify
+    the underlying array.
+    One fix is to return a copy of the array.</p>
+
+<h2>
+    <a name="SF_SWITCH_NO_DEFAULT">SF_SWITCH_NO_DEFAULT: Switch statement found where default case is missing</a>
+</h2>
+
+<p> This method contains a switch statement where default case is missing.
+    Usually you need to provide a default case.</p>
+<p>Because the analysis only looks at the generated bytecode, this warning can be incorrect triggered if
+    the default case is at the end of the switch statement and the switch statement doesn't contain break statements for
+    other
+    cases.
+
+<h2>
+    <a name="SING_SINGLETON_GETTER_NOT_SYNCHRONIZED">SING_SINGLETON_GETTER_NOT_SYNCHRONIZED: Instance-getter method of
+        class using singleton design pattern is not synchronized.</a>
+</h2>
+
+<p>
+    Instance-getter method of class using singleton design pattern is not synchronized. When this method is invoked by
+    two or more threads simultaneously,
+    multiple instantiation of a singleton class becomes possible.<br><br>
+
+    <a href="https://wiki.sei.cmu.edu/confluence/display/java/MSC07-J.+Prevent+multiple+instantiations+of+singleton+objects">SEI
+        CERT MSC07-J</a> rule
+</p>
+<h2>
+    <a name="UI_INHERITANCE_UNSAFE_GETRESOURCE">UI_INHERITANCE_UNSAFE_GETRESOURCE: Usage of GetResource may be unsafe if
+        class is extended</a>
+</h2>
 
 <p>Calling <code>this.getClass().getResource(...)</code> could give
-results other than expected if this class is extended by a class in
-another package.</p>
+    results other than expected if this class is extended by a class in
+    another package.</p>
 
-    <h2>
-         <a name="UUF_UNUSED_FIELD">UUF_UNUSED_FIELD: Unused field</a>
-      </h2>
+<h2>
+    <a name="UUF_UNUSED_FIELD">UUF_UNUSED_FIELD: Unused field</a>
+</h2>
 
-  <p> This field is never used.&nbsp; Consider removing it from the class.</p>
+<p> This field is never used.&nbsp; Consider removing it from the class.</p>
 
-    <h2>
-         <a name="UWF_UNWRITTEN_PUBLIC_OR_PROTECTED_FIELD">UWF_UNWRITTEN_PUBLIC_OR_PROTECTED_FIELD: Unwritten public or protected field</a>
-      </h2>
+<h2>
+    <a name="UWF_UNWRITTEN_PUBLIC_OR_PROTECTED_FIELD">UWF_UNWRITTEN_PUBLIC_OR_PROTECTED_FIELD: Unwritten public or
+        protected field</a>
+</h2>
 
-  <p> No writes were seen to this public/protected field.&nbsp; All reads of it will return the default
-value. Check for errors (should it have been initialized?), or remove it if it is useless.</p>
+<p> No writes were seen to this public/protected field.&nbsp; All reads of it will return the default
+    value. Check for errors (should it have been initialized?), or remove it if it is useless.</p>
 
-    </body>
+</body>
 </html>

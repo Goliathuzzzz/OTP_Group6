@@ -3,45 +3,58 @@ package controller.view_controllers;
 import context.GUIContext;
 import context.LocaleManager;
 import controller.BaseController;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import model.Participant;
 import model.Session;
-import model.categories.*;
+import model.categories.Animal;
+import model.categories.Category;
+import model.categories.Food;
+import model.categories.Hobby;
+import model.categories.Science;
+import model.categories.Sports;
 import util.SceneNames;
-
-import java.util.*;
 
 public class InterestSelectionController extends BaseController {
 
-    @FXML
-    private ScrollPane scrollContainer;
-
-    @FXML
-    private Button continueButton;
-
-    @FXML
-    private ImageView goBack, homeIcon, profileIcon, backIcon, helpIcon;
-
-    @FXML
-    private VBox optionsContainer; //holds dynamically generated options
-
-    @FXML
-    private AnchorPane interestSelectionPane;
-
-    private String currentCategory;
+    private static final List<String> CATEGORY_ORDER =
+            List.of("animals", "food", "hobbies", "sports", "science");
+    private static final Map<String, List<? extends Category>> INTERESTS_MAP = Map.of(
+            "animals", Session.getAnimals(),
+            "food", Session.getFoods(),
+            "hobbies", Session.getHobbies(),
+            "sports", Session.getSports(),
+            "science", Session.getSciences()
+    );
     private final List<RadioButton> allRadioButtons = new ArrayList<>();
     private final GUIContext context = GUIContext.getInstance();
-    private Session session;
     private final LocaleManager localeManager = LocaleManager.getInstance();
     private final ResourceBundle bundle = localeManager.getBundle();
+    @FXML
+    private ScrollPane scrollContainer;
+    @FXML
+    private Button continueButton;
+    @FXML
+    private ImageView goBack, homeIcon, profileIcon, backIcon, helpIcon;
+    @FXML
+    private VBox optionsContainer; //holds dynamically generated options
+    @FXML
+    private AnchorPane interestSelectionPane;
+    private String currentCategory;
+    private Session session;
 
     private Participant getParticipant() {
         if (context.isUser()) {
@@ -57,7 +70,8 @@ public class InterestSelectionController extends BaseController {
     private void initialize() {
         session = context.getSession();
         if (session == null || session.getParticipant() == null) {
-            System.err.println("ERROR: Session or participant is null in InterestSelectionController initialize()");
+            System.err.println(
+                    "ERROR: Session or participant is null in InterestSelectionController initialize()");
         }
         Platform.runLater(() -> {
             Stage stage = (Stage) interestSelectionPane.getScene().getWindow();
@@ -68,16 +82,6 @@ public class InterestSelectionController extends BaseController {
             }
         });
     }
-
-    private static final List<String> CATEGORY_ORDER = List.of("animals", "food", "hobbies", "sports", "science");
-
-    private static final Map<String, List<? extends Category>> INTERESTS_MAP = Map.of(
-            "animals", Session.getAnimals(),
-            "food", Session.getFoods(),
-            "hobbies", Session.getHobbies(),
-            "sports", Session.getSports(),
-            "science", Session.getSciences()
-    );
 
     @FXML
     private void handleBack() {
@@ -125,7 +129,8 @@ public class InterestSelectionController extends BaseController {
 
         String labelName;
         if (interest instanceof Enum<?>) {
-            String key = interest.getClass().getSimpleName().toLowerCase() + "_" + ((Enum<?>) interest).name().toLowerCase();
+            String key = interest.getClass().getSimpleName().toLowerCase() + "_" +
+                    ((Enum<?>) interest).name().toLowerCase();
             labelName = bundle.getString(key);
         } else {
             labelName = interest.toString();
@@ -172,7 +177,8 @@ public class InterestSelectionController extends BaseController {
 
     private void addInterestByCategory(Participant participant, Category interest) {
         if (participant == null) {
-            System.err.println("ERROR: Participant is null in InterestSelectionController addInterestByCategory()");
+            System.err.println(
+                    "ERROR: Participant is null in InterestSelectionController addInterestByCategory()");
             return;
         }
         if (interest instanceof Animal) {
@@ -190,7 +196,8 @@ public class InterestSelectionController extends BaseController {
 
     private void removeInterestByCategory(Participant participant, Category interest) {
         if (participant == null) {
-            System.err.println("ERROR: Participant is null in InterestSelectionController removeInterestByCategory()");
+            System.err.println(
+                    "ERROR: Participant is null in InterestSelectionController removeInterestByCategory()");
             return;
         }
         if (interest instanceof Animal) {

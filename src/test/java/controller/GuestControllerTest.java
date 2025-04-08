@@ -1,17 +1,15 @@
 package controller;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.Persistence;
-import model.Guest;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
+import model.Guest;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 class GuestControllerTest {
 
@@ -31,7 +29,8 @@ class GuestControllerTest {
     void registerGuest() {
         Guest testGuest1 = new Guest("13212312412", new Date());
         guestController.registerGuest(testGuest1);
-        assertEquals(testGuest1, guestController.displayGuest(testGuest1.getId()), "Guests should match");
+        assertEquals(testGuest1, guestController.displayGuest(testGuest1.getId()),
+                "Guests should match");
     }
 
     @Test
@@ -51,10 +50,12 @@ class GuestControllerTest {
     void updateGuest() {
         Guest testGuest1 = new Guest("13212312412", new Date());
         guestController.registerGuest(testGuest1);
-        assertEquals(testGuest1, guestController.displayGuest(testGuest1.getId()), "Guest should be registered");
+        assertEquals(testGuest1, guestController.displayGuest(testGuest1.getId()),
+                "Guest should be registered");
         testGuest1.setPhoneNumber("666666666");
         guestController.updateGuest(testGuest1);
-        assertEquals(testGuest1, guestController.displayGuest(testGuest1.getId()), "Guest should be updated");
+        assertEquals(testGuest1, guestController.displayGuest(testGuest1.getId()),
+                "Guest should be updated");
     }
 
     @Test
@@ -62,7 +63,8 @@ class GuestControllerTest {
         Guest testGuest1 = new Guest("13212312412", new Date());
         guestController.registerGuest(testGuest1);
         guestController.deleteGuest(testGuest1);
-        assertNull(guestController.displayGuest(testGuest1.getId()), "Should return null if guest doesn't exist");
+        assertNull(guestController.displayGuest(testGuest1.getId()),
+                "Should return null if guest doesn't exist");
     }
 
     @Test

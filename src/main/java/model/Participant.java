@@ -1,9 +1,29 @@
 package model;
 
-import jakarta.persistence.*;
-import model.categories.*;
-
-import java.util.*;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import model.categories.Animal;
+import model.categories.Category;
+import model.categories.Food;
+import model.categories.Hobby;
+import model.categories.Science;
+import model.categories.Sports;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -29,10 +49,12 @@ public abstract class Participant {
     protected List<Sports> sportsInterests;
     @OneToMany(mappedBy = "participant1", cascade = CascadeType.ALL)
     private Set<Match> matchesAsFirst;
-    @OneToMany(mappedBy = "participant2", cascade = CascadeType.ALL) //ensure if a participant is deleted, all their matches are also deleted
+    @OneToMany(mappedBy = "participant2", cascade = CascadeType.ALL)
+    //ensure if a participant is deleted, all their matches are also deleted
     private Set<Match> matchesAsSecond;
 
-    public Participant() {}
+    public Participant() {
+    }
 
     public Participant(String phoneNumber, Date joinDate) {
         this.phoneNumber = phoneNumber;

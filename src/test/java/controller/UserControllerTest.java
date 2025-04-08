@@ -1,16 +1,17 @@
 package controller;
 
-import jakarta.persistence.Persistence;
-import model.User;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
+import model.User;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 class UserControllerTest {
 
@@ -28,7 +29,9 @@ class UserControllerTest {
 
     @Test
     void testRegisterUser() {
-        User testUser = new User("Test", "testpassword", "test@email.com", "test-subject", "123456789", new Date(), "en");
+        User testUser =
+                new User("Test", "testpassword", "test@email.com", "test-subject", "123456789",
+                        new Date(), "en");
         userController.registerUser(testUser);
         assertEquals(testUser, userController.displayUser(testUser.getId()), "Users should match");
     }
@@ -36,10 +39,14 @@ class UserControllerTest {
     @Test
     void testDisplayAllUsers() {
         List<User> users = new ArrayList<>();
-        User testUser = new User("Test2", "testpassword", "test@email.com", "test-subject", "123456789", new Date(), "en");
+        User testUser =
+                new User("Test2", "testpassword", "test@email.com", "test-subject", "123456789",
+                        new Date(), "en");
         userController.registerUser(testUser);
         users.add(testUser);
-        User testUser2 = new User("Test2", "testpassword", "test@email.com", "test-subject", "123456789", new Date(), "en");
+        User testUser2 =
+                new User("Test2", "testpassword", "test@email.com", "test-subject", "123456789",
+                        new Date(), "en");
         userController.registerUser(testUser2);
         users.add(testUser2);
         assertEquals(users, userController.displayAllUsers(), "Lists should match");
@@ -47,7 +54,9 @@ class UserControllerTest {
 
     @Test
     void testUpdateUser() {
-        User testUser = new User("Test2", "testpassword", "test@email.com", "test-subject", "123456789", new Date(), "en");
+        User testUser =
+                new User("Test2", "testpassword", "test@email.com", "test-subject", "123456789",
+                        new Date(), "en");
         userController.registerUser(testUser);
         testUser.setEmail("changed@email.com");
         testUser.setRole("Hello-world");
@@ -57,7 +66,9 @@ class UserControllerTest {
 
     @Test
     void testDeleteUser() {
-        User testUser = new User("Test", "testpassword", "test@email.com", "test-subject", "123456789", new Date(), "en");
+        User testUser =
+                new User("Test", "testpassword", "test@email.com", "test-subject", "123456789",
+                        new Date(), "en");
         userController.registerUser(testUser);
         assertEquals(testUser, userController.displayUser(testUser.getId()), "Should be 1 user");
         userController.deleteUser(testUser);
@@ -66,9 +77,13 @@ class UserControllerTest {
 
     @Test
     void testDeleteAll() {
-        User testUser = new User("Test2", "testpassword", "test@email.com", "test-subject", "123456789", new Date(), "en");
+        User testUser =
+                new User("Test2", "testpassword", "test@email.com", "test-subject", "123456789",
+                        new Date(), "en");
         userController.registerUser(testUser);
-        User testUser2 = new User("Test2", "testpassword", "test@email.com", "test-subject", "123456789", new Date(), "en");
+        User testUser2 =
+                new User("Test2", "testpassword", "test@email.com", "test-subject", "123456789",
+                        new Date(), "en");
         userController.registerUser(testUser2);
         assertEquals(2, userController.displayAllUsers().size(), "Should have 2 users");
         userController.deleteAll();
@@ -77,7 +92,9 @@ class UserControllerTest {
 
     @Test
     void testLogin() {
-        User testUser = new User("Test2", "testpassword", "test@email.com", "test-subject", "123456789", new Date(), "en");
+        User testUser =
+                new User("Test2", "testpassword", "test@email.com", "test-subject", "123456789",
+                        new Date(), "en");
         userController.registerUser(testUser);
         User loggedInUser = userController.login("test@email.com", "testpassword");
         assertEquals(testUser, loggedInUser);
@@ -88,7 +105,9 @@ class UserControllerTest {
     @Test
     void testExistsByEmail() {
         assertFalse(userController.existsByEmail("some@email.com"));
-        User newUser = new User("Test2", "testpassword", "test@email.com", "test-subject", "123456789", new Date(), "en");
+        User newUser =
+                new User("Test2", "testpassword", "test@email.com", "test-subject", "123456789",
+                        new Date(), "en");
         userController.registerUser(newUser);
         assertTrue(userController.existsByEmail("test@email.com"));
     }

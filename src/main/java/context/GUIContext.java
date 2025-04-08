@@ -1,15 +1,21 @@
 package context;
 
+import java.util.List;
+import java.util.Optional;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
-import model.*;
-
-import java.util.List;
-import java.util.Optional;
+import model.Guest;
+import model.LocalizedUser;
+import model.Match;
+import model.Matcher;
+import model.Session;
+import model.User;
 
 public class GUIContext {
     private static GUIContext instance;
+    @FXML
+    private final StringProperty nameProperty, emailProperty, phoneProperty;
     private User user;
     private volatile boolean isUser;
     private Guest guest;
@@ -19,9 +25,6 @@ public class GUIContext {
     private Matcher matcher;
     private List<Match> matches;
     private String language;
-
-    @FXML
-    private final StringProperty nameProperty, emailProperty, phoneProperty;
 
     private GUIContext() {
         this.nameProperty = new SimpleStringProperty();
@@ -36,6 +39,14 @@ public class GUIContext {
         return instance;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public boolean isUser() {
+        return isUser;
+    }
+
     public void setUser(User user) {
         this.user = user;
         isUser = true;
@@ -44,12 +55,11 @@ public class GUIContext {
         }
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public boolean isUser() {
-        return isUser;
+    public String getUserName() {
+        if (user.getLocalization(language).isPresent()) {
+            return user.getLocalization(language).get().getUserName();
+        }
+        return user.getAnyUserName();
     }
 
     public void setUserName(String name) {
@@ -62,24 +72,17 @@ public class GUIContext {
         setUserNameProperty(name);
     }
 
-    public String getUserName() {
-        if (user.getLocalization(language).isPresent()) {
-            return user.getLocalization(language).get().getUserName();
-        }
-        return user.getAnyUserName();
-    }
-
     public String getUserEmail() {
         return user.getEmail();
-    }
-
-    public String getUserPhoneNumber() {
-        return user.getPhoneNumber();
     }
 
     public void setUserEmail(String email) {
         user.setEmail(email);
         setEmailProperty(email);
+    }
+
+    public String getUserPhoneNumber() {
+        return user.getPhoneNumber();
     }
 
     public void setUserPhoneNumber(String pn) {
@@ -111,22 +114,17 @@ public class GUIContext {
         phoneProperty.set(phoneNumber);
     }
 
-    public void setSession(Session session) {
-        this.session = session;
-        System.out.println("DEBUG: session set in GUIContext");
-    }
-
-    public void setGuest(Guest guest) {
-        this.guest = guest;
-        isGuest = true;
-    }
-
     public Guest getGuest() {
         return guest;
     }
 
     public boolean isGuest() {
         return isGuest;
+    }
+
+    public void setGuest(Guest guest) {
+        this.guest = guest;
+        isGuest = true;
     }
 
     public boolean isAdmin() {
@@ -139,6 +137,11 @@ public class GUIContext {
 
     public Session getSession() {
         return session;
+    }
+
+    public void setSession(Session session) {
+        this.session = session;
+        System.out.println("DEBUG: session set in GUIContext");
     }
 
     public Matcher getMatcher() {

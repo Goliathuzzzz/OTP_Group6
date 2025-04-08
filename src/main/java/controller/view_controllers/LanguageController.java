@@ -2,6 +2,10 @@ package controller.view_controllers;
 
 import context.LocaleManager;
 import controller.BaseController;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
+import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -10,27 +14,24 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import util.SceneNames;
 
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
-import java.util.ResourceBundle;
-
 public class LanguageController extends BaseController {
 
+    private static String previousScene;
+    private final Map<AnchorPane, Circle> toggleMap = new HashMap<>();
+    private final LocaleManager localeManager = LocaleManager.getInstance();
+    private final ResourceBundle bundle = localeManager.getBundle();
     @FXML
     private Button readyButton;
-
+    ;
     @FXML
     private Circle toggleCircle1, toggleCircle2, toggleCircle3, toggleCircle4;
-
     @FXML
     private AnchorPane toggleFinnish, toggleEnglish, toggleJapanese, toggleChinese, languagePane;
 
-    private final Map<AnchorPane, Circle> toggleMap = new HashMap<>();
-    private final LocaleManager localeManager = LocaleManager.getInstance();;
-    private final ResourceBundle bundle = localeManager.getBundle();
-
-    private static String previousScene;
+    public static void setPreviousScene(String scene) {
+        previousScene = scene;
+        System.out.println("DEBUG: previous scene set to " + previousScene);
+    }
 
     @FXML
     public void initialize() {
@@ -65,11 +66,6 @@ public class LanguageController extends BaseController {
         for (Circle circle : toggleMap.values()) {
             circle.setLayoutX(18); //"off" position
         }
-    }
-
-    public static void setPreviousScene(String scene) {
-        previousScene = scene;
-        System.out.println("DEBUG: previous scene set to " + previousScene);
     }
 
     private void setLanguageFromToggle(AnchorPane toggle) {
