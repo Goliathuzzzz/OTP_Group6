@@ -8,7 +8,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 import model.Match;
 
 public class PairItemController {
@@ -34,18 +33,21 @@ public class PairItemController {
     }
 
     @FXML
-    private void handleMatchClick(MouseEvent event) {
+    private void handleMatchClick() {
         if (match == null) {
             System.err.println("ERROR: Match is null in PairItemController.handleMatchClick");
+            return;
         }
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle(bundle.getString("remove_match"));
         alert.setHeaderText(null);
 
         String and = bundle.getString("and");
+        String participant1Name = match.getParticipant1() != null ? match.getParticipant1().getDisplayName(context.getLanguage()) : "";
+        String participant2Name = match.getParticipant2() != null ? match.getParticipant2().getDisplayName(context.getLanguage()) : "";
+
         alert.setContentText(bundle.getString("confirm_match_removal") +
-                match.getParticipant1().getDisplayName(context.getLanguage()) + " " + and + " "
-                + match.getParticipant2().getDisplayName(context.getLanguage()) + "?");
+                participant1Name + " " + and + " " + participant2Name + "?");
         alert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
                 deletePair();

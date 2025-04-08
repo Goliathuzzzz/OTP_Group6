@@ -15,6 +15,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import util.SceneNames;
 
@@ -22,11 +23,11 @@ public class ProfileController extends BaseController {
 
     private final LocaleManager localeManager = LocaleManager.getInstance();
     private final ResourceBundle bundle = localeManager.getBundle();
-    private GUIContext guiContext = GUIContext.getInstance();
+    private final GUIContext guiContext;
     @FXML
-    private Pane bottomNavPane, profileImagePane;
+    private Pane profileImagePane;
     @FXML
-    private ImageView homeIcon, profileIcon, backIcon, editButton;
+    private ImageView editButton;
     @FXML
     private Label nameLabel, emailLabel, phoneLabel, langLabel;
     @FXML
@@ -69,7 +70,7 @@ public class ProfileController extends BaseController {
         profileImagePane.getChildren().add(profileImageView);
 
         Locale currentLocale = localeManager.getLocale();
-        String languageDisplay = currentLocale.getDisplayLanguage(currentLocale).toLowerCase();
+        String languageDisplay = currentLocale.getDisplayLanguage(currentLocale).toLowerCase(Locale.ROOT);
         langLabel.setText(languageDisplay);
 
         Platform.runLater(() -> {
@@ -83,7 +84,7 @@ public class ProfileController extends BaseController {
     }
 
     @FXML
-    private void handleEditClick(MouseEvent event) {
+    private void handleEditClick() {
         switchScene(SceneNames.EDIT_PROFILE);
     }
 }

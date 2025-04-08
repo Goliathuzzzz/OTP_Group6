@@ -165,10 +165,6 @@ public class InterestSelectionController extends BaseController {
         System.out.println("Current category set to: " + category);
     }
 
-    public List<Category> getSelectedInterests() {
-        return session.getParticipantInterests();
-    }
-
     public void loadInterests(String category) {
         List<? extends Category> interests = INTERESTS_MAP.getOrDefault(category, List.of());
         setInterests(interests);

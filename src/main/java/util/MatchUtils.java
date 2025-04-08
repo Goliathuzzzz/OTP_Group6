@@ -2,6 +2,7 @@ package util;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 import model.categories.Category;
 
@@ -19,7 +20,7 @@ public class MatchUtils {
     public static String formatInterests(List<Category> interests) {
         return interests.stream()
                 .map(Category::toString)
-                .map(s -> s.toLowerCase().replace("_", " "))
+                .map(s -> s.toLowerCase(Locale.ROOT).replace("_", " "))
                 .collect(Collectors.joining(", "));
     }
 }
