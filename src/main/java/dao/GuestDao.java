@@ -3,10 +3,7 @@ package dao;
 import datasource.MariaDbJpaConnection;
 import exception.DaoException;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.TypedQuery;
 import model.Guest;
-
-import java.util.Date;
 import java.util.List;
 
 public class GuestDao implements IDao<Guest> {

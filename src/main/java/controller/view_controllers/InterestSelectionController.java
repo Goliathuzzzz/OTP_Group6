@@ -6,11 +6,9 @@ import controller.BaseController;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import model.Participant;
 import model.Session;
@@ -20,15 +18,6 @@ import util.SceneNames;
 import java.util.*;
 
 public class InterestSelectionController extends BaseController {
-
-    @FXML
-    private ScrollPane scrollContainer;
-
-    @FXML
-    private Button continueButton;
-
-    @FXML
-    private ImageView goBack, homeIcon, profileIcon, backIcon, helpIcon;
 
     @FXML
     private VBox optionsContainer; //holds dynamically generated options
@@ -158,10 +147,6 @@ public class InterestSelectionController extends BaseController {
     public void setCategory(String category) {
         this.currentCategory = category;
         System.out.println("Current category set to: " + category);
-    }
-
-    public List<Category> getSelectedInterests() {
-        return session.getParticipantInterests();
     }
 
     public void loadInterests(String category) {
