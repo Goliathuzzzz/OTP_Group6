@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import util.SceneNames;
 
 import java.util.Locale;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class GUI extends Application {
@@ -38,7 +39,7 @@ public class GUI extends Application {
 
         stage.setResizable(false);
         Scene scene = new Scene(root);
-        stage.getIcons().add(new Image(getClass().getResourceAsStream("/images/cherries.png")));
+        stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/cherries.png"))));
         scene.getRoot().setStyle("-fx-font-family: 'HoeflerText'");
         stage.setScene(scene);
         stage.show();
