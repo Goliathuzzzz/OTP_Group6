@@ -64,8 +64,8 @@ public class InterestSelectionController extends BaseController {
         session = context.getSession();
         if (session == null || session.getParticipant() == null) {
             System.err.println(
-                    "ERROR: Session or participant is null " +
-                            "in InterestSelectionController initialize()");
+                    "ERROR: Session or participant is null "
+                            + "in InterestSelectionController initialize()");
         }
         Platform.runLater(() -> {
             Stage stage = (Stage) interestSelectionPane.getScene().getWindow();
@@ -176,8 +176,8 @@ public class InterestSelectionController extends BaseController {
     private void addInterestByCategory(Participant participant, Category interest) {
         if (participant == null) {
             System.err.println(
-                    "ERROR: Participant is null " +
-                            "in InterestSelectionController addInterestByCategory()");
+                    "ERROR: Participant is null "
+                            + "in InterestSelectionController addInterestByCategory()");
             return;
         }
         if (interest instanceof Animal) {
@@ -196,8 +196,8 @@ public class InterestSelectionController extends BaseController {
     private void removeInterestByCategory(Participant participant, Category interest) {
         if (participant == null) {
             System.err.println(
-                    "ERROR: Participant is null " +
-                            "in InterestSelectionController removeInterestByCategory()");
+                    "ERROR: Participant is null "
+                            + "in InterestSelectionController removeInterestByCategory()");
             return;
         }
         if (interest instanceof Animal) {

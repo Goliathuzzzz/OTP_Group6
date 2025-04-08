@@ -20,6 +20,7 @@ public class LanguageController extends BaseController {
     private final Map<AnchorPane, Circle> toggleMap = new HashMap<>();
     private final LocaleManager localeManager = LocaleManager.getInstance();
     private final ResourceBundle bundle = localeManager.getBundle();
+
     @FXML
     private Button readyButton;
 

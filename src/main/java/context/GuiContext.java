@@ -5,6 +5,7 @@ import java.util.Optional;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
+import javafx.stage.Stage;
 import model.Guest;
 import model.LocalizedUser;
 import model.Match;
@@ -25,6 +26,7 @@ public class GuiContext {
     private Matcher matcher;
     private List<Match> matches;
     private String language;
+    private Stage stage;
 
     private GuiContext() {
         this.nameProperty = new SimpleStringProperty();
@@ -170,6 +172,14 @@ public class GuiContext {
 
     public void setLanguage(String language) {
         this.language = language;
+    }
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
+
+    public Stage getStage() {
+        return stage;
     }
 
     public int getId() {
