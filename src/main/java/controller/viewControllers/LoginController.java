@@ -21,7 +21,7 @@ public class LoginController extends BaseController {
 
     private final LocaleManager localeManager = LocaleManager.getInstance();
     private final ResourceBundle bundle = localeManager.getBundle();
-    UserController uController = new UserController();
+    UserController userController = new UserController();
     GuiContext guiContext = GuiContext.getInstance();
     @FXML
     private TextField emailField;
@@ -44,7 +44,7 @@ public class LoginController extends BaseController {
                     bundle.getString("fill_all_fields"));
             return;
         }
-        User user = uController.login(email, password);
+        User user = userController.login(email, password);
         if (user != null) {
             guiContext.setUser(user);
             switchScene(SceneNames.BEGIN_SESSION);
@@ -78,12 +78,8 @@ public class LoginController extends BaseController {
         switchScene(SceneNames.REGISTRATION);
     }
 
-    public UserController getUController() {
-        return uController;
-    }
-
     public void setUserController(UserController userController) {
-        uController = userController;
+        this.userController = userController;
     }
 
     private void handleLang() {
