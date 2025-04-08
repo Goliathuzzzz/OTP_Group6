@@ -12,7 +12,7 @@ import model.categories.Sports;
 
 // Tarvitseeko edes laittaa tietokantaan?
 // On nyt se tapahtuma jossa valitaan kiinnostuksenkohteet näytöltä
-public final class Session {
+public class Session {
     // Jotta kategoriat saadaan viewhun
     private static final  List<Animal> animals = List.copyOf(EnumSet.allOf(Animal.class));
     private static final  List<Food> foods = List.copyOf(EnumSet.allOf(Food.class));
