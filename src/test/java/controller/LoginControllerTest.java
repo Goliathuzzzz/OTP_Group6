@@ -8,6 +8,7 @@ import static org.mockito.Mockito.when;
 import static org.testfx.api.FxAssert.verifyThat;
 import static org.testfx.util.NodeQueryUtils.isVisible;
 
+import context.GuiContext;
 import controller.viewControllers.LoginController;
 import java.net.URL;
 import java.util.Date;
@@ -32,7 +33,7 @@ public class LoginControllerTest extends ApplicationTest {
     private static LoginController controller;
     ResourceBundle bundle = ResourceBundle.getBundle("Messages", Locale.US);
     private Parent root;
-    private Stage stage;
+    private final GuiContext guiContext = GuiContext.getInstance();
 
     @BeforeAll
     static void start() {
@@ -41,16 +42,13 @@ public class LoginControllerTest extends ApplicationTest {
 
     @Override
     public void start(Stage stage) throws Exception {
-        this.stage = stage;
         URL fxmlLocation = getClass().getResource("/fxml/login.fxml");
         assertNotNull(fxmlLocation, "Login.fxml file not found.");
         FXMLLoader loader = new FXMLLoader(fxmlLocation, bundle);
         root = loader.load();
         controller = loader.getController();
         controller.setUserController(userController);
-        if (controller != null) {
-            ((BaseController) controller).setStage(stage);
-        }
+        guiContext.setStage(stage);
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
@@ -71,7 +69,7 @@ public class LoginControllerTest extends ApplicationTest {
         clickOn("#emailField").write("alice@example.com");
         clickOn("#passwordField").write("password1");
         clickOn("#loginButton");
-
+        Stage stage = guiContext.getStage();
         Parent newRoot = stage.getScene().getRoot();
 
         System.out.println("New scene root id: " + newRoot.getId());
@@ -85,6 +83,7 @@ public class LoginControllerTest extends ApplicationTest {
     @Test
     void testNewAccountSwitchesScene() {
         clickOn("#newAccount");
+        Stage stage = guiContext.getStage();
         Parent newRoot = stage.getScene().getRoot();
         System.out.println("New scene root id: " + newRoot.getId());
         assertNotNull(newRoot.lookup("#registrationPane"), "Registration scene should be loaded.");

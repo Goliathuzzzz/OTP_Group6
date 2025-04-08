@@ -50,7 +50,6 @@ class SessionControllerTest extends ApplicationTest {
     private static User user;
     private static List<User> userList;
     private Parent root;
-    private Stage stage;
 
     private static FXMLLoader getFxmlLoader(URL fxmlLocation) {
         FXMLLoader loader = new FXMLLoader(fxmlLocation);
@@ -80,7 +79,6 @@ class SessionControllerTest extends ApplicationTest {
 
     @Override
     public void start(Stage stage) throws Exception {
-        this.stage = stage;
         URL fxmlLocation = getClass().getResource("/fxml/session.fxml");
         assertNotNull(fxmlLocation, "session.fxml file not found.");
         ResourceBundle bundle = ResourceBundle.getBundle("Messages", Locale.US);
@@ -89,9 +87,7 @@ class SessionControllerTest extends ApplicationTest {
         loader.setResources(bundle);
         root = loader.load();
         sessionController = loader.getController();
-        if (sessionController != null) {
-            sessionController.setStage(stage);
-        }
+        guiContext.setStage(stage);
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
@@ -108,7 +104,7 @@ class SessionControllerTest extends ApplicationTest {
         verifyThat("#interestsContainer", Node::isVisible);
         VBox interestsContainer = lookup("#interestsContainer").query();
         clickOn(interestsContainer.getChildren().getFirst());
-        Parent newRoot = stage.getScene().getRoot();
+        Parent newRoot = guiContext.getStage().getScene().getRoot();
         System.out.println("New scene root id: " + newRoot.getId());
         verifyThat("#continueButton", Node::isVisible);
         clickOn("#continueButton");
@@ -236,12 +232,12 @@ class SessionControllerTest extends ApplicationTest {
         verifyThat("#readyButton", isVisible());
         VBox interestsContainer = lookup("#interestsContainer").query();
         clickOn(interestsContainer.getChildren().getFirst());
-        Parent newRoot = stage.getScene().getRoot();
+        Parent newRoot = guiContext.getStage().getScene().getRoot();
         System.out.println("New scene root id: " + newRoot.getId());
         verifyThat("#optionsContainer", isVisible());
         verifyThat("#goBack", isVisible());
         clickOn("#goBack");
-        newRoot = stage.getScene().getRoot();
+        newRoot = guiContext.getStage().getScene().getRoot();
         System.out.println("New scene root id: " + newRoot.getId());
         verifyThat("#readyButton", isVisible());
     }
@@ -281,11 +277,11 @@ class SessionControllerTest extends ApplicationTest {
         assertNotNull(savedMatches, "Matches should not be null.");
         assertEquals(2, savedMatches.size(), "There should be two matches.");
 
-        assertTrue(savedMatches.stream().anyMatch(m -> m.getParticipant1().equals(participant) &&
-                        m.getParticipant2().equals(match1) && m.getCompatibility() == 95.5),
+        assertTrue(savedMatches.stream().anyMatch(m -> m.getParticipant1().equals(participant)
+                        && m.getParticipant2().equals(match1) && m.getCompatibility() == 95.5),
                 "Match1 should be stored.");
-        assertTrue(savedMatches.stream().anyMatch(m -> m.getParticipant1().equals(participant) &&
-                        m.getParticipant2().equals(match2) && m.getCompatibility() == 89.3),
+        assertTrue(savedMatches.stream().anyMatch(m -> m.getParticipant1().equals(participant)
+                        && m.getParticipant2().equals(match2) && m.getCompatibility() == 89.3),
                 "Match2 should be stored.");
     }
 }

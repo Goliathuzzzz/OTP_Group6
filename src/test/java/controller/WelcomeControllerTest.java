@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import context.GuiContext;
 import controller.viewControllers.WelcomeController;
 import java.net.URL;
 import java.util.Locale;
@@ -20,6 +21,7 @@ import org.testfx.framework.junit5.ApplicationTest;
 public class WelcomeControllerTest extends ApplicationTest {
 
     ResourceBundle bundle = ResourceBundle.getBundle("Messages", Locale.US);
+    GuiContext guiContext = GuiContext.getInstance();
     private WelcomeController controller;
     private Parent root;
     private Stage stage;
@@ -32,9 +34,7 @@ public class WelcomeControllerTest extends ApplicationTest {
         FXMLLoader loader = new FXMLLoader(fxmlLocation, bundle);
         root = loader.load();
         controller = loader.getController();
-        if (controller != null) {
-            ((BaseController) controller).setStage(stage);
-        }
+        guiContext.setStage(stage);
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
@@ -49,7 +49,7 @@ public class WelcomeControllerTest extends ApplicationTest {
     void testHandleClickSwitchesScene() {
         clickOn(root);
         sleep(500);
-        Parent newRoot = stage.getScene().getRoot();
+        Parent newRoot = guiContext.getStage().getScene().getRoot();
 
         System.out.println("New scene root id: " + newRoot.getId());
         assertNotNull(newRoot.lookup("#languagePane"),
