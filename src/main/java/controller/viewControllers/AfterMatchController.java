@@ -20,7 +20,6 @@ public class AfterMatchController extends BaseController {
 
     private final LocaleManager localeManager = LocaleManager.getInstance();
     private final ResourceBundle bundle = localeManager.getBundle();
-    private Match match;
     @FXML
     private ImageView homeIcon, profileIcon, backIcon;
     @FXML
@@ -37,37 +36,40 @@ public class AfterMatchController extends BaseController {
             } else {
                 System.out.println("Stage is null in AfterMatchController initialize()");
             }
-            setResults();
-            localizeSharedInterests();
+            Match match = getResults();
+            if (match != null) {
+                setResults(match);
+                localizeSharedInterests(match);
+            }
+            else {
+                System.err.println("ERROR: Match is null in AfterMatchController setResults()");
+                // using localized strings for fallback messages
+                matchParticipantsLabel.setText(bundle.getString("no_match"));
+                percentageLabel.setText("0%");
+                interestsLabel.setText(bundle.getString("no_common_interests"));
+            }
         });
     }
 
-    private void setResults() {
+    private void setResults(Match match) {
         GuiContext context = GuiContext.getInstance();
-        List<Match> matches = context.getMatches();
-        if (matches == null || matches.isEmpty()) {
-            System.err.println("ERROR: Match is null in AfterMatchController setResults()");
-            // using localized strings for fallback messages
-            matchParticipantsLabel.setText(bundle.getString("no_match"));
-            percentageLabel.setText("0%");
-            interestsLabel.setText(bundle.getString("no_common_interests"));
-            return;
-        }
-
         String and = bundle.getString("and");
-        match = matches.getLast();
-
         String displayName1 =
                 localizeGuestName(match.getParticipant1().getDisplayName(context.getLanguage()));
         String displayName2 =
                 localizeGuestName(match.getParticipant2().getDisplayName(context.getLanguage()));
-
         matchParticipantsLabel.setText(displayName1 + " " + and + " " + displayName2);
         percentageLabel.setText(Math.round(match.getCompatibility()) + "%");
 
     }
 
-    private void localizeSharedInterests() {
+    private Match getResults() {
+        GuiContext context = GuiContext.getInstance();
+        List<Match> matches = context.getMatches();
+        return matches.getLast();
+    }
+
+    private void localizeSharedInterests(Match match) {
         List<Category> interests = MatchUtils.findCommonInterests(
                 match.getParticipant1().getInterests(),
                 match.getParticipant2().getInterests()
