@@ -80,7 +80,7 @@ public class AfterMatchController extends BaseController {
             for (int i = 0; i < interests.size(); i++) {
                 Category interest = interests.get(i);
                 // dynamically construct the localization key based on enum name
-                String key = interest.getClass().getSimpleName().toLowerCase() + "_" + ((Enum<?>) interest).name().toLowerCase();
+                String key = interest.getClass().getSimpleName().toLowerCase(Locale.ROOT) + "_" + ((Enum<?>) interest).name().toLowerCase(Locale.ROOT);
                 sb.append(bundle.getString(key));
                 if (i < interests.size() - 1) {
                     sb.append(", ");

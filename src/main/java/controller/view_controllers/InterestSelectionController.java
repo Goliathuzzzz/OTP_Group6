@@ -125,7 +125,7 @@ public class InterestSelectionController extends BaseController {
 
         String labelName;
         if (interest instanceof Enum<?>) {
-            String key = interest.getClass().getSimpleName().toLowerCase() + "_" + ((Enum<?>) interest).name().toLowerCase();
+            String key = interest.getClass().getSimpleName().toLowerCase(Locale.ROOT) + "_" + ((Enum<?>) interest).name().toLowerCase(Locale.ROOT);
             labelName = bundle.getString(key);
         } else {
             labelName = interest.toString();
