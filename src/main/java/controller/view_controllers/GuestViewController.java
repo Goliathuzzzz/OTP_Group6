@@ -1,6 +1,6 @@
 package controller.view_controllers;
 
-import context.GUIContext;
+import context.GuiContext;
 import context.LocaleManager;
 import controller.BaseController;
 import controller.GuestController;
@@ -55,7 +55,7 @@ public class GuestViewController extends BaseController {
         } else {
             Guest guest = new Guest(phoneNumber, new Date());
             gController.registerGuest(guest);
-            GUIContext.getInstance().setGuest(guest);
+            GuiContext.getInstance().setGuest(guest);
             switchScene(SceneNames.BEGIN_SESSION);
         }
     }

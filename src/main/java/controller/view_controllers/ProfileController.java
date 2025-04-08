@@ -2,7 +2,7 @@ package controller.view_controllers;
 
 import static util.ProfilePictureUtil.getProfilePictureView;
 
-import context.GUIContext;
+import context.GuiContext;
 import context.LocaleManager;
 import controller.BaseController;
 import java.util.Locale;
@@ -22,7 +22,7 @@ public class ProfileController extends BaseController {
 
     private final LocaleManager localeManager = LocaleManager.getInstance();
     private final ResourceBundle bundle = localeManager.getBundle();
-    private GUIContext guiContext = GUIContext.getInstance();
+    private GuiContext guiContext = GuiContext.getInstance();
     @FXML
     private Pane bottomNavPane, profileImagePane;
     @FXML
@@ -34,11 +34,11 @@ public class ProfileController extends BaseController {
 
     // default constructor for FXML loader
     public ProfileController() {
-        this(GUIContext.getInstance());
+        this(GuiContext.getInstance());
     }
 
     // constructor for testing
-    public ProfileController(GUIContext guiContext) {
+    public ProfileController(GuiContext guiContext) {
         this.guiContext = guiContext;
     }
 

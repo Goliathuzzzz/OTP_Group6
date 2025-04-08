@@ -1,6 +1,6 @@
 package controller;
 
-import context.GUIContext;
+import context.GuiContext;
 import context.LocaleManager;
 import controller.view_controllers.InterestSelectionController;
 import java.io.IOException;
@@ -31,7 +31,7 @@ public abstract class BaseController {
     }
 
     protected void switchScene(String destination, Object data) {
-        GUIContext context = GUIContext.getInstance();
+        GuiContext context = GuiContext.getInstance();
 
         if (SceneNames.PROFILE.equals(destination)) {
             destination = handleProfileSwitch(context, destination);
@@ -115,7 +115,7 @@ public abstract class BaseController {
         System.err.println("ERROR: " + message);
     }
 
-    private String handleProfileSwitch(GUIContext context, String destination) {
+    private String handleProfileSwitch(GuiContext context, String destination) {
         if (!context.isUser() && !context.isGuest()) {
             logError("No user data found in BaseController.switchScene");
             showAlert(Alert.AlertType.ERROR, "error_title", "no_user_data");
@@ -127,7 +127,7 @@ public abstract class BaseController {
         return destination;
     }
 
-    private void handleOptionsSwitch(GUIContext context) {
+    private void handleOptionsSwitch(GuiContext context) {
         if (context.isGuest()) {
             guestController.deleteGuest(context.getGuest());
         }

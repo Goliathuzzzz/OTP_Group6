@@ -3,7 +3,7 @@ package controller.view_controllers;
 import static util.ProfilePictureUtil.getProfilePictureView;
 import static util.SceneNames.EDIT_PROFILE;
 
-import context.GUIContext;
+import context.GuiContext;
 import context.LocaleManager;
 import controller.BaseController;
 import controller.UserController;
@@ -21,7 +21,7 @@ import util.SceneNames;
 
 public class EditProfileController extends BaseController {
 
-    private final GUIContext guiContext = GUIContext.getInstance();
+    private final GuiContext guiContext = GuiContext.getInstance();
     private final LocaleManager localeManager = LocaleManager.getInstance();
     private final ResourceBundle bundle = localeManager.getBundle();
     private UserController userController = new UserController();

@@ -1,6 +1,6 @@
 package controller.view_controllers;
 
-import context.GUIContext;
+import context.GuiContext;
 import context.LocaleManager;
 import controller.BaseController;
 import controller.UserController;
@@ -22,7 +22,7 @@ public class LoginController extends BaseController {
     private final LocaleManager localeManager = LocaleManager.getInstance();
     private final ResourceBundle bundle = localeManager.getBundle();
     UserController uController = new UserController();
-    GUIContext guiContext = GUIContext.getInstance();
+    GuiContext guiContext = GuiContext.getInstance();
     @FXML
     private TextField emailField;
     @FXML

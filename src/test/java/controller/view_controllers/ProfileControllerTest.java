@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import context.GUIContext;
+import context.GuiContext;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,12 +19,12 @@ import org.testfx.framework.junit5.ApplicationTest;
 public class ProfileControllerTest extends ApplicationTest {
 
     private ProfileController profileController;
-    private GUIContext guiContextMock;
+    private GuiContext guiContextMock;
     private Parent root;
 
     @Override
     public void start(Stage stage) throws Exception {
-        guiContextMock = mock(GUIContext.class);
+        guiContextMock = mock(GuiContext.class);
 
         when(guiContextMock.isUser()).thenReturn(true);
         when(guiContextMock.getUserName()).thenReturn("Test User");

@@ -1,6 +1,6 @@
 package controller.view_controllers;
 
-import context.GUIContext;
+import context.GuiContext;
 import context.LocaleManager;
 import controller.BaseController;
 import java.util.ArrayList;
@@ -40,7 +40,7 @@ public class InterestSelectionController extends BaseController {
             "science", Session.getSciences()
     );
     private final List<RadioButton> allRadioButtons = new ArrayList<>();
-    private final GUIContext context = GUIContext.getInstance();
+    private final GuiContext context = GuiContext.getInstance();
     private final LocaleManager localeManager = LocaleManager.getInstance();
     private final ResourceBundle bundle = localeManager.getBundle();
     @FXML

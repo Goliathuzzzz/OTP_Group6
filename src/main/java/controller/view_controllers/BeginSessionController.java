@@ -1,6 +1,6 @@
 package controller.view_controllers;
 
-import context.GUIContext;
+import context.GuiContext;
 import context.LocaleManager;
 import controller.BaseController;
 import java.util.ResourceBundle;
@@ -61,7 +61,7 @@ public class BeginSessionController extends BaseController {
 
     @FXML
     private void handleBeginSessionClick(MouseEvent event) {
-        GUIContext context = GUIContext.getInstance();
+        GuiContext context = GuiContext.getInstance();
         Participant participant = context.isUser() ? context.getUser() :
                 context.isGuest() ? context.getGuest() : null;
         if (participant != null) {

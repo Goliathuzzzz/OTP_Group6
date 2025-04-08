@@ -1,6 +1,6 @@
 package controller.view_controllers;
 
-import context.GUIContext;
+import context.GuiContext;
 import context.LocaleManager;
 import controller.BaseController;
 import controller.UserController;
@@ -22,7 +22,7 @@ public class RegistrationController extends BaseController {
     private final LocaleManager localeManager = LocaleManager.getInstance();
     private final ResourceBundle bundle = localeManager.getBundle();
     UserController uController = new UserController();
-    GUIContext guiContext = GUIContext.getInstance();
+    GuiContext guiContext = GuiContext.getInstance();
     @FXML
     private AnchorPane registrationPane;
     @FXML
@@ -84,7 +84,7 @@ public class RegistrationController extends BaseController {
         User user = new User(userName, password, email, "user", phone, new Date(),
                 guiContext.getLanguage());
         uController.registerUser(user);
-        GUIContext.getInstance().setUser(user);
+        GuiContext.getInstance().setUser(user);
         switchScene(SceneNames.BEGIN_SESSION);
     }
 

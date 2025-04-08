@@ -1,6 +1,6 @@
 package controller;
 
-import context.GUIContext;
+import context.GuiContext;
 import jakarta.persistence.EntityManager;
 import java.util.List;
 import model.Match;
@@ -10,7 +10,7 @@ import service.MatchService;
 public class MatchController {
 
     private final MatchService matchService;
-    private final GUIContext context = GUIContext.getInstance();
+    private final GuiContext context = GuiContext.getInstance();
 
     public MatchController() {
         matchService = new MatchService();

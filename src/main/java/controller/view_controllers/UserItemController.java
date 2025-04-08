@@ -1,6 +1,6 @@
 package controller.view_controllers;
 
-import context.GUIContext;
+import context.GuiContext;
 import context.LocaleManager;
 import java.util.ResourceBundle;
 import java.util.function.Consumer;
@@ -16,7 +16,7 @@ public class UserItemController {
 
     private final LocaleManager localeManager = LocaleManager.getInstance();
     private final ResourceBundle bundle = localeManager.getBundle();
-    private final GUIContext guiContext = GUIContext.getInstance();
+    private final GuiContext guiContext = GuiContext.getInstance();
     @FXML
     public ImageView deleteIcon;
     @FXML

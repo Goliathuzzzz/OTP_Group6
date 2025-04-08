@@ -2,7 +2,7 @@ package controller.view_controllers;
 
 import static util.ProfilePictureUtil.getProfilePictureView;
 
-import context.GUIContext;
+import context.GuiContext;
 import context.LocaleManager;
 import controller.BaseController;
 import java.util.ResourceBundle;
@@ -21,7 +21,7 @@ public class MatchViewController extends BaseController {
 
     private final LocaleManager localeManager = LocaleManager.getInstance();
     private final ResourceBundle bundle = localeManager.getBundle();
-    GUIContext context = GUIContext.getInstance();
+    GuiContext context = GuiContext.getInstance();
     @FXML
     private ImageView matchHeart;
     @FXML

@@ -12,8 +12,8 @@ import model.Matcher;
 import model.Session;
 import model.User;
 
-public class GUIContext {
-    private static GUIContext instance;
+public class GuiContext {
+    private static GuiContext instance;
     @FXML
     private final StringProperty nameProperty, emailProperty, phoneProperty;
     private User user;
@@ -26,15 +26,15 @@ public class GUIContext {
     private List<Match> matches;
     private String language;
 
-    private GUIContext() {
+    private GuiContext() {
         this.nameProperty = new SimpleStringProperty();
         this.emailProperty = new SimpleStringProperty();
         this.phoneProperty = new SimpleStringProperty();
     }
 
-    public synchronized static GUIContext getInstance() {
+    public synchronized static GuiContext getInstance() {
         if (instance == null) {
-            instance = new GUIContext();
+            instance = new GuiContext();
         }
         return instance;
     }

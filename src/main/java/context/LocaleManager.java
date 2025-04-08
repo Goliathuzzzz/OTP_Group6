@@ -5,7 +5,7 @@ import java.util.ResourceBundle;
 
 public class LocaleManager {
     private static LocaleManager instance;
-    private final GUIContext guiContext = GUIContext.getInstance();
+    private final GuiContext guiContext = GuiContext.getInstance();
     private Locale locale;
     private ResourceBundle bundle;
 

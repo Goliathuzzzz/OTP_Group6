@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import context.GUIContext;
+import context.GuiContext;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import javafx.beans.property.SimpleStringProperty;
@@ -21,12 +21,12 @@ import org.testfx.framework.junit5.ApplicationTest;
 public class AdminProfileControllerTest extends ApplicationTest {
 
     private AdminProfileController adminProfileController;
-    private GUIContext guiContextMock;
+    private GuiContext guiContextMock;
     private Parent root;
 
     @Override
     public void start(Stage stage) throws Exception {
-        guiContextMock = mock(GUIContext.class);
+        guiContextMock = mock(GuiContext.class);
 
         when(guiContextMock.isUser()).thenReturn(true);
         when(guiContextMock.getUserName()).thenReturn("Admin User");

@@ -11,7 +11,7 @@ import static org.mockito.Mockito.when;
 import static org.testfx.api.FxAssert.verifyThat;
 import static org.testfx.util.NodeQueryUtils.isVisible;
 
-import context.GUIContext;
+import context.GuiContext;
 import controller.MatchController;
 import controller.UserController;
 import java.net.URL;
@@ -42,7 +42,7 @@ import org.testfx.framework.junit5.ApplicationTest;
 class SessionControllerTest extends ApplicationTest {
 
     private static SessionController sessionController;
-    private static GUIContext guiContext;
+    private static GuiContext guiContext;
     private static Session session;
     private static MatchController matchController;
     private static UserController userController;
@@ -70,7 +70,7 @@ class SessionControllerTest extends ApplicationTest {
 
     @BeforeAll
     static void start() {
-        guiContext = GUIContext.getInstance();
+        guiContext = GuiContext.getInstance();
         user = new User("alicia", "password1", "alicia@example.com", "dummy", "1234567890",
                 new Date(), "en");
         session = new Session(user);

@@ -1,6 +1,6 @@
 package controller.view_controllers;
 
-import context.GUIContext;
+import context.GuiContext;
 import context.LocaleManager;
 import java.util.ResourceBundle;
 import java.util.function.Consumer;
@@ -14,7 +14,7 @@ import model.Match;
 public class PairItemController {
     private final LocaleManager localeManager = LocaleManager.getInstance();
     private final ResourceBundle bundle = localeManager.getBundle();
-    private final GUIContext context = GUIContext.getInstance();
+    private final GuiContext context = GuiContext.getInstance();
     @FXML
     private Label nameLabel1;
     @FXML

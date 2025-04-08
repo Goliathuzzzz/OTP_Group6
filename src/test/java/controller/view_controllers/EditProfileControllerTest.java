@@ -5,7 +5,7 @@ import static org.testfx.api.FxAssert.verifyThat;
 import static org.testfx.util.NodeQueryUtils.hasText;
 import static org.testfx.util.NodeQueryUtils.isVisible;
 
-import context.GUIContext;
+import context.GuiContext;
 import controller.UserController;
 import java.net.URL;
 import java.util.Date;
@@ -28,7 +28,7 @@ class EditProfileControllerTest extends ApplicationTest {
 
     private static UserController userController;
     private static EditProfileController editProfileController;
-    private static GUIContext context;
+    private static GuiContext context;
     private static User user;
     private static String name;
     private static String email;
@@ -57,7 +57,7 @@ class EditProfileControllerTest extends ApplicationTest {
     @BeforeAll
     static void start() {
         userController = Mockito.mock(UserController.class);
-        context = GUIContext.getInstance();
+        context = GuiContext.getInstance();
         name = "Marko";
         email = "marko@email.com";
         phone = "0500332331";

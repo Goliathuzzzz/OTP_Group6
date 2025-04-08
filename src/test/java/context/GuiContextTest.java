@@ -16,9 +16,9 @@ import model.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class GUIContextTest {
+class GuiContextTest {
 
-    private GUIContext guiContext;
+    private GuiContext guiContext;
     private User testUser;
     private Guest testGuest;
     private Session testSession;
@@ -27,7 +27,7 @@ class GUIContextTest {
 
     @BeforeEach
     void setUp() {
-        guiContext = GUIContext.getInstance();
+        guiContext = GuiContext.getInstance();
         guiContext.logout();
         guiContext.setLanguage("en");
 
@@ -42,8 +42,8 @@ class GUIContextTest {
 
     @Test
     void testSingletonInstance() {
-        GUIContext instance1 = GUIContext.getInstance();
-        GUIContext instance2 = GUIContext.getInstance();
+        GuiContext instance1 = GuiContext.getInstance();
+        GuiContext instance2 = GuiContext.getInstance();
         assertSame(instance1, instance2, "GUIContext should be a singleton.");
     }
 

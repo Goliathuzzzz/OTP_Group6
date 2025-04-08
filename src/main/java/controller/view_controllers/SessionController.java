@@ -1,6 +1,6 @@
 package controller.view_controllers;
 
-import context.GUIContext;
+import context.GuiContext;
 import context.LocaleManager;
 import controller.BaseController;
 import controller.MatchController;
@@ -33,7 +33,7 @@ import util.SceneNames;
 
 public class SessionController extends BaseController {
 
-    private final GUIContext context = GUIContext.getInstance();
+    private final GuiContext context = GuiContext.getInstance();
     private final Session session = context.getSession();
     private final Participant participant = session.getParticipant();
     private Matcher matcher = new Matcher(session);

@@ -1,6 +1,6 @@
 package controller.view_controllers;
 
-import context.GUIContext;
+import context.GuiContext;
 import context.LocaleManager;
 import controller.BaseController;
 import java.util.List;
@@ -41,7 +41,7 @@ public class AfterMatchController extends BaseController {
     }
 
     private void setResults() {
-        GUIContext context = GUIContext.getInstance();
+        GuiContext context = GuiContext.getInstance();
         List<Match> matches = context.getMatches();
         if (matches == null || matches.isEmpty()) {
             System.err.println("ERROR: Match is null in AfterMatchController setResults()");
