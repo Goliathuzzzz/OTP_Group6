@@ -26,6 +26,7 @@ import model.categories.Food;
 import model.categories.Hobby;
 import model.categories.Science;
 import model.categories.Sports;
+import org.checkerframework.checker.units.qual.C;
 import util.SceneNames;
 
 public class InterestSelectionController extends BaseController {
@@ -71,7 +72,8 @@ public class InterestSelectionController extends BaseController {
         session = context.getSession();
         if (session == null || session.getParticipant() == null) {
             System.err.println(
-                    "ERROR: Session or participant is null in InterestSelectionController initialize()");
+                    "ERROR: Session or participant is null " +
+                            "in InterestSelectionController initialize()");
         }
         Platform.runLater(() -> {
             Stage stage = (Stage) interestSelectionPane.getScene().getWindow();
@@ -107,7 +109,6 @@ public class InterestSelectionController extends BaseController {
     public void setInterests(List<? extends Category> interests) {
         optionsContainer.getChildren().clear();
         allRadioButtons.clear();
-
         for (Category interest : interests) {
             optionsContainer.getChildren().add(createOptionPane(interest));
         }
@@ -122,27 +123,17 @@ public class InterestSelectionController extends BaseController {
         background.setPrefSize(290, 71);
         background.getStyleClass().add("option-bg");
 
+        RadioButton radioButton = createRadioButtons(interest);
+        Label label = createLabel(interest);
+        optionPane.getChildren().addAll(background, radioButton, label);
+        return optionPane;
+    }
+
+    private RadioButton createRadioButtons(Category interest) {
         RadioButton radioButton = new RadioButton();
         radioButton.setLayoutX(24);
         radioButton.setLayoutY(21);
         radioButton.getStyleClass().add("radio");
-
-        String labelName;
-        if (interest instanceof Enum<?>) {
-            String key = interest.getClass().getSimpleName().toLowerCase() + "_" +
-                    ((Enum<?>) interest).name().toLowerCase();
-            labelName = bundle.getString(key);
-        } else {
-            labelName = interest.toString();
-        }
-
-
-        System.out.println("localized name: " + labelName);
-
-        Label label = new Label(labelName);
-        label.setLayoutX(80);
-        label.setLayoutY(20);
-        label.getStyleClass().add("option-text");
 
         radioButton.setOnAction(event -> {
             if (radioButton.isSelected()) {
@@ -156,8 +147,27 @@ public class InterestSelectionController extends BaseController {
         });
 
         allRadioButtons.add(radioButton);
-        optionPane.getChildren().addAll(background, radioButton, label);
-        return optionPane;
+        return radioButton;
+    }
+
+    private Label createLabel(Category interest) {
+        String labelName;
+        if (interest instanceof Enum<?>) {
+            String key = interest.getClass().getSimpleName().toLowerCase()
+                    + "_"
+                    + ((Enum<?>) interest).name().toLowerCase();
+            labelName = bundle.getString(key);
+        } else {
+            labelName = interest.toString();
+        }
+
+        System.out.println("localized name: " + labelName);
+
+        Label label = new Label(labelName);
+        label.setLayoutX(80);
+        label.setLayoutY(20);
+        label.getStyleClass().add("option-text");
+        return label;
     }
 
     public void setCategory(String category) {
@@ -178,7 +188,8 @@ public class InterestSelectionController extends BaseController {
     private void addInterestByCategory(Participant participant, Category interest) {
         if (participant == null) {
             System.err.println(
-                    "ERROR: Participant is null in InterestSelectionController addInterestByCategory()");
+                    "ERROR: Participant is null " +
+                            "in InterestSelectionController addInterestByCategory()");
             return;
         }
         if (interest instanceof Animal) {
@@ -197,7 +208,8 @@ public class InterestSelectionController extends BaseController {
     private void removeInterestByCategory(Participant participant, Category interest) {
         if (participant == null) {
             System.err.println(
-                    "ERROR: Participant is null in InterestSelectionController removeInterestByCategory()");
+                    "ERROR: Participant is null " +
+                            "in InterestSelectionController removeInterestByCategory()");
             return;
         }
         if (interest instanceof Animal) {
