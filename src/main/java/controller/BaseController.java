@@ -19,7 +19,7 @@ import util.SceneNames;
 public abstract class BaseController {
 
     protected Stage stage;
-    GuestController guestController = new GuestController();
+    protected GuestController guestController = new GuestController();
     LocaleManager localeManager = LocaleManager.getInstance();
 
     public void setStage(Stage stage) {

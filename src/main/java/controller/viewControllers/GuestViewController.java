@@ -21,7 +21,6 @@ public class GuestViewController extends BaseController {
 
     private final LocaleManager localeManager = LocaleManager.getInstance();
     private final ResourceBundle bundle = localeManager.getBundle();
-    GuestController gController = new GuestController();
     @FXML
     private TextField phoneField;
     @FXML
@@ -54,7 +53,7 @@ public class GuestViewController extends BaseController {
                     bundle.getString("invalid_phone"));
         } else {
             Guest guest = new Guest(phoneNumber, new Date());
-            gController.registerGuest(guest);
+            guestController.registerGuest(guest);
             GuiContext.getInstance().setGuest(guest);
             switchScene(SceneNames.BEGIN_SESSION);
         }
@@ -65,6 +64,6 @@ public class GuestViewController extends BaseController {
     }
 
     public void setGuestViewController(GuestController guestController) {
-        this.gController = guestController;
+        this.guestController = guestController;
     }
 }
