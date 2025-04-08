@@ -44,7 +44,10 @@ public class PairItemController {
 
         String and = bundle.getString("and");
         alert.setContentText(bundle.getString("confirm_match_removal") +
-                match.getParticipant1().getDisplayName(context.getLanguage()) + " " + and + " "
+                match.getParticipant1().getDisplayName(context.getLanguage())
+                + " "
+                + and
+                + " "
                 + match.getParticipant2().getDisplayName(context.getLanguage()) + "?");
         alert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
