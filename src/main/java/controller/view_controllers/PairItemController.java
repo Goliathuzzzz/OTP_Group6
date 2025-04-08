@@ -34,7 +34,7 @@ public class PairItemController {
     }
 
     @FXML
-    private void handleMatchClick(MouseEvent event) {
+    private void handleMatchClick() {
         if (match == null) {
             System.err.println("ERROR: Match is null in PairItemController.handleMatchClick");
             return;
