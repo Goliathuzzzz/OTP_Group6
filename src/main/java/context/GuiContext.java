@@ -32,7 +32,7 @@ public class GuiContext {
         this.phoneProperty = new SimpleStringProperty();
     }
 
-    public synchronized static GuiContext getInstance() {
+    public static synchronized GuiContext getInstance() {
         if (instance == null) {
             instance = new GuiContext();
         }
