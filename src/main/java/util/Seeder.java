@@ -70,16 +70,16 @@ public class Seeder {
         user4.addScienceInterest(Science.KEMIA);
         user4.addSportsInterest(Sports.TENNIS);
 
-        User admin =
-                new User("admin", "admin", "admin@admin.com", "admin", "1234567890", new Date(),
-                        "en");
-
         Guest guest1 = new Guest("1231321312312", new Date());
         guestController.registerGuest(guest1);
         userController.registerUser(user1);
         userController.registerUser(user2);
         userController.registerUser(user3);
         userController.registerUser(user4);
+
+        User admin =
+                new User("admin", "admin", "admin@admin.com", "admin", "1234567890", new Date(),
+                        "en");
         userController.registerUser(admin);
 
         matchController.matchParticipants(user1, user2, 70);
