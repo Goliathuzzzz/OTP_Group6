@@ -22,7 +22,7 @@ public class LanguageController extends BaseController {
     private final ResourceBundle bundle = localeManager.getBundle();
     @FXML
     private Button readyButton;
-    ;
+
     @FXML
     private Circle toggleCircle1, toggleCircle2, toggleCircle3, toggleCircle4;
     @FXML
