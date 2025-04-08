@@ -1,5 +1,6 @@
 package view;
 
+import context.GuiContext;
 import context.LocaleManager;
 import controller.BaseController;
 import java.util.Locale;
@@ -16,16 +17,13 @@ import java.util.Objects;
 public class Gui extends Application {
     private static final String path = "/fxml/" + SceneNames.WELCOME + ".fxml";
     LocaleManager localeManager = LocaleManager.getInstance();
+    GuiContext guiContext = GuiContext.getInstance();
 
     @Override
     public void start(Stage stage) throws Exception {
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(path));
-
-        Object controller = fxmlLoader.getController();
-        if (controller instanceof BaseController baseController) {
-            baseController.setStage(stage);
-        }
+        guiContext.setStage(stage);
 
         localeManager.setLocale(new Locale("en", "US"));
         localeManager.setBundle(ResourceBundle
