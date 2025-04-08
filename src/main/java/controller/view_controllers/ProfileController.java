@@ -21,13 +21,13 @@ import static util.ProfilePictureUtil.getProfilePictureView;
 
 public class ProfileController extends BaseController {
 
-    private GUIContext guiContext = GUIContext.getInstance();
+    private final GUIContext guiContext;
 
     @FXML
-    private Pane bottomNavPane, profileImagePane;
+    private Pane profileImagePane;
 
     @FXML
-    private ImageView homeIcon, profileIcon, backIcon, editButton;
+    private ImageView editButton;
 
     @FXML
     private Label nameLabel, emailLabel, phoneLabel, langLabel;
@@ -88,7 +88,7 @@ public class ProfileController extends BaseController {
     }
 
     @FXML
-    private void handleEditClick(MouseEvent event) {
+    private void handleEditClick() {
         switchScene(SceneNames.EDIT_PROFILE);
     }
 }

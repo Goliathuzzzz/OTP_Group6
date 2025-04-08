@@ -6,7 +6,6 @@ import controller.BaseController;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
@@ -19,9 +18,6 @@ import java.util.ResourceBundle;
 
 
 public class AfterMatchController extends BaseController {
-
-    @FXML
-    private ImageView homeIcon, profileIcon, backIcon;
 
     @FXML
     private Label percentageLabel, matchParticipantsLabel, interestsLabel;
