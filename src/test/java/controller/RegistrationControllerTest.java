@@ -43,7 +43,7 @@ public class RegistrationControllerTest extends ApplicationTest {
         FXMLLoader loader = new FXMLLoader(fxmlLocation, bundle);
         root = loader.load();
         controller = loader.getController();
-        controller.setuController(userController);
+        controller.setUserController(userController);
         if (controller != null) {
             ((BaseController) controller).setStage(stage);
         }

@@ -21,7 +21,7 @@ public class RegistrationController extends BaseController {
 
     private final LocaleManager localeManager = LocaleManager.getInstance();
     private final ResourceBundle bundle = localeManager.getBundle();
-    UserController uController = new UserController();
+    UserController userController = new UserController();
     GuiContext guiContext = GuiContext.getInstance();
     @FXML
     private AnchorPane registrationPane;
@@ -74,7 +74,7 @@ public class RegistrationController extends BaseController {
                     bundle.getString("invalid_phone_number_alert"));
             return;
         }
-        if (uController.existsByEmail(email)) {
+        if (userController.existsByEmail(email)) {
             showAlert(Alert.AlertType.ERROR, bundle.getString("error"),
                     bundle.getString("email_in_use_alert"));
             return;
@@ -83,7 +83,7 @@ public class RegistrationController extends BaseController {
                 email.substring(0, email.indexOf("@")).replace(".", " "); // can be improved
         User user = new User(userName, password, email, "user", phone, new Date(),
                 guiContext.getLanguage());
-        uController.registerUser(user);
+        userController.registerUser(user);
         GuiContext.getInstance().setUser(user);
         switchScene(SceneNames.BEGIN_SESSION);
     }
@@ -102,10 +102,10 @@ public class RegistrationController extends BaseController {
     }
 
     public UserController getUController() {
-        return uController;
+        return userController;
     }
 
-    public void setuController(UserController uController) {
-        this.uController = uController;
+    public void setUserController(UserController userController) {
+        this.userController = userController;
     }
 }
