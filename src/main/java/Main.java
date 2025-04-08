@@ -1,8 +1,8 @@
 import javafx.application.Application;
-import view.GUI;
+import view.Gui;
 
 public class Main {
     public static void main(String[] args) {
-        Application.launch(GUI.class, args);
+        Application.launch(Gui.class, args);
     }
 }
