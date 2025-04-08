@@ -43,12 +43,7 @@ public class AdminProfileController extends BaseController {
     @FXML
     private void initialize() {
         if (guiContext.isUser()) {
-            guiContext.setUserNameProperty(guiContext.getUserName());
-            guiContext.setEmailProperty(guiContext.getUserEmail());
-            guiContext.setPhoneProperty(guiContext.getUserPhoneNumber());
-            nameLabel.textProperty().bind(guiContext.getUserNameProperty());
-            emailLabel.textProperty().bind(guiContext.getEmailProperty());
-            phoneLabel.textProperty().bind(guiContext.getPhoneProperty());
+            ProfileController.setUserLabels(guiContext, nameLabel, emailLabel, phoneLabel);
 
             ImageView profileImageView = getProfilePictureView(guiContext.getId(), 200, 200);
             profileImagePane.getChildren().add(profileImageView);
