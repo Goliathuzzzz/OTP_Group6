@@ -20,6 +20,7 @@ public class AfterMatchController extends BaseController {
 
     private final LocaleManager localeManager = LocaleManager.getInstance();
     private final ResourceBundle bundle = localeManager.getBundle();
+    private Match match;
     @FXML
     private ImageView homeIcon, profileIcon, backIcon;
     @FXML
@@ -37,6 +38,7 @@ public class AfterMatchController extends BaseController {
                 System.out.println("Stage is null in AfterMatchController initialize()");
             }
             setResults();
+            localizeSharedInterests();
         });
     }
 
@@ -53,7 +55,7 @@ public class AfterMatchController extends BaseController {
         }
 
         String and = bundle.getString("and");
-        Match match = matches.getLast();
+        match = matches.getLast();
 
         String displayName1 =
                 localizeGuestName(match.getParticipant1().getDisplayName(context.getLanguage()));
@@ -63,6 +65,9 @@ public class AfterMatchController extends BaseController {
         matchParticipantsLabel.setText(displayName1 + " " + and + " " + displayName2);
         percentageLabel.setText(Math.round(match.getCompatibility()) + "%");
 
+    }
+
+    private void localizeSharedInterests() {
         List<Category> interests = MatchUtils.findCommonInterests(
                 match.getParticipant1().getInterests(),
                 match.getParticipant2().getInterests()
@@ -76,8 +81,9 @@ public class AfterMatchController extends BaseController {
             for (int i = 0; i < interests.size(); i++) {
                 Category interest = interests.get(i);
                 // dynamically construct the localization key based on enum name
-                String key = interest.getClass().getSimpleName().toLowerCase() + "_" +
-                        ((Enum<?>) interest).name().toLowerCase();
+                String key = interest.getClass().getSimpleName().toLowerCase()
+                        + "_"
+                        + ((Enum<?>) interest).name().toLowerCase();
                 sb.append(bundle.getString(key));
                 if (i < interests.size() - 1) {
                     sb.append(", ");
@@ -85,7 +91,6 @@ public class AfterMatchController extends BaseController {
             }
             interestsLabel.setText(sb.toString());
         }
-
     }
 
     private String localizeGuestName(String name) {
