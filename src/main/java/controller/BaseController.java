@@ -73,8 +73,8 @@ public abstract class BaseController {
                 logError("Controller is null in BaseController.switchScene");
             }
 
-            if (data != null &&
-                    controller instanceof InterestSelectionController interestController) {
+            if (data != null
+                    && controller instanceof InterestSelectionController interestController) {
                 if (data instanceof String category) {
                     interestController.setCategory(category);
                     switch (category) {
