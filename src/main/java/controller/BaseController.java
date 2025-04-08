@@ -150,7 +150,7 @@ public abstract class BaseController {
         switchScene(SceneNames.PROFILE);
     }
 
-    public void handleHelpClick(MouseEvent e) {
+    public void handleHelpClick() {
         switchScene(SceneNames.HELP);
     }
 }

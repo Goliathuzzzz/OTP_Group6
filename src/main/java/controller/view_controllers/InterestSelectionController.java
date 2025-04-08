@@ -10,11 +10,8 @@ import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -44,12 +41,6 @@ public class InterestSelectionController extends BaseController {
     private final GUIContext context = GUIContext.getInstance();
     private final LocaleManager localeManager = LocaleManager.getInstance();
     private final ResourceBundle bundle = localeManager.getBundle();
-    @FXML
-    private ScrollPane scrollContainer;
-    @FXML
-    private Button continueButton;
-    @FXML
-    private ImageView goBack, homeIcon, profileIcon, backIcon, helpIcon;
     @FXML
     private VBox optionsContainer; //holds dynamically generated options
     @FXML
