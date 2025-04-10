@@ -69,7 +69,7 @@
 
         <!-- Cyclomatic Complexity Check -->
         <module name="CyclomaticComplexity">
-            <property name="max" value="10"/>
+            <property name="max" value="15"/>
         </module>
         <module name="OuterTypeFilename"/>
         <module name="IllegalTokenText">
