@@ -9,30 +9,30 @@
             prefWidth="393.0" styleClass="edit-profile" stylesheets="@/css/begin_session.css"
             xmlns="http://javafx.com/javafx/23.0.1" fx:controller="controller.viewControllers.BeginSessionController">
     <Pane layoutY="765" prefHeight="87" prefWidth="393" styleClass="bottom-nav">
-        <ImageView fx:id="homeIcon" fitHeight="45.0" fitWidth="42.0" layoutX="45" layoutY="23.0"
+        <ImageView fx:id="homeIcon" styleClass="nav-icon" fitHeight="45.0" fitWidth="42.0" layoutX="45" layoutY="23.0"
                    onMouseClicked="#handleHomeClick" pickOnBounds="true" preserveRatio="true">
             <Image url="@/images/home_icon.png"/>
         </ImageView>
-        <ImageView fx:id="profileIcon" fitHeight="45.0" fitWidth="42.0" layoutX="132" layoutY="23.0"
+        <ImageView fx:id="profileIcon" styleClass="nav-icon" fitHeight="45.0" fitWidth="42.0" layoutX="132" layoutY="23.0"
                    onMouseClicked="#handleProfileClick" pickOnBounds="true" preserveRatio="true">
             <Image url="@/images/profile_icon.png"/>
         </ImageView>
-        <ImageView fx:id="backIcon" fitHeight="45.0" fitWidth="42.0" layoutX="219" layoutY="23.0"
+        <ImageView fx:id="backIcon" styleClass="nav-icon" fitHeight="45.0" fitWidth="42.0" layoutX="219" layoutY="23.0"
                    onMouseClicked="#handleBackClick" pickOnBounds="true" preserveRatio="true">
             <Image url="@/images/back_icon.png"/>
         </ImageView>
-        <ImageView fx:id="helpIcon" fitHeight="45.0" fitWidth="42.0" layoutX="306" layoutY="23.0"
+        <ImageView fx:id="helpIcon" styleClass="nav-icon" fitHeight="45.0" fitWidth="42.0" layoutX="306" layoutY="23.0"
                    onMouseClicked="#handleHelpClick" pickOnBounds="true" preserveRatio="true">
             <Image url="@/images/help_icon.png"/>
         </ImageView>
     </Pane>
-    <ImageView fx:id="bigHeart" fitHeight="278.0" fitWidth="352.0" layoutX="22.0" layoutY="255.0"
+    <ImageView fx:id="bigHeart" styleClass="heart-graphic" fitHeight="278.0" fitWidth="352.0" layoutX="22.0" layoutY="255.0"
                onMouseClicked="#handleBeginSessionClick" pickOnBounds="true" preserveRatio="true">
         <Image url="@/images/big_heart.png"/>
     </ImageView>
     <Label fx:id="beginSession" layoutY="-1.0" onMouseClicked="#handleBeginSessionClick" styleClass="begin"
            text="%start_session"/>
-    <ImageView fitHeight="31.0" fitWidth="28.0" layoutX="263.0" layoutY="511.0"
+    <ImageView fitHeight="31.0" styleClass="heart-graphic" fitWidth="28.0" layoutX="263.0" layoutY="511.0"
                onMouseClicked="#handleBeginSessionClick" pickOnBounds="true" preserveRatio="true">
         <Image url="@/images/hearts.png"/>
     </ImageView>
