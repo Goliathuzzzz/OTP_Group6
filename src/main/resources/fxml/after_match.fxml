@@ -20,31 +20,31 @@
     </Pane>
     <!-- Bottom Navigation -->
     <Pane layoutY="765" prefHeight="87" prefWidth="393" styleClass="bottom-nav">
-        <ImageView fx:id="homeIcon" fitHeight="45.0" fitWidth="42.0" layoutX="45" layoutY="23.0"
+        <ImageView fx:id="homeIcon" fitHeight="45.0" styleClass="nav-icon" fitWidth="42.0" layoutX="45" layoutY="23.0"
                    onMouseClicked="#handleHomeClick" pickOnBounds="true" preserveRatio="true">
             <Image url="@/images/home_icon.png"/>
         </ImageView>
-        <ImageView fx:id="profileIcon" fitHeight="45.0" fitWidth="42.0" layoutX="132" layoutY="23.0"
+        <ImageView fx:id="profileIcon" fitHeight="45.0" styleClass="nav-icon" fitWidth="42.0" layoutX="132" layoutY="23.0"
                    onMouseClicked="#handleProfileClick" pickOnBounds="true" preserveRatio="true">
             <Image url="@/images/profile_icon.png"/>
         </ImageView>
-        <ImageView fx:id="backIcon" fitHeight="45.0" fitWidth="42.0" layoutX="219" layoutY="23.0"
+        <ImageView fx:id="backIcon" fitHeight="45.0" styleClass="nav-icon" fitWidth="42.0" layoutX="219" layoutY="23.0"
                    onMouseClicked="#handleBackClick" pickOnBounds="true" preserveRatio="true">
             <Image url="@/images/back_icon.png"/>
         </ImageView>
-        <ImageView fx:id="helpIcon" fitHeight="45.0" fitWidth="42.0" layoutX="306" layoutY="23.0"
+        <ImageView fx:id="helpIcon" fitHeight="45.0" styleClass="nav-icon" fitWidth="42.0" layoutX="306" layoutY="23.0"
                    onMouseClicked="#handleHelpClick" pickOnBounds="true" preserveRatio="true">
             <Image url="@/images/help_icon.png"/>
         </ImageView>
     </Pane>
 
     <!-- Heart Graphic -->
-    <ImageView fitHeight="278.0" fitWidth="352.0" layoutX="22.0" layoutY="280.0" pickOnBounds="true"
+    <ImageView fitHeight="278.0" styleClass="heart-graphic" fitWidth="352.0" layoutX="22.0" layoutY="280.0" pickOnBounds="true"
                preserveRatio="true">
         <Image url="@/images/big_heart.png"/>
     </ImageView>
     <Label fx:id="percentageLabel" layoutY="-1.0" styleClass="begin" text="%match_percentage"/>
-    <ImageView fitHeight="31.0" fitWidth="28.0" layoutX="263.0" layoutY="540.0" pickOnBounds="true"
+    <ImageView fitHeight="31.0" styleClass="heart-graphic" fitWidth="28.0" layoutX="263.0" layoutY="540.0" pickOnBounds="true"
                preserveRatio="true">
         <Image url="@/images/hearts.png"/>
     </ImageView>
