@@ -101,9 +101,10 @@ public class User extends Participant {
     }
 
     public String getAnyUserName() {
-        if (localizations.stream().findFirst().isPresent()) {
-            return localizations.stream().findFirst().get().getUserName();
+        Optional<LocalizedUser> firstLocalized = localizations.stream().findFirst();
+        if (firstLocalized.isEmpty()) {
+            return "No name";
         }
-        return "No name";
+        return firstLocalized.get().getUserName();
     }
 }

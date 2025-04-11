@@ -2,6 +2,7 @@ package context;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Logger;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
@@ -27,6 +28,7 @@ public class GuiContext {
     private List<Match> matches;
     private String language;
     private Stage stage;
+    private Logger logger = Logger.getLogger(getClass().getName());
 
     private GuiContext() {
         this.nameProperty = new SimpleStringProperty();
@@ -58,10 +60,11 @@ public class GuiContext {
     }
 
     public String getUserName() {
-        if (user.getLocalization(language).isPresent()) {
-            return user.getLocalization(language).get().getUserName();
+        Optional<LocalizedUser> localizedUser = user.getLocalization(language);
+        if (localizedUser.isEmpty()) {
+            return user.getAnyUserName();
         }
-        return user.getAnyUserName();
+        return localizedUser.get().getUserName();
     }
 
     public void setUserName(String name) {
@@ -143,7 +146,7 @@ public class GuiContext {
 
     public void setSession(Session session) {
         this.session = session;
-        System.out.println("DEBUG: session set in GUIContext");
+        logger.info("DEBUG: session set in GUIContext");
     }
 
     public Matcher getMatcher() {
@@ -188,7 +191,7 @@ public class GuiContext {
         } else if (isGuest) {
             return guest.getId();
         } else {
-            System.err.println("ERROR: No user or guest data found");
+            logger.info("ERROR: No user or guest data found");
             return -1;
         }
     }
