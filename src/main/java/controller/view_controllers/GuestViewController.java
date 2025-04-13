@@ -35,7 +35,7 @@ public class GuestViewController extends BaseController {
             if (stage != null) {
                 stage.setTitle(bundle.getString("guest"));
             } else {
-                System.err.println("Stage is null in GuestViewController initialize()");
+                logger.info("Stage is null in GuestViewController initialize()");
             }
         });
     }
@@ -58,7 +58,7 @@ public class GuestViewController extends BaseController {
     }
 
     private boolean isValidPhone(String phone) {
-        return phone.matches("^[0-9]{10,15}$");
+        return phone.matches("\\d{10,15}$");
     }
 
     public void setGuestViewController(GuestController guestController) {
