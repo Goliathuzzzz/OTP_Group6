@@ -3,6 +3,8 @@ package controller.view_controllers;
 import gui_context.GuiContext;
 import controller.BaseController;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import javafx.animation.Animation;
 import javafx.animation.ScaleTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -25,7 +27,6 @@ public class BeginSessionController extends BaseController {
     private AnchorPane beginSessionPane;
     @FXML
     private Label beginSession;
-    private ScaleTransition heartbeat;
 
     @FXML
     public void initialize() {
@@ -35,17 +36,17 @@ public class BeginSessionController extends BaseController {
             if (stage != null) {
                 stage.setTitle(bundle.getString("begin"));
             } else {
-                System.out.println("Stage is null in BeginSessionController initialize()");
+                logger.info("Stage is null in BeginSessionController initialize()");
             }
         });
         setupHoverHeartbeat();
     }
 
     private void setupHoverHeartbeat() {
-        heartbeat = new ScaleTransition(Duration.seconds(0.8), bigHeart);
+        ScaleTransition heartbeat = new ScaleTransition(Duration.seconds(0.8), bigHeart);
         heartbeat.setByX(0.1);
         heartbeat.setByY(0.1);
-        heartbeat.setCycleCount(ScaleTransition.INDEFINITE);
+        heartbeat.setCycleCount(Animation.INDEFINITE);
         heartbeat.setAutoReverse(true);
 
         bigHeart.setOnMouseEntered(event -> heartbeat.play());
@@ -60,15 +61,20 @@ public class BeginSessionController extends BaseController {
     @FXML
     private void handleBeginSessionClick(MouseEvent event) {
         GuiContext context = GuiContext.getInstance();
-        Participant participant = context.isUser() ? context.getUser() :
-                context.isGuest() ? context.getGuest() : null;
+        Participant participant = null;
+        if (context.isUser()) {
+            participant = context.getUser();
+        }
+        else if (context.isGuest()) {
+            participant = context.getGuest();
+        }
         if (participant != null) {
             context.setSession(new Session(participant));
             // reset participant interests
             context.getSession().getParticipant().clearInterests();
             switchScene(SceneNames.SESSION);
         } else {
-            System.err.println("No user or guest found in GUIContext");
+            logger.log(Level.SEVERE, "No user or guest found in GuiContext");
         }
     }
 
