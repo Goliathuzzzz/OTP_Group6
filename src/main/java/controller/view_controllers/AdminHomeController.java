@@ -19,7 +19,6 @@ import model.Match;
 
 public class AdminHomeController extends BaseController implements Initializable {
 
-    private final LocaleManager localeManager = LocaleManager.getInstance();
     private final ResourceBundle bundle = localeManager.getBundle();
     private MatchController matchController = new MatchController();
     @FXML

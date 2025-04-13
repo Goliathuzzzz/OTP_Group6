@@ -18,7 +18,6 @@ import util.SceneNames;
 
 public class AdminProfileController extends BaseController {
 
-    private final LocaleManager localeManager = LocaleManager.getInstance();
     private final ResourceBundle bundle = localeManager.getBundle();
     @FXML
     private Pane bottomNavPane, profileImagePane;
