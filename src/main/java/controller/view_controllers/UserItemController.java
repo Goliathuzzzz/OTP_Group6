@@ -1,7 +1,7 @@
 package controller.view_controllers;
 
-import guiContext.GuiContext;
-import guiContext.LocaleManager;
+import gui_context.GuiContext;
+import gui_context.LocaleManager;
 import java.util.ResourceBundle;
 import java.util.function.Consumer;
 import javafx.fxml.FXML;

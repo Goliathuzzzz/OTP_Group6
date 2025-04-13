@@ -2,8 +2,6 @@ package controller.view_controllers;
 
 import static util.ProfilePictureUtil.getProfilePictureView;
 
-import guiContext.GuiContext;
-import guiContext.LocaleManager;
 import controller.BaseController;
 import java.util.ResourceBundle;
 import javafx.animation.ScaleTransition;

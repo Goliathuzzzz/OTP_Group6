@@ -1,4 +1,4 @@
-package guiContext;
+package gui_context;
 
 import java.util.Locale;
 import java.util.ResourceBundle;

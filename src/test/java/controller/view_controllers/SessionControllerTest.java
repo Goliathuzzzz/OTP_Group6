@@ -11,7 +11,7 @@ import static org.mockito.Mockito.when;
 import static org.testfx.api.FxAssert.verifyThat;
 import static org.testfx.util.NodeQueryUtils.isVisible;
 
-import guiContext.GuiContext;
+import gui_context.GuiContext;
 import controller.MatchController;
 import controller.UserController;
 import java.net.URL;

@@ -17,7 +17,7 @@
 <h1>AfterMatchController.java</h1>
 <pre class="source lang-java linenums">package controller.view_controllers;
 
-import guiContext.GuiContext;
+import gui_context.GuiContext;
 import controller.BaseController;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -57,8 +57,8 @@ import java.util.List;
 <span class="nc" id="L40">    }</span>
 
     private void setResults() {
-<span class="nc" id="L43">        GUIContext guiContext = GUIContext.getInstance();</span>
-<span class="nc" id="L44">        List&lt;Match&gt; matches = guiContext.getMatches();</span>
+<span class="nc" id="L43">        GUIContext gui_context = GUIContext.getInstance();</span>
+<span class="nc" id="L44">        List&lt;Match&gt; matches = gui_context.getMatches();</span>
 <span class="nc bnc" id="L45" title="All 4 branches missed.">        if (matches == null || matches.isEmpty()) {</span>
 <span class="nc" id="L46">            System.err.println(&quot;ERROR: Match is null in AfterMatchController setResults()&quot;);</span>
 <span class="nc" id="L47">            matchParticipantsLabel.setText(&quot;ei mätsiä&quot;);</span>

@@ -1,7 +1,6 @@
 package controller.view_controllers;
 
-import guiContext.GuiContext;
-import guiContext.LocaleManager;
+import gui_context.GuiContext;
 import controller.BaseController;
 import controller.UserController;
 import java.util.Date;

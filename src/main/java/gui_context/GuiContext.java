@@ -1,4 +1,4 @@
-package guiContext;
+package gui_context;
 
 import java.util.List;
 import java.util.Optional;

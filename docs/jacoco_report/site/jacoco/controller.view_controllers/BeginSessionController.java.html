@@ -17,7 +17,7 @@
 <h1>BeginSessionController.java</h1>
 <pre class="source lang-java linenums">package controller.view_controllers;
 
-import guiContext.GuiContext;
+import gui_context.GuiContext;
 import controller.BaseController;
 import javafx.animation.ScaleTransition;
 import javafx.application.Platform;
@@ -73,13 +73,13 @@ import util.SceneNames;
 
     @FXML
     private void handleBeginSessionClick(MouseEvent event) {
-<span class="nc" id="L59">        GUIContext guiContext = GUIContext.getInstance();</span>
-<span class="nc bnc" id="L60" title="All 2 branches missed.">        Participant participant = guiContext.isUser() ? guiContext.getUser() :</span>
-<span class="nc bnc" id="L61" title="All 2 branches missed.">                guiContext.isGuest() ? guiContext.getGuest() : null;</span>
+<span class="nc" id="L59">        GUIContext gui_context = GUIContext.getInstance();</span>
+<span class="nc bnc" id="L60" title="All 2 branches missed.">        Participant participant = gui_context.isUser() ? gui_context.getUser() :</span>
+<span class="nc bnc" id="L61" title="All 2 branches missed.">                gui_context.isGuest() ? gui_context.getGuest() : null;</span>
 <span class="nc bnc" id="L62" title="All 2 branches missed.">        if (participant != null) {</span>
-<span class="nc" id="L63">            guiContext.setSession(new Session(participant));</span>
+<span class="nc" id="L63">            gui_context.setSession(new Session(participant));</span>
             // reset participant interests
-<span class="nc" id="L65">            guiContext.getSession().getParticipant().clearInterests();</span>
+<span class="nc" id="L65">            gui_context.getSession().getParticipant().clearInterests();</span>
 <span class="nc" id="L66">            switchScene(SceneNames.SESSION);</span>
         } else {
 <span class="nc" id="L68">            System.err.println(&quot;No user or guest found in GUIContext&quot;);</span>

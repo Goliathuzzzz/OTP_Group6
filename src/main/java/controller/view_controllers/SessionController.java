@@ -1,7 +1,6 @@
 package controller.view_controllers;
 
-import guiContext.GuiContext;
-import guiContext.LocaleManager;
+import gui_context.LocaleManager;
 import controller.BaseController;
 import controller.MatchController;
 import java.util.ArrayList;

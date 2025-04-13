@@ -1,6 +1,6 @@
 package controller;
 
-import guiContext.GuiContext;
+import gui_context.GuiContext;
 import jakarta.persistence.EntityManager;
 import java.util.List;
 import model.Match;

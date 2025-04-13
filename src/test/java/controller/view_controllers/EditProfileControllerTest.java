@@ -5,7 +5,7 @@ import static org.testfx.api.FxAssert.verifyThat;
 import static org.testfx.util.NodeQueryUtils.hasText;
 import static org.testfx.util.NodeQueryUtils.isVisible;
 
-import guiContext.GuiContext;
+import gui_context.GuiContext;
 import controller.UserController;
 import java.net.URL;
 import java.util.Date;

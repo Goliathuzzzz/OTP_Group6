@@ -1,6 +1,6 @@
 package controller.view_controllers;
 
-import guiContext.GuiContext;
+import gui_context.GuiContext;
 import controller.BaseController;
 import java.util.List;
 import java.util.Locale;

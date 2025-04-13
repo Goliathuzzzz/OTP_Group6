@@ -6,7 +6,7 @@ import static org.mockito.Mockito.when;
 import static org.testfx.api.FxAssert.verifyThat;
 import static org.testfx.util.NodeQueryUtils.isVisible;
 
-import guiContext.LocaleManager;
+import gui_context.LocaleManager;
 import controller.MatchController;
 import java.net.URL;
 import java.util.ArrayList;

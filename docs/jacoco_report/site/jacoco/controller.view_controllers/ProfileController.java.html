@@ -17,7 +17,7 @@
 <h1>ProfileController.java</h1>
 <pre class="source lang-java linenums">package controller.view_controllers;
 
-import guiContext.GuiContext;
+import gui_context.GuiContext;
 import controller.BaseController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -31,7 +31,7 @@ import static util.ProfilePictureUtil.getProfilePictureView;
 
 public class ProfileController extends BaseController {
 
-<span class="fc" id="L17">    private GUIContext guiContext = GUIContext.getInstance();</span>
+<span class="fc" id="L17">    private GUIContext gui_context = GUIContext.getInstance();</span>
 
     @FXML
     private Pane bottomNavPane, profileImagePane;
@@ -48,22 +48,22 @@ public class ProfileController extends BaseController {
 <span class="fc" id="L31">    }</span>
 
     // constructor for testing
-<span class="fc" id="L34">    public ProfileController(GUIContext guiContext) {</span>
-<span class="fc" id="L35">        this.guiContext = guiContext;</span>
+<span class="fc" id="L34">    public ProfileController(GUIContext gui_context) {</span>
+<span class="fc" id="L35">        this.gui_context = gui_context;</span>
 <span class="fc" id="L36">    }</span>
 
     @FXML
     private void initialize() {
-<span class="pc bpc" id="L40" title="1 of 2 branches missed.">        if (guiContext.isUser()) {</span>
-<span class="fc" id="L41">            guiContext.setUserNameProperty(guiContext.getUserName());</span>
-<span class="fc" id="L42">            guiContext.setEmailProperty(guiContext.getUserEmail());</span>
-<span class="fc" id="L43">            guiContext.setPhoneProperty(guiContext.getUserPhoneNumber());</span>
-<span class="fc" id="L44">            nameLabel.textProperty().bind(guiContext.getUserNameProperty());</span>
-<span class="fc" id="L45">            emailLabel.textProperty().bind(guiContext.getEmailProperty());</span>
-<span class="fc" id="L46">            phoneLabel.textProperty().bind(guiContext.getPhoneProperty());</span>
-<span class="nc bnc" id="L47" title="All 2 branches missed.">        } else if (guiContext.isGuest()) {</span>
-<span class="nc" id="L48">            guiContext.setPhoneProperty(guiContext.getGuestPhoneNumber());</span>
-<span class="nc" id="L49">            phoneLabel.textProperty().bind(guiContext.getPhoneProperty());</span>
+<span class="pc bpc" id="L40" title="1 of 2 branches missed.">        if (gui_context.isUser()) {</span>
+<span class="fc" id="L41">            gui_context.setUserNameProperty(gui_context.getUserName());</span>
+<span class="fc" id="L42">            gui_context.setEmailProperty(gui_context.getUserEmail());</span>
+<span class="fc" id="L43">            gui_context.setPhoneProperty(gui_context.getUserPhoneNumber());</span>
+<span class="fc" id="L44">            nameLabel.textProperty().bind(gui_context.getUserNameProperty());</span>
+<span class="fc" id="L45">            emailLabel.textProperty().bind(gui_context.getEmailProperty());</span>
+<span class="fc" id="L46">            phoneLabel.textProperty().bind(gui_context.getPhoneProperty());</span>
+<span class="nc bnc" id="L47" title="All 2 branches missed.">        } else if (gui_context.isGuest()) {</span>
+<span class="nc" id="L48">            gui_context.setPhoneProperty(gui_context.getGuestPhoneNumber());</span>
+<span class="nc" id="L49">            phoneLabel.textProperty().bind(gui_context.getPhoneProperty());</span>
 <span class="nc" id="L50">            nameLabel.setText(&quot;vieras&quot;);</span>
 
 <span class="nc" id="L52">            emailLabel.setVisible(false);</span>
@@ -74,7 +74,7 @@ public class ProfileController extends BaseController {
 <span class="nc" id="L57">            System.err.println(&quot;ERROR: No user or guest data found&quot;);</span>
         }
 <span class="fc"
-      id="L59">        ImageView profileImageView = getProfilePictureView(guiContext.getId(), 200, 200);</span>
+      id="L59">        ImageView profileImageView = getProfilePictureView(gui_context.getId(), 200, 200);</span>
 <span class="fc" id="L60">        profileImagePane.getChildren().add(profileImageView);</span>
 <span class="fc" id="L61">    }</span>
 

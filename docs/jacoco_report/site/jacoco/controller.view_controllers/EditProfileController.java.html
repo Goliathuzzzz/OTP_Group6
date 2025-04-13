@@ -17,7 +17,7 @@
 <h1>EditProfileController.java</h1>
 <pre class="source lang-java linenums">package controller.view_controllers;
 
-import guiContext.GuiContext;
+import gui_context.GuiContext;
 import controller.BaseController;
 import controller.UserController;
 import javafx.fxml.FXML;
@@ -33,7 +33,7 @@ import static util.ProfilePictureUtil.getProfilePictureView;
 <span class="fc" id="L16">public class EditProfileController extends BaseController {</span>
 
 <span class="fc" id="L18">    private UserController userController = new UserController();</span>
-<span class="fc" id="L19">    private final GUIContext guiContext = GUIContext.getInstance();</span>
+<span class="fc" id="L19">    private final GUIContext gui_context = GUIContext.getInstance();</span>
 
     @FXML
     private ImageView profileImage, homeIcon, profileIcon, backIcon, helpIcon, backIcon1;
@@ -46,13 +46,13 @@ import static util.ProfilePictureUtil.getProfilePictureView;
 
     @FXML
     private void initialize() {
-<span class="pc bpc" id="L32" title="1 of 2 branches missed.">        if (guiContext.isUser()) {</span>
-<span class="fc" id="L33">            nameField.setText(guiContext.getUserName());</span>
-<span class="fc" id="L34">            emailField.setText(guiContext.getUserEmail());</span>
-<span class="fc" id="L35">            phoneField.setText(guiContext.getUserPhoneNumber());</span>
+<span class="pc bpc" id="L32" title="1 of 2 branches missed.">        if (gui_context.isUser()) {</span>
+<span class="fc" id="L33">            nameField.setText(gui_context.getUserName());</span>
+<span class="fc" id="L34">            emailField.setText(gui_context.getUserEmail());</span>
+<span class="fc" id="L35">            phoneField.setText(gui_context.getUserPhoneNumber());</span>
 
 <span class="fc"
-      id="L37">            ImageView profileImageView = getProfilePictureView(guiContext.getId(), 120, 120);</span>
+      id="L37">            ImageView profileImageView = getProfilePictureView(gui_context.getId(), 120, 120);</span>
 <span class="fc" id="L38">            profileImage.setImage(profileImageView.getImage());</span>
 <span class="fc" id="L39">        } else {</span>
 <span class="nc" id="L40">            showAlert(Alert.AlertType.ERROR, &quot;virhe&quot;, &quot;käyttäjätietoja ei löydy&quot;);</span>
@@ -61,11 +61,11 @@ import static util.ProfilePictureUtil.getProfilePictureView;
 <span class="fc" id="L43">    }</span>
 
     private void saveChanges() {
-<span class="pc bpc" id="L46" title="1 of 2 branches missed.">        if (guiContext.isUser()) {</span>
-<span class="fc" id="L47">            guiContext.setUserName(nameField.getText());</span>
-<span class="fc" id="L48">            guiContext.setUserEmail(emailField.getText());</span>
-<span class="fc" id="L49">            guiContext.setUserPhoneNumber(phoneField.getText());</span>
-<span class="fc" id="L50">            userController.updateUser(guiContext.getUser());</span>
+<span class="pc bpc" id="L46" title="1 of 2 branches missed.">        if (gui_context.isUser()) {</span>
+<span class="fc" id="L47">            gui_context.setUserName(nameField.getText());</span>
+<span class="fc" id="L48">            gui_context.setUserEmail(emailField.getText());</span>
+<span class="fc" id="L49">            gui_context.setUserPhoneNumber(phoneField.getText());</span>
+<span class="fc" id="L50">            userController.updateUser(gui_context.getUser());</span>
         }
 <span class="fc" id="L52">    }</span>
 

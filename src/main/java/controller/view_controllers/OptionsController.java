@@ -1,6 +1,6 @@
 package controller.view_controllers;
 
-import guiContext.LocaleManager;
+import gui_context.LocaleManager;
 import controller.BaseController;
 import java.util.Locale;
 import java.util.ResourceBundle;

@@ -17,7 +17,7 @@
 <h1>AdminProfileController.java</h1>
 <pre class="source lang-java linenums">package controller.view_controllers;
 
-import guiContext.GuiContext;
+import gui_context.GuiContext;
 import controller.BaseController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -30,7 +30,7 @@ import static util.ProfilePictureUtil.getProfilePictureView;
 
 public class AdminProfileController extends BaseController {
 
-<span class="fc" id="L16">    private GUIContext guiContext = GUIContext.getInstance();</span>
+<span class="fc" id="L16">    private GUIContext gui_context = GUIContext.getInstance();</span>
 
     @FXML
     private Pane bottomNavPane, profileImagePane;
@@ -47,22 +47,22 @@ public class AdminProfileController extends BaseController {
 <span class="nc" id="L30">    }</span>
 
     // constructor for testing
-<span class="fc" id="L33">    public AdminProfileController(GUIContext guiContext) {</span>
-<span class="fc" id="L34">        this.guiContext = guiContext;</span>
+<span class="fc" id="L33">    public AdminProfileController(GUIContext gui_context) {</span>
+<span class="fc" id="L34">        this.gui_context = gui_context;</span>
 <span class="fc" id="L35">    }</span>
 
     @FXML
     private void initialize() {
-<span class="pc bpc" id="L39" title="1 of 2 branches missed.">        if (guiContext.isUser()) {</span>
-<span class="fc" id="L40">            guiContext.setUserNameProperty(guiContext.getUserName());</span>
-<span class="fc" id="L41">            guiContext.setEmailProperty(guiContext.getUserEmail());</span>
-<span class="fc" id="L42">            guiContext.setPhoneProperty(guiContext.getUserPhoneNumber());</span>
-<span class="fc" id="L43">            nameLabel.textProperty().bind(guiContext.getUserNameProperty());</span>
-<span class="fc" id="L44">            emailLabel.textProperty().bind(guiContext.getEmailProperty());</span>
-<span class="fc" id="L45">            phoneLabel.textProperty().bind(guiContext.getPhoneProperty());</span>
+<span class="pc bpc" id="L39" title="1 of 2 branches missed.">        if (gui_context.isUser()) {</span>
+<span class="fc" id="L40">            gui_context.setUserNameProperty(gui_context.getUserName());</span>
+<span class="fc" id="L41">            gui_context.setEmailProperty(gui_context.getUserEmail());</span>
+<span class="fc" id="L42">            gui_context.setPhoneProperty(gui_context.getUserPhoneNumber());</span>
+<span class="fc" id="L43">            nameLabel.textProperty().bind(gui_context.getUserNameProperty());</span>
+<span class="fc" id="L44">            emailLabel.textProperty().bind(gui_context.getEmailProperty());</span>
+<span class="fc" id="L45">            phoneLabel.textProperty().bind(gui_context.getPhoneProperty());</span>
 
 <span class="fc"
-      id="L47">            ImageView profileImageView = getProfilePictureView(guiContext.getId(), 200, 200);</span>
+      id="L47">            ImageView profileImageView = getProfilePictureView(gui_context.getId(), 200, 200);</span>
 <span class="fc" id="L48">            profileImagePane.getChildren().add(profileImageView);</span>
         }
 <span class="fc" id="L50">    }</span>

@@ -122,7 +122,7 @@ OTP_Group6/
 │── src/
 │   ├── main/
 │   │   ├── java/
-│   │   │   ├── guiContext/       # Manages shared data and application state
+│   │   │   ├── gui_context/       # Manages shared data and application state
 │   │   │   ├── controller/    # Handles user interactions
 │   │   │   ├── dao/           # Database access layer
 │   │   │   ├── datasource/    # Manages database connections and persistence

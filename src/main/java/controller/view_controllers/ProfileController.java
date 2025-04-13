@@ -2,8 +2,7 @@ package controller.view_controllers;
 
 import static util.ProfilePictureUtil.getProfilePictureView;
 
-import guiContext.GuiContext;
-import guiContext.LocaleManager;
+import gui_context.GuiContext;
 import controller.BaseController;
 import java.util.Locale;
 import java.util.ResourceBundle;

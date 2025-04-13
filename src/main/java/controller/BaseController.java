@@ -1,7 +1,7 @@
 package controller;
 
-import guiContext.GuiContext;
-import guiContext.LocaleManager;
+import gui_context.GuiContext;
+import gui_context.LocaleManager;
 import controller.view_controllers.InterestSelectionController;
 import java.io.IOException;
 import java.util.Locale;

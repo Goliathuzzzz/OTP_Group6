@@ -17,7 +17,7 @@
 <h1>LoginController.java</h1>
 <pre class="source lang-java linenums">package controller.view_controllers;
 
-import guiContext.GuiContext;
+import gui_context.GuiContext;
 import controller.BaseController;
 import controller.UserController;
 import javafx.fxml.FXML;
@@ -32,7 +32,7 @@ import util.SceneNames;
 <span class="fc" id="L15">public class LoginController extends BaseController {</span>
 
 <span class="fc" id="L17">    UserController uController = new UserController();</span>
-<span class="fc" id="L18">    GUIContext guiContext = GUIContext.getInstance();</span>
+<span class="fc" id="L18">    GUIContext gui_context = GUIContext.getInstance();</span>
 
     @FXML
     private TextField emailField;
@@ -58,7 +58,7 @@ import util.SceneNames;
         }
 <span class="fc" id="L41">        User user = uController.login(email, password);</span>
 <span class="fc bfc" id="L42" title="All 2 branches covered.">        if (user != null) {</span>
-<span class="fc" id="L43">            guiContext.setUser(user);</span>
+<span class="fc" id="L43">            gui_context.setUser(user);</span>
 <span class="fc" id="L44">            switchScene(SceneNames.BEGIN_SESSION);</span>
         } else {
 <span class="fc" id="L46">            showAlert(Alert.AlertType.ERROR, &quot;virhe&quot;, &quot;sähköpostiosoite tai salasana on väärä!&quot;);</span>

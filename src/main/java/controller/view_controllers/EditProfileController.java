@@ -3,7 +3,7 @@ package controller.view_controllers;
 import static util.ProfilePictureUtil.getProfilePictureView;
 import static util.SceneNames.EDIT_PROFILE;
 
-import guiContext.LocaleManager;
+import gui_context.LocaleManager;
 import controller.BaseController;
 import controller.UserController;
 import java.util.Locale;

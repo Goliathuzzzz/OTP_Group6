@@ -3063,8 +3063,8 @@
         <counter type="METHOD" missed="29" covered="97"/>
         <counter type="CLASS" missed="2" covered="16"/>
     </package>
-    <package name="guiContext">
-        <class name="guiContext/GUIContext" sourcefilename="GUIContext.java">
+    <package name="gui_context">
+        <class name="gui_context/GUIContext" sourcefilename="GUIContext.java">
             <method name="&lt;init&gt;" desc="()V" line="13">
                 <counter type="INSTRUCTION" missed="0" covered="27"/>
                 <counter type="LINE" missed="0" covered="8"/>

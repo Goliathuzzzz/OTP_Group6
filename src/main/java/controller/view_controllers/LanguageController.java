@@ -1,6 +1,5 @@
 package controller.view_controllers;
 
-import guiContext.LocaleManager;
 import controller.BaseController;
 import java.util.HashMap;
 import java.util.Locale;

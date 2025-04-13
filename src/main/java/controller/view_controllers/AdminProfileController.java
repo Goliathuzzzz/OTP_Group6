@@ -2,8 +2,8 @@ package controller.view_controllers;
 
 import static util.ProfilePictureUtil.getProfilePictureView;
 
-import guiContext.GuiContext;
-import guiContext.LocaleManager;
+import gui_context.GuiContext;
+import gui_context.LocaleManager;
 import controller.BaseController;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
