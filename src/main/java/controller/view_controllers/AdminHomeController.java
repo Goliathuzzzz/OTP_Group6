@@ -1,6 +1,5 @@
 package controller.view_controllers;
 
-import gui_context.LocaleManager;
 import controller.BaseController;
 import controller.MatchController;
 import java.io.IOException;
@@ -21,6 +20,7 @@ public class AdminHomeController extends BaseController implements Initializable
 
     private final ResourceBundle bundle = localeManager.getBundle();
     private MatchController matchController = new MatchController();
+
     @FXML
     private VBox pairsContainer;
     @FXML
@@ -35,7 +35,7 @@ public class AdminHomeController extends BaseController implements Initializable
             if (stage != null) {
                 stage.setTitle(bundle.getString("admin_users"));
             } else {
-                System.out.println("Stage is null in AdminUsersController initialize()");
+                logger.info("Stage is null in AdminUsersController initialize()");
             }
         });
     }
@@ -59,7 +59,7 @@ public class AdminHomeController extends BaseController implements Initializable
             matchNode.setUserData(controller);
             return matchNode;
         } catch (IOException e) {
-            System.err.println("ERROR: Could not load pair item: " + e.getMessage());
+            logger.info("ERROR: Could not load pair item: " + e.getMessage());
             return null;
         }
     }
