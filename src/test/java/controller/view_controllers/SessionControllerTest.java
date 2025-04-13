@@ -281,11 +281,11 @@ class SessionControllerTest extends ApplicationTest {
         assertNotNull(savedMatches, "Matches should not be null.");
         assertEquals(2, savedMatches.size(), "There should be two matches.");
 
-        assertTrue(savedMatches.stream().anyMatch(m -> m.getParticipant1().equals(participant) &&
-                        m.getParticipant2().equals(match1) && m.getCompatibility() == 95.5),
+        assertTrue(savedMatches.stream().anyMatch(m -> m.getParticipant1().equals(participant)
+                        && m.getParticipant2().equals(match1) && m.getCompatibility() == 95.5),
                 "Match1 should be stored.");
-        assertTrue(savedMatches.stream().anyMatch(m -> m.getParticipant1().equals(participant) &&
-                        m.getParticipant2().equals(match2) && m.getCompatibility() == 89.3),
+        assertTrue(savedMatches.stream().anyMatch(m -> m.getParticipant1().equals(participant)
+                        && m.getParticipant2().equals(match2) && m.getCompatibility() == 89.3),
                 "Match2 should be stored.");
     }
 }

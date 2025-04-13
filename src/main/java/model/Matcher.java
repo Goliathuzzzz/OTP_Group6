@@ -71,12 +71,12 @@ public class Matcher {
                 if (pMatchInterests.contains(interest)) {
                     compatibility += increment;
                     System.out.println(
-                            "DEBUG: Match found for interest: " + interest + " -> compatibility: " +
-                                    compatibility);
+                            "DEBUG: Match found for interest: " + interest + " -> compatibility: "
+                                    + compatibility);
                 } else {
                     maxPotential -= increment;
-                    System.out.println("DEBUG: No match found for interest: " + interest +
-                            " -> max potential: " + maxPotential);
+                    System.out.println("DEBUG: No match found for interest: " + interest
+                            + " -> max potential: " + maxPotential);
                 }
                 if (maxPotential < currentHighestCompatibility) {
                     System.out.println("DEBUG: Skipping " + u.getId() + " due to low potential.");
