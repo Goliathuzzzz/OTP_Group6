@@ -10,7 +10,8 @@ import model.categories.Hobby;
 import model.categories.Science;
 import model.categories.Sports;
 
-public final class Session {
+// Älä tee Sessionista final (Ei voi mockata testeissä)
+public class Session {
     private static final  List<Animal> animals = List.copyOf(EnumSet.allOf(Animal.class));
     private static final  List<Food> foods = List.copyOf(EnumSet.allOf(Food.class));
     private static final  List<Hobby> hobbies = List.copyOf(EnumSet.allOf(Hobby.class));
