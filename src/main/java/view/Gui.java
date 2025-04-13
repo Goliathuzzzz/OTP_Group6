@@ -2,7 +2,6 @@ package view;
 
 import context.GuiContext;
 import context.LocaleManager;
-import controller.BaseController;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import javafx.application.Application;
