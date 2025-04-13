@@ -28,7 +28,7 @@ public class GuiContext {
     private List<Match> matches;
     private String language;
     private Stage stage;
-    private Logger logger = Logger.getLogger(getClass().getName());
+    private final Logger logger = Logger.getLogger(getClass().getName());
 
     private GuiContext() {
         this.nameProperty = new SimpleStringProperty();

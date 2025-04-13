@@ -68,7 +68,7 @@ public class AdminUsersController extends BaseController implements Initializabl
     // creates a user item node for the user
     private Node createUserItemNode(User user) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/user_item.fxml"));
+            FXMLLoader loader = new FXMLLoader(AdminUsersController.class.getResource("/fxml/user_item.fxml"));
             Node userItemNode = loader.load();
 
             // get the controller for user and set the user
