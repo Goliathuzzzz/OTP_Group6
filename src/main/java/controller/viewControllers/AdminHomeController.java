@@ -53,7 +53,7 @@ public class AdminHomeController extends BaseController implements Initializable
 
     private Node createMatchItemNode(Match match) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/pair_item.fxml"));
+            FXMLLoader loader = new FXMLLoader(AdminHomeController.class.getResource("/fxml/pair_item.fxml"));
             Node matchNode = loader.load();
             PairItemController controller = loader.getController();
             controller.setMatch(match, this::deleteMatch);
