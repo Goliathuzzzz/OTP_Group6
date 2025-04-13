@@ -63,7 +63,7 @@ public abstract class BaseController {
                         new Locale("en", "US"));
             }
 
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(path));
+            FXMLLoader fxmlLoader = new FXMLLoader(BaseController.class.getResource(path));
             fxmlLoader.setResources(bundle);
             Parent root = fxmlLoader.load();
             BaseController controller = fxmlLoader.getController();
@@ -91,13 +91,16 @@ public abstract class BaseController {
                 }
             }
 
-            try {
-                stage1.setScene(new Scene(root));
-                stage1.show();
-            } catch (NullPointerException e) {
-                System.err.println(e.getMessage());
+            if (stage1 == null) {
+                logError("Stage is null in guiContext");
+                return;
             }
-
+            if (root == null) {
+                logError("Root is null from loaded FXML");
+                return;
+            }
+            stage1.setScene(new Scene(root));
+            stage1.show();
 
         } catch (IOException e) {
             logError("Failed to load FXML: " + e.getMessage());
