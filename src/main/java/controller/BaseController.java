@@ -7,11 +7,12 @@ import java.io.IOException;
 import java.util.Locale;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import util.SceneNames;
 
@@ -22,6 +23,7 @@ public abstract class BaseController {
     protected GuestController guestController = new GuestController();
     protected LocaleManager localeManager = LocaleManager.getInstance();
     protected GuiContext guiContext = GuiContext.getInstance();
+    protected final Logger logger = Logger.getLogger("logger");
 
     public void setStage(Stage stage) {
         this.stage = stage;
@@ -49,20 +51,17 @@ public abstract class BaseController {
 
     private void loadFxml(String destination, Object data) {
         String path = "/fxml/" + destination + ".fxml";
+        logger.log(Level.INFO, "Loading FXML: {}", path);
+        ResourceBundle bundle;
         try {
-            System.out.println("DEBUG: Loading FXML from " + path);
-
-            ResourceBundle bundle;
-            try {
-                bundle = localeManager.getBundle();
-            } catch (MissingResourceException e) {
-                System.err.println(
-                        "ERROR: ResourceBundle is invalid in BaseController.switchScene. "
-                                + "Defaulting to en_US");
-                bundle = ResourceBundle.getBundle("Messages",
-                        new Locale("en", "US"));
-            }
-
+            bundle = localeManager.getBundle();
+        } catch (MissingResourceException e) {
+            logger.info("ERROR: ResourceBundle is invalid in BaseController.switchScene. "
+                    + "Defaulting to en_US");
+            bundle = ResourceBundle.getBundle("Messages",
+                    new Locale.Builder().setLanguage("en").setRegion("US").build());
+        }
+        try {
             FXMLLoader fxmlLoader = new FXMLLoader(BaseController.class.getResource(path));
             fxmlLoader.setResources(bundle);
             Parent root = fxmlLoader.load();
@@ -75,9 +74,8 @@ public abstract class BaseController {
                 logError("Controller is null in fxmlLoader");
             }
 
-            if (data != null
-                    && controller instanceof InterestSelectionController interestController) {
-                if (data instanceof String category) {
+            if (controller instanceof InterestSelectionController interestController &&
+                    data instanceof String category) {
                     interestController.setCategory(category);
                     switch (category) {
                         case "animals" -> interestController.loadInterests("animals");
@@ -89,7 +87,7 @@ public abstract class BaseController {
                                 "Unexpected category: " + category);
                     }
                 }
-            }
+
 
             if (stage1 == null) {
                 logError("Stage is null in guiContext");
@@ -117,7 +115,7 @@ public abstract class BaseController {
     }
 
     private void logError(String message) {
-        System.err.println("ERROR: " + message);
+        logger.log(Level.INFO, "ERROR: {}", message);
     }
 
     private String handleProfileSwitch(GuiContext context, String destination) {
@@ -139,19 +137,19 @@ public abstract class BaseController {
         context.logout();
     }
 
-    public void handleHomeClick(MouseEvent e) {
+    public void handleHomeClick() {
         switchScene(SceneNames.BEGIN_SESSION);
     }
 
-    public void handleProfileClick(MouseEvent e) {
+    public void handleProfileClick() {
         switchScene(SceneNames.PROFILE);
     }
 
-    public void handleBackClick(MouseEvent e) {
+    public void handleBackClick() {
         switchScene(SceneNames.OPTIONS);
     }
 
-    public void handlePreviousClick(MouseEvent e) {
+    public void handlePreviousClick() {
         switchScene(SceneNames.PROFILE);
     }
 
