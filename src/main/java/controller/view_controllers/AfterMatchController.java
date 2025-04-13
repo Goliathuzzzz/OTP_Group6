@@ -5,6 +5,7 @@ import controller.BaseController;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -30,7 +31,7 @@ public class AfterMatchController extends BaseController {
             if (stage != null) {
                 stage.setTitle(bundle.getString("outcome"));
             } else {
-                System.out.println("Stage is null in AfterMatchController initialize()");
+                logger.info("Stage is null in AfterMatchController initialize()");
             }
             Match match = getResults();
             if (match != null) {
@@ -38,7 +39,7 @@ public class AfterMatchController extends BaseController {
                 localizeSharedInterests(match);
             }
             else {
-                System.err.println("ERROR: Match is null in AfterMatchController setResults()");
+                logger.log(Level.WARNING, "Stage is null in AfterMatchController initialize()");
                 // using localized strings for fallback messages
                 matchParticipantsLabel.setText(bundle.getString("no_match"));
                 percentageLabel.setText("0%");
