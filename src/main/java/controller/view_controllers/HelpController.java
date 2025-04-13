@@ -2,6 +2,7 @@ package controller.view_controllers;
 
 import controller.BaseController;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -32,7 +33,7 @@ public class HelpController extends BaseController {
             if (stage != null) {
                 stage.setTitle(bundle.getString("help"));
             } else {
-                System.err.println("Stage is null in HelpController initialize()");
+                logger.log(Level.SEVERE, "Stage is null in HelpController initialize()");
             }
         });
     }
