@@ -69,7 +69,7 @@ public class UserDao implements IDao<User> {
             em.getTransaction().begin();
             // delete all matches where the user is a participant
             em.createQuery(
-                            "DELETE FROM Match m WHERE m.participant1 = :user OR m.participant2 = :user")
+                    "DELETE FROM Match m WHERE m.participant1 = :user OR m.participant2 = :user")
                     .setParameter("user", object)
                     .executeUpdate();
             em.remove(em.contains(object) ? object : em.merge(object));

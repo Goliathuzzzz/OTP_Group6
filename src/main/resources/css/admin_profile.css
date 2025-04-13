@@ -50,13 +50,13 @@
     -fx-border-radius: 0px 0px 30px 30px;
 }
 
-.bottom-nav ImageView {
+.nav-icon {
     -fx-cursor: hand;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 4, 0, 0, 2);
     -fx-opacity: 0.9;
 }
 
-.bottom-nav ImageView:hover {
+.nav-icon:hover {
     -fx-opacity: 1;
     -fx-scale-x: 1.1;
     -fx-scale-y: 1.1;

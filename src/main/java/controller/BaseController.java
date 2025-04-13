@@ -1,8 +1,8 @@
 package controller;
 
-import context.GUIContext;
+import context.GuiContext;
 import context.LocaleManager;
-import controller.view_controllers.InterestSelectionController;
+import controller.viewControllers.InterestSelectionController;
 import java.io.IOException;
 import java.util.Locale;
 import java.util.MissingResourceException;
@@ -19,8 +19,9 @@ import util.SceneNames;
 public abstract class BaseController {
 
     protected Stage stage;
-    GuestController guestController = new GuestController();
+    protected GuestController guestController = new GuestController();
     LocaleManager localeManager = LocaleManager.getInstance();
+    GuiContext guiContext = GuiContext.getInstance();
 
     public void setStage(Stage stage) {
         this.stage = stage;
@@ -31,7 +32,7 @@ public abstract class BaseController {
     }
 
     protected void switchScene(String destination, Object data) {
-        GUIContext context = GUIContext.getInstance();
+        GuiContext context = GuiContext.getInstance();
 
         if (SceneNames.PROFILE.equals(destination)) {
             destination = handleProfileSwitch(context, destination);
@@ -43,12 +44,11 @@ public abstract class BaseController {
             handleOptionsSwitch(context);
         }
 
-        loadFXML(destination, data);
+        loadFxml(destination, data);
     }
 
-    private void loadFXML(String destination, Object data) {
+    private void loadFxml(String destination, Object data) {
         String path = "/fxml/" + destination + ".fxml";
-
         try {
             System.out.println("DEBUG: Loading FXML from " + path);
 
@@ -57,20 +57,22 @@ public abstract class BaseController {
                 bundle = localeManager.getBundle();
             } catch (MissingResourceException e) {
                 System.err.println(
-                        "ERROR: ResourceBundle is invalid in BaseController.switchScene. Defaulting to en_US");
-                bundle = ResourceBundle.getBundle("Messages", new Locale("en", "US"));
+                        "ERROR: ResourceBundle is invalid in BaseController.switchScene. "
+                                + "Defaulting to en_US");
+                bundle = ResourceBundle.getBundle("Messages",
+                        new Locale("en", "US"));
             }
 
-            FXMLLoader fxmlLoader = new FXMLLoader(BaseController.class.getResource(path));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(path));
             fxmlLoader.setResources(bundle);
-
             Parent root = fxmlLoader.load();
             BaseController controller = fxmlLoader.getController();
+            Stage stage1 = guiContext.getStage();
 
             if (controller != null) {
-                controller.setStage(this.stage);
+                controller.setStage(stage1);
             } else {
-                logError("Controller is null in BaseController.switchScene");
+                logError("Controller is null in fxmlLoader");
             }
 
             if (data != null
@@ -89,19 +91,19 @@ public abstract class BaseController {
                 }
             }
 
-            if (this.stage != null) {
-                this.stage.setScene(new Scene(root));
-                this.stage.show();
-            } else {
-                logError("Stage is null in BaseController.switchScene");
+            try {
+                stage1.setScene(new Scene(root));
+                stage1.show();
+            } catch (NullPointerException e) {
+                System.err.println(e.getMessage());
             }
+
 
         } catch (IOException e) {
             logError("Failed to load FXML: " + e.getMessage());
             showAlert(Alert.AlertType.ERROR, "error_title", "cannot_load_view");
         }
     }
-
 
     protected void showAlert(Alert.AlertType alertType, String title, String message) {
         Alert alert = new Alert(alertType);
@@ -115,7 +117,7 @@ public abstract class BaseController {
         System.err.println("ERROR: " + message);
     }
 
-    private String handleProfileSwitch(GUIContext context, String destination) {
+    private String handleProfileSwitch(GuiContext context, String destination) {
         if (!context.isUser() && !context.isGuest()) {
             logError("No user data found in BaseController.switchScene");
             showAlert(Alert.AlertType.ERROR, "error_title", "no_user_data");
@@ -127,7 +129,7 @@ public abstract class BaseController {
         return destination;
     }
 
-    private void handleOptionsSwitch(GUIContext context) {
+    private void handleOptionsSwitch(GuiContext context) {
         if (context.isGuest()) {
             guestController.deleteGuest(context.getGuest());
         }

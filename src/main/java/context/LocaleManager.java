@@ -5,7 +5,7 @@ import java.util.ResourceBundle;
 
 public class LocaleManager {
     private static LocaleManager instance;
-    private final GUIContext guiContext = GUIContext.getInstance();
+    private final GuiContext guiContext = GuiContext.getInstance();
     private Locale locale;
     private ResourceBundle bundle;
 
@@ -15,7 +15,7 @@ public class LocaleManager {
         this.bundle = ResourceBundle.getBundle("Messages", locale);
     }
 
-    public synchronized static LocaleManager getInstance() {
+    public static synchronized LocaleManager getInstance() {
         if (instance == null) {
             instance = new LocaleManager();
         }

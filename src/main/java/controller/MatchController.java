@@ -1,6 +1,6 @@
 package controller;
 
-import context.GUIContext;
+import context.GuiContext;
 import jakarta.persistence.EntityManager;
 import java.util.List;
 import model.Match;
@@ -10,7 +10,7 @@ import service.MatchService;
 public class MatchController {
 
     private final MatchService matchService;
-    private final GUIContext context = GUIContext.getInstance();
+    private final GuiContext context = GuiContext.getInstance();
 
     public MatchController() {
         matchService = new MatchService();
@@ -26,7 +26,8 @@ public class MatchController {
         Match match = matchService.findMatchById(id);
         if (match != null) {
             System.out.println("Match found: "
-                    + match.getParticipant1().getDisplayName(context.getLanguage()) + " + "
+                    + match.getParticipant1().getDisplayName(context.getLanguage())
+                    + " + "
                     + match.getParticipant2().getDisplayName(context.getLanguage()));
         } else {
             System.out.println("Match not found");
@@ -37,7 +38,8 @@ public class MatchController {
     public List<Match> displayAllMatches() {
         List<Match> matches = matchService.findAllMatches();
         for (Match m : matches) {
-            System.out.println(m.getParticipant1().getDisplayName(context.getLanguage()) + " + "
+            System.out.println(m.getParticipant1().getDisplayName(context.getLanguage())
+                    + " + "
                     + m.getParticipant2().getDisplayName(context.getLanguage()));
         }
         return matches;
@@ -46,7 +48,8 @@ public class MatchController {
     public List<Match> displayAllByParticipant(Participant participant) {
         List<Match> matches = matchService.findByParticipant(participant);
         for (Match m : matches) {
-            System.out.println(m.getParticipant1().getDisplayName(context.getLanguage()) + " + "
+            System.out.println(m.getParticipant1().getDisplayName(context.getLanguage())
+                    + " + "
                     + m.getParticipant2().getDisplayName(context.getLanguage()));
         }
         return matches;

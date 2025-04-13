@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="852.0" prefWidth="393.0" styleClass="edit-profile"
             stylesheets="@/css/edit_profile.css" xmlns="http://javafx.com/javafx/22"
-            fx:controller="controller.view_controllers.EditProfileController">
+            fx:controller="controller.viewControllers.EditProfileController">
     <Pane prefHeight="556.0" prefWidth="393.0" styleClass="tausta"/>
     <Pane layoutY="196.0" prefHeight="656.0" prefWidth="393.0" styleClass="rectangle15">
         <Pane layoutX="39.0" layoutY="56.0" prefHeight="444.0" prefWidth="315.0">
@@ -34,19 +34,19 @@
         </ImageView>
     </Pane>
     <Pane layoutY="765.0" prefHeight="87" prefWidth="393" styleClass="bottom-nav">
-        <ImageView fx:id="homeIcon" fitHeight="45.0" fitWidth="42.0" layoutX="45" layoutY="23.0"
+        <ImageView fx:id="homeIcon" styleClass="nav-icon" fitHeight="45.0" fitWidth="42.0" layoutX="45" layoutY="23.0"
                    onMouseClicked="#handleHomeClick" pickOnBounds="true" preserveRatio="true">
             <Image url="@/images/home_icon.png"/>
         </ImageView>
-        <ImageView fx:id="profileIcon" fitHeight="45.0" fitWidth="42.0" layoutX="132" layoutY="23.0"
+        <ImageView fx:id="profileIcon" styleClass="nav-icon" fitHeight="45.0" fitWidth="42.0" layoutX="132" layoutY="23.0"
                    onMouseClicked="#handleProfileClick" pickOnBounds="true" preserveRatio="true">
             <Image url="@/images/profile_icon.png"/>
         </ImageView>
-        <ImageView fx:id="backIcon" fitHeight="45.0" fitWidth="42.0" layoutX="219" layoutY="23.0"
+        <ImageView fx:id="backIcon" styleClass="nav-icon" fitHeight="45.0" fitWidth="42.0" layoutX="219" layoutY="23.0"
                    onMouseClicked="#handleBackClick" pickOnBounds="true" preserveRatio="true">
             <Image url="@/images/back_icon.png"/>
         </ImageView>
-        <ImageView fx:id="helpIcon" fitHeight="45.0" fitWidth="42.0" layoutX="306" layoutY="23.0"
+        <ImageView fx:id="helpIcon" styleClass="nav-icon" fitHeight="45.0" fitWidth="42.0" layoutX="306" layoutY="23.0"
                    onMouseClicked="#handleHelpClick" pickOnBounds="true" preserveRatio="true">
             <Image url="@/images/help_icon.png"/>
         </ImageView>

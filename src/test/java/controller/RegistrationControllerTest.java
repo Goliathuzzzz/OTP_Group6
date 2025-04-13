@@ -7,7 +7,8 @@ import static org.mockito.Mockito.when;
 import static org.testfx.api.FxAssert.verifyThat;
 import static org.testfx.util.NodeQueryUtils.isVisible;
 
-import controller.view_controllers.RegistrationController;
+import context.GuiContext;
+import controller.viewControllers.RegistrationController;
 import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -43,7 +44,7 @@ public class RegistrationControllerTest extends ApplicationTest {
         FXMLLoader loader = new FXMLLoader(fxmlLocation, bundle);
         root = loader.load();
         controller = loader.getController();
-        controller.setuController(userController);
+        controller.setUserController(userController);
         if (controller != null) {
             ((BaseController) controller).setStage(stage);
         }

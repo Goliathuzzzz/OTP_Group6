@@ -5,7 +5,7 @@
 <Pane xmlns:fx="http://javafx.com/fxml/1"
       xmlns="http://javafx.com/javafx/23.0.1"
       styleClass="group-67"
-      fx:controller="controller.view_controllers.PairItemController">
+      fx:controller="controller.viewControllers.PairItemController">
     <Pane styleClass="rectangle-20"/>
     <Label fx:id="nameLabel1" layoutX="30" layoutY="20" styleClass="text-style"/>
     <Label fx:id="nameLabel2" layoutX="200" layoutY="20" styleClass="text-style"/>

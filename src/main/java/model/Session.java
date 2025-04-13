@@ -12,13 +12,13 @@ import model.categories.Sports;
 
 // Tarvitseeko edes laittaa tietokantaan?
 // On nyt se tapahtuma jossa valitaan kiinnostuksenkohteet näytöltä
-public final class Session {
+public class Session {
     // Jotta kategoriat saadaan viewhun
-    private final static List<Animal> animals = List.copyOf(EnumSet.allOf(Animal.class));
-    private final static List<Food> foods = List.copyOf(EnumSet.allOf(Food.class));
-    private final static List<Hobby> hobbies = List.copyOf(EnumSet.allOf(Hobby.class));
-    private final static List<Science> sciences = List.copyOf(EnumSet.allOf(Science.class));
-    private final static List<Sports> sports = List.copyOf(EnumSet.allOf(Sports.class));
+    private static final  List<Animal> animals = List.copyOf(EnumSet.allOf(Animal.class));
+    private static final  List<Food> foods = List.copyOf(EnumSet.allOf(Food.class));
+    private static final  List<Hobby> hobbies = List.copyOf(EnumSet.allOf(Hobby.class));
+    private static final  List<Science> sciences = List.copyOf(EnumSet.allOf(Science.class));
+    private static final  List<Sports> sports = List.copyOf(EnumSet.allOf(Sports.class));
 
     private final Participant participant;
     private final List<Category> participantInterests;
