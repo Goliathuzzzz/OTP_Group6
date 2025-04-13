@@ -10,10 +10,7 @@ import model.categories.Hobby;
 import model.categories.Science;
 import model.categories.Sports;
 
-// Tarvitseeko edes laittaa tietokantaan?
-// On nyt se tapahtuma jossa valitaan kiinnostuksenkohteet näytöltä
-public class Session {
-    // Jotta kategoriat saadaan viewhun
+public final class Session {
     private static final  List<Animal> animals = List.copyOf(EnumSet.allOf(Animal.class));
     private static final  List<Food> foods = List.copyOf(EnumSet.allOf(Food.class));
     private static final  List<Hobby> hobbies = List.copyOf(EnumSet.allOf(Hobby.class));
@@ -52,7 +49,6 @@ public class Session {
         return sports;
     }
 
-    // Nämä valintabokseja varten
     public void addParticipantInterest(Category interest) {
         participantInterests.add(interest);
     }
@@ -61,7 +57,6 @@ public class Session {
         participantInterests.remove(interest);
     }
 
-    // Matcheria varten
     public List<Category> getParticipantInterests() {
         return participantInterests;
     }
