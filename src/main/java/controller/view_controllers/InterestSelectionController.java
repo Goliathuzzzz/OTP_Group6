@@ -1,11 +1,11 @@
 package controller.view_controllers;
 
 import controller.BaseController;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -35,7 +35,6 @@ public class InterestSelectionController extends BaseController {
             "sports", Session.getSports(),
             "science", Session.getSciences()
     );
-    private final List<RadioButton> allRadioButtons = new ArrayList<>();
     private final ResourceBundle bundle = localeManager.getBundle();
     @FXML
     private VBox optionsContainer; //holds dynamically generated options
@@ -58,16 +57,16 @@ public class InterestSelectionController extends BaseController {
     private void initialize() {
         session = guiContext.getSession();
         if (session == null || session.getParticipant() == null) {
-            System.err.println(
-                    "ERROR: Session or participant is null "
-                            + "in InterestSelectionController initialize()");
+            logger.log(Level.SEVERE, "ERROR: Session or participant is null "
+                    + "in InterestSelectionController initialize()");
         }
         Platform.runLater(() -> {
             Stage stage = (Stage) interestSelectionPane.getScene().getWindow();
             if (stage != null) {
                 stage.setTitle(bundle.getString("interest_selection"));
             } else {
-                System.err.println("Stage is null in InterestSelectionController initialize()");
+                logger.log(Level.SEVERE, "Stage is null in "
+                        + "InterestSelectionController initialize()");
             }
         });
     }
@@ -79,8 +78,8 @@ public class InterestSelectionController extends BaseController {
 
     @FXML
     private void handleContinue() {
-        System.out.println("DEBUG: handleContinue() called.");
-        System.out.println("DEBUG: stage is " + (stage == null ? "NULL" : "SET"));
+        logger.info("DEBUG: handleContinue() called.");
+        logger.log(Level.INFO, "DEBUG: stage is {}", (stage == null ? "NULL" : "SET"));
         loadNextCategory();
     }
 
@@ -95,7 +94,6 @@ public class InterestSelectionController extends BaseController {
 
     public void setInterests(List<? extends Category> interests) {
         optionsContainer.getChildren().clear();
-        allRadioButtons.clear();
         for (Category interest : interests) {
             optionsContainer.getChildren().add(createOptionPane(interest));
         }
@@ -130,10 +128,9 @@ public class InterestSelectionController extends BaseController {
                 session.removeParticipantInterest(interest);
                 removeInterestByCategory(getParticipant(), interest);
             }
-            System.out.println("Current Selection: " + session.getParticipantInterests());
+            logger.info("Current Selection: " + session.getParticipantInterests());
         });
 
-        allRadioButtons.add(radioButton);
         return radioButton;
     }
 
@@ -148,7 +145,7 @@ public class InterestSelectionController extends BaseController {
             labelName = interest.toString();
         }
 
-        System.out.println("localized name: " + labelName);
+        logger.log(Level.INFO, "localized name: {}", labelName);
 
         Label label = new Label(labelName);
         label.setLayoutX(80);
@@ -159,7 +156,7 @@ public class InterestSelectionController extends BaseController {
 
     public void setCategory(String category) {
         this.currentCategory = category;
-        System.out.println("Current category set to: " + category);
+        logger.log(Level.INFO, "Current category set to: {}", category);
     }
 
     public void loadInterests(String category) {
@@ -170,29 +167,27 @@ public class InterestSelectionController extends BaseController {
 
     private void addInterestByCategory(Participant participant, Category interest) {
         if (participant == null) {
-            System.err.println(
-                    "ERROR: Participant is null "
-                            + "in InterestSelectionController addInterestByCategory()");
+            logger.log(Level.SEVERE, "ERROR: Participant is null "
+                    + "in InterestSelectionController addInterestByCategory()");
             return;
         }
-        if (interest instanceof Animal) {
-            participant.addAnimalInterest((Animal) interest);
-        } else if (interest instanceof Food) {
-            participant.addFoodInterest((Food) interest);
-        } else if (interest instanceof Hobby) {
-            participant.addHobbiesInterest((Hobby) interest);
-        } else if (interest instanceof Science) {
-            participant.addScienceInterest((Science) interest);
-        } else if (interest instanceof Sports) {
-            participant.addSportsInterest((Sports) interest);
+        if (interest instanceof Animal animal) {
+            participant.addAnimalInterest(animal);
+        } else if (interest instanceof Food food) {
+            participant.addFoodInterest(food);
+        } else if (interest instanceof Hobby hobby) {
+            participant.addHobbiesInterest(hobby);
+        } else if (interest instanceof Science science) {
+            participant.addScienceInterest(science);
+        } else if (interest instanceof Sports sports) {
+            participant.addSportsInterest(sports);
         }
     }
 
     private void removeInterestByCategory(Participant participant, Category interest) {
         if (participant == null) {
-            System.err.println(
-                    "ERROR: Participant is null "
-                            + "in InterestSelectionController removeInterestByCategory()");
+            logger.log(Level.SEVERE, "ERROR: Participant is null "
+                    + "in InterestSelectionController removeInterestByCategory()");
             return;
         }
         if (interest instanceof Animal) {
