@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -35,7 +36,7 @@ public class AdminUsersController extends BaseController implements Initializabl
             if (stage != null) {
                 stage.setTitle(bundle.getString("admin_users"));
             } else {
-                System.out.println("Stage is null in AdminUsersController initialize()");
+                logger.info("Stage is null in AdminUsersController initialize()");
             }
         });
     }
@@ -77,7 +78,7 @@ public class AdminUsersController extends BaseController implements Initializabl
             userItemNode.setUserData(controller);
             return userItemNode;
         } catch (IOException e) {
-            System.err.println("Error loading user item: " + e.getMessage());
+            logger.log(Level.SEVERE, "Error loading user item: {}", e.getMessage());
             return null;
         }
     }
