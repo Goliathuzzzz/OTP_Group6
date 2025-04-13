@@ -29,7 +29,7 @@
                    styleClass="lang-label"/>
         </Pane>
         <ImageView fx:id="backIcon1" fitHeight="21.0" fitWidth="16" layoutX="40.0" layoutY="25.0"
-                   onMouseClicked="#handlePreviousClick" pickOnBounds="true" styleClass="back-icon">
+                   onMouseClicked="#handleSwitchToProfile" pickOnBounds="true" styleClass="back-icon">
             <Image url="@/images/Icon.png"/>
         </ImageView>
     </Pane>
@@ -39,7 +39,7 @@
             <Image url="@/images/home_icon.png"/>
         </ImageView>
         <ImageView fx:id="profileIcon" styleClass="nav-icon" fitHeight="45.0" fitWidth="42.0" layoutX="132" layoutY="23.0"
-                   onMouseClicked="#handleProfileClick" pickOnBounds="true" preserveRatio="true">
+                   onMouseClicked="#handleSwitchToProfile" pickOnBounds="true" preserveRatio="true">
             <Image url="@/images/profile_icon.png"/>
         </ImageView>
         <ImageView fx:id="backIcon" styleClass="nav-icon" fitHeight="45.0" fitWidth="42.0" layoutX="219" layoutY="23.0"

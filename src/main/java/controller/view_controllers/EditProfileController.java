@@ -14,7 +14,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import util.SceneNames;
 
@@ -22,6 +21,8 @@ public class EditProfileController extends BaseController {
 
     private final ResourceBundle bundle = localeManager.getBundle();
     private UserController userController = new UserController();
+    private static final String SAVE_TITLE = "save_title";
+    private static final String CHANGES_SAVED = "changes_saved";
     @FXML
     private ImageView profileImage, homeIcon, profileIcon, backIcon, helpIcon, backIcon1;
     @FXML
@@ -46,13 +47,13 @@ public class EditProfileController extends BaseController {
                 if (stage != null) {
                     stage.setTitle(bundle.getString("edit"));
                 } else {
-                    System.err.println("Stage is null in EditProfileController initialize()");
+                    logger.info("Stage is null in EditProfileController initialize()");
                 }
             });
         } else {
             showAlert(Alert.AlertType.ERROR, bundle.getString("error_title"),
                     bundle.getString("no_user_data"));
-            System.err.println("ERROR: No logged in user data found");
+            logger.info("ERROR: No logged in user data found");
         }
     }
 
@@ -66,31 +67,25 @@ public class EditProfileController extends BaseController {
     }
 
     @FXML
-    public void handlePreviousClick(MouseEvent event) {
-        showAlert(Alert.AlertType.INFORMATION, bundle.getString("save_title"),
-                bundle.getString("changes_saved"));
+    public void handleSwitchToProfile() {
+        showAlert(Alert.AlertType.INFORMATION, bundle.getString(SAVE_TITLE),
+                bundle.getString(CHANGES_SAVED));
         saveChanges();
         switchScene(SceneNames.PROFILE);
     }
 
+    @Override
     @FXML
-    public void handleHomeClick(MouseEvent event) {
+    public void handleHomeClick() {
         saveChanges();
         switchScene(SceneNames.BEGIN_SESSION);
     }
 
+    @Override
     @FXML
-    public void handleProfileClick(MouseEvent event) {
-        showAlert(Alert.AlertType.INFORMATION, bundle.getString("save_title"),
-                bundle.getString("changes_saved"));
-        saveChanges();
-        switchScene(SceneNames.PROFILE);
-    }
-
-    @FXML
-    public void handleBackClick(MouseEvent event) {
-        showAlert(Alert.AlertType.INFORMATION, bundle.getString("save_title"),
-                bundle.getString("changes_saved"));
+    public void handleBackClick() {
+        showAlert(Alert.AlertType.INFORMATION, bundle.getString(SAVE_TITLE),
+                bundle.getString(CHANGES_SAVED));
         saveChanges();
         switchScene(SceneNames.OPTIONS);
     }
@@ -98,12 +93,10 @@ public class EditProfileController extends BaseController {
     private void handleLang() {
         LocaleManager localeManager = LocaleManager.getInstance();
         Locale locale = localeManager.getLocale();
-        if ("ja".equals(locale.getLanguage())) {
-            routeToLang.setLayoutX(200);
-        } else if ("zh".equals(locale.getLanguage())) {
-            routeToLang.setLayoutX(220);
-        } else if ("en".equals(locale.getLanguage())) {
-            routeToLang.setLayoutX(160);
+        switch (locale.getLanguage()) {
+            case "ja" -> routeToLang.setLayoutX(200);
+            case "zh" -> routeToLang.setLayoutX(220);
+            default -> routeToLang.setLayoutX(160);
         }
     }
 
@@ -112,7 +105,7 @@ public class EditProfileController extends BaseController {
         this.userController = userController;
     }
 
-    public void routeToLang(MouseEvent event) {
+    public void routeToLang() {
         switchScene(SceneNames.LANGUAGE);
     }
 }
