@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="852" prefWidth="393" styleClass="profile"
             stylesheets="@/css/admin_home.css" xmlns="http://javafx.com/javafx/23.0.1"
-            fx:controller="controller.viewControllers.AdminHomeController" fx:id="adminHomePane">
+            fx:controller="controller.view_controllers.AdminHomeController" fx:id="adminHomePane">
     <Pane prefHeight="556" prefWidth="393" styleClass="tausta"/>
     <Pane layoutY="95.0" prefHeight="757.0" prefWidth="393" styleClass="rectangle15">
         <Pane layoutY="670.0" prefHeight="87" prefWidth="393" styleClass="bottom-nav">

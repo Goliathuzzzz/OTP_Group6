@@ -12,12 +12,12 @@
 <body onload="window['PR_TAB_WIDTH']=4;prettyPrint()">
 <div class="breadcrumb" id="breadcrumb"><span class="info"><a class="el_session"
                                                               href="../jacoco-sessions.html">Sessions</a></span><a
-        class="el_report" href="../index.html">OT_Project</a> &gt; <a class="el_package" href="index.source.html">controller.viewControllers</a>
+        class="el_report" href="../index.html">OT_Project</a> &gt; <a class="el_package" href="index.source.html">controller.view_controllers</a>
     &gt; <span class="el_source">InterestSelectionController.java</span></div>
 <h1>InterestSelectionController.java</h1>
-<pre class="source lang-java linenums">package controller.viewControllers;
+<pre class="source lang-java linenums">package controller.view_controllers;
 
-import context.GuiContext;
+import guiContext.GuiContext;
 import controller.BaseController;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -52,14 +52,14 @@ import java.util.*;
 
     private String currentCategory;
 <span class="fc" id="L37">    private final List&lt;RadioButton&gt; allRadioButtons = new ArrayList&lt;&gt;();</span>
-<span class="fc" id="L38">    private final GUIContext context = GUIContext.getInstance();</span>
+<span class="fc" id="L38">    private final GUIContext guiContext = GUIContext.getInstance();</span>
     private Session session;
 
     private Participant getParticipant() {
-<span class="pc bpc" id="L42" title="1 of 2 branches missed.">        if (context.isUser()) {</span>
-<span class="fc" id="L43">            return context.getUser();</span>
-<span class="nc bnc" id="L44" title="All 2 branches missed.">        } else if (context.isGuest()) {</span>
-<span class="nc" id="L45">            return context.getGuest();</span>
+<span class="pc bpc" id="L42" title="1 of 2 branches missed.">        if (guiContext.isUser()) {</span>
+<span class="fc" id="L43">            return guiContext.getUser();</span>
+<span class="nc bnc" id="L44" title="All 2 branches missed.">        } else if (guiContext.isGuest()) {</span>
+<span class="nc" id="L45">            return guiContext.getGuest();</span>
         } else {
 <span class="nc" id="L47">            return null;</span>
         }
@@ -67,7 +67,7 @@ import java.util.*;
 
     @FXML
     private void initialize() {
-<span class="fc" id="L53">        session = context.getSession();</span>
+<span class="fc" id="L53">        session = guiContext.getSession();</span>
 <span class="pc bpc" id="L54" title="2 of 4 branches missed.">        if (session == null || session.getParticipant() == null) {</span>
 <span class="nc" id="L55">            System.err.println(&quot;ERROR: Session or participant is null in InterestSelectionController initialize()&quot;);</span>
         }

@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import context.GuiContext;
-import controller.viewControllers.WelcomeController;
+import guiContext.GuiContext;
+import controller.view_controllers.WelcomeController;
 import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;

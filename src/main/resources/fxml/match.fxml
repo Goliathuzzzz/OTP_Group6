@@ -9,7 +9,7 @@
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="852.0" prefWidth="393.0" fx:id="matchPane"
             styleClass="edit-profile"
             stylesheets="@/css/match.css" xmlns="http://javafx.com/javafx/23.0.1"
-            fx:controller="controller.viewControllers.MatchViewController">
+            fx:controller="controller.view_controllers.MatchViewController">
     <Pane fx:id="paperGradient" layoutY="-2" prefHeight="854" prefWidth="392" styleClass="paper-gradient"/>
     <Pane fx:id="paperTexture" prefHeight="852.0" prefWidth="393.0" styleClass="paper-texture">
         <Label layoutX="39.0" layoutY="80.0" styleClass="loysit" text="%you_found_a_match"/>

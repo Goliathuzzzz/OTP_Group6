@@ -12,12 +12,12 @@
 <body onload="window['PR_TAB_WIDTH']=4;prettyPrint()">
 <div class="breadcrumb" id="breadcrumb"><span class="info"><a class="el_session"
                                                               href="../jacoco-sessions.html">Sessions</a></span><a
-        class="el_report" href="../index.html">OT_Project</a> &gt; <a class="el_package" href="index.source.html">controller.viewControllers</a>
+        class="el_report" href="../index.html">OT_Project</a> &gt; <a class="el_package" href="index.source.html">controller.view_controllers</a>
     &gt; <span class="el_source">BeginSessionController.java</span></div>
 <h1>BeginSessionController.java</h1>
-<pre class="source lang-java linenums">package controller.viewControllers;
+<pre class="source lang-java linenums">package controller.view_controllers;
 
-import context.GuiContext;
+import guiContext.GuiContext;
 import controller.BaseController;
 import javafx.animation.ScaleTransition;
 import javafx.application.Platform;
@@ -73,13 +73,13 @@ import util.SceneNames;
 
     @FXML
     private void handleBeginSessionClick(MouseEvent event) {
-<span class="nc" id="L59">        GUIContext context = GUIContext.getInstance();</span>
-<span class="nc bnc" id="L60" title="All 2 branches missed.">        Participant participant = context.isUser() ? context.getUser() :</span>
-<span class="nc bnc" id="L61" title="All 2 branches missed.">                context.isGuest() ? context.getGuest() : null;</span>
+<span class="nc" id="L59">        GUIContext guiContext = GUIContext.getInstance();</span>
+<span class="nc bnc" id="L60" title="All 2 branches missed.">        Participant participant = guiContext.isUser() ? guiContext.getUser() :</span>
+<span class="nc bnc" id="L61" title="All 2 branches missed.">                guiContext.isGuest() ? guiContext.getGuest() : null;</span>
 <span class="nc bnc" id="L62" title="All 2 branches missed.">        if (participant != null) {</span>
-<span class="nc" id="L63">            context.setSession(new Session(participant));</span>
+<span class="nc" id="L63">            guiContext.setSession(new Session(participant));</span>
             // reset participant interests
-<span class="nc" id="L65">            context.getSession().getParticipant().clearInterests();</span>
+<span class="nc" id="L65">            guiContext.getSession().getParticipant().clearInterests();</span>
 <span class="nc" id="L66">            switchScene(SceneNames.SESSION);</span>
         } else {
 <span class="nc" id="L68">            System.err.println(&quot;No user or guest found in GUIContext&quot;);</span>

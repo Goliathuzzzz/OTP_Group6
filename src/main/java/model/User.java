@@ -1,6 +1,6 @@
 package model;
 
-import context.LocaleManager;
+import guiContext.LocaleManager;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

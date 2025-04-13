@@ -1,8 +1,8 @@
 package controller;
 
-import context.GuiContext;
-import context.LocaleManager;
-import controller.viewControllers.InterestSelectionController;
+import guiContext.GuiContext;
+import guiContext.LocaleManager;
+import controller.view_controllers.InterestSelectionController;
 import java.io.IOException;
 import java.util.Locale;
 import java.util.MissingResourceException;
@@ -20,8 +20,8 @@ public abstract class BaseController {
 
     protected Stage stage;
     protected GuestController guestController = new GuestController();
-    LocaleManager localeManager = LocaleManager.getInstance();
-    GuiContext guiContext = GuiContext.getInstance();
+    protected LocaleManager localeManager = LocaleManager.getInstance();
+    protected GuiContext guiContext = GuiContext.getInstance();
 
     public void setStage(Stage stage) {
         this.stage = stage;

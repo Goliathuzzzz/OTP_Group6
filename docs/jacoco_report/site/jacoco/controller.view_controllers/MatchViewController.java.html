@@ -12,12 +12,12 @@
 <body onload="window['PR_TAB_WIDTH']=4;prettyPrint()">
 <div class="breadcrumb" id="breadcrumb"><span class="info"><a class="el_session"
                                                               href="../jacoco-sessions.html">Sessions</a></span><a
-        class="el_report" href="../index.html">OT_Project</a> &gt; <a class="el_package" href="index.source.html">controller.viewControllers</a>
+        class="el_report" href="../index.html">OT_Project</a> &gt; <a class="el_package" href="index.source.html">controller.view_controllers</a>
     &gt; <span class="el_source">MatchViewController.java</span></div>
 <h1>MatchViewController.java</h1>
-<pre class="source lang-java linenums">package controller.viewControllers;
+<pre class="source lang-java linenums">package controller.view_controllers;
 
-import context.GuiContext;
+import guiContext.GuiContext;
 import controller.BaseController;
 import javafx.animation.ScaleTransition;
 import javafx.application.Platform;
@@ -54,7 +54,7 @@ import static util.ProfilePictureUtil.getProfilePictureView;
     @FXML
     private AnchorPane matchPane;
 
-<span class="nc" id="L40">    GUIContext context = GUIContext.getInstance();</span>
+<span class="nc" id="L40">    GUIContext guiContext = GUIContext.getInstance();</span>
 
     @FXML
     public void initialize() {
@@ -72,15 +72,15 @@ import static util.ProfilePictureUtil.getProfilePictureView;
 <span class="nc" id="L55">    }</span>
 
     private void loadProfileImages() {
-<span class="nc bnc" id="L58" title="All 4 branches missed.">        if (context.getMatches().isEmpty() || context.getMatches().getLast() == null) {</span>
+<span class="nc bnc" id="L58" title="All 4 branches missed.">        if (guiContext.getMatches().isEmpty() || guiContext.getMatches().getLast() == null) {</span>
 <span class="nc" id="L59">            System.err.println(&quot;ERROR: Match is null in MatchViewController initialize()&quot;);</span>
 <span class="nc" id="L60">            placeholderProfile1.setImage(null);</span>
 <span class="nc" id="L61">            placeholderProfile2.setImage(null);</span>
 <span class="nc" id="L62">            detailsButton.setDisable(true);</span>
 <span class="nc" id="L63">            return;</span>
         }
-<span class="nc" id="L65">        int profile1Id = context.getId();</span>
-<span class="nc" id="L66">        int profile2Id = context.getMatches().getLast().getParticipant2().getId();</span>
+<span class="nc" id="L65">        int profile1Id = guiContext.getId();</span>
+<span class="nc" id="L66">        int profile2Id = guiContext.getMatches().getLast().getParticipant2().getId();</span>
 
 <span class="nc" id="L68">        ImageView profile1 = getProfilePictureView(profile1Id, 200, 200);</span>
 <span class="nc" id="L69">        ImageView profile2 = getProfilePictureView(profile2Id, 200, 200);</span>

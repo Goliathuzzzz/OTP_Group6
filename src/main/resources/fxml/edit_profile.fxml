@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="852.0" prefWidth="393.0" styleClass="edit-profile"
             stylesheets="@/css/edit_profile.css" xmlns="http://javafx.com/javafx/22"
-            fx:controller="controller.viewControllers.EditProfileController">
+            fx:controller="controller.view_controllers.EditProfileController">
     <Pane prefHeight="556.0" prefWidth="393.0" styleClass="tausta"/>
     <Pane layoutY="196.0" prefHeight="656.0" prefWidth="393.0" styleClass="rectangle15">
         <Pane layoutX="39.0" layoutY="56.0" prefHeight="444.0" prefWidth="315.0">

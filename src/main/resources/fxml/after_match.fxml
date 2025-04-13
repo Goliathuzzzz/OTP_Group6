@@ -9,7 +9,7 @@
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="852" prefWidth="393" fx:id="afterMatchPane"
             styleClass="edit-profile"
             stylesheets="@/css/after_match.css" xmlns="http://javafx.com/javafx/23.0.1"
-            fx:controller="controller.viewControllers.AfterMatchController">
+            fx:controller="controller.view_controllers.AfterMatchController">
 
     <!-- Background Image -->
     <Pane prefHeight="556" prefWidth="393" styleClass="tausta">

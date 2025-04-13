@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="852" prefWidth="393" fx:id="sessionPane" styleClass="profile"
             stylesheets="@/css/session.css" xmlns="http://javafx.com/javafx/23.0.1"
-            fx:controller="controller.viewControllers.SessionController">
+            fx:controller="controller.view_controllers.SessionController">
     <Pane prefHeight="556" prefWidth="393" styleClass="tausta"/>
     <Pane layoutY="95.0" prefHeight="757.0" prefWidth="393" styleClass="rectangle15">
         <Button fx:id="readyButton" layoutX="39.0" layoutY="570.0" prefHeight="50.0" prefWidth="315.0"

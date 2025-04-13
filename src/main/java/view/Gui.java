@@ -1,7 +1,7 @@
 package view;
 
-import context.GuiContext;
-import context.LocaleManager;
+import guiContext.GuiContext;
+import guiContext.LocaleManager;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import javafx.application.Application;

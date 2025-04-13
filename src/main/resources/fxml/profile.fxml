@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="852" prefWidth="393" styleClass="profile"
             stylesheets="@/css/profile.css" xmlns="http://javafx.com/javafx/22"
-            fx:controller="controller.viewControllers.ProfileController" fx:id="profilePane">
+            fx:controller="controller.view_controllers.ProfileController" fx:id="profilePane">
     <Pane prefHeight="556" prefWidth="393" styleClass="tausta"/>
     <Pane layoutY="196" prefHeight="656" prefWidth="393" styleClass="rectangle15">
         <Pane layoutY="569.0" prefHeight="87" prefWidth="393" styleClass="bottom-nav">
