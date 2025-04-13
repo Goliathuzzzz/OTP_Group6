@@ -3,7 +3,6 @@ package controller.view_controllers;
 import static util.ProfilePictureUtil.getProfilePictureView;
 
 import gui_context.GuiContext;
-import gui_context.LocaleManager;
 import controller.BaseController;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
@@ -51,7 +50,7 @@ public class AdminProfileController extends BaseController {
             if (stage != null) {
                 stage.setTitle(bundle.getString("admin_profile"));
             } else {
-                System.out.println("Stage is null in AdminProfileController initialize()");
+                logger.info("Stage is null in AdminProfileController initialize()");
             }
         });
     }
