@@ -23,7 +23,7 @@
                        onMouseClicked="#handleProfileClick" pickOnBounds="true" preserveRatio="true">
                 <Image url="@/images/profile_icon.png"/>
             </ImageView>
-            <ImageView fx:id="backIcon" styleClass="nav-icon"fitHeight="45.0" fitWidth="42.0" layoutX="219" layoutY="23.0"
+            <ImageView fx:id="backIcon" styleClass="nav-icon" fitHeight="45.0" fitWidth="42.0" layoutX="219" layoutY="23.0"
                        onMouseClicked="#handleBackClick" pickOnBounds="true" preserveRatio="true">
                 <Image url="@/images/back_icon.png"/>
             </ImageView>

@@ -51,7 +51,7 @@ public abstract class BaseController {
 
     private void loadFxml(String destination, Object data) {
         String path = "/fxml/" + destination + ".fxml";
-        logger.log(Level.INFO, "Loading FXML: {}", path);
+        logger.log(Level.INFO, "Loading FXML: " + path);
         ResourceBundle bundle;
         try {
             bundle = localeManager.getBundle();
@@ -115,7 +115,7 @@ public abstract class BaseController {
     }
 
     private void logError(String message) {
-        logger.log(Level.INFO, "ERROR: {}", message);
+        logger.log(Level.INFO, "ERROR: " + message);
     }
 
     private String handleProfileSwitch(GuiContext context, String destination) {
