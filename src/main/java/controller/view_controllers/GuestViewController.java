@@ -11,6 +11,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.Guest;
@@ -63,5 +64,10 @@ public class GuestViewController extends BaseController {
 
     public void setGuestViewController(GuestController guestController) {
         this.guestController = guestController;
+    }
+
+    @FXML
+    private void handleBackClick(MouseEvent event) {
+        switchScene(SceneNames.OPTIONS);
     }
 }

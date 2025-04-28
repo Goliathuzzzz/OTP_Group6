@@ -12,9 +12,13 @@
             fx:controller="controller.view_controllers.GuestViewController" fx:id="guestPane">
     <Pane prefHeight="556.0" prefWidth="393.0" styleClass="tausta"/>
     <Pane layoutY="283" prefHeight="569" prefWidth="393" styleClass="rectangle15">
-        <Label layoutX="39.0" layoutY="39.0" prefHeight="50.0" prefWidth="180.0" styleClass="vierailija"
+        <ImageView fx:id="backIcon" fitHeight="21.0" fitWidth="16" layoutX="40.0" layoutY="25.0"
+                   onMouseClicked="#handleBackClick" pickOnBounds="true" styleClass="back-icon">
+            <Image url="@/images/Icon.png"/>
+        </ImageView>
+        <Label layoutX="39.0" layoutY="70.0" prefHeight="50.0" prefWidth="180.0" styleClass="vierailija"
                text="%guest"/>
-        <Pane layoutX="38.0" layoutY="120.0" prefHeight="288.0" prefWidth="315.0" styleClass="group18">
+        <Pane layoutX="38.0" layoutY="150.0" prefHeight="288.0" prefWidth="315.0" styleClass="group18">
             <Label fx:id="phoneLabel" layoutY="16.0" prefHeight="22.0" prefWidth="173.0" styleClass="puhelinnumero"
                    text="%phone_number"/>
             <TextField fx:id="phoneField" layoutY="55.0" prefHeight="46.0" prefWidth="315.0" styleClass="input-field"/>
@@ -23,24 +27,6 @@
             <ImageView fitHeight="38.0" fitWidth="34.0" layoutX="280.0" layoutY="183.0" pickOnBounds="true"
                        preserveRatio="true">
                 <Image url="@/images/hearts.png"/>
-            </ImageView>
-        </Pane>
-        <Pane layoutY="482.0" prefHeight="87" prefWidth="393" styleClass="bottom-nav">
-            <ImageView fx:id="homeIcon" styleClass="nav-icon" fitHeight="45.0" fitWidth="42.0" layoutX="45" layoutY="23.0"
-                       onMouseClicked="#handleHomeClick" pickOnBounds="true" preserveRatio="true">
-                <Image url="@/images/home_icon.png"/>
-            </ImageView>
-            <ImageView fx:id="profileIcon" styleClass="nav-icon" fitHeight="45.0" fitWidth="42.0" layoutX="132" layoutY="23.0"
-                       onMouseClicked="#handleProfileClick" pickOnBounds="true" preserveRatio="true">
-                <Image url="@/images/profile_icon.png"/>
-            </ImageView>
-            <ImageView fx:id="backIcon" styleClass="nav-icon" fitHeight="45.0" fitWidth="42.0" layoutX="219" layoutY="23.0"
-                       onMouseClicked="#handleBackClick" pickOnBounds="true" preserveRatio="true">
-                <Image url="@/images/back_icon.png"/>
-            </ImageView>
-            <ImageView fx:id="helpIcon" styleClass="nav-icon" fitHeight="45.0" fitWidth="42.0" layoutX="306" layoutY="23.0"
-                       onMouseClicked="#handleHelpClick" pickOnBounds="true" preserveRatio="true">
-                <Image url="@/images/help_icon.png"/>
             </ImageView>
         </Pane>
     </Pane>
