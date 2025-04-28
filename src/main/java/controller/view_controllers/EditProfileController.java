@@ -23,6 +23,8 @@ public class EditProfileController extends BaseController {
     private UserController userController = new UserController();
     private static final String SAVE_TITLE = "save_title";
     private static final String CHANGES_SAVED = "changes_saved";
+    private static final String SAVE_ERROR = "save_error";
+    private static final String UNABLE_TO_SAVE = "unable_to_save";
     @FXML
     private ImageView profileImage, homeIcon, profileIcon, backIcon, helpIcon, backIcon1;
     @FXML
@@ -58,18 +60,23 @@ public class EditProfileController extends BaseController {
     }
 
     private void saveChanges() {
-        if (guiContext.isUser()) {
-            guiContext.setUserName(nameField.getText());
-            guiContext.setUserEmail(emailField.getText());
-            guiContext.setUserPhoneNumber(phoneField.getText());
-            userController.updateUser(guiContext.getUser());
+        if (guiContext.isUser() && !nameField.getText().isEmpty() && !emailField.getText().isEmpty()
+                && !phoneField.getText().isEmpty()) {
+                guiContext.setUserName(nameField.getText());
+                guiContext.setUserEmail(emailField.getText());
+                guiContext.setUserPhoneNumber(phoneField.getText());
+                userController.updateUser(guiContext.getUser());
+                showAlert(Alert.AlertType.INFORMATION, bundle.getString(SAVE_TITLE),
+                    bundle.getString(CHANGES_SAVED));
+            }
+        else {
+            showAlert(Alert.AlertType.INFORMATION, bundle.getString(SAVE_ERROR),
+                    bundle.getString(UNABLE_TO_SAVE));
         }
     }
 
     @FXML
     public void handleSwitchToProfile() {
-        showAlert(Alert.AlertType.INFORMATION, bundle.getString(SAVE_TITLE),
-                bundle.getString(CHANGES_SAVED));
         saveChanges();
         switchScene(SceneNames.PROFILE);
     }
@@ -84,8 +91,6 @@ public class EditProfileController extends BaseController {
     @Override
     @FXML
     public void handleBackClick() {
-        showAlert(Alert.AlertType.INFORMATION, bundle.getString(SAVE_TITLE),
-                bundle.getString(CHANGES_SAVED));
         saveChanges();
         switchScene(SceneNames.OPTIONS);
     }
