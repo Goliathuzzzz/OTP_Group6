@@ -15,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -161,5 +162,38 @@ public class SessionController extends BaseController {
             sessionLabel.setScaleX(0.8);
             sessionLabel.setScaleY(0.8);
         }
+    }
+
+    private void confirmExit(String scene) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle(bundle.getString("exit_session"));
+        alert.setHeaderText(null);
+        alert.setContentText(
+                bundle.getString("confirm_exit_session"));
+        alert.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK) {
+                switchScene(scene);
+            }
+        });
+    }
+
+    @Override
+    public void handleHomeClick() {
+        confirmExit(SceneNames.BEGIN_SESSION);
+    }
+
+    @Override
+    public void handleProfileClick() {
+        confirmExit(SceneNames.PROFILE);
+    }
+
+    @Override
+    public void handleBackClick() {
+        confirmExit(SceneNames.OPTIONS);
+    }
+
+    @Override
+    public void handleHelpClick() {
+        confirmExit(SceneNames.HELP);
     }
 }
