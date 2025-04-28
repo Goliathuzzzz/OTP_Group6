@@ -119,7 +119,9 @@ public class InterestSelectionController extends BaseController {
         radioButton.setLayoutX(24);
         radioButton.setLayoutY(21);
         radioButton.getStyleClass().add("radio");
-
+        if (session.getParticipantInterests().contains(interest)) {
+            radioButton.setSelected(true);
+        }
         radioButton.setOnAction(event -> {
             if (radioButton.isSelected()) {
                 session.addParticipantInterest(interest);
