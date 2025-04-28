@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import util.SceneNames;
@@ -55,5 +56,10 @@ public class OptionsController extends BaseController {
             or.setLayoutX(190);
             speedDating.setLayoutX(115);
         }
+    }
+
+    @FXML
+    private void handleBackClick(MouseEvent event) {
+        switchScene(SceneNames.LANGUAGE);
     }
 }

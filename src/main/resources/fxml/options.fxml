@@ -14,44 +14,50 @@
     <ImageView fitHeight="556" fitWidth="393">
         <Image url="@/images/background.png"/>
     </ImageView>
-    <Pane fx:id="rectangle13" layoutY="283" prefHeight="569" prefWidth="393"/>
+    <Pane fx:id="rectangle13" layoutY="283" prefHeight="569" prefWidth="393">
+        <ImageView fx:id="backIcon" fitHeight="21.0" fitWidth="16" layoutX="40.0" layoutY="25.0"
+                   onMouseClicked="#handleBackClick" pickOnBounds="true" styleClass="back-icon">
+            <Image url="@/images/Icon.png"/>
+        </ImageView>
+    </Pane>
     <Label fx:id="speedDating" layoutX="105" layoutY="219" text="%speed_dating"/>
     <ImageView fitHeight="210" fitWidth="214" layoutX="90" layoutY="18">
         <Image url="@/images/punainenlogo.png"/>
     </ImageView>
     <Pane layoutX="39" layoutY="339" prefHeight="283" prefWidth="315">
-        <Line endX="116.5" layoutX="198.0" layoutY="100.0" stroke="#7e7e7e"/>
-        <Line endX="116.5" layoutX="1.0" layoutY="100.0" stroke="#7e7e7e"/>
+        <Line endX="116.5" layoutX="198.0" layoutY="130.0" stroke="#7e7e7e"/>
+        <Line endX="116.5" layoutX="1.0" layoutY="130.0" stroke="#7e7e7e"/>
     </Pane>
-    <Button fx:id="loginButton" layoutX="39" layoutY="339" onAction="#handleLogin" prefHeight="63" prefWidth="315"
+    <Button fx:id="loginButton" layoutX="39" layoutY="369" onAction="#handleLogin" prefHeight="63" prefWidth="315"
             text="%login">
         <padding>
             <Insets left="20.0"/>
         </padding>
     </Button>
-    <Button fx:id="newUserButton" layoutX="39" layoutY="472" onAction="#handleNewUser" prefHeight="63" prefWidth="315"
+    <Button fx:id="newUserButton" layoutX="39" layoutY="502" onAction="#handleNewUser" prefHeight="63" prefWidth="315"
             text="%register">
         <padding>
             <Insets left="20.0"/>
         </padding>
     </Button>
-    <Button fx:id="guestButton" layoutX="39" layoutY="559" onAction="#handleGuest" prefHeight="63" prefWidth="315"
+    <Button fx:id="guestButton" layoutX="39" layoutY="589" onAction="#handleGuest" prefHeight="63" prefWidth="315"
             text="%continue_as_guest">
         <padding>
             <Insets left="20.0"/>
         </padding>
     </Button>
-    <Label fx:id="or" layoutX="184" layoutY="426" text="%or"/>
-    <ImageView fitHeight="50.0" fitWidth="45.0" layoutX="289.0" layoutY="348.0" pickOnBounds="true"
+    <Label fx:id="or" layoutX="184" layoutY="456" text="%or"/>
+    <ImageView fitHeight="50.0" fitWidth="45.0" layoutX="289.0" layoutY="378.0" pickOnBounds="true"
                preserveRatio="true">
         <Image url="@/images/stars.png"/>
     </ImageView>
-    <ImageView fitHeight="37.0" fitWidth="45.0" layoutX="290.0" layoutY="486.0" pickOnBounds="true"
+    <ImageView fitHeight="37.0" fitWidth="45.0" layoutX="290.0" layoutY="516.0" pickOnBounds="true"
                preserveRatio="true">
         <Image url="@/images/heart.png"/>
     </ImageView>
-    <ImageView fitHeight="18.0" fitWidth="45.0" layoutX="289.0" layoutY="582.0" pickOnBounds="true"
+    <ImageView fitHeight="18.0" fitWidth="45.0" layoutX="289.0" layoutY="612.0" pickOnBounds="true"
                preserveRatio="true">
         <Image url="@/images/glasses.png"/>
     </ImageView>
+
 </AnchorPane>
