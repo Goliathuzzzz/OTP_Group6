@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.User;
@@ -30,6 +31,8 @@ public class LoginController extends BaseController {
     private Button loginButton;
     @FXML
     private AnchorPane loginPane;
+    @FXML
+    private ImageView backButton;
 
     @FXML
     private void handleLogin() {
@@ -73,6 +76,11 @@ public class LoginController extends BaseController {
     @FXML
     private void handleNewAccount() {
         switchScene(SceneNames.REGISTRATION);
+    }
+
+    @FXML
+    private void handleBack() {
+        switchScene(SceneNames.OPTIONS);
     }
 
     public void setUserController(UserController userController) {
