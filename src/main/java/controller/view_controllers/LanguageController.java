@@ -1,6 +1,7 @@
 package controller.view_controllers;
 
 import controller.BaseController;
+import gui_context.GuiContext;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -18,6 +19,7 @@ public class LanguageController extends BaseController {
     private static String previousScene;
     private final Map<AnchorPane, Circle> toggleMap = new HashMap<>();
     private final ResourceBundle bundle = localeManager.getBundle();
+    private final GuiContext guiContext = GuiContext.getInstance();
 
     @FXML
     private Button readyButton;
@@ -88,18 +90,23 @@ public class LanguageController extends BaseController {
     @FXML
     private void handleReady() {
         System.out.println("DEBUG: previous scene is " + previousScene);
-        if (previousScene != null) {
-            switch (previousScene) {
-                case SceneNames.EDIT_PROFILE:
-                    switchScene(SceneNames.EDIT_PROFILE);
-                    break;
-                case SceneNames.WELCOME:
-                default:
-                    switchScene(SceneNames.OPTIONS);
-                    break;
+        if (guiContext.isUser() || guiContext.isGuest() || guiContext.isAdmin()) {
+            if (previousScene != null) {
+                switch (previousScene) {
+                    case SceneNames.EDIT_PROFILE:
+                        switchScene(SceneNames.EDIT_PROFILE);
+                        break;
+                    case SceneNames.WELCOME:
+                    default:
+                        switchScene(SceneNames.OPTIONS);
+                        break;
+                }
+            } else {
+                //default routing if no previous scene is set
+                switchScene(SceneNames.OPTIONS);
             }
-        } else {
-            //default routing if no previous scene is set
+        }
+        else {
             switchScene(SceneNames.OPTIONS);
         }
     }
