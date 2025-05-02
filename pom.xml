@@ -124,11 +124,33 @@
                 <dbhost>mariadb</dbhost>
             </properties>
         </profile>
+        <profile>
+            <id>run-lite</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <checkstyle.skip>true</checkstyle.skip>
+                <jacoco.skip>true</jacoco.skip>
+                <rewrite.skip>true</rewrite.skip>
+                <spotbugs.skip>true</spotbugs.skip>
+                <skipTests>true</skipTests>
+                <maven.test.skip>true</maven.test.skip>
+            </properties>
+        </profile>
     </profiles>
 
     <build>
         <finalName>otp-group6</finalName>
         <plugins>
+            <plugin>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>0.0.8</version>
+                <configuration>
+                    <mainClass>Main</mainClass>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
