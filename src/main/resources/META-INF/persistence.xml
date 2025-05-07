@@ -6,7 +6,7 @@
     <persistence-unit name="TatskatytotMariaDbUnit" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <properties>
-            <property name="jakarta.persistence.schema-generation.database.action" value="update"/>
+            <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
             <property name="jakarta.persistence.jdbc.url" value="jdbc:mariadb://host.docker.internal:3306/tatskatytot"/>
             <property name="jakarta.persistence.jdbc.user" value="appuser"/>
             <property name="jakarta.persistence.jdbc.password" value="maailmanilmaa"/>
