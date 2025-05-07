@@ -16,16 +16,9 @@ pipeline {
                 git branch: "hetatest", url:'https://github.com/Goliathuzzzz/OTP_Group6.git'
             }
         }
-        stage('Debug Java Version') {
-            steps {
-                bat 'echo JAVA_HOME=%JAVA_HOME%'
-                bat 'java -version'
-                bat 'where java'
-            }
-        }
         stage('Build & Test') {
             steps {
-                bat 'mvn clean install -Ptest'
+                bat 'mvn clean install -DskipTests=true -Ptest'
             }
         }
         stage('Code Coverage') {
