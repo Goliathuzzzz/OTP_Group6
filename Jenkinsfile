@@ -6,7 +6,7 @@ pipeline {
     environment {
         MAVEN_OPTS = "-Dtestfx.headless=true -Dprism.order=sw -Dheadless=true"
         DOCKERHUB_CREDENTIALS_ID = 'Docker_login'
-        DOCKERHUB_REPO = 'mikaklaa/otp_group6_test'
+        DOCKERHUB_REPO = 'mikaklaa/otp_group6'
         DOCKER_IMAGE_TAG = 'latest'
     }
     stages {
