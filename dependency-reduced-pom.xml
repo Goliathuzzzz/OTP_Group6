@@ -8,6 +8,14 @@
     <finalName>otp-group6</finalName>
     <plugins>
       <plugin>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx-maven-plugin</artifactId>
+        <version>0.0.8</version>
+        <configuration>
+          <mainClass>Main</mainClass>
+        </configuration>
+      </plugin>
+      <plugin>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>3.2.5</version>
         <configuration>
@@ -81,6 +89,7 @@
               <goal>shade</goal>
             </goals>
             <configuration>
+              <finalName>otp-group6</finalName>
               <transformers>
                 <transformer>
                   <mainClass>Main</mainClass>
@@ -165,6 +174,17 @@
       <id>production</id>
       <properties>
         <dbhost>mariadb</dbhost>
+      </properties>
+    </profile>
+    <profile>
+      <id>run-lite</id>
+      <properties>
+        <maven.test.skip>true</maven.test.skip>
+        <jacoco.skip>true</jacoco.skip>
+        <checkstyle.skip>true</checkstyle.skip>
+        <spotbugs.skip>true</spotbugs.skip>
+        <rewrite.skip>true</rewrite.skip>
+        <skipTests>true</skipTests>
       </properties>
     </profile>
   </profiles>
