@@ -6,7 +6,7 @@ pipeline {
     }
     environment {
         MAVEN_OPTS = "-Dtestfx.headless=true -Dprism.order=sw -Dheadless=true"
-        DOCKERHUB_CREDENTIALS_ID = 'dockerhub'
+        DOCKERHUB_CREDENTIALS_ID = 'docker-login'
         DOCKERHUB_REPO = 'hetahar/otp2'
         DOCKER_IMAGE_TAG = 'latest'
     }
