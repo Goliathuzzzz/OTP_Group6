@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-        maven 'maven_3.9.9'
+        maven 'Maven_3.9.9'
     }
     environment {
         MAVEN_OPTS = "-Dtestfx.headless=true -Dprism.order=sw -Dheadless=true"
