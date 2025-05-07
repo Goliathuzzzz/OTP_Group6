@@ -14,6 +14,9 @@
       </set>
     </option>
   </component>
+  <component name="ProjectResources">
+    <resource url="https://checkstyle.org/dtds/configuration_1_3.dtd" location="$PROJECT_DIR$/checkstyle.xml" />
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="corretto-21" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
