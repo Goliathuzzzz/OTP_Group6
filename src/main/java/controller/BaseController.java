@@ -74,8 +74,8 @@ public abstract class BaseController {
                 logError("Controller is null in fxmlLoader");
             }
 
-            if (controller instanceof InterestSelectionController interestController &&
-                    data instanceof String category) {
+            if (controller instanceof InterestSelectionController interestController
+                    && data instanceof String category) {
                     interestController.setCategory(category);
                     switch (category) {
                         case "animals" -> interestController.loadInterests("animals");
