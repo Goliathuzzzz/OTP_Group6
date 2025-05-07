@@ -9,6 +9,7 @@ WORKDIR /app
 
 COPY pom.xml /app/
 COPY src /app/src/
+COPY checkstyle.xml /app/
 
 # Directly replace the placeholder in persistence.xml
 RUN sed -i "s|\localhost|$dbhost|g" /app/src/main/resources/META-INF/persistence.xml
