@@ -11,6 +11,8 @@ services:
       MARIADB_DATABASE: tatskatytot
       MARIADB_USER: appuser
       MARIADB_PASSWORD: maailmanilmaa
+      MARIADB_CHARACTER_SET_SERVER: utf8mb4
+      MARIADB_COLLATION_SERVER: utf8mb4_unicode_ci
     ports:
       - "3306:3306"
     volumes:
