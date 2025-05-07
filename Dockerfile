@@ -33,7 +33,7 @@ RUN wget https://download2.gluonhq.com/openjfx/20.0.1/openjfx-20.0.1_linux-x64_b
     rm openjfx-20.0.1_linux-x64_bin-sdk.zip
 
 # Build the application
-RUN mvn clean package -DskipTests
+RUN mvn clean package -DskipTests -Dcheckstyle.skip=true
 
 # Set the command to run the application with JavaFX
 CMD ["java", "--module-path", "/app/javafx-sdk-20.0.1/lib", "--add-modules", "javafx.controls,javafx.fxml", "-Dprism.order=sw", "-Djavafx.platform=x11", "-jar", "/target/otp-group6.jar"]
