@@ -6,7 +6,38 @@ inefficiencies of manual speed dating events.
 
 ---
 
-## 🌟 Features
+## Table of Contents
+
+1. [Overview](#overview)
+2. [Features](#-features)
+3. [Language Support](#-language-support)
+4. [Matchmaking Algorithm](#-matchmaking-algorithm)  
+   4.1 [How It Works](#how-it-works)  
+   4.2 [Interest-Based Matching](#interest-based-matching)  
+   4.3 [Compatibility Scoring](#compatibility-scoring)  
+   4.4 [Finding the Best Match](#finding-the-best-match)
+5. [Technology Stack](#-technology-stack)  
+   5.1 [Frontend](#frontend)  
+   5.2 [Backend](#backend)  
+   5.3 [DevOps & Deployment](#devops--deployment)
+6. [Database Design](#️-database-design)  
+   6.1 [Entity-Relationship Diagram](#entity-relationship-diagram)  
+   6.2 [Relational Schema](#relational-schema)  
+   6.3 [Class Diagram](#class-diagram)  
+   6.4 [Activity Diagram](#activity-diagram)
+7. [Project Structure](#-project-structure)
+8. [Getting Started](#-getting-started)  
+   8.1 [Prerequisites](#prerequisites)  
+   8.2 [Setup](#setup)
+9. [Usage](#-usage)
+10. [Testing](#-testing)
+11. [Running the App with Docker](#-running-the-app-with-docker)
+12. [Future Enhancements](#-future-enhancements)
+13. [Contributors](#-contributors)
+
+---
+
+## Features
 
 - Automated Enrollment – Participants register with personal details.
 - Interest-Based Matchmaking – Matches are determined by shared interests.
@@ -16,7 +47,7 @@ inefficiencies of manual speed dating events.
 
 ---
 
-## 🌍 Language Support
+## Language Support
 
 **Qupids Speed Dating** supports multiple user interface languages for a more inclusive and localized experience:
 
@@ -30,11 +61,11 @@ inefficiencies of manual speed dating events.
 
 ---
 
-## 🎯 Matchmaking Algorithm
+## Matchmaking Algorithm
 
 The application uses a compatibility based matchmaking algorithm to pair participants based on shared interests.
 
-### ⚙️ How It Works
+### How It Works
 
 #### Interest Based Matching
 
@@ -55,7 +86,7 @@ The application uses a compatibility based matchmaking algorithm to pair partici
 
 ---
 
-## 🔧 Technology Stack
+## Technology Stack
 
 ### **Frontend**
 
@@ -80,7 +111,7 @@ The application uses a compatibility based matchmaking algorithm to pair partici
 
 ---
 
-## 🗃️ Database Design
+## Database Design
 
 The **Qupids Speed Dating** uses a relational database built with **MariaDB**, structured to support multilingual users,
 flexible interest tracking, and scalable matchmaking.
@@ -131,7 +162,7 @@ The class diagram that displays classes and their relationships in the model.
 
 ---
 
-## 🛂 Project Structure
+## Project Structure
 
 ```
 OTP_Group6/
@@ -168,7 +199,7 @@ OTP_Group6/
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -213,7 +244,7 @@ Ensure you have the following installed:
 
 ---
 
-## 🛠 Usage
+## Usage
 
 1. **Start the App**
     - Launch the application to access the main menu.
@@ -236,7 +267,7 @@ Ensure you have the following installed:
 
 ---
 
-## ✅ Testing
+## Testing
 
 Run unit tests:
 
@@ -257,7 +288,7 @@ mvn jacoco:report
 
 ---
 
-## 🐳 Running the App with Docker
+## Running the App with Docker
 
 Build and launch the Docker container by running the following command from your project's root directory:
 
@@ -269,7 +300,7 @@ Ensure that VcXsrv is running in the background with the correct settings before
 
 ---
 
-## ✨ Future Enhancements
+## Future Enhancements
 
 - Mobile App Development – Build a React Native version.
 - Cloud Deployment – Move backend to Render, frontend to Vercel.
@@ -279,7 +310,7 @@ Ensure that VcXsrv is running in the background with the correct settings before
 
 ---
 
-## 🤝 Contributors
+## Contributors
 
 - Ade Aiho
 - Heta Hartzell
