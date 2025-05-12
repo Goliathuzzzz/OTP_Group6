@@ -115,6 +115,22 @@ The relational schema illustrates table structures, primary and foreign keys.
 
 ---
 
+### Class Diagram
+
+> ![Relational Schema](./src/main/resources/diagrams/class_diagram_session.png)
+
+The class diagram that displays classes and their relationships in the model.
+
+---
+
+### Activity Diagram
+
+> ![Relational Schema](./src/main/resources/diagrams/class_diagram_session.png)
+
+The class diagram that displays classes and their relationships in the model.
+
+---
+
 ## 🛂 Project Structure
 
 ```
